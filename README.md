@@ -5,6 +5,7 @@
 * **Project Board**: [GitHub Project #9: KV-Cache Co-Optimization](https://github.com/users/khemingkapat/projects/9)
 * **Master Proposal**: [docs/proposal.md](docs/proposal.md)
 * **Roadmap & Work Packages**: [WORK_PACKAGES.md](WORK_PACKAGES.md)
+* **Engineering Workflow**: [docs/WORKFLOW_SPEC.md](docs/WORKFLOW_SPEC.md)
 
 ---
 
