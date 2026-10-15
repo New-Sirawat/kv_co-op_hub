@@ -9,9 +9,9 @@
 
 | WP | Name | Semester / Phase | Status |
 |---|---|---|---|
-| 1 | Testbed Setup & Baseline Reproduction | Sem 1 / Phase 1: Environment & Baselines 🛠️ | 🔴 Not started |
+| 1 | Testbed Setup & Native Reference Baseline | Sem 1 / Phase 1: Environment & Baselines 🛠️ | 🔴 Not started |
 | 2 | Hardware & System Bottleneck Profiling | Sem 1 / Phase 1: Environment & Baselines 🛠️ | 🔴 Not started |
-| 3 | Multi-Axis Strategy Exploration & Candidate Benchmarking | Sem 1 / Phase 2: Exploration & Co-Design 🔬 | 🔴 Not started |
+| 3 | Literature Candidate Exploration & Micro-Benchmarking | Sem 1 / Phase 2: Exploration & Co-Design 🔬 | 🔴 Not started |
 | 4 | 3-Axis Co-Optimization Policy Design & Prototype Architecture | Sem 1 / Phase 2: Exploration & Co-Design 🔬 | 🔴 Not started |
 | 5 | Semester 1 Milestones, Sanity Checks & Progress Defense | Sem 1 / Phase 3: S1 Milestones & Defense 📋 | 🔴 Not started |
 | 6 | Runtime Engine Integration & Output Correctness Verification | Sem 2 / Phase 4: Runtime Integration ⚙️ | 🔴 Not started |
@@ -25,19 +25,19 @@
 
 ### Phase 1: Environment & Baselines 🛠️
 
-#### WP-1: Testbed Setup & Baseline Reproduction
-Establish stable consumer hardware environments and reproduce baseline inference behavior to set empirical reference targets.
-- Local testbed configuration (RTX 4060 8GB, 16GB RAM, standard PCIe).
-- Cluster testbed configuration (Slurm HPC with 16GB VRAM allocation caps).
-- Reproduction of uncompressed baseline (standard vLLM FP16/BF16).
-- Reproduction of spatial offload baseline (FlexGen uniform offload).
-- Reproduction of structural eviction baseline (StreamingLLM attention sink / sliding window).
-- Reproduction validation checks via perplexity delta on PG-19 / WikiText-2.
+#### WP-1: Testbed Setup & Native Reference Baseline
+Establish stable consumer hardware environments, dataset ingestion, and execution infrastructure to reproduce initial native vLLM uncompressed inference behavior.
+- Cluster testbed configuration & verification (Slurm HPC with 16GB VRAM allocation caps on RTX 4090 node).
+- Model selection & version pinning for 16GB consumer memory budget (unmodified FP16/BF16 weights).
+- Evaluation dataset ingestion and staging (LongMemEval multi-turn chat, PG-19 long context, WikiText-2 reference).
+- Unified metrics harness instrumentation (Hardware VRAM/TTFT/TPOT/PCIe + Quality logit reference and LongMemEval adherence).
+- Empirical uncompressed reference baseline run (standard native vLLM FP16/BF16).
+- Local testbed adaptation (RTX 4060 8GB, 16GB RAM, standard PCIe with downscaled 3B model profile).
 
 #### WP-2: Hardware & System Bottleneck Profiling
-Profile memory, compute, and PCIe transfer bottlenecks on consumer hardware to identify exact saturation points.
+Push native vLLM to the limit across scaling context lengths and concurrent workloads on consumer hardware to map exact saturation points.
 - VRAM Out-Of-Memory (OOM) ceiling mapping across context lengths (512 to 32K).
-- Time-to-First-Token (TTFT) and Time-Per-Output-Token (TPOT) profiling.
+- Time-to-First-Token (TTFT) and Time-Per-Output-Token (TPOT) tail latency profiling (P95/P99 under 10–15 concurrent users).
 - Host-to-device PCIe bandwidth and saturation measurements during decode phase.
 - Baseline empirical profiling report and target benchmark curves.
 
@@ -45,11 +45,11 @@ Profile memory, compute, and PCIe transfer bottlenecks on consumer hardware to i
 
 ### Phase 2: Exploration & Co-Design 🔬
 
-#### WP-3: Multi-Axis Strategy Exploration & Candidate Benchmarking
-Survey and micro-benchmark candidate algorithms from published literature across the three optimization axes to assess consumer-grade viability.
-- Temporal/Structural: Evaluate candidate priority scoring and retention mechanisms (e.g., attention sinks, heavy-hitters, low-rank, clustering).
-- Structural: Evaluate candidate compression codecs (e.g., FP8, INT4, HeadQ-style residuals) and profile CPU dequantization latency.
-- Spatial: Evaluate offloading granularity and data movement models (e.g., value-only transfer vs. page-level offloading).
+#### WP-3: Literature Candidate Exploration & Micro-Benchmarking
+Survey and micro-benchmark candidate algorithms from published literature organized by research topic against consumer-grade hardware constraints.
+- Eviction / Retention: Evaluate priority scoring and retention mechanisms (e.g., StreamingLLM attention sinks, H2O heavy-hitters, sliding window).
+- Compression & Quantization: Evaluate candidate compression codecs (e.g., FP8, INT4, QServe, HeadQ-style residuals) and profile CPU dequantization latency.
+- Offloading & Tiering: Evaluate data movement models and offload granularities (e.g., FlexGen uniform swapping, InfiniGen prefetching, ShadowKV value-only offloading).
 - Comparative trade-off matrix synthesizing candidates against PCIe and compute constraints.
 
 #### WP-4: 3-Axis Co-Optimization Policy Design & Prototype Architecture
@@ -118,8 +118,8 @@ Produce final scientific deliverables, open-source reproducibility artifacts, an
 ```mermaid
 flowchart TD
     subgraph S1 ["Semester 1: Research, Profiling & Architecture Co-Design"]
-        WP1["WP 1: Testbed Setup & Baseline Reproduction"] --> WP2["WP 2: Hardware & Bottleneck Profiling"]
-        WP1 --> WP3["WP 3: Multi-Axis Strategy Exploration"]
+        WP1["WP 1: Testbed Setup & Native Reference Baseline"] --> WP2["WP 2: Hardware & Bottleneck Profiling"]
+        WP1 --> WP3["WP 3: Literature Candidate Exploration"]
         WP2 --> WP3
         WP3 --> WP4["WP 4: 3-Axis Co-Optimization Policy Design"]
         WP2 --> WP5["WP 5: S1 Milestones & Progress Defense"]
