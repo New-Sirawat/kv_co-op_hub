@@ -1,0 +1,60 @@
+{
+  "model": "qwen3-4b",
+  "technique": "flexgen_kv",
+  "axes": [
+    "STRUCTURAL",
+    "SPATIAL"
+  ],
+  "results": [
+    {
+      "requested_ctx": 128,
+      "status": "SUCCESS",
+      "axes": [
+        "STRUCTURAL",
+        "SPATIAL"
+      ],
+      "prompt_tokens": 128,
+      "generated_tokens": 16,
+      "ttft_sec": 0.205,
+      "decode_time_sec": 0.3051,
+      "total_time_sec": 0.5101,
+      "throughput_tok_per_sec": 49.16,
+      "tpot_mean_ms": 20.34,
+      "tpot_p95_ms": 20.34,
+      "cold_ttft_sec": 0.0,
+      "cold_total_sec": 0.0,
+      "ttft_p95_sec": 0.205,
+      "peak_alloc_mb": 7738.78,
+      "peak_reserved_mb": 7748.0,
+      "host_rss_delta_mb": 1055.23,
+      "memcpy_bytes_per_token": 0.0,
+      "error": null,
+      "extra": {
+        "gpu_cache_tokens": 1024,
+        "cpu_cache_tokens": 32768,
+        "block_size": 16,
+        "quantize_kv": true,
+        "group_size": 64,
+        "cpu_delegation": false,
+        "swap_space_gb": 4,
+        "active_gpu_tokens": 144,
+        "offloaded_cpu_tokens": 0,
+        "total_retained_tokens": 144,
+        "evicted_tokens": 0,
+        "pcie_transfer_bytes": 0,
+        "compression_ratio": 3.56,
+        "crossover_t_pcie_ms": 0.01179648,
+        "crossover_t_cpu_ms": 0.00589824,
+        "delegation_preferred": 1.0,
+        "engine": "pytorch",
+        "attn_implementation": "sdpa",
+        "max_vram_gb": 16.0,
+        "effective_gpu_utilization": 0.5783,
+        "hardware_vram_gb": 23.52,
+        "top1_agreement": 1.0,
+        "kl_div_mean": 0.0,
+        "kl_div_p99": 0.0
+      }
+    }
+  ]
+}

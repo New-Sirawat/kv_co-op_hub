@@ -1,0 +1,752 @@
+{
+  "6b168ec8": {
+    "correct": true,
+    "reason": "Correctly recalls owning three bikes.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "545bd2b5": {
+    "correct": false,
+    "reason": "Incorrectly states 30 minutes instead of 2 hours.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "1903aded": {
+    "correct": true,
+    "reason": "Correctly identifies transcriptionist.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "37d43f65": {
+    "correct": false,
+    "reason": "Falsely claims RAM upgrade not mentioned.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "dccbc061": {
+    "correct": false,
+    "reason": "Refuses to answer and truncates.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "8b9d4367": {
+    "correct": true,
+    "reason": "Correctly names Jaipur Rugs.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "ad7109d1": {
+    "correct": true,
+    "reason": "Correctly states 500 Mbps.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "352ab8bd": {
+    "correct": true,
+    "reason": "Correctly recalls approximately 20% framerate improvement.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "51b23612": {
+    "correct": true,
+    "reason": "Correctly names Nu, pogodi!.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "8464fc84": {
+    "correct": true,
+    "reason": "Correctly names Roscioli.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "7e00a6cb": {
+    "correct": true,
+    "reason": "Accurately names International Budget Hostel.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "1568498a": {
+    "correct": true,
+    "reason": "Correctly recalls move 28. Kg3.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "19b5f2b3": {
+    "correct": false,
+    "reason": "Refuses to answer when answerable.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "4c36ccef": {
+    "correct": true,
+    "reason": "Correctly names Roscioli.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "e982271f": {
+    "correct": true,
+    "reason": "Correctly recalls Revolution Hall.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "0862e8bf": {
+    "correct": true,
+    "reason": "Correctly recalls Luna.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "71a3fd6b": {
+    "correct": true,
+    "reason": "Correctly recalls the exact phone number.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "8550ddae": {
+    "correct": false,
+    "reason": "Falsely claims recipe cannot be determined.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "6222b6eb": {
+    "correct": true,
+    "reason": "Correctly identifies the 6S algorithm.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "eaca4986": {
+    "correct": true,
+    "reason": "Correctly recalls exact chord progression.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "577d4d32": {
+    "correct": true,
+    "reason": "Accurately states 7 pm.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "15745da0": {
+    "correct": false,
+    "reason": "States 3 years instead of three months.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "4388e9dd": {
+    "correct": true,
+    "reason": "Matches untidy, stained white shirt.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "58ef2f1c": {
+    "correct": false,
+    "reason": "Denies animal shelter dinner despite citing Valentine's Day.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "c14c00dd": {
+    "correct": false,
+    "reason": "Hedges ('likely') and claims no brand provided.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "f4f1d8a4": {
+    "correct": true,
+    "reason": "Accurately states your sister.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "caf9ead2": {
+    "correct": true,
+    "reason": "Accurately recalls 5 hours.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "b86304ba": {
+    "correct": true,
+    "reason": "Accurately states triple what you paid.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "86f00804": {
+    "correct": false,
+    "reason": "Refuses; misses The Seven Husbands of Evelyn Hugo.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "7161e7e2": {
+    "correct": true,
+    "reason": "Accurately states 8 am - 4 pm shift.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "cc5ded98": {
+    "correct": true,
+    "reason": "Correctly states about two hours per day.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "c6853660": {
+    "correct": true,
+    "reason": "Correctly states limit increased to two cups.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "41698283": {
+    "correct": true,
+    "reason": "Correctly identifies 70-200mm zoom lens.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "6071bd76": {
+    "correct": false,
+    "reason": "Falsely claims ratio stayed consistent at 1:15.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "7e974930": {
+    "correct": true,
+    "reason": "Correctly states $420.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "26bdc477": {
+    "correct": false,
+    "reason": "Refuses to answer an answerable question.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "2133c1b5": {
+    "correct": true,
+    "reason": "Correctly states 3 months.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "c4ea545c": {
+    "correct": false,
+    "reason": "Gives generic app advice without answering Yes.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "db467c8c": {
+    "correct": true,
+    "reason": "Correctly states nine months.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "c7dc5443": {
+    "correct": false,
+    "reason": "Refuses and denies volleyball record was shared.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "f685340e": {
+    "correct": false,
+    "reason": "Cut off before answering both previous and current frequencies.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "07741c45": {
+    "correct": false,
+    "reason": "Treats shoe rack as future plan; guesses wrong locations.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "ce6d2d27": {
+    "correct": true,
+    "reason": "Correctly states Friday.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "dad224aa": {
+    "correct": true,
+    "reason": "Correctly states 7:30 am.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "e61a7584": {
+    "correct": true,
+    "reason": "Correctly states 9 months.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "18bc8abd": {
+    "correct": true,
+    "reason": "Clearly states Kansas City Masterpiece in opening sentence.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "830ce83f": {
+    "correct": true,
+    "reason": "Correctly states Rachel moved to the suburbs.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "42ec0761": {
+    "correct": true,
+    "reason": "Clearly confirms yes before trailing text cuts off.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "ba61f0b9": {
+    "correct": false,
+    "reason": "Refuses to answer when answerable.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "50635ada": {
+    "correct": false,
+    "reason": "Refuses to answer when answerable.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "10e09553": {
+    "correct": false,
+    "reason": "Refuses earlier trip; only cites 9 on 7/22.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "89941a94": {
+    "correct": true,
+    "reason": "Identifies road bike before gravel bike despite cutoff.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "9bbe84a2": {
+    "correct": false,
+    "reason": "Wrongly states previous goal was level 150.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "6a1eabeb": {
+    "correct": true,
+    "reason": "Correctly states 25:50.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "3ba21379": {
+    "correct": true,
+    "reason": "Correctly identifies Ford F-150 pickup truck.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "e66b632c": {
+    "correct": false,
+    "reason": "Reports 26:30 instead of 27 minutes 45 seconds.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "184da446": {
+    "correct": true,
+    "reason": "Correctly states 220 pages.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "72e3ee87": {
+    "correct": true,
+    "reason": "Correctly states 50 episodes.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "7401057b": {
+    "correct": false,
+    "reason": "Misstates as general 2-per-stay cap, not user's points.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "0f05491a": {
+    "correct": true,
+    "reason": "Correctly states 120 stars.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_a1b77f9c": {
+    "correct": false,
+    "reason": "Refuses and cuts off before answering",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_f49edff3": {
+    "correct": false,
+    "reason": "Cut off during analysis before giving final order",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "d01c6aa8": {
+    "correct": false,
+    "reason": "Refuses to answer an answerable question",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_2c50253f": {
+    "correct": false,
+    "reason": "Refuses to answer an answerable question",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "993da5e2": {
+    "correct": false,
+    "reason": "Refuses to answer an answerable question",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "0bb5a684": {
+    "correct": false,
+    "reason": "Refuses to answer an answerable question",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_68e94288": {
+    "correct": false,
+    "reason": "Refuses to answer an answerable question",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_e072b769": {
+    "correct": false,
+    "reason": "Refuses to answer an answerable question",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_18c2b244": {
+    "correct": false,
+    "reason": "Cut off during reasoning with wrong order",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "b46e15ed": {
+    "correct": false,
+    "reason": "Refuses to answer an answerable question",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_213fd887": {
+    "correct": false,
+    "reason": "Wrongly picks charity 5K run first",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "b29f3365": {
+    "correct": false,
+    "reason": "Refuses, claims guitar lessons were not mentioned",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "2ebe6c92": {
+    "correct": false,
+    "reason": "Wrongly denies finishing a book; names wrong book",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_a2d1d1f6": {
+    "correct": false,
+    "reason": "Refuses, claims harvest date is unavailable",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_68e94287": {
+    "correct": false,
+    "reason": "Refuses, claims order cannot be determined",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_fa19884d": {
+    "correct": false,
+    "reason": "Refuses to identify the bluegrass band",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_2312f94c": {
+    "correct": false,
+    "reason": "Wrongly picks Dell XPS 13 first",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_98f46fc6": {
+    "correct": true,
+    "reason": "Clearly commits to charity bake sale first",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_385a5000": {
+    "correct": true,
+    "reason": "Clearly commits to tomatoes first",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_8279ba03": {
+    "correct": false,
+    "reason": "Refuses, claims appliance was not mentioned",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_7ca326fa": {
+    "correct": false,
+    "reason": "Refuses to answer; claims information is missing.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_4929293a": {
+    "correct": false,
+    "reason": "Refuses to answer; claims party not mentioned.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_e414231e": {
+    "correct": false,
+    "reason": "Refuses to answer an answerable question.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_d6585ce8": {
+    "correct": false,
+    "reason": "Refuses to answer; claims no access.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_93159ced": {
+    "correct": false,
+    "reason": "Claims no prior work and cuts off.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_e061b84g": {
+    "correct": false,
+    "reason": "Refuses to answer; claims no history access.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "71017277": {
+    "correct": false,
+    "reason": "Refuses to answer; claims cannot be answered.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_4fc4f797": {
+    "correct": false,
+    "reason": "Refuses to answer and is cut off.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_2487a7cb": {
+    "correct": true,
+    "reason": "Commits clearly to 'Data Analysis using Python' webinar.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "8077ef71": {
+    "correct": false,
+    "reason": "Wrong count: says 0 days instead of 26.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "7024f17c": {
+    "correct": false,
+    "reason": "Refuses to answer and cut off before answering.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "09ba9854": {
+    "correct": false,
+    "reason": "Cut off before stating the savings amount.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "9aaed6a3": {
+    "correct": false,
+    "reason": "Falsely claims cashback cannot be determined.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "46a3abf7": {
+    "correct": false,
+    "reason": "Wrong tank count (says 2 instead of 3).",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "bb7c3b45": {
+    "correct": false,
+    "reason": "Falsely claims no information about heels purchase.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "ef9cf60a": {
+    "correct": false,
+    "reason": "Partial total ($200 instead of $300).",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "2e6d26dc": {
+    "correct": false,
+    "reason": "Refuses count and cut off listing incomplete babies.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "f35224e0": {
+    "correct": false,
+    "reason": "Refuses and falsely claims no listening history.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_59c863d7": {
+    "correct": false,
+    "reason": "Refuses to answer, claiming no personal history access.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "f0e564bc": {
+    "correct": false,
+    "reason": "Falsely claims prices were not mentioned.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "e56a43b9": {
+    "correct": true,
+    "reason": "Matches $5 discount.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "a11281a2": {
+    "correct": false,
+    "reason": "Claims information not in conversation.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "d6062bb9": {
+    "correct": false,
+    "reason": "Refuses to provide video view counts.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "4bc144e2": {
+    "correct": false,
+    "reason": "Predicts $15 total, excluding parking ticket.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "d23cf73b": {
+    "correct": false,
+    "reason": "Refuses to answer cooking history question.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "078150f1": {
+    "correct": false,
+    "reason": "Refuses; claims fundraising numbers are missing.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "b5ef892d": {
+    "correct": false,
+    "reason": "Predicts 1 day instead of 8 days.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "28dc39ac": {
+    "correct": false,
+    "reason": "Refuses; claims no gameplay time data.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_2f91af09": {
+    "correct": false,
+    "reason": "Refuses; claims writing counts are missing.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "5025383b": {
+    "correct": false,
+    "reason": "Predicts Lightroom editing instead of cooking.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "157a136e": {
+    "correct": false,
+    "reason": "Refuses, claims ages are missing",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "1c549ce4": {
+    "correct": false,
+    "reason": "Abstains, claims car cover cost missing",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "a346bb18": {
+    "correct": false,
+    "reason": "Refuses, claims times are missing",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "a08a253f": {
+    "correct": false,
+    "reason": "Wrong total, 3 days a week",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "b3c15d39": {
+    "correct": false,
+    "reason": "Abstains, claims delivery date missing",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "00ca467f": {
+    "correct": false,
+    "reason": "Abstains and cuts off mid-sentence",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "c4a1ceb8": {
+    "correct": false,
+    "reason": "Cut off before giving total count",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "0ea62687": {
+    "correct": false,
+    "reason": "Abstains, claims past mpg missing",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "a9f6b44c": {
+    "correct": false,
+    "reason": "Wrong total, 1 bike",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "d682f1a2": {
+    "correct": false,
+    "reason": "Refuses, claims no access to history",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_372c3eed_abs": {
+    "correct": true,
+    "reason": "Clearly abstains; states cannot determine from provided info",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "a96c20ee_abs": {
+    "correct": true,
+    "reason": "Clearly abstains; information not in conversation",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "0ddfec37_abs": {
+    "correct": true,
+    "reason": "Clearly abstains before final sentence cutoff",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "031748ae_abs": {
+    "correct": false,
+    "reason": "Guesses zero engineers when starting role",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "09ba9854_abs": {
+    "correct": false,
+    "reason": "Provides estimated costs instead of abstaining",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "bc8a6e93_abs": {
+    "correct": true,
+    "reason": "Clearly abstains; not enough information",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "2698e78f_abs": {
+    "correct": false,
+    "reason": "Claims user doesn't see Johnson; answers with Smith",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "c8090214_abs": {
+    "correct": true,
+    "reason": "States not possible to determine from conversation",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "19b5f2b3_abs": {
+    "correct": true,
+    "reason": "Abstains; detail not included in conversation",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "0862e8bf_abs": {
+    "correct": true,
+    "reason": "States no information provided about a hamster",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "29f2956b_abs": {
+    "correct": false,
+    "reason": "Gives generic practice advice instead of abstaining.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_93159ced_abs": {
+    "correct": true,
+    "reason": "Clearly abstains and states info is unavailable in conversation.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "15745da0_abs": {
+    "correct": true,
+    "reason": "Clearly states vintage film collection was not mentioned.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "edced276_abs": {
+    "correct": false,
+    "reason": "Fabricates 0 days and contradicts 10-day Hawaii trip.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "ba358f49_abs": {
+    "correct": true,
+    "reason": "Clearly states Rachel's age and wedding date unavailable.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "2311e44b_abs": {
+    "correct": true,
+    "reason": "Clearly states Sapiens reading progress is not provided.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "e5ba910e_abs": {
+    "correct": true,
+    "reason": "Clearly abstains because item prices are unavailable.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "6aeb4375_abs": {
+    "correct": true,
+    "reason": "Clearly abstains and states inability to determine count.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_c27434e8_abs": {
+    "correct": false,
+    "reason": "Incorrectly concludes Ferrari was started first despite missing info.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "f685340e_abs": {
+    "correct": true,
+    "reason": "Clearly states table tennis detail was not included.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "88432d0a_abs": {
+    "correct": true,
+    "reason": "Clearly states information not available.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "2133c1b5_abs": {
+    "correct": true,
+    "reason": "States detail unavailable before cutoff.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "f4f1d8a4_abs": {
+    "correct": true,
+    "reason": "Abstains, notes gift was from sister.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "982b5123_abs": {
+    "correct": true,
+    "reason": "Clearly states information unavailable.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_fe651585_abs": {
+    "correct": true,
+    "reason": "Clearly abstains, states insufficient info.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_70e84552_abs": {
+    "correct": false,
+    "reason": "Claims neither completed, contradicts context, cutoff.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "eeda8a6d_abs": {
+    "correct": true,
+    "reason": "Clearly abstains, notes 20-gallon tank only.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "60bf93ed_abs": {
+    "correct": true,
+    "reason": "Clearly abstains before cutoff in closing.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "6456829e_abs": {
+    "correct": true,
+    "reason": "Clearly states insufficient information.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "80ec1f4f_abs": {
+    "correct": true,
+    "reason": "States not mentioned and gives 0.",
+    "grader": "orchestrator-pro-semantic-v1"
+  }
+}

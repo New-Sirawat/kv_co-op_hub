@@ -1,6 +1,6 @@
 {
   "manifest_version": "1.0",
-  "generated_at": "2026-11-07T03:38:00Z",
+  "generated_at": "2026-11-23T11:40:41Z",
   "provenance_type": "baseline_run_manifest",
   "milestone": "WP-1",
   "work_package": "WP1-4-1",
@@ -25,33 +25,51 @@
     "cap_fraction": 0.68,
     "effective_gpu_utilization": 0.5783,
     "cuda_version": "12.2",
-    "pytorch_version": "2.6.0"
+    "pytorch_version": "2.6.0",
+    "longmem_job_id": "30137"
   },
   "source_repository": {
     "repo": "khemingkapat/kv_bench",
-    "commit_sha": "f0649c0667319771ab9a6f8eefa7a7c567eb586d",
+    "commit_sha": "2a9338a2f750741f7765d79c1270f5579a9ffed0",
+    "branch": "main",
     "clean_working_tree": true
   },
   "golden_artifacts": {
     "longmem_baseline_pytorch_16gb": {
       "path": "results/baselines/longmem_baseline_pytorch_16gb.json",
-      "sha256": "66a5c6f56b44fd4dd26db7528b2abe2610cee4cd67a30e1a51a01842cc9bb111",
-      "description": "Native PyTorch uncompressed baseline LongMemEval runs across context lengths 512 to 16,384 tokens with select-by-length"
+      "sha256": "e1c93fc97bb3537e4fb72a9b6f13553fea83ce36ac8c2ba59db92cd15a5eb5cc",
+      "size_bytes": 168836,
+      "description": "Native PyTorch uncompressed baseline single-pass 150-question LongMemEval run (ctx=32768, max_tokens=128, Qwen chat template)"
     },
     "verify_baseline_pytorch_16gb": {
       "path": "results/baselines/verify_baseline_pytorch_16gb.json",
-      "sha256": "c2893eabc022d14bfd4addeed7abfa4b32fc890f3b60c371b621df16f3f50dda",
+      "sha256": "28d5445db02ad8f1c0533aa6434fbc7b582c5a8628ca7e15a52257d07063db39",
+      "size_bytes": 864,
       "description": "Native PyTorch uncompressed baseline verification run (128 ctx, 16 tokens)"
     },
     "baseline_qwen3_4b_pytorch_ref": {
       "path": "results/baselines/references/baseline_qwen3-4b_pytorch_ref.json",
-      "sha256": "cd21c03896d1efb8848d73b2d4bea0d85e21ca27b40ad20cc001a0c804f7067a",
-      "description": "Golden ground-truth sample correctness, predictions, and step logprobs for PyTorch causal attribution"
+      "sha256": "f1f89cd615038ebc9d0d7cda30176acbbf83cdbe2e80b03ca7ba18291bcd22a9",
+      "size_bytes": 2033449,
+      "description": "Golden ground-truth per-sample predictions, token IDs, and step logprobs for PyTorch KL/Top-1 fidelity and causal attribution"
     },
     "verify_ref_pytorch": {
       "path": "results/baselines/references/verify_ref_pytorch.json",
       "sha256": "126f0e15ec8d8b6c192b1aaf903aada6f13420e7095e5f56e0b49ad6b46e7938",
+      "size_bytes": 2991,
       "description": "Golden reference tokens and step logprobs for PyTorch verification sanity checks"
+    },
+    "baseline_longmem_grades": {
+      "path": "results/grades/baseline_grades.json",
+      "sha256": "f7eadc01bb0183310386163dc947b39e1b7af0e9c5d03cd926e60e79eaad12a4",
+      "size_bytes": 21942,
+      "description": "Offline semantic grading sidecar for all 150 LongMemEval baseline questions"
+    },
+    "baseline_longmem_judged": {
+      "path": "results/grades/baseline_judged.json",
+      "sha256": "c2adbbf43d44a18f3c5c3db520c9058c57c41eb3d48e90a62d30219150372613",
+      "size_bytes": 94433,
+      "description": "Merged 150-question semantic-judged LongMemEval baseline summary (99/150 = 66.0%)"
     }
   }
 }

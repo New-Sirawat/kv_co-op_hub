@@ -1,0 +1,261 @@
+{
+  "model": "qwen3-4b",
+  "technique": "shadowkv",
+  "axes": [
+    "STRUCTURAL",
+    "SPATIAL",
+    "TEMPORAL"
+  ],
+  "results": [
+    {
+      "requested_ctx": 2048,
+      "status": "SUCCESS",
+      "axes": [
+        "STRUCTURAL",
+        "SPATIAL",
+        "TEMPORAL"
+      ],
+      "prompt_tokens": 20480,
+      "generated_tokens": 160,
+      "ttft_sec": 0.1638,
+      "decode_time_sec": 1.274,
+      "total_time_sec": 14.9002,
+      "throughput_tok_per_sec": 124.8,
+      "tpot_mean_ms": 71.35,
+      "tpot_p95_ms": 78.58,
+      "cold_ttft_sec": 0.0,
+      "cold_total_sec": 0.0,
+      "ttft_p95_sec": 0.2401,
+      "peak_alloc_mb": 8566.92,
+      "peak_reserved_mb": 9312.0,
+      "host_rss_delta_mb": 1173.37,
+      "memcpy_bytes_per_token": 0.0,
+      "error": null,
+      "extra": {
+        "svd_rank": 160,
+        "chunk_size": 8,
+        "topk_chunks": 256,
+        "outlier_ratio": 0.003,
+        "temporal_hit_rate": 0.6,
+        "total_chunks": 2580,
+        "active_gpu_key_tokens": 20640,
+        "active_gpu_val_tokens": 2144,
+        "offloaded_cpu_val_tokens": 18496,
+        "theoretical_memory_savings_ratio": 3.077381839868794,
+        "effective_bandwidth_gb_s": 1260.2136990284205,
+        "pcie_transfer_bytes": 1462763520,
+        "full_transfer_bytes": 21135360,
+        "transfer_latency_saved_ms": 0.6443333079365079,
+        "pcie_bandwidth_reduction_factor": 25.1953125,
+        "engine": "pytorch",
+        "attn_implementation": "sdpa",
+        "max_vram_gb": 16.0,
+        "effective_gpu_utilization": 0.5783,
+        "hardware_vram_gb": 23.52,
+        "niah_accuracy": 1.0,
+        "niah_passcode": "849204",
+        "niah_depths": [
+          0.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.6,
+          0.7,
+          0.8,
+          0.9
+        ],
+        "niah_grid": [
+          {
+            "depth": 0.0,
+            "needle_distance": 2048,
+            "retrieved": 1.0,
+            "generated_text": "849204. This information is explicitly stated in the text"
+          },
+          {
+            "depth": 0.1,
+            "needle_distance": 1847,
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
+          },
+          {
+            "depth": 0.2,
+            "needle_distance": 1646,
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
+          },
+          {
+            "depth": 0.3,
+            "needle_distance": 1445,
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
+          },
+          {
+            "depth": 0.4,
+            "needle_distance": 1244,
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
+          },
+          {
+            "depth": 0.5,
+            "needle_distance": 1043,
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
+          },
+          {
+            "depth": 0.6,
+            "needle_distance": 842,
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
+          },
+          {
+            "depth": 0.7,
+            "needle_distance": 641,
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
+          },
+          {
+            "depth": 0.8,
+            "needle_distance": 440,
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
+          },
+          {
+            "depth": 0.9,
+            "needle_distance": 239,
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
+          }
+        ],
+        "niah_retrieved_count": 10,
+        "niah_total_depths": 10
+      }
+    },
+    {
+      "requested_ctx": 4096,
+      "status": "SUCCESS",
+      "axes": [
+        "STRUCTURAL",
+        "SPATIAL",
+        "TEMPORAL"
+      ],
+      "prompt_tokens": 40959,
+      "generated_tokens": 160,
+      "ttft_sec": 0.3512,
+      "decode_time_sec": 1.4891,
+      "total_time_sec": 18.7291,
+      "throughput_tok_per_sec": 106.78,
+      "tpot_mean_ms": 83.2,
+      "tpot_p95_ms": 92.31,
+      "cold_ttft_sec": 0.0,
+      "cold_total_sec": 0.0,
+      "ttft_p95_sec": 0.4274,
+      "peak_alloc_mb": 8908.56,
+      "peak_reserved_mb": 9998.0,
+      "host_rss_delta_mb": 1335.0,
+      "memcpy_bytes_per_token": 0.0,
+      "error": null,
+      "extra": {
+        "svd_rank": 160,
+        "chunk_size": 8,
+        "topk_chunks": 256,
+        "outlier_ratio": 0.003,
+        "temporal_hit_rate": 0.6,
+        "total_chunks": 5140,
+        "active_gpu_key_tokens": 41119,
+        "active_gpu_val_tokens": 2208,
+        "offloaded_cpu_val_tokens": 38911,
+        "theoretical_memory_savings_ratio": 3.6547684188598013,
+        "effective_bandwidth_gb_s": 2321.6060482366192,
+        "pcie_transfer_bytes": 2948575232,
+        "full_transfer_bytes": 42105856,
+        "transfer_latency_saved_ms": 1.3100633396825396,
+        "pcie_bandwidth_reduction_factor": 50.194091796875,
+        "engine": "pytorch",
+        "attn_implementation": "sdpa",
+        "max_vram_gb": 16.0,
+        "effective_gpu_utilization": 0.5783,
+        "hardware_vram_gb": 23.52,
+        "niah_accuracy": 1.0,
+        "niah_passcode": "849204",
+        "niah_depths": [
+          0.0,
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.6,
+          0.7,
+          0.8,
+          0.9
+        ],
+        "niah_grid": [
+          {
+            "depth": 0.0,
+            "needle_distance": 4096,
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
+          },
+          {
+            "depth": 0.1,
+            "needle_distance": 3690,
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
+          },
+          {
+            "depth": 0.2,
+            "needle_distance": 3284,
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
+          },
+          {
+            "depth": 0.3,
+            "needle_distance": 2879,
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
+          },
+          {
+            "depth": 0.4,
+            "needle_distance": 2473,
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
+          },
+          {
+            "depth": 0.5,
+            "needle_distance": 2067,
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
+          },
+          {
+            "depth": 0.6,
+            "needle_distance": 1661,
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
+          },
+          {
+            "depth": 0.7,
+            "needle_distance": 1255,
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
+          },
+          {
+            "depth": 0.8,
+            "needle_distance": 850,
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
+          },
+          {
+            "depth": 0.9,
+            "needle_distance": 444,
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
+          }
+        ],
+        "niah_retrieved_count": 10,
+        "niah_total_depths": 10
+      }
+    }
+  ]
+}

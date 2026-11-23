@@ -1,0 +1,79 @@
+{
+  "manifest_version": "1.0",
+  "generated_at": "2026-11-23T11:40:41Z",
+  "provenance_type": "technique_run_manifest",
+  "milestone": "WP-3",
+  "work_package": "WP3-7",
+  "technique": "shadowkv",
+  "engine": "pytorch",
+  "axes": [
+    "SPATIAL",
+    "STRUCTURAL",
+    "TEMPORAL"
+  ],
+  "technique_config": {
+    "cache_class": "ShadowKVCache",
+    "svd_rank": 160,
+    "chunk_size": 8,
+    "topk_chunks": 256,
+    "outlier_ratio": 0.003
+  },
+  "primary_model": {
+    "name": "Qwen/Qwen3-4B-Instruct-2507",
+    "revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+    "architecture": "Pure Dense GQA",
+    "dtype": "bfloat16"
+  },
+  "execution_environment": {
+    "cluster_node": "gpu06.slurm.cpe.kmutt.ac.th",
+    "slurm_job_id": "25947",
+    "gpu_model": "NVIDIA GeForce RTX 4090",
+    "physical_vram_gib": 23.52,
+    "process_allocator_cap_gib": 16.0,
+    "longmem_job_id": "30137"
+  },
+  "source_repository": {
+    "repo": "khemingkapat/kv_bench",
+    "commit_sha": "2a9338a2f750741f7765d79c1270f5579a9ffed0",
+    "branch": "main",
+    "clean_working_tree": true
+  },
+  "golden_artifacts": {
+    "shadowkv_hardware_pytorch_16gb": {
+      "path": "results/runs/wp3/shadowkv_hardware_pytorch_16gb.json",
+      "sha256": "6a7bbf2b1eaee9f97363f519395cb8b4572d9f000c7626333e02bf19ff492c24",
+      "size_bytes": 11814,
+      "description": "Unified PyTorch context scaling sweep (512 to 32,768 tokens) on 16.0 GiB VRAM cap"
+    },
+    "shadowkv_longmem_pytorch_16gb": {
+      "path": "results/runs/wp3/shadowkv_longmem_pytorch_16gb.json",
+      "sha256": "ba3dfaab100b00c77e2a8e65689914e51fb6373f313f270747c8fbf0d28a584a",
+      "size_bytes": 185021,
+      "description": "Single-pass 150-question native-length LongMemEval run (ctx=32768, max_tokens=128, Qwen chat template, per-sample KL/Top-1)"
+    },
+    "shadowkv_niah_pytorch_16gb": {
+      "path": "results/runs/wp3/shadowkv_niah_pytorch_16gb.json",
+      "sha256": "fa78e110f6c641d8d667145e9495e8ebb53624561fba4c3ffcea395b0caa3110",
+      "size_bytes": 7770,
+      "description": "Needle-in-a-Haystack exact retrieval stress test across 2K and 4K context lengths"
+    },
+    "verify_shadowkv_pytorch_16gb": {
+      "path": "results/runs/wp3/verify_shadowkv_pytorch_16gb.json",
+      "sha256": "2fb21d75cad0de293ae6b976dd144fa02e1889a232678c7d0248952acdfc1627",
+      "size_bytes": 1628,
+      "description": "Fast verification reference check (128 ctx, 16 tokens) against uncompressed PyTorch reference"
+    },
+    "shadowkv_longmem_grades": {
+      "path": "results/grades/shadowkv_grades.json",
+      "sha256": "359ae29287c5d79ac8304ed825b656d8f0b864bfb1b51d78218a20bb1cb613d9",
+      "size_bytes": 21841,
+      "description": "Offline semantic grading sidecar for all 150 LongMemEval questions"
+    },
+    "shadowkv_longmem_judged": {
+      "path": "results/grades/shadowkv_judged.json",
+      "sha256": "3190bda03afbf89d79923ccd12f23caaf58f75b28c19729aadd515328713b658",
+      "size_bytes": 97174,
+      "description": "Merged 150-question semantic-judged LongMemEval summary with baseline-controlled causal verdicts"
+    }
+  }
+}

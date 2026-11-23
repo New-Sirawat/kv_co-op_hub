@@ -1,0 +1,3030 @@
+{
+  "technique": "baseline",
+  "requested_ctx": 32768,
+  "source_result": "results/longmem_v2_baseline_pytorch_16gb.json",
+  "source_grades": "results/grades/baseline_grades.json",
+  "dataset_sha256": "bc37f751ca2c227ff5f6705c3c49aec2e4681b3b48ff231563567bc69d30ad63",
+  "total_samples": 150,
+  "correct_samples": 99,
+  "overall_accuracy": 0.66,
+  "per_task_accuracy": {
+    "cross_session_reasoning": 0.4333,
+    "fact_recall": 0.9,
+    "information_update": 0.6667,
+    "relative_timeframe": 0.3,
+    "unanswerable_refusal": 1.0
+  },
+  "per_task_counts": {
+    "cross_session_reasoning": 30,
+    "fact_recall": 30,
+    "information_update": 30,
+    "relative_timeframe": 30,
+    "unanswerable_refusal": 30
+  },
+  "causal_verdict_counts": {
+    "FAIL": 51,
+    "PASS": 99
+  },
+  "samples": [
+    {
+      "id": "7024f17c",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 9308,
+      "generated_tokens": 26,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Falsely claims hours were not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 3
+      }
+    },
+    {
+      "id": "09ba9854",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 5170,
+      "generated_tokens": 128,
+      "finish_reason": "length",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Wrong savings estimate ($30-$40 instead of $50).",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "9aaed6a3",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 2564,
+      "generated_tokens": 20,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Falsely claims cashback was not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "46a3abf7",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 11147,
+      "generated_tokens": 34,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Wrong tank count (says 2 instead of 3).",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 3
+      }
+    },
+    {
+      "id": "bb7c3b45",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 5859,
+      "generated_tokens": 33,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly states $300 savings ($500 minus $200).",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "ef9cf60a",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 5820,
+      "generated_tokens": 35,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Partial total ($100 instead of $300).",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "2e6d26dc",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 10431,
+      "generated_tokens": 119,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly counts all 5 babies born recently.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 4
+      }
+    },
+    {
+      "id": "f35224e0",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 5377,
+      "generated_tokens": 29,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Falsely claims episode count was not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "gpt4_59c863d7",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 16047,
+      "generated_tokens": 86,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Partial count (4 kits instead of 5).",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 4
+      }
+    },
+    {
+      "id": "f0e564bc",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 7402,
+      "generated_tokens": 56,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly sums $800 and $500 to $1,300.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "e56a43b9",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 5144,
+      "generated_tokens": 23,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Matches $5 discount.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "a11281a2",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 8067,
+      "generated_tokens": 31,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Matches 100 followers.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "d6062bb9",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 6479,
+      "generated_tokens": 51,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Wrong sum: 2,000 instead of 1,998.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "4bc144e2",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 3989,
+      "generated_tokens": 19,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Lists $15 and $50 without combining to $65.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "d23cf73b",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 14276,
+      "generated_tokens": 128,
+      "finish_reason": "length",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Identifies four cuisines before trailing sentence cutoff.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 4
+      }
+    },
+    {
+      "id": "078150f1",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 6869,
+      "generated_tokens": 33,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Matches $50.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "b5ef892d",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 10135,
+      "generated_tokens": 22,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Claims camping trip days not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 3
+      }
+    },
+    {
+      "id": "28dc39ac",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 18053,
+      "generated_tokens": 128,
+      "finish_reason": "length",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Cut off mid-list before giving total hours.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 5
+      }
+    },
+    {
+      "id": "gpt4_2f91af09",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 11044,
+      "generated_tokens": 27,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Claims total writing pieces not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 3
+      }
+    },
+    {
+      "id": "5025383b",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 6392,
+      "generated_tokens": 16,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Matches photography and cooking.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "157a136e",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 7127,
+      "generated_tokens": 6,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Abstains, claims age difference not mentioned",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "1c549ce4",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 6173,
+      "generated_tokens": 37,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly sums $120 and $20 to $140",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "a346bb18",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 6741,
+      "generated_tokens": 71,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly computes 12 minutes exceeded",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "a08a253f",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 5664,
+      "generated_tokens": 26,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "States 4 days a week",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "b3c15d39",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 5666,
+      "generated_tokens": 30,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Abstains, claims delivery days not mentioned",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "00ca467f",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 10342,
+      "generated_tokens": 111,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Concludes final answer is 2 appointments",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 3
+      }
+    },
+    {
+      "id": "c4a1ceb8",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 12283,
+      "generated_tokens": 26,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Wrong total, 4 citrus types",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 4
+      }
+    },
+    {
+      "id": "0ea62687",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 6126,
+      "generated_tokens": 45,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly states 2 mpg difference",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "a9f6b44c",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 6709,
+      "generated_tokens": 42,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Double-counted the same road bike twice; missed commuter bike.",
+      "grader": "orchestrator-pro-semantic-v1+audit",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 3
+      }
+    },
+    {
+      "id": "d682f1a2",
+      "task_type": "cross_session_reasoning",
+      "unanswerable": false,
+      "prompt_tokens": 9446,
+      "generated_tokens": 20,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Wrong count, 2 instead of 3",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 3
+      }
+    },
+    {
+      "id": "6b168ec8",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 3551,
+      "generated_tokens": 19,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly recalls owning three bikes.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "545bd2b5",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 3673,
+      "generated_tokens": 17,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly recalls averaging 2 hours daily.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "1903aded",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 192,
+      "generated_tokens": 13,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly identifies transcriptionist.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "37d43f65",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 3380,
+      "generated_tokens": 13,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly states upgraded to 16GB.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "dccbc061",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 4564,
+      "generated_tokens": 14,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Accurately recalls staunch atheist stance.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "8b9d4367",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 973,
+      "generated_tokens": 27,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly names Jaipur Rugs.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "ad7109d1",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 3279,
+      "generated_tokens": 12,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly states 500 Mbps.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "352ab8bd",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 2021,
+      "generated_tokens": 25,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly recalls approximately 20% framerate improvement.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "51b23612",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 1462,
+      "generated_tokens": 39,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly names Nu, pogodi!.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "8464fc84",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 1198,
+      "generated_tokens": 21,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly names Roscioli.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "7e00a6cb",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 788,
+      "generated_tokens": 16,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Accurately names International Budget Hostel.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "1568498a",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 2045,
+      "generated_tokens": 23,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly recalls move 28. Kg3.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "19b5f2b3",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 3596,
+      "generated_tokens": 13,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Falsely claims duration was not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "4c36ccef",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 725,
+      "generated_tokens": 13,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly names Roscioli.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "e982271f",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 686,
+      "generated_tokens": 21,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly recalls Revolution Hall.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "0862e8bf",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 2902,
+      "generated_tokens": 9,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly recalls Luna.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "71a3fd6b",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 536,
+      "generated_tokens": 34,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly recalls the exact phone number.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "8550ddae",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 3567,
+      "generated_tokens": 12,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly recalls lavender gin fizz.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "6222b6eb",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 2073,
+      "generated_tokens": 16,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly identifies the 6S algorithm.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "eaca4986",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 1273,
+      "generated_tokens": 28,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly recalls exact chord progression.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "577d4d32",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 2835,
+      "generated_tokens": 13,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Accurately states 7 pm.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "15745da0",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 3891,
+      "generated_tokens": 11,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Accurately recalls three months.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "4388e9dd",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 1244,
+      "generated_tokens": 15,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Matches untidy, stained white shirt.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "58ef2f1c",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 2701,
+      "generated_tokens": 65,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Fails to recall February 14th; claims unmentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "c14c00dd",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 3085,
+      "generated_tokens": 26,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Claims specific brand was not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "f4f1d8a4",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 2400,
+      "generated_tokens": 14,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Accurately states your sister.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "caf9ead2",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 1671,
+      "generated_tokens": 15,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Accurately recalls 5 hours.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "b86304ba",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 2433,
+      "generated_tokens": 15,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Accurately states triple what you paid.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "86f00804",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 3177,
+      "generated_tokens": 15,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Accurately names The Seven Husbands of Evelyn Hugo.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "7161e7e2",
+      "task_type": "fact_recall",
+      "unanswerable": false,
+      "prompt_tokens": 2147,
+      "generated_tokens": 19,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Accurately states 8 am - 4 pm shift.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "cc5ded98",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 6151,
+      "generated_tokens": 12,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly states about two hours per day.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "c6853660",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 5506,
+      "generated_tokens": 18,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly states limit was increased.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "41698283",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 7231,
+      "generated_tokens": 17,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly identifies 70-200mm zoom lens.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "6071bd76",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 4854,
+      "generated_tokens": 93,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Concludes switch to less water (5 oz).",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "7e974930",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 4497,
+      "generated_tokens": 18,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly states $420.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "26bdc477",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 6602,
+      "generated_tokens": 15,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly states five trips.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "2133c1b5",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 5490,
+      "generated_tokens": 18,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly states 3 months.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "c4ea545c",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 5619,
+      "generated_tokens": 51,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Answers No instead of Yes.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "db467c8c",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 7461,
+      "generated_tokens": 15,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly states nine months.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "c7dc5443",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 6858,
+      "generated_tokens": 9,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Falsely claims record was not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "f685340e",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 4815,
+      "generated_tokens": 37,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Wrong previous frequency (says every other week, not weekly).",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "07741c45",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 5627,
+      "generated_tokens": 11,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Reports wrong location (under bed instead of shoe rack).",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "ce6d2d27",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 5566,
+      "generated_tokens": 10,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly states Friday.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "dad224aa",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 5750,
+      "generated_tokens": 15,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly states 7:30 am.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "e61a7584",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 5641,
+      "generated_tokens": 15,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly states 9 months.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "18bc8abd",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 7524,
+      "generated_tokens": 13,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly states Kansas City Masterpiece.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "830ce83f",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 5134,
+      "generated_tokens": 6,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Reports Chicago instead of the suburbs.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "42ec0761",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 5815,
+      "generated_tokens": 35,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Clearly confirms yes.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "ba61f0b9",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 6202,
+      "generated_tokens": 16,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Reports outdated count of 5 instead of 6.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "50635ada",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 5818,
+      "generated_tokens": 20,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Misses update; claims previous status not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "10e09553",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 5385,
+      "generated_tokens": 34,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Claims earlier catch was not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "89941a94",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 7055,
+      "generated_tokens": 27,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Refuses; claims info was not provided.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "9bbe84a2",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 6090,
+      "generated_tokens": 37,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly states previous goal was level 100.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "6a1eabeb",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 7562,
+      "generated_tokens": 20,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly states 25:50.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "3ba21379",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 9208,
+      "generated_tokens": 17,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly identifies Ford F-150 pickup truck.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "e66b632c",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 6670,
+      "generated_tokens": 24,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Reports 26:30 instead of 27 minutes 45 seconds.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "184da446",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 8390,
+      "generated_tokens": 21,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly states 220 pages.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "72e3ee87",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 6325,
+      "generated_tokens": 16,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly states 50 episodes.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "7401057b",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 6954,
+      "generated_tokens": 128,
+      "finish_reason": "length",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "States enough points for two free nights.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "0f05491a",
+      "task_type": "information_update",
+      "unanswerable": false,
+      "prompt_tokens": 4023,
+      "generated_tokens": 19,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly states 120 stars.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "gpt4_a1b77f9c",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 22400,
+      "generated_tokens": 55,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Refuses to answer an answerable question",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 6
+      }
+    },
+    {
+      "id": "gpt4_f49edff3",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 7373,
+      "generated_tokens": 86,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly orders all three events first to last",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 3
+      }
+    },
+    {
+      "id": "d01c6aa8",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 7577,
+      "generated_tokens": 24,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Refuses to answer an answerable question",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "gpt4_2c50253f",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 6779,
+      "generated_tokens": 51,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Refuses to answer an answerable question",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "993da5e2",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 5576,
+      "generated_tokens": 42,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Incorrect duration: states 3 weeks instead of 1 week",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "0bb5a684",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 7389,
+      "generated_tokens": 59,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly states 7 days before team meeting",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "gpt4_68e94288",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 6306,
+      "generated_tokens": 18,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly identifies #PlankChallenge",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "gpt4_e072b769",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 2863,
+      "generated_tokens": 22,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Refuses to answer an answerable question",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "gpt4_18c2b244",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 8232,
+      "generated_tokens": 121,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Wrong order: places ShopRite before Ibotta",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 3
+      }
+    },
+    {
+      "id": "b46e15ed",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 14599,
+      "generated_tokens": 53,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Refuses to answer an answerable question",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 4
+      }
+    },
+    {
+      "id": "gpt4_213fd887",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 7833,
+      "generated_tokens": 128,
+      "finish_reason": "length",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Self-corrects and commits to volleyball league before cutoff",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "b29f3365",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 6386,
+      "generated_tokens": 28,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Refuses, claims duration was not mentioned",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "2ebe6c92",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 6088,
+      "generated_tokens": 17,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Refuses, claims book was not mentioned",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "gpt4_a2d1d1f6",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 3287,
+      "generated_tokens": 31,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Refuses, claims harvest date was not mentioned",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "gpt4_68e94287",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 5800,
+      "generated_tokens": 60,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Clearly states vegan chili recipe post happened first",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "gpt4_fa19884d",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 7028,
+      "generated_tokens": 25,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Refuses, claims artist was not mentioned",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "gpt4_2312f94c",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 5936,
+      "generated_tokens": 65,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Wrongly picks Dell XPS 13 first",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "gpt4_98f46fc6",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 6194,
+      "generated_tokens": 44,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Refuses, claims order cannot be determined",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "gpt4_385a5000",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 4715,
+      "generated_tokens": 98,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Self-corrects and commits to tomatoes first",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "gpt4_8279ba03",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 3581,
+      "generated_tokens": 11,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Correctly identifies smoker",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "gpt4_7ca326fa",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 7903,
+      "generated_tokens": 128,
+      "finish_reason": "length",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Contradicts expected order and cuts off mid-response.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 3
+      }
+    },
+    {
+      "id": "gpt4_4929293a",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 6176,
+      "generated_tokens": 128,
+      "finish_reason": "length",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Commits clearly to Michael's engagement party.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "gpt4_e414231e",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 6425,
+      "generated_tokens": 48,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Refuses to answer; claims not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "gpt4_d6585ce8",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 16377,
+      "generated_tokens": 95,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Refuses to answer; claims order undetermined.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 5
+      }
+    },
+    {
+      "id": "gpt4_93159ced",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 6784,
+      "generated_tokens": 60,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Refuses to answer; claims duration not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "gpt4_e061b84g",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 9615,
+      "generated_tokens": 13,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Matches expected answer exactly.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 3
+      }
+    },
+    {
+      "id": "71017277",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 3845,
+      "generated_tokens": 15,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Refuses to answer; claims not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "gpt4_4fc4f797",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 7000,
+      "generated_tokens": 40,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Refuses to answer; claims cannot be determined.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "gpt4_2487a7cb",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 7006,
+      "generated_tokens": 70,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Picks wrong event: 'Effective Time Management' workshop.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "8077ef71",
+      "task_type": "relative_timeframe",
+      "unanswerable": false,
+      "prompt_tokens": 1567,
+      "generated_tokens": 22,
+      "finish_reason": "stop",
+      "correct": false,
+      "baseline_correct": null,
+      "causal_verdict": "FAIL",
+      "reason": "Wrong count: says 0 days instead of 26.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "gpt4_372c3eed_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 11587,
+      "generated_tokens": 128,
+      "finish_reason": "length",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Cannot calculate Master's duration; abstained before cutoff",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 3
+      }
+    },
+    {
+      "id": "a96c20ee_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 6212,
+      "generated_tokens": 17,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "States university was not mentioned in conversation",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "0ddfec37_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 5503,
+      "generated_tokens": 60,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "States autographed footballs are not mentioned",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "031748ae_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 5248,
+      "generated_tokens": 25,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "States initial team size was not mentioned",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "09ba9854_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 5170,
+      "generated_tokens": 42,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "States bus cost not specified; cannot determine savings",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "bc8a6e93_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 3647,
+      "generated_tokens": 19,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "States what was baked was not mentioned",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "2698e78f_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 6010,
+      "generated_tokens": 29,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "States frequency of seeing Dr. Johnson not mentioned",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "c8090214_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 6420,
+      "generated_tokens": 46,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "States relative dates were not mentioned",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "19b5f2b3_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 3596,
+      "generated_tokens": 6,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "States duration was not mentioned",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "0862e8bf_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 2903,
+      "generated_tokens": 14,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "States hamster's name was not mentioned",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "29f2956b_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 3965,
+      "generated_tokens": 17,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Clearly states violin practice time was not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "gpt4_93159ced_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 6783,
+      "generated_tokens": 22,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Clearly states prior work duration was not provided.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "15745da0_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 3891,
+      "generated_tokens": 6,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Clearly states information was not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "edced276_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 5930,
+      "generated_tokens": 48,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Clearly states Seattle and total days were not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "ba358f49_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 6372,
+      "generated_tokens": 31,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Clearly states Rachel's age and wedding date unavailable.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "2311e44b_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 5068,
+      "generated_tokens": 46,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Clearly states remaining pages in Sapiens not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "e5ba910e_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 5732,
+      "generated_tokens": 19,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Clearly states total cost was not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "6aeb4375_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 5149,
+      "generated_tokens": 6,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Clearly states information was not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "gpt4_c27434e8_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 6816,
+      "generated_tokens": 28,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Clearly states Porsche project was not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "f685340e_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 4808,
+      "generated_tokens": 33,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Clearly states table tennis frequency was not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "88432d0a_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 12343,
+      "generated_tokens": 6,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Abstains, states not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 4
+      }
+    },
+    {
+      "id": "2133c1b5_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 5490,
+      "generated_tokens": 6,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Abstains, states not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "f4f1d8a4_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 2399,
+      "generated_tokens": 10,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Clearly states not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 1
+      }
+    },
+    {
+      "id": "982b5123_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 5983,
+      "generated_tokens": 17,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Clearly states not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "gpt4_fe651585_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 6556,
+      "generated_tokens": 20,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Clearly states insufficient information.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "gpt4_70e84552_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 7107,
+      "generated_tokens": 22,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Abstains, states cow purchase not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "eeda8a6d_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 6453,
+      "generated_tokens": 20,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Clearly states not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "60bf93ed_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 6050,
+      "generated_tokens": 17,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Clearly states not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "6456829e_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 6618,
+      "generated_tokens": 18,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Clearly states not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 2
+      }
+    },
+    {
+      "id": "80ec1f4f_abs",
+      "task_type": "unanswerable_refusal",
+      "unanswerable": true,
+      "prompt_tokens": 7002,
+      "generated_tokens": 32,
+      "finish_reason": "stop",
+      "correct": true,
+      "baseline_correct": null,
+      "causal_verdict": "PASS",
+      "reason": "Clearly states not mentioned.",
+      "grader": "orchestrator-pro-semantic-v1",
+      "diagnostic": {
+        "overall_retention_ratio": 1.0,
+        "overall_effective_bitwidth": 16.0,
+        "min_session_effective_bitwidth": 16.0,
+        "most_degraded_session_idx": null,
+        "num_sessions": 3
+      }
+    }
+  ]
+}
