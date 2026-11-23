@@ -1,0 +1,752 @@
+{
+  "6b168ec8": {
+    "correct": false,
+    "reason": "Degenerates into gibberish and word repetition.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "545bd2b5": {
+    "correct": false,
+    "reason": "Wrong number and incoherent repetition.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "1903aded": {
+    "correct": true,
+    "reason": "Correctly identifies transcriptionist as the 7th job.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "37d43f65": {
+    "correct": false,
+    "reason": "Wrong numbers and repetitive gibberish.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "dccbc061": {
+    "correct": false,
+    "reason": "Incoherent gibberish without answering stance.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "8b9d4367": {
+    "correct": true,
+    "reason": "Correctly names Jaipur Rugs.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "ad7109d1": {
+    "correct": false,
+    "reason": "Missing internet speed and repetitive gibberish.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "352ab8bd": {
+    "correct": false,
+    "reason": "Incoherent gibberish without framerate figure.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "51b23612": {
+    "correct": false,
+    "reason": "Wrong cartoon title and word repetition.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "8464fc84": {
+    "correct": true,
+    "reason": "Correctly identifies Roscioli.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "7e00a6cb": {
+    "correct": true,
+    "reason": "Correctly names International Budget Hostel.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "1568498a": {
+    "correct": false,
+    "reason": "Gibberish fragments with conflicting chess moves.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "19b5f2b3": {
+    "correct": false,
+    "reason": "Incoherent gibberish without trip duration.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "4c36ccef": {
+    "correct": true,
+    "reason": "Correctly identifies Roscioli.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "e982271f": {
+    "correct": true,
+    "reason": "Correctly identifies Revolution Hall.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "0862e8bf": {
+    "correct": false,
+    "reason": "Word-salad gibberish and extreme repetition.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "71a3fd6b": {
+    "correct": true,
+    "reason": "Provides exact Speyer tourism phone number.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "8550ddae": {
+    "correct": false,
+    "reason": "Incoherent gibberish without cocktail name.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "6222b6eb": {
+    "correct": false,
+    "reason": "Garbled tool name, gibberish, and repetition.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "eaca4986": {
+    "correct": false,
+    "reason": "Wrong initial chords and repetitive loop.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "577d4d32": {
+    "correct": false,
+    "reason": "Wrong time and repetitive gibberish.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "15745da0": {
+    "correct": false,
+    "reason": "Incoherent gibberish without duration.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "4388e9dd": {
+    "correct": true,
+    "reason": "Accurately describes Andy's stained white shirt.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "58ef2f1c": {
+    "correct": false,
+    "reason": "Incoherent gibberish without volunteer date.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "c14c00dd": {
+    "correct": false,
+    "reason": "Repetitive gibberish without shampoo brand.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "f4f1d8a4": {
+    "correct": false,
+    "reason": "Incoherent gibberish, denial, and repetition.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "caf9ead2": {
+    "correct": false,
+    "reason": "Contradicting 2.5 hours and repetitive loop.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "b86304ba": {
+    "correct": false,
+    "reason": "Incoherent gibberish without value comparison.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "86f00804": {
+    "correct": false,
+    "reason": "Incoherent gibberish without book title.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "7161e7e2": {
+    "correct": false,
+    "reason": "Garbled table fragments without clear shift.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "cc5ded98": {
+    "correct": false,
+    "reason": "Repetitive gibberish, no answer given",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "c6853660": {
+    "correct": false,
+    "reason": "Incoherent gibberish, no answer given",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "41698283": {
+    "correct": false,
+    "reason": "Repetitive gibberish, wrong lens mentioned",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "6071bd76": {
+    "correct": false,
+    "reason": "Incoherent gibberish, no answer given",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "7e974930": {
+    "correct": false,
+    "reason": "Repetitive gibberish, missing dollar amount",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "26bdc477": {
+    "correct": false,
+    "reason": "Incoherent gibberish, wrong trip count",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "2133c1b5": {
+    "correct": false,
+    "reason": "Repetitive gibberish, no valid duration",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "c4ea545c": {
+    "correct": false,
+    "reason": "Repetitive gibberish, no answer given",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "db467c8c": {
+    "correct": false,
+    "reason": "Incoherent gibberish, no answer given",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "c7dc5443": {
+    "correct": false,
+    "reason": "Incoherent gibberish, no record given",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "f685340e": {
+    "correct": false,
+    "reason": "Repetitive gibberish, no frequency given",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "07741c45": {
+    "correct": false,
+    "reason": "Repetitive gibberish, no location given",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "ce6d2d27": {
+    "correct": false,
+    "reason": "Incoherent gibberish, no day given",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "dad224aa": {
+    "correct": false,
+    "reason": "Repetitive gibberish, no time given",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "e61a7584": {
+    "correct": false,
+    "reason": "Incoherent gibberish, no valid duration",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "18bc8abd": {
+    "correct": false,
+    "reason": "Repetitive gibberish, no brand given",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "830ce83f": {
+    "correct": false,
+    "reason": "Repetitive gibberish, wrong location mentioned",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "42ec0761": {
+    "correct": false,
+    "reason": "Incoherent gibberish and token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "ba61f0b9": {
+    "correct": false,
+    "reason": "Repetitive gibberish, no count given",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "50635ada": {
+    "correct": false,
+    "reason": "Repetitive gibberish, no status given",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "10e09553": {
+    "correct": false,
+    "reason": "Repetitive gibberish, no count given",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "89941a94": {
+    "correct": false,
+    "reason": "Incoherent gibberish, no answer given",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "9bbe84a2": {
+    "correct": false,
+    "reason": "Repetitive gibberish, no level given",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "6a1eabeb": {
+    "correct": false,
+    "reason": "Incoherent gibberish, no time given",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "3ba21379": {
+    "correct": false,
+    "reason": "Repetitive gibberish, no vehicle given",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "e66b632c": {
+    "correct": false,
+    "reason": "Incoherent gibberish, no time given",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "184da446": {
+    "correct": false,
+    "reason": "Repetitive gibberish, unrelated topic",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "72e3ee87": {
+    "correct": false,
+    "reason": "Incoherent gibberish, no count given",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "7401057b": {
+    "correct": false,
+    "reason": "Repetitive gibberish, no count given",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "0f05491a": {
+    "correct": false,
+    "reason": "Repetitive gibberish, wrong star count",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_a1b77f9c": {
+    "correct": false,
+    "reason": "Incoherent gibberish and token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_f49edff3": {
+    "correct": false,
+    "reason": "Incoherent gibberish and formatting noise",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "d01c6aa8": {
+    "correct": false,
+    "reason": "Incoherent gibberish with no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_2c50253f": {
+    "correct": false,
+    "reason": "Incoherent gibberish missing wake-up time",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "993da5e2": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "0bb5a684": {
+    "correct": false,
+    "reason": "Incoherent gibberish and formatting fragments",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_68e94288": {
+    "correct": false,
+    "reason": "Incoherent gibberish missing #PlankChallenge",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_e072b769": {
+    "correct": false,
+    "reason": "Incoherent repetition missing timeframe",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_18c2b244": {
+    "correct": false,
+    "reason": "Incoherent gibberish missing event order",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "b46e15ed": {
+    "correct": false,
+    "reason": "Incoherent gibberish and formatting noise",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_213fd887": {
+    "correct": false,
+    "reason": "Incoherent gibberish missing answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "b29f3365": {
+    "correct": false,
+    "reason": "Incoherent gibberish missing duration",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "2ebe6c92": {
+    "correct": false,
+    "reason": "Incoherent gibberish missing book title",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_a2d1d1f6": {
+    "correct": false,
+    "reason": "Incoherent gibberish and word repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_68e94287": {
+    "correct": false,
+    "reason": "Incoherent gibberish missing event order",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_fa19884d": {
+    "correct": false,
+    "reason": "Incoherent gibberish missing banjo player",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_2312f94c": {
+    "correct": false,
+    "reason": "Incoherent gibberish and Galaxy repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_98f46fc6": {
+    "correct": false,
+    "reason": "Incoherent gibberish missing answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_385a5000": {
+    "correct": false,
+    "reason": "Incoherent gibberish missing answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_8279ba03": {
+    "correct": false,
+    "reason": "Incoherent gibberish and word repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_7ca326fa": {
+    "correct": false,
+    "reason": "Incoherent gibberish missing answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_4929293a": {
+    "correct": false,
+    "reason": "Incoherent gibberish missing answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_e414231e": {
+    "correct": false,
+    "reason": "Incoherent gibberish missing day count",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_d6585ce8": {
+    "correct": false,
+    "reason": "Incoherent gibberish missing concert order",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_93159ced": {
+    "correct": false,
+    "reason": "Incoherent gibberish missing duration",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_e061b84g": {
+    "correct": false,
+    "reason": "Incoherent gibberish missing event name",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "71017277": {
+    "correct": false,
+    "reason": "Incoherent gibberish missing answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_4fc4f797": {
+    "correct": false,
+    "reason": "Incoherent gibberish missing day count",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_2487a7cb": {
+    "correct": false,
+    "reason": "Incoherent gibberish missing answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "8077ef71": {
+    "correct": false,
+    "reason": "Wrong answer and repetitive gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "7024f17c": {
+    "correct": false,
+    "reason": "Gibberish word repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "09ba9854": {
+    "correct": false,
+    "reason": "Gibberish word repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "9aaed6a3": {
+    "correct": false,
+    "reason": "Gibberish number repetition, wrong/no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "46a3abf7": {
+    "correct": false,
+    "reason": "Gibberish word repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "bb7c3b45": {
+    "correct": false,
+    "reason": "Gibberish word repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "ef9cf60a": {
+    "correct": false,
+    "reason": "Gibberish word repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "2e6d26dc": {
+    "correct": false,
+    "reason": "Gibberish word repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "f35224e0": {
+    "correct": false,
+    "reason": "Gibberish word repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_59c863d7": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "f0e564bc": {
+    "correct": false,
+    "reason": "Gibberish word repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "e56a43b9": {
+    "correct": false,
+    "reason": "Gibberish word repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "a11281a2": {
+    "correct": false,
+    "reason": "Gibberish word repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "d6062bb9": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "4bc144e2": {
+    "correct": false,
+    "reason": "Gibberish repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "d23cf73b": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "078150f1": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "b5ef892d": {
+    "correct": false,
+    "reason": "Gibberish word repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "28dc39ac": {
+    "correct": false,
+    "reason": "Gibberish word repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_2f91af09": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "5025383b": {
+    "correct": false,
+    "reason": "Gibberish punctuation and word repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "157a136e": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "1c549ce4": {
+    "correct": false,
+    "reason": "Gibberish word repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "a346bb18": {
+    "correct": false,
+    "reason": "Gibberish punctuation and word repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "a08a253f": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "b3c15d39": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "00ca467f": {
+    "correct": false,
+    "reason": "Gibberish word repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "c4a1ceb8": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "0ea62687": {
+    "correct": false,
+    "reason": "Gibberish punctuation repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "a9f6b44c": {
+    "correct": false,
+    "reason": "Gibberish punctuation and word repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "d682f1a2": {
+    "correct": false,
+    "reason": "Gibberish formatting repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_372c3eed_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "a96c20ee_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "0ddfec37_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "031748ae_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "09ba9854_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "bc8a6e93_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "2698e78f_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish without abstention",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "c8090214_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "19b5f2b3_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "0862e8bf_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "29f2956b_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_93159ced_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "15745da0_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "edced276_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "ba358f49_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "2311e44b_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "e5ba910e_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "6aeb4375_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_c27434e8_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "f685340e_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "88432d0a_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "2133c1b5_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "f4f1d8a4_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "982b5123_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_fe651585_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish without abstention",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_70e84552_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "eeda8a6d_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "60bf93ed_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "6456829e_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "80ec1f4f_abs": {
+    "correct": false,
+    "reason": "Incoherent gibberish and repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  }
+}
