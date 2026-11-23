@@ -1,6 +1,6 @@
 {
   "manifest_version": "1.0",
-  "generated_at": "2026-11-07T03:38:00Z",
+  "generated_at": "2026-11-23T11:40:41Z",
   "provenance_type": "technique_run_manifest",
   "milestone": "WP-3",
   "work_package": "WP3-1-3",
@@ -29,43 +29,59 @@
     "dtype": "bfloat16"
   },
   "execution_environment": {
-    "cluster_node": "gpu06.slurm.cpe.kmutt.ac.th",
-    "slurm_job_id": "24643",
-    "hardware_sweep_job_id": "23938",
+    "cluster_node": "gpu01.slurm.cpe.kmutt.ac.th",
+    "slurm_job_id": "23938",
     "gpu_model": "NVIDIA GeForce RTX 4090",
     "physical_vram_gib": 23.52,
     "process_allocator_cap_gib": 16.0,
     "cap_fraction": 0.68,
     "effective_gpu_utilization": 0.5783,
     "cuda_version": "12.2",
-    "pytorch_version": "2.6.0"
+    "pytorch_version": "2.6.0",
+    "longmem_job_id": "30137"
   },
   "source_repository": {
     "repo": "khemingkapat/kv_bench",
-    "commit_sha": "f0649c0667319771ab9a6f8eefa7a7c567eb586d",
+    "commit_sha": "2a9338a2f750741f7765d79c1270f5579a9ffed0",
     "branch": "main",
     "clean_working_tree": true
   },
   "golden_artifacts": {
     "streamingllm_hardware_pytorch_16gb": {
       "path": "results/runs/wp3/streamingllm_hardware_pytorch_16gb.json",
-      "sha256": "c329edff7e8353c5ef9b309c8e8a47cbc8c266de335c8e963075a46df495e0cf",
-      "description": "Unified PyTorch context scaling sweep (512 to 32,768 tokens) with PyTorch profiling traces on 16GB cap"
+      "sha256": "05bd5adb4d5010a215e9c1f8c46fe66b998cb7937411ddfdcc5f0f786cd6d1eb",
+      "size_bytes": 9330,
+      "description": "Unified PyTorch context scaling sweep (512 to 32,768 tokens) on 16.0 GiB VRAM cap"
     },
     "streamingllm_longmem_pytorch_16gb": {
       "path": "results/runs/wp3/streamingllm_longmem_pytorch_16gb.json",
-      "sha256": "99913a2f5b17272f196ef9f2547d07cd2ce3672f0c79e44f6e59cf0a8e9fdc7d",
-      "description": "Macro LongMemEval quality evaluation across contexts [512, 1024, 2048, 4096, 8192, 16384] with standardized diagnostic telemetry"
+      "sha256": "de2705b9dc340dee86282708cb672db9acb102e74e92a01ef7d381e42f67c353",
+      "size_bytes": 264925,
+      "description": "Single-pass 150-question native-length LongMemEval run (ctx=32768, max_tokens=128, Qwen chat template, per-sample KL/Top-1)"
     },
     "streamingllm_niah_pytorch_16gb": {
       "path": "results/runs/wp3/streamingllm_niah_pytorch_16gb.json",
-      "sha256": "ca05f1760ee3dd639278cec186d69d04dd9523d5d394f775b89b8a9024d311b1",
-      "description": "Needle-in-a-Haystack synthetic stress test with standardized diagnostic telemetry across context scaling"
+      "sha256": "5f01cee56d9e25470e067b02003e87307f88c3d3b47b5e8bbefe3ac11be45b91",
+      "size_bytes": 7114,
+      "description": "Needle-in-a-Haystack exact retrieval stress test across 2K and 4K context lengths"
     },
     "verify_streamingllm_pytorch_16gb": {
       "path": "results/runs/wp3/verify_streamingllm_pytorch_16gb.json",
-      "sha256": "ed68cec1f5f3e069d11ad3f2b61bdc63776b0f730ce09844f6af471e49a9072c",
-      "description": "Verification run checking zero divergence against PyTorch baseline reference (100% Top-1 match)"
+      "sha256": "c36501447918cf95dfbbd0a7a731bda78278b90c1f174499d44022389a274375",
+      "size_bytes": 1299,
+      "description": "Fast verification reference check (128 ctx, 16 tokens) against uncompressed PyTorch reference"
+    },
+    "streamingllm_longmem_grades": {
+      "path": "results/grades/streamingllm_grades.json",
+      "sha256": "d7f955f61d5f91519c17ff4a0054c04cad3dbc6fa92840a0ecd8a3c3f5b58f22",
+      "size_bytes": 22266,
+      "description": "Offline semantic grading sidecar for all 150 LongMemEval questions"
+    },
+    "streamingllm_longmem_judged": {
+      "path": "results/grades/streamingllm_judged.json",
+      "sha256": "89a8fc339c8f33800c7e9f9ddf84026e08fea124d3de71751033cfcd95d483c2",
+      "size_bytes": 97573,
+      "description": "Merged 150-question semantic-judged LongMemEval summary with baseline-controlled causal verdicts"
     }
   }
 }
