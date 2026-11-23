@@ -1,0 +1,752 @@
+{
+  "6b168ec8": {
+    "correct": false,
+    "reason": "Gibberish brackets and repeated tokens.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "545bd2b5": {
+    "correct": false,
+    "reason": "Repeated 'the' tokens without hours unit.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "1903aded": {
+    "correct": false,
+    "reason": "Repeated digit gibberish.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "37d43f65": {
+    "correct": false,
+    "reason": "Repetitive gibberish without RAM value.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "dccbc061": {
+    "correct": false,
+    "reason": "Repetitive gibberish without stance.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "8b9d4367": {
+    "correct": false,
+    "reason": "Gibberish zeros and repeated tokens.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "ad7109d1": {
+    "correct": false,
+    "reason": "Gibberish zeros and bracket tokens.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "352ab8bd": {
+    "correct": false,
+    "reason": "Repetitive gibberish without framerate figure.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "51b23612": {
+    "correct": false,
+    "reason": "Repetitive gibberish without cartoon title.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "8464fc84": {
+    "correct": false,
+    "reason": "Repetitive gibberish without deli name.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "7e00a6cb": {
+    "correct": false,
+    "reason": "Repetitive gibberish without hostel name.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "1568498a": {
+    "correct": false,
+    "reason": "Repeated digit '2' gibberish.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "19b5f2b3": {
+    "correct": false,
+    "reason": "Repetitive gibberish without trip duration.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "4c36ccef": {
+    "correct": false,
+    "reason": "Gibberish digits and repeated tokens.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "e982271f": {
+    "correct": false,
+    "reason": "Repetitive gibberish without venue name.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "0862e8bf": {
+    "correct": false,
+    "reason": "Gibberish zeros and bracket tokens.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "71a3fd6b": {
+    "correct": false,
+    "reason": "Gibberish zeros without phone number.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "8550ddae": {
+    "correct": false,
+    "reason": "Repetitive gibberish without cocktail name.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "6222b6eb": {
+    "correct": false,
+    "reason": "Repetitive '<me' token gibberish.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "eaca4986": {
+    "correct": false,
+    "reason": "Repeated 'E' letter gibberish.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "577d4d32": {
+    "correct": false,
+    "reason": "Repetitive HTML tag gibberish.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "15745da0": {
+    "correct": false,
+    "reason": "Repetitive gibberish without duration.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "4388e9dd": {
+    "correct": false,
+    "reason": "Repetitive gibberish syllable collapse.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "58ef2f1c": {
+    "correct": false,
+    "reason": "Gibberish spaces and zeros.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "c14c00dd": {
+    "correct": false,
+    "reason": "Gibberish zeros without shampoo brand.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "f4f1d8a4": {
+    "correct": false,
+    "reason": "Repetitive 'to+' token gibberish.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "caf9ead2": {
+    "correct": false,
+    "reason": "Gibberish zeros without moving time.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "b86304ba": {
+    "correct": false,
+    "reason": "Repetitive '<to' token gibberish.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "86f00804": {
+    "correct": false,
+    "reason": "Repetitive '<the' token gibberish.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "7161e7e2": {
+    "correct": false,
+    "reason": "Repeated digit gibberish.",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "cc5ded98": {
+    "correct": false,
+    "reason": "Gibberish and token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "c6853660": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "41698283": {
+    "correct": false,
+    "reason": "Gibberish character repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "6071bd76": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "7e974930": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "26bdc477": {
+    "correct": false,
+    "reason": "Gibberish character repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "2133c1b5": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "c4ea545c": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "db467c8c": {
+    "correct": false,
+    "reason": "Gibberish character repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "c7dc5443": {
+    "correct": false,
+    "reason": "Gibberish digit repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "f685340e": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "07741c45": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "ce6d2d27": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "dad224aa": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "e61a7584": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "18bc8abd": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "830ce83f": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "42ec0761": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "ba61f0b9": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "50635ada": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "10e09553": {
+    "correct": false,
+    "reason": "Gibberish character repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "89941a94": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "9bbe84a2": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "6a1eabeb": {
+    "correct": false,
+    "reason": "Gibberish character repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "3ba21379": {
+    "correct": false,
+    "reason": "Gibberish character repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "e66b632c": {
+    "correct": false,
+    "reason": "Gibberish character repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "184da446": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "72e3ee87": {
+    "correct": false,
+    "reason": "Gibberish character repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "7401057b": {
+    "correct": false,
+    "reason": "Gibberish whitespace and wrong digit",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "0f05491a": {
+    "correct": false,
+    "reason": "Gibberish character repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_a1b77f9c": {
+    "correct": false,
+    "reason": "Zero-character repetition gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_f49edff3": {
+    "correct": false,
+    "reason": "Repetitive single-word gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "d01c6aa8": {
+    "correct": false,
+    "reason": "Repetitive token gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_2c50253f": {
+    "correct": false,
+    "reason": "Repetitive symbol and digit gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "993da5e2": {
+    "correct": false,
+    "reason": "Repetitive single-word gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "0bb5a684": {
+    "correct": false,
+    "reason": "Repetitive token gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_68e94288": {
+    "correct": false,
+    "reason": "Repetitive phrase gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_e072b769": {
+    "correct": false,
+    "reason": "Repetitive token gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_18c2b244": {
+    "correct": false,
+    "reason": "Zero-character repetition gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "b46e15ed": {
+    "correct": false,
+    "reason": "Repetitive symbol and digit gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_213fd887": {
+    "correct": false,
+    "reason": "Repetitive single-word gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "b29f3365": {
+    "correct": false,
+    "reason": "Repetitive phrase gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "2ebe6c92": {
+    "correct": false,
+    "reason": "Repetitive symbol and digit gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_a2d1d1f6": {
+    "correct": false,
+    "reason": "Repetitive phrase gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_68e94287": {
+    "correct": false,
+    "reason": "Repetitive phrase gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_fa19884d": {
+    "correct": false,
+    "reason": "Single-character repetition gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_2312f94c": {
+    "correct": false,
+    "reason": "Repetitive digit gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_98f46fc6": {
+    "correct": false,
+    "reason": "Repetitive angle-bracket gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_385a5000": {
+    "correct": false,
+    "reason": "Repetitive phrase gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_8279ba03": {
+    "correct": false,
+    "reason": "Repetitive token gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_7ca326fa": {
+    "correct": false,
+    "reason": "Repetitive single-word gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_4929293a": {
+    "correct": false,
+    "reason": "Repetitive token gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_e414231e": {
+    "correct": false,
+    "reason": "Zero-character repetition gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_d6585ce8": {
+    "correct": false,
+    "reason": "Wrong numerical output instead of order",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_93159ced": {
+    "correct": false,
+    "reason": "Repetitive phrase gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_e061b84g": {
+    "correct": false,
+    "reason": "Zero-character repetition gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "71017277": {
+    "correct": false,
+    "reason": "Repetitive word gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_4fc4f797": {
+    "correct": false,
+    "reason": "Single-character repetition gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_2487a7cb": {
+    "correct": false,
+    "reason": "Repetitive token gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "8077ef71": {
+    "correct": false,
+    "reason": "Single-letter repetition gibberish",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "7024f17c": {
+    "correct": false,
+    "reason": "Gibberish repeated zeros, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "09ba9854": {
+    "correct": false,
+    "reason": "Gibberish repeated zeros, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "9aaed6a3": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "46a3abf7": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "bb7c3b45": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "ef9cf60a": {
+    "correct": false,
+    "reason": "Gibberish repeated zeros, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "2e6d26dc": {
+    "correct": false,
+    "reason": "Gibberish repeated zeros, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "f35224e0": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_59c863d7": {
+    "correct": false,
+    "reason": "Gibberish repeated zeros, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "f0e564bc": {
+    "correct": false,
+    "reason": "Gibberish word repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "e56a43b9": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "a11281a2": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "d6062bb9": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "4bc144e2": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "d23cf73b": {
+    "correct": false,
+    "reason": "Gibberish repeated zeros, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "078150f1": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "b5ef892d": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "28dc39ac": {
+    "correct": false,
+    "reason": "Gibberish word repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_2f91af09": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "5025383b": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "157a136e": {
+    "correct": false,
+    "reason": "Gibberish phrase repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "1c549ce4": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "a346bb18": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "a08a253f": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "b3c15d39": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "00ca467f": {
+    "correct": false,
+    "reason": "Gibberish word repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "c4a1ceb8": {
+    "correct": false,
+    "reason": "Gibberish repeated zeros, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "0ea62687": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "a9f6b44c": {
+    "correct": false,
+    "reason": "Gibberish repeated symbol, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "d682f1a2": {
+    "correct": false,
+    "reason": "Gibberish token repetition, no answer",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_372c3eed_abs": {
+    "correct": false,
+    "reason": "Gibberish repetition of zeros",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "a96c20ee_abs": {
+    "correct": false,
+    "reason": "Gibberish repetition without abstention",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "0ddfec37_abs": {
+    "correct": false,
+    "reason": "Incoherent word repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "031748ae_abs": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "09ba9854_abs": {
+    "correct": false,
+    "reason": "Gibberish repetition of zeros",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "bc8a6e93_abs": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "2698e78f_abs": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "c8090214_abs": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "19b5f2b3_abs": {
+    "correct": false,
+    "reason": "Incoherent word repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "0862e8bf_abs": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "29f2956b_abs": {
+    "correct": false,
+    "reason": "Gibberish word repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_93159ced_abs": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "15745da0_abs": {
+    "correct": false,
+    "reason": "Incoherent word repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "edced276_abs": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "ba358f49_abs": {
+    "correct": false,
+    "reason": "Gibberish number repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "2311e44b_abs": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "e5ba910e_abs": {
+    "correct": false,
+    "reason": "Gibberish number repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "6aeb4375_abs": {
+    "correct": false,
+    "reason": "Gibberish repetition of zeros",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_c27434e8_abs": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "f685340e_abs": {
+    "correct": false,
+    "reason": "Incoherent word repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "88432d0a_abs": {
+    "correct": false,
+    "reason": "Gibberish word repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "2133c1b5_abs": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "f4f1d8a4_abs": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "982b5123_abs": {
+    "correct": false,
+    "reason": "Gibberish symbol repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_fe651585_abs": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "gpt4_70e84552_abs": {
+    "correct": false,
+    "reason": "Empty response without abstention",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "eeda8a6d_abs": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "60bf93ed_abs": {
+    "correct": false,
+    "reason": "Gibberish repetition of zeros",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "6456829e_abs": {
+    "correct": false,
+    "reason": "Gibberish symbol repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  },
+  "80ec1f4f_abs": {
+    "correct": false,
+    "reason": "Gibberish token repetition",
+    "grader": "orchestrator-pro-semantic-v1"
+  }
+}

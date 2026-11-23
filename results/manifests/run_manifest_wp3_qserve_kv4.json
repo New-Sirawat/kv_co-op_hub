@@ -1,6 +1,6 @@
 {
   "manifest_version": "1.0",
-  "generated_at": "2026-11-10T15:01:22Z",
+  "generated_at": "2026-11-23T11:40:41Z",
   "provenance_type": "technique_run_manifest",
   "milestone": "WP-3",
   "work_package": "WP3-5",
@@ -27,37 +27,50 @@
     "slurm_job_id": "25748",
     "gpu_model": "NVIDIA GeForce RTX 4090",
     "physical_vram_gib": 23.52,
-    "process_allocator_cap_gib": 16.0
+    "process_allocator_cap_gib": 16.0,
+    "longmem_job_id": "30137"
   },
   "golden_artifacts": {
     "qserve_kv4_hardware_pytorch_16gb": {
       "path": "results/runs/wp3/qserve_kv4_hardware_pytorch_16gb.json",
-      "sha256": "eb5b1e91532f96f44cdb23f14635dc0dc76e56b855701381f1197467e87ee8fb",
-      "size_bytes": 8730,
-      "description": "Unified PyTorch context scaling sweep (512 to 32,768 tokens) on 16GB cap for qserve_kv4"
+      "sha256": "8f1d2a35aa6ea320ad43651f0342ecf4c7dc9cd3392d5856e4fc299762152c69",
+      "size_bytes": 8721,
+      "description": "Unified PyTorch context scaling sweep (512 to 32,768 tokens) on 16.0 GiB VRAM cap"
     },
     "qserve_kv4_longmem_pytorch_16gb": {
       "path": "results/runs/wp3/qserve_kv4_longmem_pytorch_16gb.json",
-      "sha256": "be34d96e0507cd7f69d493ec16a08520434b2616c8a7a499ecc4e6cddc5c1578",
-      "size_bytes": 35665,
-      "description": "Macro LongMemEval quality evaluation across contexts [512, 1024, 2048, 4096, 8192, 16384] for qserve_kv4"
+      "sha256": "6bad0eefc97a1efa95ac5f88080e9eb6a23dea429e2324df1b065fcfb4b18a8c",
+      "size_bytes": 179860,
+      "description": "Single-pass 150-question native-length LongMemEval run (ctx=32768, max_tokens=128, Qwen chat template, per-sample KL/Top-1)"
     },
     "qserve_kv4_niah_pytorch_16gb": {
       "path": "results/runs/wp3/qserve_kv4_niah_pytorch_16gb.json",
-      "sha256": "f6729de107f9c240d8aaf6d10565f0a89cf1d5a93c8ea44acf1ee5fed781afa4",
+      "sha256": "6400f386d866d1212c83a5ebf2dbb6a5f6bbfe269fe4ceaa43bb55e8c9bce1ee",
       "size_bytes": 6820,
-      "description": "Needle-In-A-Haystack retrieval evaluation across depths [0.0 to 0.9] at 2048 and 4096 context tokens for qserve_kv4"
+      "description": "Needle-in-a-Haystack exact retrieval stress test across 2K and 4K context lengths"
     },
     "verify_qserve_kv4_pytorch_16gb": {
       "path": "results/runs/wp3/verify_qserve_kv4_pytorch_16gb.json",
-      "sha256": "764118ece65839e87ab434e532ccc68607dd95961c39230bd2570d8afc32c11d",
-      "size_bytes": 1216,
-      "description": "Zero-regression sanity check across minimal prompt workloads under 16GB cap for qserve_kv4"
+      "sha256": "1aca05409ecfc310499f0e1bacc897dfedd738be775ba99b9500674c4f800a2c",
+      "size_bytes": 1217,
+      "description": "Fast verification reference check (128 ctx, 16 tokens) against uncompressed PyTorch reference"
+    },
+    "qserve_kv4_longmem_grades": {
+      "path": "results/grades/qserve_kv4_grades.json",
+      "sha256": "0400cb7f7e572c3008613121af84c0a5acea979e38b84dbb5ae77b1f3ddd9828",
+      "size_bytes": 21873,
+      "description": "Offline semantic grading sidecar for all 150 LongMemEval questions"
+    },
+    "qserve_kv4_longmem_judged": {
+      "path": "results/grades/qserve_kv4_judged.json",
+      "sha256": "72530e64786d8ad1df6881c7791a1f01dff5b1a76d3fe964f624a535473bd537",
+      "size_bytes": 96868,
+      "description": "Merged 150-question semantic-judged LongMemEval summary with baseline-controlled causal verdicts"
     }
   },
   "source_repository": {
     "repo": "khemingkapat/kv_bench",
-    "commit_sha": "0dc0f13ac0a27a90ef5039c12879d99ccd4648b9",
+    "commit_sha": "2a9338a2f750741f7765d79c1270f5579a9ffed0",
     "branch": "main",
     "clean_working_tree": true
   }
