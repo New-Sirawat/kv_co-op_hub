@@ -35,6 +35,12 @@
     "clean_working_tree": true
   },
   "golden_artifacts": {
+    "baseline_pytorch_16gb": {
+      "path": "results/baselines/baseline_pytorch_16gb.json",
+      "sha256": "09da4109ef7f1e69974017568a44ffd8099d9b74b0b01ff0553574aab64c91e3",
+      "size_bytes": 5556,
+      "description": "Native PyTorch SDPA uncompressed baseline hardware scaling sweep (512 to 32,768 PG-19 tokens, 16.0 GiB cap)"
+    },
     "longmem_baseline_pytorch_16gb": {
       "path": "results/baselines/longmem_baseline_pytorch_16gb.json",
       "sha256": "e1c93fc97bb3537e4fb72a9b6f13553fea83ce36ac8c2ba59db92cd15a5eb5cc",
