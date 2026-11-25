@@ -26,9 +26,9 @@ From [`results/manifests/run_manifest_wp3_epicache.json`](../../../results/manif
   - `results/grades/epicache_judged.json`: `cb50d765a62333ce3215551314e163c573113b6dc17e15c64792de5a43e67f68`
 
 ### 1.2 Hardware Scaling Sweep (`512 -> 32,768` Tokens, `SyntheticFiller`)
-Static `Qwen3-4B` BF16 weights + runtime at `ctx=128` (`verify_epicache_pytorch_16gb.json`) is **`7,738.78 MB` (~7.56 GiB)**. At `ctx=32,768`, EpiCache caps `Peak Alloc` at **`8,567.15 MB`** (net KV+aux **`~828.4 MB`**) vs. Baseline's `13,224.90 MB` (`~5,486.1 MB` KV+aux), saving `4,657.8 MB` by capping retained KV to `1,024` tokens per layer.
+Static `Qwen3-4B` BF16 weights + runtime at `ctx=128` (`verify_baseline_pytorch_16gb.json` / `verify_epicache_pytorch_16gb.json`) is **`7,738.78 MiB` (~7.56 GiB)**. At `ctx=32,768`, EpiCache caps `Peak Alloc` at **`8,567.15 MiB`** (net KV+aux **`~828.4 MiB`**) vs. Baseline's `13,224.90 MiB` (`~5,486.1 MiB` KV+aux), saving `4,657.8 MiB` by capping retained KV to `1,024` tokens per layer.
 
-| `ctx` | Peak Alloc (MB) | Peak Reserved (MB) | Warm TTFT (s) | TPOT Mean / P95 (ms) | Throughput (tok/s) | Host RSS Δ (MB) | Memcpy (B/tok) | Physical Scalar Bits | Effective Token Retention |
+| `ctx` | Peak Alloc (MiB) | Peak Reserved (MiB) | Warm TTFT (s) | TPOT Mean / P95 (ms) | Throughput (tok/s) | Host RSS Δ (MiB) | Memcpy (B/tok) | Physical Scalar Bits | Effective Token Retention |
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | **512** | 7,911.66 | 7,998.0 | 0.0386 | 20.91 / 20.91 | 47.81 | 1,985.12 | 201.75 | 16-bit BF16 | 100.0% (575 / 575) |
 | **1,024** | 8,126.16 | 8,164.0 | 0.0701 | 30.36 / 30.36 | 32.94 | 2,327.99 | 291,200.75 | 16-bit BF16 | 94.12% (1,024 / 1,088) |
@@ -79,8 +79,8 @@ Static `Qwen3-4B` BF16 weights + runtime at `ctx=128` (`verify_epicache_pytorch_
 
 ## 3. 3-Way Causal Attribution
 
-- **VRAM (`8,567.15 MB` flat from `2K` to `32K`):** **`[IMPLEMENTATION]`** — `C2` caps all 36 layers at `1,024` tokens (`~147 MB` KV), saving `4.66 GB` vs. baseline at 32K, though `C1` discards per-layer sensitivity allocation.
-- **Host RSS (`1,985 -> 2,846 MB`) & PCIe Memcpy (`291–442 KB/tok` at `1K–32K`):** **`[IMPLEMENTATION]`** — Discounting the `8,266 B/tok` harness floor, the `291–442 KB/tok` D2H memcpy spike starting at `ctx=1024` comes from `C3` (`retained_idx.tolist()`) executing on all 36 layers at every decode step once `seq_len > 1024`. (Zero episodic CPU offloading occurs.)
+- **VRAM (`8,567.15 MiB` flat from `2K` to `32K`):** **`[IMPLEMENTATION]`** — `C2` caps all 36 layers at `1,024` tokens (`~140.6 MiB` KV), saving `4.55 GiB` (`4,657.8 MiB`) vs. baseline at 32K, though `C1` discards per-layer sensitivity allocation.
+- **Host RSS (`1,985 -> 2,846 MiB`) & PCIe Memcpy (`291–442 KB/tok` at `1K–32K`):** **`[IMPLEMENTATION]`** — Discounting the `8,266 B/tok` harness floor, the `291–442 KB/tok` D2H memcpy spike starting at `ctx=1024` comes from `C3` (`retained_idx.tolist()`) executing on all 36 layers at every decode step once `seq_len > 1024`. (Zero episodic CPU offloading occurs.)
 - **TTFT (`2.88 s` at `32K`) & TPOT (`30.11–30.64 ms` at `1K–32K`):** **`[IMPLEMENTATION]`** — Prefill TTFT matches StreamingLLM (`2.88 s` vs. `2.90 s`) because `C2` prunes after each 1,024-token chunk without duplicate attention matmuls. However, decode TPOT jumps `+9.5 ms` (`20.91 ms` at `512` $\to$ `30.36 ms` at `1024`) due to `C2`+`C3` computing Key L2 norms, `topk`, `sort`, and `.tolist()` on all 36 layers every decode step.
 - **Catastrophic Quality Collapse (`5.33%` LongMemEval, `91` `QUALITY_REGRESSION`s, `0%` NIAH, `kl_mean = 13.51`):** **`[IMPLEMENTATION]`** — This collapse is **not** intrinsic to the EpiCache paper; it is caused by three compounding bugs in `C2`:
   1. **No Recent Window Protection:** `evict_block_prefill` ranks *all* tokens `[1..seq_len)` solely by Key L2 norm. Recent prompt/question tokens and newly generated decode tokens are immediately evicted if their Key L2 norms are smaller than earlier sink/filler tokens, destroying local syntactic coherence and producing `"for for for"` gibberish (e.g., `bb7c3b45`: *"Gibberish word repetition, no answer"*).
@@ -104,6 +104,6 @@ Static `Qwen3-4B` BF16 weights + runtime at `ctx=128` (`verify_epicache_pytorch_
 | Component | Verdict | Contribution | Failure Mode | Exact Fix Prerequisite (if `ADAPT`) |
 |---|---|---|---|---|
 | **C1: `compute_layer_sensitivity_budgets`** | **`ADAPT`** | Theoretical basis for non-uniform per-layer KV allocation. | Computed then discarded due to HF 4D shared `causal_mask` constraint. | Replace synthetic parabola with 1-sample cosine calibration ($s_\ell = 1 - \sigma_\ell$) and pass per-layer 4D masks or use vLLM/FlexAttention per-layer lengths. |
-| **C2: `evict_block_prefill`** | **`DROP` (rewrite)** | Caps peak VRAM to `8.57 GB` via chunk-wise pruning. | Destroys coherence (`5.33%` LongMemEval, `0%` NIAH) by evicting recent/decode tokens via Key L2 norm. | Pin first 4 sink tokens + mandatory recent window (e.g., `512` tokens) and score middle tokens via query-guided attention rather than Key L2 norm. |
+| **C2: `evict_block_prefill`** | **`DROP` (rewrite)** | Caps peak VRAM to `8.37 GiB` (`8,567.2 MiB`) via chunk-wise pruning. | Destroys coherence (`5.33%` LongMemEval, `0%` NIAH) by evicting recent/decode tokens via Key L2 norm. | Pin first 4 sink tokens + mandatory recent window (e.g., `512` tokens) and score middle tokens via query-guided attention rather than Key L2 norm. |
 | **C3: `.tolist()` Decode Sync** | **`DROP`** | Tracks `original_positions` for diagnostics. | Causes `291–442 KB/tok` D2H memcpy and `+9.5 ms` TPOT penalty. | Maintain `original_positions` on GPU as a `torch.int32` tensor and copy to CPU once at end-of-sample. |
 | **C4: `route_query_to_episode` & Telemetry** | **`ADAPT`** | Placeholder for multi-episode CPU-GPU routing. | Dead code; telemetry falsely reports `episodic_routing_active=True`. | Implement actual K-Means episode clustering, CPU cache bank, and query routing; gate telemetry flags on actual execution. |

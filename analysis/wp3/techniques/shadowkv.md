@@ -12,21 +12,22 @@
   - `shadowkv_longmem_pytorch_16gb.json`: `ba3dfaab100b00c77e2a8e65689914e51fb6373f313f270747c8fbf0d28a584a`
   - `shadowkv_niah_pytorch_16gb.json`: `fa78e110f6c641d8d667145e9495e8ebb53624561fba4c3ffcea395b0caa3110`
   - `verify_shadowkv_pytorch_16gb.json`: `2fb21d75cad0de293ae6b976dd144fa02e1889a232678c7d0248952acdfc1627`
+  - `shadowkv_grades.json`: `359ae29287c5d79ac8304ed825b656d8f0b864bfb1b51d78218a20bb1cb613d9`
   - `shadowkv_judged.json`: `3190bda03afbf89d79923ccd12f23caaf58f75b28c19729aadd515328713b658`
 
 ### Hardware Sweep (`512 -> 32,768`, `SyntheticFiller` / PG-19)
 
-Static `Qwen3-4B` BF16 weights + runtime overhead consume **~7,839.7 MiB (~7.66 GiB)**.
+Static `Qwen3-4B` BF16 weights + PyTorch runtime occupy **7,738.8 MiB (~7.56 GiB)** (`verify_baseline_pytorch_16gb.json` at `ctx=128`); net KV+aux VRAM below is `Peak Alloc - 7,738.8 MiB`.
 
 | Context | Status | Peak Alloc (MiB) | Net KV+Aux (MiB) | Base Alloc (MiB) | Host RSS $\Delta$ (MiB) | TTFT (s) | TPOT (ms) | Base TPOT (ms) | Tok/s | PCIe B/tok | Physical Scalar Bits | Eff. Token Retention | PG-19 Top-1 | PG-19 KL Mean | PG-19 KL P99 |
 |---:|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---|---:|---:|---:|
-| 512 | `SUCCESS` | 7,911.7 | 72.0 | 7,911.7 | 1,682.5 | 0.038 | 20.90 | 17.36 | 47.84 | 201.75* | 16-bit BF16 | 100% dense GPU | 1.0000 | 0.00000 | 0.0000 |
-| 1,024 | `SUCCESS` | 8,232.5 | 392.8 | 8,133.0 | 2,450.7 | 0.070 | 39.85 | 16.91 | 25.10 | 2,593,806.38 | 16-bit BF16 | 100% stored (SVD+CPU V) | 0.2500 | 10.63813 | 15.4247 |
-| 2,048 | `SUCCESS` | 8,566.9 | 727.2 | 8,566.9 | 2,457.0 | 0.152 | 39.50 | 16.61 | 25.31 | 5,244,844.62 | 16-bit BF16 | 100% stored (SVD+CPU V) | 0.4062 | 7.94308 | 15.4249 |
-| 4,096 | `SUCCESS` | 8,918.2 | 1,078.5 | 8,854.9 | 2,674.4 | 0.344 | 43.74 | 16.67 | 22.86 | 9,982,381.62 | 16-bit BF16 | 100% stored; ~2,144+ active | 0.6875 | 4.14985 | 15.1387 |
-| 8,192 | `SUCCESS` | 9,821.0 | 1,981.3 | 9,431.0 | 3,238.3 | 0.829 | 54.13 | 17.12 | 18.47 | 19,339,027.31 | 16-bit BF16 | 100% stored; ~2,144+ active | 1.0000 | 0.05126 | 0.8673 |
-| 16,384 | `SUCCESS` | 11,468.3 | 3,628.6 | 10,616.8 | 3,942.8 | 2.237 | 66.32 | 20.47 | 15.08 | 36,767,998.94 | 16-bit BF16 | 100% stored; ~2,144+ active | 0.8750 | 1.56821 | 14.4418 |
-| 32,768 | `SUCCESS` | **14,233.0** | **6,393.3** | 13,224.9 | 5,325.1 | 6.802 | 85.29 | 29.17 | 11.73 | 67,241,955.19 | 16-bit BF16 | 100% stored; ~2,184+ active | 0.0781 | 12.90901 | 15.4249 |
+| 512 | `SUCCESS` | 7,911.7 | 172.9 | 7,911.7 | 1,682.5 | 0.038 | 20.90 | 17.36 | 47.84 | 201.75* | 16-bit BF16 | 100% dense GPU | 1.0000 | 0.00000 | 0.0000 |
+| 1,024 | `SUCCESS` | 8,232.5 | 493.7 | 8,133.0 | 2,450.7 | 0.070 | 39.85 | 16.91 | 25.10 | 2,593,806.38 | 16-bit BF16 | 100% stored (SVD+CPU V) | 0.2500 | 10.63813 | 15.4247 |
+| 2,048 | `SUCCESS` | 8,566.9 | 828.1 | 8,566.9 | 2,457.0 | 0.152 | 39.50 | 16.61 | 25.31 | 5,244,844.62 | 16-bit BF16 | 100% stored (SVD+CPU V) | 0.4062 | 7.94308 | 15.4249 |
+| 4,096 | `SUCCESS` | 8,918.2 | 1,179.5 | 8,854.9 | 2,674.4 | 0.344 | 43.74 | 16.67 | 22.86 | 9,982,381.62 | 16-bit BF16 | 100% stored; ~2,144+ active | 0.6875 | 4.14985 | 15.1387 |
+| 8,192 | `SUCCESS` | 9,821.0 | 2,082.2 | 9,431.0 | 3,238.3 | 0.829 | 54.13 | 17.12 | 18.47 | 19,339,027.31 | 16-bit BF16 | 100% stored; ~2,144+ active | 1.0000 | 0.05126 | 0.8673 |
+| 16,384 | `SUCCESS` | 11,468.3 | 3,729.6 | 10,616.8 | 3,942.8 | 2.237 | 66.32 | 20.47 | 15.08 | 36,767,998.94 | 16-bit BF16 | 100% stored; ~2,144+ active | 0.8750 | 1.56821 | 14.4418 |
+| 32,768 | `SUCCESS` | **14,233.0** | **6,494.2** | 13,224.9 | 5,325.1 | 6.802 | 85.29 | 29.17 | 11.73 | 67,241,955.19 | 16-bit BF16 | 100% stored; ~2,184+ active | 0.0781 | 12.90901 | 15.4249 |
 
 *\*`ctx=512` `201.75 B/tok` is harness profiler overhead (`svd_threshold_tokens=1024`, zero offload).*
 
@@ -58,9 +59,9 @@ Static `Qwen3-4B` BF16 weights + runtime overhead consume **~7,839.7 MiB (~7.66 
 
 | ID | Component | Source Location | Tensor Shapes & Dtypes (`Qwen3-4B`: $L=36, H_{KV}=8, D=128$) | Cadence |
 |---|---|---|---|---|
-| **C1** | **Inverse RoPE + Per-Head SVD Key Decomposition** | [`shadowkv_cache.py#L90-L97`](file:///home/khemi/workspace/kv_bench/src/techniques/shadowkv_cache.py#L90-L97), [`#L161-L180`](file:///home/khemi/workspace/kv_bench/src/techniques/shadowkv_cache.py#L161-L180) (`invert_rope`, `perform_svd_key_decomposition`) | `r = min(160, S, 128) = 128`. Produces `key_a` `[B, 8, S, 128]` + `key_b` `[B, 8, 128, 128]` BF16 via `torch.linalg.svd(..., full_matrices=False)` in FP32. | Once at end of prefill (`prune()`, when `S > 1024`). |
-| **C2** | **Chunk Landmarks, Outlier Detection & GPU Anchors** | [`shadowkv_cache.py#L99-L158`](file:///home/khemi/workspace/kv_bench/src/techniques/shadowkv_cache.py#L99-L158), [`#L347-L397`](file:///home/khemi/workspace/kv_bench/src/techniques/shadowkv_cache.py#L347-L397) (`compute_chunk_landmarks`, `detect_outlier_chunks`) | `landmarks` `[B, 8, ceil(S/8), 128]` BF16; `gpu_anchor_{keys,values}` `[B, 8, O*8 + 32, 128]` BF16 (`O=13` chunks = `104` tokens at 32K). | Once at `prune()`, plus `torch.cat` per decode token. |
-| **C3** | **Pinned CPU Value Bank & Dual-Stream Sparse Retrieval** | [`shadowkv_cache.py#L359-L377`](file:///home/khemi/workspace/kv_bench/src/techniques/shadowkv_cache.py#L359-L377), [`#L399-L513`](file:///home/khemi/workspace/kv_bench/src/techniques/shadowkv_cache.py#L399-L513), [`shadowkv.py#L290-L306`](file:///home/khemi/workspace/kv_bench/src/techniques/shadowkv.py#L290-L306) (`resolve_sparse_kv`, `shadowkv_sdpa_attention_forward`) | `cpu_values` `[B, 8, S, 128]` BF16 pinned; `cached_sparse_{keys,values}` `[B, 8, N_miss_accum, 128]` BF16; `copy_stream` overlaps HtoD `val_slice` with `a_slice @ key_b` + `apply_rope`. | Every decode step inside SDPA hook (`query.shape[-2] == 1`). |
+| **C1** | **Inverse RoPE + Per-Head SVD Key Decomposition** | [`shadowkv_cache.py#L90-L97`](https://github.com/khemingkapat/kv_bench/blob/2a9338a2f750741f7765d79c1270f5579a9ffed0/src/techniques/shadowkv_cache.py#L90-L97), [`#L161-L180`](https://github.com/khemingkapat/kv_bench/blob/2a9338a2f750741f7765d79c1270f5579a9ffed0/src/techniques/shadowkv_cache.py#L161-L180) (`invert_rope`, `perform_svd_key_decomposition`) | `r = min(160, S, 128) = 128`. Produces `key_a` `[B, 8, S, 128]` + `key_b` `[B, 8, 128, 128]` BF16 via `torch.linalg.svd(..., full_matrices=False)` in FP32. | Once at end of prefill (`prune()`, when `S > 1024`). |
+| **C2** | **Chunk Landmarks, Outlier Detection & GPU Anchors** | [`shadowkv_cache.py#L99-L158`](https://github.com/khemingkapat/kv_bench/blob/2a9338a2f750741f7765d79c1270f5579a9ffed0/src/techniques/shadowkv_cache.py#L99-L158), [`#L347-L397`](https://github.com/khemingkapat/kv_bench/blob/2a9338a2f750741f7765d79c1270f5579a9ffed0/src/techniques/shadowkv_cache.py#L347-L397) (`compute_chunk_landmarks`, `detect_outlier_chunks`) | `landmarks` `[B, 8, ceil(S/8), 128]` BF16; `gpu_anchor_{keys,values}` `[B, 8, O*8 + 32, 128]` BF16 (`O=13` chunks = `104` tokens at 32K). | Once at `prune()`, plus `torch.cat` per decode token. |
+| **C3** | **Pinned CPU Value Bank & Dual-Stream Sparse Retrieval** | [`shadowkv_cache.py#L359-L377`](https://github.com/khemingkapat/kv_bench/blob/2a9338a2f750741f7765d79c1270f5579a9ffed0/src/techniques/shadowkv_cache.py#L359-L377), [`#L399-L513`](https://github.com/khemingkapat/kv_bench/blob/2a9338a2f750741f7765d79c1270f5579a9ffed0/src/techniques/shadowkv_cache.py#L399-L513), [`shadowkv.py#L290-L306`](https://github.com/khemingkapat/kv_bench/blob/2a9338a2f750741f7765d79c1270f5579a9ffed0/src/techniques/shadowkv.py#L290-L306) (`resolve_sparse_kv`, `shadowkv_sdpa_attention_forward`) | `cpu_values` `[B, 8, S, 128]` BF16 pinned; `cached_sparse_{keys,values}` `[B, 8, N_miss_accum, 128]` BF16; `copy_stream` overlaps HtoD `val_slice` with `a_slice @ key_b` + `apply_rope`. | Every decode step inside SDPA hook (`query.shape[-2] == 1`). |
 
 ---
 

@@ -32,17 +32,17 @@
 | **Effective Token Retention** | **100.0%** | All prompt and generated tokens are retained in `QServeKVLayer` (`total_tokens_seen`) |
 
 ### Hardware Context Scaling Sweep (`512 -> 32,768`, `SyntheticFiller`)
-Static `Qwen3-4B` BF16 weights + PyTorch runtime occupy **~7.5 GiB (~7,680 MiB)**; net KV+aux VRAM below is `Peak Alloc - 7,680 MiB`.
+Static `Qwen3-4B` BF16 weights + PyTorch runtime occupy **7,738.78 MiB (~7.56 GiB)** (`verify_baseline_pytorch_16gb.json` at `ctx=128`); net KV+aux VRAM below is `Peak Alloc - 7,738.78 MiB`.
 
 | Ctx | Peak Alloc (MiB) | Base Alloc (MiB) | Net KV+Aux (MiB) | Base Net KV (MiB) | TTFT (s) | TPOT (ms) | Base TPOT (ms) | Tok/s | Host RSS Δ (MiB) | Memcpy (B/tok) | Top-1 Agr. | KL Mean | KL P99 |
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 512 | 7,873.62 | 7,911.66 | 193.62 | 231.66 | 0.0463 | 36.43 | 17.36 | 27.45 | 2,791.35 | 201.75 | 0.2656 | 9.9033 | 15.4200 |
-| 1,024 | 8,065.50 | 8,133.04 | 385.50 | 453.04 | 0.0822 | 36.32 | 16.91 | 27.53 | 2,791.66 | 329.75 | 0.1875 | 10.1451 | 15.4246 |
-| 2,048 | 8,359.99 | 8,566.92 | 679.99 | 886.92 | 0.1663 | 36.25 | 16.61 | 27.59 | 2,835.81 | 585.75 | 0.1094 | 11.9818 | 15.4249 |
-| 4,096 | 8,441.00 | 8,854.93 | 761.00 | 1,174.93 | 0.3715 | 35.97 | 16.67 | 27.80 | 2,894.64 | 1,097.75 | 0.0938 | 12.0892 | 15.1387 |
-| 8,192 | 8,674.56 | 9,430.96 | 994.56 | 1,750.96 | 0.8855 | 36.29 | 17.12 | 27.56 | 3,004.27 | 2,121.75 | 0.6719 | 4.3519 | 15.4249 |
-| 16,384 | 9,370.62 | 10,616.78 | 1,690.62 | 2,936.78 | 2.3659 | 35.80 | 20.47 | 27.93 | 3,205.68 | 4,169.75 | 0.2188 | 10.5661 | 15.4249 |
-| 32,768 | 10,762.74 | 13,224.90 | 3,082.74 | 5,544.90 | 7.2394 | 59.92 | 29.17 | 16.69 | 3,628.61 | 8,265.75 | 0.0469 | 12.7457 | 15.4249 |
+| 512 | 7,873.62 | 7,911.66 | 134.84 | 172.88 | 0.0463 | 36.43 | 17.36 | 27.45 | 2,791.35 | 201.75 | 0.2656 | 9.9033 | 15.4200 |
+| 1,024 | 8,065.50 | 8,133.04 | 326.72 | 394.26 | 0.0822 | 36.32 | 16.91 | 27.53 | 2,791.66 | 329.75 | 0.1875 | 10.1451 | 15.4246 |
+| 2,048 | 8,359.99 | 8,566.92 | 621.21 | 828.14 | 0.1663 | 36.25 | 16.61 | 27.59 | 2,835.81 | 585.75 | 0.1094 | 11.9818 | 15.4249 |
+| 4,096 | 8,441.00 | 8,854.93 | 702.22 | 1,116.15 | 0.3715 | 35.97 | 16.67 | 27.80 | 2,894.64 | 1,097.75 | 0.0938 | 12.0892 | 15.1387 |
+| 8,192 | 8,674.56 | 9,430.96 | 935.78 | 1,692.18 | 0.8855 | 36.29 | 17.12 | 27.56 | 3,004.27 | 2,121.75 | 0.6719 | 4.3519 | 15.4249 |
+| 16,384 | 9,370.62 | 10,616.78 | 1,631.84 | 2,878.00 | 2.3659 | 35.80 | 20.47 | 27.93 | 3,205.68 | 4,169.75 | 0.2188 | 10.5661 | 15.4249 |
+| 32,768 | 10,762.74 | 13,224.90 | 3,023.96 | 5,486.12 | 7.2394 | 59.92 | 29.17 | 16.69 | 3,628.61 | 8,265.75 | 0.0469 | 12.7457 | 15.4249 |
 
 *Verify (`ctx=128`, 16 gen tokens):* `top1_agreement = 0.0`, `kl_div_mean = 12.56021`, `kl_div_p99 = 15.3301`.
 
@@ -82,7 +82,7 @@ Static `Qwen3-4B` BF16 weights + PyTorch runtime occupy **~7.5 GiB (~7,680 MiB)*
 ## 3. 3-Way Causal Attribution
 
 - **VRAM Savings (`10,762.74 MiB` vs. `13,224.90 MiB` at 32K, `-2,462.16 MiB`):**
-  - **`[IMPLEMENTATION]`** Persistent KV state in **C2/C3** (`QServeKVLayer`) stores `2,723,134,464 B` (`2.54 GiB`) at 32K vs. `4.50 GiB` BF16, saving ~2.46 GiB net VRAM. However, **C4** materializes a transient full-sequence `(1, 8, T, 128)` BF16 K/V tensor pair (`~4.50 GiB` at 32K) during `update()` for HF SDPA, preventing QServe from reaching its full theoretical `4x` peak-VRAM reduction (`3,082.74 MiB` net vs. `5,544.90 MiB` baseline net).
+  - **`[IMPLEMENTATION]`** Persistent single-pass KV state in **C2/C3** (`QServeKVLayer`) at 32K (`32,832` tokens) occupies **`1,361,567,232 B` (`1.27 GiB`)** vs. `4.51 GiB` BF16 (note: `quantized_cache_bytes = 2,723,134,464 B` in the hardware JSON accumulates `2×` across `--profile` + timed runs in `harness.py`). However, **C4** materializes a transient full-sequence `(1, 8, T, 128)` BF16 K/V tensor pair (`~4.51 GiB` at 32K) during `update()` for HF SDPA, preventing QServe from reaching its full theoretical `3.56x`–`4x` peak-VRAM reduction (`3,023.96 MiB` net vs. `5,486.12 MiB` baseline net).
 - **TPOT & Throughput (`35.8–36.4 ms` at 512–16K, `59.92 ms` at 32K vs. `16.6–29.2 ms` baseline, `~2.1x` slowdown):**
   - **`[IMPLEMENTATION]`** Driven by **C4**: every single decode step unpacks, casts `int8 -> bf16`, rescales by `scales` and `smooth_k` across all `T` historical tokens in Python/PyTorch eager ops across 36 layers, turning an $O(1)$-write/$O(T)$-read fused attention kernel into an $O(T)$ global-VRAM dequantization + allocation loop.
 - **Host RSS (`2,791 -> 3,629 MiB`) & PCIe Memcpy (`8,265.75 B/tok` at 32K):**

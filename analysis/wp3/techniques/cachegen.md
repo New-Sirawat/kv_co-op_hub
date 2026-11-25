@@ -21,7 +21,7 @@
 - **`VERIFIED` Hub Artifact SHA-256s ([`run_manifest_wp3_cachegen.json`](../../../results/manifests/run_manifest_wp3_cachegen.json)):**
   - `cachegen_hardware_pytorch_16gb.json`: `acc433feceacefd6e24f735e0dd5bee34b4fbf257389848f8fec5b48342b32f3`
   - `cachegen_longmem_pytorch_16gb.json`: `d6420e6a6e3f1e168452591baec6acf3c165f8c425d2d97471daf95b1b1606f3`
-  - `cachegen_niah_pytorch_16gb.json`: `67b12f9ee081f2f98a41c3fc8c874169b8adda7a` *(full: `67b12f9ee081f2f98a41c3fc8c874169b8adda7a`)*
+  - `cachegen_niah_pytorch_16gb.json`: `67b12f9ee081f2f3813290f475cc426d6a3862a98a41c3fc8c874169b8adda7a`
   - `verify_cachegen_pytorch_16gb.json`: `3e7c6c3e0ed2448d586a74c45404508ab995fc228eae5c4accdd86d7f486c9c9`
   - `cachegen_grades.json`: `647237521ab83fbeca89e5eb3e16f8d875e98486fecd8ef0e1fcff03b1f91803`
   - `cachegen_judged.json`: `94da6e62c9977f2ca0c3c52046fdc60dbe84629c71249d3dccddff0a831e14d1`
@@ -33,17 +33,17 @@
 | **Effective Token Retention** | **100.0%** | All prompt and generated tokens are retained in `CacheGenLayer` (`total_tokens_seen`) |
 
 ### Hardware Context Scaling Sweep (`512 -> 32,768`, `SyntheticFiller`)
-Static `Qwen3-4B` BF16 weights + PyTorch runtime occupy **~7.5 GiB (~7,680 MiB)**; net KV+aux VRAM below is `Peak Alloc - 7,680 MiB`.
+Static `Qwen3-4B` BF16 weights + PyTorch runtime occupy **7,738.78 MiB (~7.56 GiB)** (`verify_baseline_pytorch_16gb.json` at `ctx=128`); net KV+aux VRAM below is `Peak Alloc - 7,738.78 MiB`.
 
 | Ctx | Peak Alloc (MiB) | Base Alloc (MiB) | Net KV+Aux (MiB) | Base Net KV (MiB) | TTFT (s) | TPOT (ms) | Base TPOT (ms) | Tok/s | Host RSS Δ (MiB) | Memcpy (B/tok) | Top-1 Agr. | KL Mean | KL P99 |
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 512 | 7,891.78 | 7,911.66 | 211.78 | 231.66 | 0.0644 | 40.66 | 17.36 | 24.59 | 3,127.71 | 253.50 | 0.0625 | 12.6342 | 15.4199 |
-| 1,024 | 8,101.63 | 8,133.04 | 421.63 | 453.04 | 0.0949 | 40.99 | 16.91 | 24.40 | 3,136.83 | 1,888,125.50 | 0.0625 | 13.0502 | 15.4249 |
-| 2,048 | 8,393.99 | 8,566.92 | 713.99 | 886.92 | 0.2226 | 40.88 | 16.61 | 24.46 | 3,198.47 | 5,659,266.56 | 0.0938 | 11.8169 | 15.4248 |
-| 4,096 | 8,523.53 | 8,854.93 | 843.53 | 1,174.93 | 0.5243 | 40.07 | 16.67 | 24.96 | 3,255.27 | 11,318,405.94 | 0.0312 | 13.4983 | 15.2393 |
-| 8,192 | 8,753.57 | 9,430.96 | 1,073.57 | 1,750.96 | 1.3384 | 39.97 | 17.12 | 25.02 | 3,438.21 | 52,794,513.19 | 0.0938 | 12.2941 | 15.4249 |
-| 16,384 | 9,311.56 | 10,616.78 | 1,631.56 | 2,936.78 | 3.8025 | 43.09 | 20.47 | 23.21 | 3,826.65 | 226,229,415.69 | 0.0156 | 13.6631 | 15.4249 |
-| 32,768 | 10,600.17 | 13,224.90 | 2,920.17 | 5,544.90 | 12.5550 | 82.87 | 29.17 | 12.07 | 4,535.78 | 935,016,150.94 | 0.0781 | 13.1353 | 15.4249 |
+| 512 | 7,891.78 | 7,911.66 | 153.00 | 172.88 | 0.0644 | 40.66 | 17.36 | 24.59 | 3,127.71 | 253.50 | 0.0625 | 12.6342 | 15.4199 |
+| 1,024 | 8,101.63 | 8,133.04 | 362.85 | 394.26 | 0.0949 | 40.99 | 16.91 | 24.40 | 3,136.83 | 1,888,125.50 | 0.0625 | 13.0502 | 15.4249 |
+| 2,048 | 8,393.99 | 8,566.92 | 655.21 | 828.14 | 0.2226 | 40.88 | 16.61 | 24.46 | 3,198.47 | 5,659,266.56 | 0.0938 | 11.8169 | 15.4248 |
+| 4,096 | 8,523.53 | 8,854.93 | 784.75 | 1,116.15 | 0.5243 | 40.07 | 16.67 | 24.96 | 3,255.27 | 11,318,405.94 | 0.0312 | 13.4983 | 15.2393 |
+| 8,192 | 8,753.57 | 9,430.96 | 1,014.79 | 1,692.18 | 1.3384 | 39.97 | 17.12 | 25.02 | 3,438.21 | 52,794,513.19 | 0.0938 | 12.2941 | 15.4249 |
+| 16,384 | 9,311.56 | 10,616.78 | 1,572.78 | 2,878.00 | 3.8025 | 43.09 | 20.47 | 23.21 | 3,826.65 | 226,229,415.69 | 0.0156 | 13.6631 | 15.4249 |
+| 32,768 | 10,600.17 | 13,224.90 | 2,861.39 | 5,486.12 | 12.5550 | 82.87 | 29.17 | 12.07 | 4,535.78 | 935,016,150.94 | 0.0781 | 13.1353 | 15.4249 |
 
 *Verify (`ctx=128`, 16 gen tokens):* `top1_agreement = 0.0`, `kl_div_mean = 12.35715`, `kl_div_p99 = 15.3301`.
 
@@ -83,7 +83,7 @@ Static `Qwen3-4B` BF16 weights + PyTorch runtime occupy **~7.5 GiB (~7,680 MiB)*
 ## 3. 3-Way Causal Attribution
 
 - **VRAM Savings (`10,600.17 MiB` vs. `13,224.90 MiB` at 32K, `-2,624.73 MiB`):**
-  - **`[IMPLEMENTATION]`** Persistent `CacheGenLayer` state is `~2.44 GiB` at 32K (`3,868,124,928 B` reported by `compressed_bytes`, which includes `1/10` BF16 anchors + tiered deltas + BF16 scales), while **C4** reconstructs transient `(1, 8, T, 128)` BF16 tensors for HF `sdpa`.
+  - **`[IMPLEMENTATION]`** Persistent single-pass `CacheGenLayer` state at 32K (`32,832` tokens) occupies **`1,934,062,464 B` (`1.80 GiB`)**, including `1/10` BF16 anchors + tiered deltas + BF16 scales (note: `compressed_bitstream_bytes = 3,868,124,928 B` = `3.60 GiB` in the hardware JSON accumulates `2×` across `--profile` + timed runs in `harness.py`). Meanwhile, **C4** reconstructs transient `(1, 8, T, 128)` BF16 tensors for HF `sdpa`, leaving net KV+aux at `2,861.39 MiB` (vs. `5,486.12 MiB` baseline net).
 - **Extreme PCIe Memcpy (`935.0 MB/tok` at 32K) & TTFT/TPOT Overhead (`12.56 s` TTFT, `82.87 ms` TPOT at 32K):**
   - **`[IMPLEMENTATION]`** **C3 (`_ensure_capacity`, L210–248)** explicitly stages all 6 cache buffers through **CPU RAM** (`.cpu()` DtoH followed by `.copy_()` HtoD) on every capacity growth step! Past `2,048` tokens, `new_capacity = required_capacity + 256` (L205) triggers **~120 CPU round-trips** during a 32K sweep (`1024 -> 2048 -> 2304 -> ... -> 32768`), inflating `memcpy_bytes_per_token` to **`935,016,150.94 B/tok`** (far above the `8,266 B/tok` harness floor) and driving TTFT (`12.56 s` vs. `6.98 s` baseline) and Host RSS (`4,535.78 MiB`). Meanwhile, **C4**'s per-step full-sequence delta unpacking drives decode TPOT to `82.87 ms` (`2.84x` baseline).
 - **KL Divergence (`11.8–13.7` mean), NIAH (`40%` at 2K, `80%` at 4K), & LongMemEval (`44.0%`, `36` QR):**

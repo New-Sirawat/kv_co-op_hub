@@ -33,17 +33,17 @@
 | **Effective Token Retention** | **100.0%** | All prompt and generated tokens are retained in `HeadQLayer` (`total_tokens_seen`) |
 
 ### Hardware Context Scaling Sweep (`512 -> 32,768`, `SyntheticFiller`)
-Static `Qwen3-4B` BF16 weights + PyTorch runtime occupy **~7.5 GiB (~7,680 MiB)**; net KV+aux VRAM below is `Peak Alloc - 7,680 MiB`.
+Static `Qwen3-4B` BF16 weights + PyTorch runtime occupy **7,738.78 MiB (~7.56 GiB)** (`verify_baseline_pytorch_16gb.json` at `ctx=128`); net KV+aux VRAM below is `Peak Alloc - 7,738.78 MiB`.
 
 | Ctx | Peak Alloc (MiB) | Base Alloc (MiB) | Net KV+Aux (MiB) | Base Net KV (MiB) | TTFT (s) | TPOT (ms) | Base TPOT (ms) | Tok/s | Host RSS Δ (MiB) | Memcpy (B/tok) | Top-1 Agr. | KL Mean | KL P99 |
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 512 | 7,863.50 | 7,911.66 | 183.50 | 231.66 | 0.1631 | 51.73 | 17.36 | 19.33 | 3,630.97 | 225.31 | 0.0000 | 14.1805 | 15.3975 |
-| 1,024 | 8,045.16 | 8,133.04 | 365.16 | 453.04 | 0.2045 | 49.41 | 16.91 | 20.24 | 3,627.07 | 353.31 | 0.0000 | 14.3242 | 15.4249 |
-| 2,048 | 8,337.45 | 8,566.92 | 657.45 | 886.92 | 0.2969 | 49.93 | 16.61 | 20.03 | 3,677.53 | 609.31 | 0.0156 | 12.4934 | 15.4249 |
-| 4,096 | 8,395.97 | 8,854.93 | 715.97 | 1,174.93 | 0.5012 | 49.94 | 16.67 | 20.02 | 3,755.42 | 1,121.31 | 0.0312 | 13.4899 | 15.2318 |
-| 8,192 | 8,513.00 | 9,430.96 | 833.00 | 1,750.96 | 1.0360 | 49.81 | 17.12 | 20.08 | 3,905.30 | 2,145.31 | 0.0938 | 11.7722 | 15.4249 |
-| 16,384 | 9,043.72 | 10,616.78 | 1,363.72 | 2,936.78 | 2.5913 | 50.06 | 20.47 | 19.98 | 4,235.73 | 4,193.31 | 0.0000 | 14.0484 | 15.4248 |
-| 32,768 | 10,108.84 | 13,224.90 | 2,428.84 | 5,544.90 | 7.7166 | 80.89 | 29.17 | 12.36 | 4,655.65 | 8,289.31 | 0.0000 | 14.3445 | 15.4249 |
+| 512 | 7,863.50 | 7,911.66 | 124.72 | 172.88 | 0.1631 | 51.73 | 17.36 | 19.33 | 3,630.97 | 225.31 | 0.0000 | 14.1805 | 15.3975 |
+| 1,024 | 8,045.16 | 8,133.04 | 306.38 | 394.26 | 0.2045 | 49.41 | 16.91 | 20.24 | 3,627.07 | 353.31 | 0.0000 | 14.3242 | 15.4249 |
+| 2,048 | 8,337.45 | 8,566.92 | 598.67 | 828.14 | 0.2969 | 49.93 | 16.61 | 20.03 | 3,677.53 | 609.31 | 0.0156 | 12.4934 | 15.4249 |
+| 4,096 | 8,395.97 | 8,854.93 | 657.19 | 1,116.15 | 0.5012 | 49.94 | 16.67 | 20.02 | 3,755.42 | 1,121.31 | 0.0312 | 13.4899 | 15.2318 |
+| 8,192 | 8,513.00 | 9,430.96 | 774.22 | 1,692.18 | 1.0360 | 49.81 | 17.12 | 20.08 | 3,905.30 | 2,145.31 | 0.0938 | 11.7722 | 15.4249 |
+| 16,384 | 9,043.72 | 10,616.78 | 1,304.94 | 2,878.00 | 2.5913 | 50.06 | 20.47 | 19.98 | 4,235.73 | 4,193.31 | 0.0000 | 14.0484 | 15.4248 |
+| 32,768 | 10,108.84 | 13,224.90 | 2,370.06 | 5,486.12 | 7.7166 | 80.89 | 29.17 | 12.36 | 4,655.65 | 8,289.31 | 0.0000 | 14.3445 | 15.4249 |
 
 *Verify (`ctx=128`, 16 gen tokens):* `top1_agreement = 0.0`, `kl_div_mean = 14.28884`, `kl_div_p99 = 15.3301`.
 
@@ -83,7 +83,7 @@ Static `Qwen3-4B` BF16 weights + PyTorch runtime occupy **~7.5 GiB (~7,680 MiB)*
 ## 3. 3-Way Causal Attribution
 
 - **VRAM Savings (`10,108.84 MiB` vs. `13,224.90 MiB` at 32K, `-3,116.06 MiB`):**
-  - **`[IMPLEMENTATION]`** Persistent `HeadQLayer` buffers occupy `1,966,781,952 B` (`1.83 GiB`) at 32K, giving the lowest peak VRAM among all four quantizers. **C4** still materializes transient `(1, 8, T, 128)` `bf16` K/V tensors for HF `sdpa`, leaving net KV+aux at `2,428.84 MiB`.
+  - **`[IMPLEMENTATION]`** Persistent single-pass `HeadQLayer` buffers at 32K (`32,832` tokens) occupy **`983,390,976 B` (`0.916 GiB`)**, giving the lowest peak VRAM among all four quantizers (note: `quantized_cache_bytes = 1,966,781,952 B` in the hardware JSON accumulates `2×` across `--profile` + timed runs in `harness.py`). **C4** still materializes transient `(1, 8, T, 128)` `bf16` K/V tensors for HF `sdpa`, leaving net KV+aux at `2,370.06 MiB` (vs. `5,486.12 MiB` baseline net).
 - **TPOT & Throughput (`49.4–51.7 ms` at 512–16K, `80.89 ms` at 32K vs. `16.6–29.2 ms` baseline, `~2.8–3.0x` slowdown):**
   - **`[IMPLEMENTATION]`** **C4** unpacks 2-bit keys, unpacks 4-bit sidecodes, executes `z_recon @ basis.T`, adds `k_base + k_corr`, and unpacks 4-bit values across all `[0..T]` tokens in Python/PyTorch eager ops on every decode step across 36 layers.
 - **Host RSS (`3,631 -> 4,656 MiB`) & PCIe Memcpy (`8,289.31 B/tok` at 32K):**

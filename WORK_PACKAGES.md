@@ -9,9 +9,9 @@
 
 | WP | Name | Semester / Phase | Status |
 |---|---|---|---|
-| 1 | Testbed Setup & Native Reference Baseline | Sem 1 / Phase 1: Environment & Baselines 🛠️ | 🔴 Not started |
-| 2 | Hardware & System Bottleneck Profiling | Sem 1 / Phase 1: Environment & Baselines 🛠️ | 🔴 Not started |
-| 3 | Literature Candidate Exploration & Micro-Benchmarking | Sem 1 / Phase 2: Exploration & Co-Design 🔬 | 🔴 Not started |
+| 1 | Testbed Setup & Native Reference Baseline | Sem 1 / Phase 1: Environment & Baselines 🛠️ | 🟢 Completed |
+| 2 | Hardware & System Bottleneck Profiling | Sem 1 / Phase 1: Environment & Baselines 🛠️ | 🟢 Completed |
+| 3 | Literature Candidate Exploration & Micro-Benchmarking | Sem 1 / Phase 2: Exploration & Co-Design 🔬 | 🟢 Completed |
 | 4 | 3-Axis Co-Optimization Policy Design & Prototype Architecture | Sem 1 / Phase 2: Exploration & Co-Design 🔬 | 🔴 Not started |
 | 5 | Semester 1 Milestones, Sanity Checks & Progress Defense | Sem 1 / Phase 3: S1 Milestones & Defense 📋 | 🔴 Not started |
 | 6 | Runtime Engine Integration & Output Correctness Verification | Sem 2 / Phase 4: Runtime Integration ⚙️ | 🔴 Not started |

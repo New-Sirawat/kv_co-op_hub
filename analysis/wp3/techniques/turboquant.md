@@ -35,17 +35,17 @@
 | **Effective Token Retention** | **100.0%** | All prompt and generated tokens are retained (`TurboQuantLayer.key_packed.shape[-2]`) |
 
 ### Hardware Context Scaling Sweep (`512 -> 32,768`, `SyntheticFiller`)
-Static `Qwen3-4B` BF16 weights + PyTorch runtime occupy **~7.5 GiB (~7,680 MiB)**; net KV+aux VRAM below is `Peak Alloc - 7,680 MiB`.
+Static `Qwen3-4B` BF16 weights + PyTorch runtime occupy **7,738.78 MiB (~7.56 GiB)** (`verify_baseline_pytorch_16gb.json` at `ctx=128`); net KV+aux VRAM below is `Peak Alloc - 7,738.78 MiB`.
 
 | Ctx | Peak Alloc (MiB) | Base Alloc (MiB) | Net KV+Aux (MiB) | Base Net KV (MiB) | TTFT (s) | TPOT (ms) | Base TPOT (ms) | Tok/s | Host RSS Δ (MiB) | Memcpy (B/tok) | Top-1 Agr. | KL Mean | KL P99 |
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 512 | 7,869.55 | 7,911.66 | 189.55 | 231.66 | 0.1481 | 82.25 | 17.36 | 12.16 | 4,816.12 | 4,922.25 | 0.0938 | 12.7666 | 15.4200 |
-| 1,024 | 8,053.12 | 8,133.04 | 373.12 | 453.04 | 0.1771 | 81.73 | 16.91 | 12.24 | 4,816.25 | 5,050.25 | 0.1250 | 11.9099 | 15.4249 |
-| 2,048 | 8,358.02 | 8,566.92 | 678.02 | 886.92 | 0.3270 | 79.53 | 16.61 | 12.57 | 4,678.87 | 5,315.25 | 0.2188 | 10.9512 | 15.4249 |
-| 4,096 | 8,436.78 | 8,854.93 | 756.78 | 1,174.93 | 0.6775 | 81.24 | 16.67 | 12.31 | 4,969.75 | 5,845.25 | 0.0000 | 13.3091 | 15.2225 |
-| 8,192 | 8,594.31 | 9,430.96 | 914.31 | 1,750.96 | 1.6191 | 128.84 | 17.12 | 7.76 | 5,159.28 | 6,905.25 | 0.2344 | 10.5429 | 15.4249 |
-| 16,384 | 9,152.22 | 10,616.78 | 1,472.22 | 2,936.78 | 5.4355 | 420.20 | 20.47 | 2.38 | 6,146.35 | 9,025.25 | 0.1875 | 11.5250 | 15.4249 |
-| 32,768 | 10,294.35 | 13,224.90 | 2,614.35 | 5,544.90 | 20.6266 | 864.12 | 29.17 | 1.16 | 7,528.91 | 13,265.25 | 0.1562 | 12.2347 | 15.4249 |
+| 512 | 7,869.55 | 7,911.66 | 130.77 | 172.88 | 0.1481 | 82.25 | 17.36 | 12.16 | 4,816.12 | 4,922.25 | 0.0938 | 12.7666 | 15.4200 |
+| 1,024 | 8,053.12 | 8,133.04 | 314.34 | 394.26 | 0.1771 | 81.73 | 16.91 | 12.24 | 4,816.25 | 5,050.25 | 0.1250 | 11.9099 | 15.4249 |
+| 2,048 | 8,358.02 | 8,566.92 | 619.24 | 828.14 | 0.3270 | 79.53 | 16.61 | 12.57 | 4,678.87 | 5,315.25 | 0.2188 | 10.9512 | 15.4249 |
+| 4,096 | 8,436.78 | 8,854.93 | 698.00 | 1,116.15 | 0.6775 | 81.24 | 16.67 | 12.31 | 4,969.75 | 5,845.25 | 0.0000 | 13.3091 | 15.2225 |
+| 8,192 | 8,594.31 | 9,430.96 | 855.53 | 1,692.18 | 1.6191 | 128.84 | 17.12 | 7.76 | 5,159.28 | 6,905.25 | 0.2344 | 10.5429 | 15.4249 |
+| 16,384 | 9,152.22 | 10,616.78 | 1,413.44 | 2,878.00 | 5.4355 | 420.20 | 20.47 | 2.38 | 6,146.35 | 9,025.25 | 0.1875 | 11.5250 | 15.4249 |
+| 32,768 | 10,294.35 | 13,224.90 | 2,555.57 | 5,486.12 | 20.6266 | 864.12 | 29.17 | 1.16 | 7,528.91 | 13,265.25 | 0.1562 | 12.2347 | 15.4249 |
 
 *Verify (`ctx=128`, 16 gen tokens):* `top1_agreement = 0.0`, `kl_div_mean = 13.40672`, `kl_div_p99 = 15.3301`.
 *Shannon-$\phi$ Geometric Distortion (32K):* `k_eps_snr = 0.008737`, `k_eps_dir = 0.004306`, `v_eps_snr = 0.018944`, `v_eps_dir = 0.009249`.
@@ -86,7 +86,7 @@ Static `Qwen3-4B` BF16 weights + PyTorch runtime occupy **~7.5 GiB (~7,680 MiB)*
 ## 3. 3-Way Causal Attribution
 
 - **VRAM Savings (`10,294.35 MiB` vs. `13,224.90 MiB` at 32K, `-2,930.55 MiB`):**
-  - **`[IMPLEMENTATION]`** Persistent `TurboQuantLayer` state is `1,323,745,920 B` (`1.23 GiB`) at 32K, achieving its exact `3.657x` theoretical ratio vs. BF16. However, **C4**'s full-sequence `fp32` `ifwht` decode + `torch.cat` reallocations create transient FP32/BF16 buffers, leaving net KV+aux at `2,614.35 MiB` (`1.38 GiB` above persistent compressed state).
+  - **`[IMPLEMENTATION]`** Persistent `TurboQuantLayer` state is `1,323,745,920 B` (`1.23 GiB`) at 32K, achieving its exact `3.657x` theoretical ratio vs. BF16. However, **C4**'s full-sequence `fp32` `ifwht` decode + `torch.cat` reallocations create transient FP32/BF16 buffers, leaving net KV+aux at `2,555.57 MiB` (`1.26 GiB` above persistent compressed state, vs. `5,486.12 MiB` baseline net).
 - **Catastrophic TTFT (`20.63 s` vs. `6.98 s`, `2.96x`) & TPOT (`864.12 ms` vs. `29.17 ms`, `29.62x` slowdown at 32K):**
   - **`[IMPLEMENTATION]`** Driven by **C1 + C4**. Every decode step across 36 layers runs `torch.cat` (no pre-allocation) and executes **three** `O(T · d log d)` Python-loop `fwht` transforms in `float32` (`turboquant_decode_key`, `qjl_reconstruct`, and `turboquant_decode_value`) over the *entire* `[0..T]` sequence. At 32K, TPOT explodes from `81.2 ms` (4K) → `128.8 ms` (8K) → `420.2 ms` (16K) → `864.1 ms` (32K), scaling superlinearly with context due to global-memory butterfly passes and allocator churn.
 - **Host RSS (`4,816 -> 7,529 MiB`) & PCIe Memcpy (`13,265 B/tok` at 32K):**

@@ -18,7 +18,7 @@ Black-box WP-3 rankings conflate **algorithmic merit** with **PyTorch wrapper ar
 
 ### 1.2 Master 12-Entry Telemetry & Net KV+Aux VRAM Table (32K Hardware Sweep + 150q LongMemEval)
 
-Fixed static `Qwen3-4B` BF16 weights + PyTorch CUDA runtime occupy **~7,690–7,740 MiB** (`~7.51–7.56 GiB`) at 512 tokens. Subtracting this static floor isolates **Net KV + Aux VRAM** (`Δ` relative to `~7,739 MiB` static floor; baseline 32K net KV = `5,486 MiB`), enabling direct extrapolation to `8 GiB` consumer GPUs.
+Fixed static `Qwen3-4B` BF16 weights + PyTorch CUDA runtime occupy **7,738.8 MiB** (**~7.56 GiB**) at 128 tokens ([`verify_baseline_pytorch_16gb.json`](../../results/baselines/verify_baseline_pytorch_16gb.json)). Subtracting this unified `7,738.8 MiB` (`~7,739 MiB`) static floor across all 12 reports isolates **Net KV + Aux VRAM** (baseline 32K net KV+aux = `5,486.1 MiB`), enabling direct extrapolation to `8 GiB` consumer GPUs.
 
 | Technique | Authoritative Axis (`METRICS_AND_AXES.md`) | Physical Scalar Bits | Effective Token Retention | 32K Peak Alloc (MiB) | Est. Net KV+Aux (MiB) | 32K Host RSS Δ (MiB) | 32K TTFT (s) | 32K TPOT (ms) | 32K Memcpy (MB/tok) | LongMem KL / Top-1 | NIAH (2K / 4K) | LongMemEval Semantic | Regressions | Detailed Report |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|:---:|---:|---:|---|
@@ -32,7 +32,7 @@ Fixed static `Qwen3-4B` BF16 weights + PyTorch CUDA runtime occupy **~7,690–7,
 | **TurboQuant** | `STRUCTURAL` | `4.375` (`K:4.25, V:4.5`) | `1.00` | `10,294.4` | `2,555` | `7,528.9` | `20.627` | `864.12` | `0.013*` | `11.29 / 0.226` | `100% / 100%` | **80/150 (53.33%)** | `20` | [`turboquant.md`](techniques/turboquant.md) |
 | **StreamingLLM** | `STRUCTURAL` | `16.0` (BF16) | `0.0626` *(2052/32K)* | `8,711.7` | `973` | `1,326.5` | `2.905` | `20.95` | `0.008*` | `12.98 / 0.132` | `100% / 40%` | **66/150 (44.00%)** | `37` | [`streamingllm.md`](techniques/streamingllm.md) |
 | **CacheGen** | `STRUCTURAL` *(manifest: `SPATIAL`)* | `6.392` (8/4/2+anc) | `1.00` | `10,600.2` | `2,861` | `4,535.8` | `12.555` | `82.87` | `935.02` | `12.71 / 0.117` | `40% / 80%` | **66/150 (44.00%)** | `36` | [`cachegen.md`](techniques/cachegen.md) |
-| **EpiCache** | `STRUCTURAL` | `16.0` (BF16) | `~0.031` *(1024/32K)* | `8,567.2` | `828` | `2,845.7` | `2.877` | `30.60` | `0.44` | `13.51 / 0.062` | `0% / 0%` | **8/150 (5.33%)** | `91` | [`epicache.md`](techniques/epicache.md) |
+| **EpiCache** | `STRUCTURAL` *(manifest: `SPATIAL`)* | `16.0` (BF16) | `~0.031` *(1024/32K)* | `8,567.2` | `828` | `2,845.7` | `2.877` | `30.60` | `0.44` | `13.51 / 0.062` | `0% / 0%` | **8/150 (5.33%)** | `91` | [`epicache.md`](techniques/epicache.md) |
 | **HeadQ** | `STRUCTURAL` | `3.25` (`K:2.375, V:4.125`) | `1.00` | `10,108.8` | `2,370` | `4,655.7` | `7.717` | `80.89` | `0.008*` | `14.76 / 0.014` | `0% / 0%` | **0/150 (0.00%)** | `99` | [`headq.md`](techniques/headq.md) |
 
 *\*Note: `8,266 B/tok` (`~0.008 MB/tok`) in hardware sweeps is a baseline PyTorch instrumentation floor (`73.8 + 0.25 * ctx` B/tok), not technique offloading.*
@@ -51,7 +51,7 @@ Fixed static `Qwen3-4B` BF16 weights + PyTorch CUDA runtime occupy **~7,690–7,
 
 ## 2. Master Atomic Component Matrix
 
-All 38 sub-components extracted from `kv_bench/src/techniques/` are grouped below by mechanism class, separating **`[INTRINSIC]`**, **`[IMPLEMENTATION]`**, and **`[HARDWARE/GQA]`** effects.
+All 40 atomic `C#` sub-components extracted across the 11 `analysis/wp3/techniques/*.md` profiles from `kv_bench/src/techniques/` are consolidated into 27 mechanism rows below, separating **`[INTRINSIC]`**, **`[IMPLEMENTATION]`**, and **`[HARDWARE/GQA]`** effects.
 
 | Mechanism Class | Source Technique | Component | Axis | Causal Tag(s) | Empirical Effect | Verdict |
 |---|---|---|---|---|---|---|
@@ -127,7 +127,7 @@ All 38 sub-components extracted from `kv_bench/src/techniques/` are grouped belo
 | **CacheGen** | `46.7%` (`13` reg) | `50.0%` (`5` reg) | `16.7%` (`5` reg) | `20.0%` (`9` reg) | `86.7%` (`4` reg) | `36` |
 
 - **Cross-Session Reasoning is the universal stress test:** `cross_session_reasoning` accounts for **54% (`7/13`)** of `QServe KV4`'s regressions, **50% (`7/14`)** of `ArkVale`'s, **45% (`10/22`)** of `H2O`'s, and **100% (`3/3`)** of `ShadowKV`'s. Multi-hop synthesis across dispersed sessions is far more sensitive to KV noise or top-$k$ sparsity than single-fact recall.
-- **Eviction vs. Preservation split:** Of the `16` baseline-passing questions where *both* `StreamingLLM` and `H2O` fail, **`QServe KV4` and `ShadowKV` both pass `8` (`50%`)**—confirming those failures are caused by middle-token deletion rather than intrinsic model limits.
+- **Eviction vs. Preservation split:** Of the `16` baseline-passing questions where *both* `StreamingLLM` and `H2O` fail, **`ShadowKV` passes `14/16` (`87.5%`), `QServe KV4` passes `8/16` (`50.0%`), and both pass `8/16` jointly**—confirming those failures are caused by middle-token deletion rather than intrinsic model limits.
 - **Shared hard cluster (`10` questions):** Only `10` baseline-passing questions fail across $\ge 3$ of the top-5 methods (`bb7c3b45`, `2e6d26dc`, `f0e564bc`, `d23cf73b`, `a08a253f`, `00ca467f`, `6071bd76`, `9bbe84a2`, `gpt4_213fd887`, `gpt4_372c3eed_abs`), concentrated in `cross_session_reasoning` (`6/10`).
 
 ---
