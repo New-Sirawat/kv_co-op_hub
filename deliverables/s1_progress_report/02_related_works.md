@@ -12,7 +12,7 @@
 - **Scope Enforcement (`.agents/AGENTS.md`):**
   - Frame all theoretical limits around **consumer GPU VRAM ceilings** (16 GB cluster cap on RTX 4090; 8 GB local cap on RTX 4060) and **controlled unmodified BF16/FP16 base weights** (no pre-quantized GGUF/AWQ base models).
   - Emphasize the **Two Primary Quality Pillars** (Micro-Level Logit Divergence + Macro-Level LongMemEval) and explain theoretically (via *Illusion of Equivalence* and *LoCoMo* / *SEAL*) why Perplexity ($\Delta\text{PPL}$) is strictly supplementary.
-  - Keep **WP-4 co-optimization policy architecture** framed as an evidence-driven synthesis target (`[OPEN_DECISION]`), referencing WP-3 diagnostic findings only under `[DRAFT/PR#21]`.
+  - Keep **WP-4 co-optimization policy architecture** framed as an evidence-driven synthesis target (`[OPEN_DECISION]`), grounded in the merged WP-3 white-box synthesis (`analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md`, `[READY]`).
 
 ---
 
@@ -149,7 +149,7 @@
 | **FlexGen** (Sheng et al.) | ICML 2023 | Spatial (GPU/CPU/NVMe tiering + LP schedule) / Structural (4-bit group-wise quant) | `docs/literature_survey/techniques/flexgen.md` | `[READY]` |
 | **InfiniGen** (Lee et al., SNU) | USENIX OSDI 2024 | Spatial (Host CPU offload + selective PCIe prefetch) / Temporal (1-layer-ahead speculative rehearsal) | `docs/literature_survey/techniques/infinigen.md` | `[READY]` |
 | **ShadowKV** (Sun et al., ByteDance/CMU) | arXiv 2024/2025 (`2410.21465v3`) | Spatial (Value CPU offload + low-rank Key on GPU) / Structural (SVD pre-RoPE Keys + landmarks) | `docs/literature_survey/techniques/shadowkv.md` | `[READY]` |
-| **ArkVale** (Chen et al.) | NeurIPS 2024 | Structural (Page-level eviction + bounding-box digest) / Spatial (Async CPU backup + PCIe recall) *(Note: `docs/literature_survey/README.md` tags Spatial+Temporal while `arkvale.md` & `arkvale_hardware_pytorch_16gb.json` tag `["STRUCTURAL", "SPATIAL"]` — reconcile before final prose)* | `docs/literature_survey/techniques/arkvale.md` | `[READY]` / `[NEEDS_VERIFICATION]` |
+| **ArkVale** (Chen et al.) | NeurIPS 2024 | Spatial (Host CPU page backup + PCIe recall) / Structural (AABB bounding-box page digest) *(Reconciled in `analysis/wp3/techniques/arkvale.md` & `CONSOLIDATED_PATTERN_REPORT.md`: primary Hub axis is `SPATIAL` under `METRICS_AND_AXES.md`, while `kv_bench` manifest tags `["STRUCTURAL", "SPATIAL"]`)* | `docs/literature_survey/techniques/arkvale.md`, `analysis/wp3/techniques/arkvale.md` | `[READY]` |
 
 #### 2.4.4 Long-Context & Conversational Memory Benchmarks
 | Benchmark | Venue & Year | Primary Evaluation Focus | Verified Review File | Readiness |
@@ -191,7 +191,7 @@
 - **Core Message:** Existing systems suffer from a **3-Axis Trilemma** on 8–16 GB consumer GPUs: (1) pure structural eviction causes irreversible amnesia in multi-session QA, (2) pure low-bit quantization still scales linearly with sequence length and suffers from K-V asymmetry and GQA error broadcasting, and (3) pure spatial offloading stalls decode on PCIe Gen4 bandwidth ($\approx 16\text{--}32\text{ GB/s}$ vs. $272\text{--}1008\text{ GB/s}$ GPU VRAM [GDDR6/GDDR6X]). Furthermore, most prior methods were validated on datacenter GPUs (A100/H100 80 GB) or legacy MHA models rather than consumer-capped GQA checkpoints, and relied on perplexity ($\Delta\text{PPL}$) rather than factual memory retention.
 - **Delta from Proposal Defense:**
   - *Deepened:* Added **head/layer heterogeneity** (SEAL, EpiCache, HeadQ) and **GQA error broadcasting** (*Illusion of Equivalence*) as newly surfaced failure modes not present in the Proposal Defense deck.
-  - *Grounded:* Explicitly distinguishes algorithmic limitations from software/kernel overhead on consumer hardware (previewing WP-3 findings `[DRAFT/PR#21]`).
+  - *Grounded:* Explicitly distinguishes algorithmic limitations from software/kernel overhead on consumer hardware (previewing WP-3 findings in `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md`, `[READY]`).
 
 ### Block 3 — Strict Data & Source Provenance Map (Agent Handoff Spec)
 | Limitation Theme | Verified Source Paths | Key Evidence | Readiness |
@@ -254,7 +254,7 @@
 ### Block 3 — Strict Data & Source Provenance Map (Agent Handoff Spec)
 | Evolution Dimension | Proposal Baseline | Current Verified Source | Readiness |
 | :--- | :--- | :--- | :---: |
-| Conceptual 3-Layer Policy | `deliverables/s1_proposal_defense/KV-Cache Co-optimization.pdf` (backup Slide 07, PDF p. 17) & `Slide_Content_and_Executive_Summary.md` (Slides 08 & 10) | Held as `[OPEN_DECISION]` for WP-4 synthesis; see WP-3 interpretation in PR #21 (`analysis/wp3/*`) | `[DRAFT/PR#21]` / `[OPEN_DECISION]` |
+| Conceptual 3-Layer Policy | `deliverables/s1_proposal_defense/KV-Cache Co-optimization.pdf` (backup Slide 07, PDF p. 17) & `Slide_Content_and_Executive_Summary.md` (Slides 08 & 10) | Held as `[OPEN_DECISION]` for WP-4 synthesis; grounded in merged WP-3 component synthesis (`analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md`, `[READY]`) | `[READY]` / `[OPEN_DECISION]` |
 | Survey-to-Implementation Coverage | 7 surveyed / 5 planned baselines | 20 completed reviews (`docs/literature_survey/`); 11 techniques benchmarked (`results/runs/wp3/`) | `[READY]` |
 | Delta Summary Table | `deliverables/s1_progress_report/README.md` (§4) | Canonical high-level diff table across all 6 dimensions | `[READY]` |
 

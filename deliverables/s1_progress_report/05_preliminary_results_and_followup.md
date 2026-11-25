@@ -2,11 +2,11 @@
 
 > **KMUTT Report Mapping:** Chapter 5 (`5.1`–`5.4` in `Progress_Sem1_ENG_Example2.pdf`: Implementation Details, Preliminary Results, Experimental Setup for Full Evaluation, Follow-up & Next Steps)  
 > **Document Role:** Templating, Drafting & Agent Handoff Specification (**not** final polished thesis prose)  
-> **Branch Baseline:** `docs/s1-progress-report-blueprint` (branched from `main`; PR #21 unmerged)  
+> **Branch Baseline:** `docs/s1-progress-report-blueprint` (synced with `main` post-PR #21 merge `911c1d3`)  
 > **Target Milestone:** First advisor review draft — **December 1, 2026** (`WP-5`)
 
-> [!WARNING]
-> **PR #21 Provenance Boundary:** All numbers in this blueprint are computed **directly from verified JSON files present on `main` / this branch**. Any reference to `results/baselines/baseline_pytorch_16gb.json`, `analysis/wp3/*`, or `analysis/figures/wp3/*` is explicitly tagged `[DRAFT/PR#21]` because PR #21 (`docs/wp3-result-interpretation`) is not yet merged.
+> [!NOTE]
+> **Verified Provenance (`main` post-PR #21 `911c1d3`):** All numbers, tables, figures, and component-level attributions in this blueprint—including `results/baselines/baseline_pytorch_16gb.json`, `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md`, all 11 `analysis/wp3/techniques/*.md` profiles, and all 37 `analysis/figures/wp3/*` plots—are merged on `main` and CI-verified (`[READY]`).
 
 ---
 
@@ -17,29 +17,29 @@
 - **Committee Expectation:** Objective, verifiable milestone accounting backed by GitHub Project #9 issue completion and provenance manifests—not vague percentage estimates.
 
 ### Block 2: Core Message & Delta from Proposal Defense
-- **Core Message:** Across Semester 1 Phases 1–2, **WP-2 (Hardware & Bottleneck Profiling) is 100% complete**, **WP-1 (Testbed Setup & Native Baselines) is 5/6 complete** (only local 8 GB RTX 4060 adaptation `WP1-5` remains pending), and **WP-3 (11-Method Candidate Exploration & Micro-Benchmarking) is `14/15` sub-issues complete** (`#19`–`#30` [12] + `#31` + `#35` = 14 Done; `#34` Todo — `24/26` total across WP-1..WP-3; all 11 algorithms empirically benchmarked and semantically graded on 150 LongMemEval queries, while final interpretation report awaits PR #21 review). **WP-4** (policy synthesis) and **WP-5** (Semester 1 report & defense) are actively underway.
+- **Core Message:** Across Semester 1 Phases 1–2, **WP-2 (Hardware & Bottleneck Profiling) is 100% complete**, **WP-1 (Testbed Setup & Native Baselines) is 5/6 complete** (only local 8 GB RTX 4060 adaptation `WP1-5` remains pending), and **WP-3 (11-Method Candidate Exploration & Micro-Benchmarking) is `14/15` sub-issues complete** (`#19`–`#30` [12] + `#31` + `#35` = 14 Done; `#34` Todo — `24/26` total across WP-1..WP-3; all 11 algorithms empirically benchmarked, semantically graded on 150 LongMemEval queries, and synthesized in `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md`, merged via PR #21 `911c1d3`). **WP-4** (policy synthesis) and **WP-5** (Semester 1 report & defense) are actively underway.
 - **Delta from Proposal Defense (`KV-Cache Co-optimization.pdf`):**
   - *Proposal:* Planned 5 literature baselines and a single-backend vLLM workflow.
-  - *Current State:* Delivered **11 reproduced techniques** + **15 verified SHA256 manifests** + **1,800 semantically graded LongMemEval responses** (`12 methods × 150 queries`) under a dual-backend harness (`vLLM V1` + `PyTorch SDPA`). Note that `WORK_PACKAGES.md` top-level table still displays static `🔴 Not started` badges—GitHub Project #9 is the live tracking source of truth (`[NEEDS_VERIFICATION]` to sync `WORK_PACKAGES.md` status badges before Dec 1).
+  - *Current State:* Delivered **11 reproduced techniques** + **15 verified SHA256 manifests** + **1,800 semantically graded LongMemEval responses** (`12 methods × 150 queries`) under a dual-backend harness (`vLLM V1` + `PyTorch SDPA`). `WORK_PACKAGES.md` now reflects `🟢 Completed` for `WP-1`–`WP-3` and Issue #3's 5 deliverables are all `[x]` checked (sync the Project #9 `WP-3` board card before Dec 1).
 
 ### Block 3: Strict Data & Source Provenance Map (Agent Handoff Spec)
 | Milestone / Item | Provenance Source | Status Tag | Verified Progress |
 | :--- | :--- | :--- | :--- |
 | `WP-1` Testbed & Native Baselines | GitHub Project #9 + `results/manifests/run_manifest_baseline_pytorch_16gb.json` + `dataset_manifest.json` | `[READY]` (5/6) / `[NEEDS_VERIFICATION]` (`WP1-5`) | Cluster 16 GB, `docs/MODELS.md`, datasets, unified harness, & baselines done; **only `WP1-5` (local 8 GB RTX 4060) pending** |
 | `WP-2` Bottleneck Profiling | `results/manifests/run_manifest_baseline_16gb.json` (Job `22868`, SHA `3aee66fe`) | `[READY]` (100%) | Single-stream OOM cliff (`512`–`65,536`), concurrency grid (`1`–`16` users), identity/cross-model verify, vLLM LongMemEval done |
-| `WP-3` 11-Method Micro-Benchmarking | 12 manifests in `results/manifests/run_manifest_wp3_*.json` (SHA `2a9338a2`) + 24 files in `results/grades/` | `[READY]` (`14/15` Done) / `[DRAFT/PR#21]` (`#34` Todo: interpretation) | All 11 techniques benchmarked (Hardware `512`–`32K`, Verify `128`, NIAH `2K/4K`, LongMemEval `150q` judged); synthesis PR #21 open |
-| `WP-4` 3-Axis Policy Design | `WORK_PACKAGES.md` (`WP-4`) | `[OPEN_DECISION]` | Blocked on PR #21 review & policy selection |
+| `WP-3` 11-Method Micro-Benchmarking & Synthesis | 12 manifests in `results/manifests/run_manifest_wp3_*.json` (SHA `2a9338a2`) + 24 files in `results/grades/` + `analysis/wp3/*` + `analysis/figures/wp3/*` | `[READY]` (`14/15` sub-issues Done; PR #21 merged) | All 11 techniques benchmarked (Hardware `512`–`32K`, Verify `128`, NIAH `2K/4K`, LongMemEval `150q` judged) and synthesized in `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md` |
+| `WP-4` 3-Axis Policy Design | `WORK_PACKAGES.md` (`WP-4`), `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md` (§4) | `[OPEN_DECISION]` | Unblocked by PR #21 merge; 4 falsifiable candidate hypotheses ready for micro-benchmarking & policy selection |
 | `WP-5` S1 Report & Defense | `deliverables/s1_progress_report/` | `[READY]` (Active) / `[NEEDS_VERIFICATION]` (CITI) | Proposal defense done; CITI Program Ethics Exam `[NEEDS_VERIFICATION]` (consistent with `01_introduction_and_timeline.md` §1.2.3); Dec 1 progress report draft in progress |
 
 ### Block 4: Draft Section Skeleton, Table/Figure Specs & Open Questions
 - **Outline Skeleton:**
   1. Summary of Semester 1 completion by Work Package (`WP-1` through `WP-5`).
   2. Artifact & provenance inventory (15 manifests, **46** WP-3 JSON files on `main` [44 PyTorch + 2 legacy vLLM `streamingllm`], 24 LongMemEval grade/judged files, 20 completed literature reviews).
-  3. Explicit transparency on remaining Semester 1 gaps (`WP1-5` local 8 GB run, PR #21 manual audit, `WP-4` prototype smoke test).
+  3. Explicit transparency on remaining Semester 1 gaps (`WP1-5` local 8 GB run, `WP-4` candidate micro-benchmarking / prototype smoke test).
 - **Required Table Spec — Table 5.1 (`Semester 1 Work Package Completion & Artifact Registry`):**
   - *Columns:* `WP | Sub-Issues Done | Key Verified Artifacts on main | Remaining Actions Before Dec 1 / Sem 1 End`.
 - **Open Questions / Decisions Needed (`[OPEN_DECISION]`):**
-  - Sync `WORK_PACKAGES.md` status column (currently `🔴 Not started`) with GitHub Project #9 live status before submitting the Dec 1 draft? *(Recommended: Yes.)*
+  - `WORK_PACKAGES.md` (`WP-1`–`WP-3` `🟢 Completed`) and Issue #3 deliverables are synced; confirm Project #9 `WP-3` board card status & `kv_bench#34` disposition before submitting the Dec 1 draft.
 
 ---
 
@@ -62,8 +62,8 @@
 | Subsection | Exact Files & Keys on `main` | Status Tag | PR #21 / Verification Notes |
 | :--- | :--- | :--- | :--- |
 | **5.2.1** Native vLLM Ceiling & Concurrency | `results/baselines/baseline_hardware_16gb.json` (`results[].{requested_ctx, status, peak_alloc_mb, peak_reserved_mb, ttft_sec, tpot_mean_ms, throughput_tok_per_sec, error}`)<br>`results/baselines/concurrent_baseline_16gb.json` (`concurrency_grid[].{num_users, results[]}`)<br>`results/baselines/verify_identity_16gb.json`, `verify_cross_model_16gb.json` | `[READY]` | Manifest: `run_manifest_baseline_16gb.json` (Job `22868`) |
-| **5.2.2** WP-3 11-Method Hardware, KL/Top-1, NIAH & LongMemEval | `results/runs/wp3/<tech>_hardware_pytorch_16gb.json` (32K row)<br>`results/runs/wp3/verify_<tech>_pytorch_16gb.json` (`extra.{top1_agreement, kl_div_mean, kl_div_p99}` @ 128 ctx)<br>`results/runs/wp3/<tech>_longmem_pytorch_16gb.json` (`extra.{top1_agreement, kl_div_mean, kl_div_p99, diag_mean_*}` @ 32K)<br>`results/runs/wp3/<tech>_niah_pytorch_16gb.json` (`extra.niah_accuracy` @ 2K/4K)<br>`results/grades/<tech>_judged.json` & `baseline_judged.json` (`correct_samples`, `overall_accuracy`, `per_task_accuracy`, `causal_verdict_counts`) | `[READY]` | **Uncompressed PyTorch Hardware Baseline** (`results/baselines/baseline_pytorch_16gb.json`) is `[DRAFT/PR#21]` (not yet on `main`) |
-| **5.2.3** Component-Level Synthesis & Figures | `analysis/wp3/*`, `analysis/figures/wp3/*`, `results/baselines/baseline_pytorch_16gb.json` | `[DRAFT/PR#21]` | **Do not embed PR #21 plots/conclusions as final until PR #21 is reviewed & merged** |
+| **5.2.2** WP-3 11-Method Hardware, KL/Top-1, NIAH & LongMemEval | `results/baselines/baseline_pytorch_16gb.json` + `results/runs/wp3/<tech>_hardware_pytorch_16gb.json` (32K row)<br>`results/runs/wp3/verify_<tech>_pytorch_16gb.json` (`extra.{top1_agreement, kl_div_mean, kl_div_p99}` @ 128 ctx)<br>`results/runs/wp3/<tech>_longmem_pytorch_16gb.json` (`extra.{top1_agreement, kl_div_mean, kl_div_p99, diag_mean_*}` @ 32K)<br>`results/runs/wp3/<tech>_niah_pytorch_16gb.json` (`extra.niah_accuracy` @ 2K/4K)<br>`results/grades/<tech>_judged.json` & `baseline_judged.json` (`correct_samples`, `overall_accuracy`, `per_task_accuracy`, `causal_verdict_counts`) | `[READY]` | Includes uncompressed PyTorch hardware baseline (`baseline_pytorch_16gb.json`, merged via PR #21 `911c1d3`) |
+| **5.2.3** Component-Level Synthesis & Figures | `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md`, `analysis/wp3/techniques/*.md`, `analysis/figures/wp3/*` | `[READY]` | Merged on `main` (PR #21 `911c1d3`); unified `7,738.8 MiB` static floor, 1× persistent-byte accounting, and reconciled `SPATIAL` overview figures |
 
 ### Block 4: Draft Section Skeleton, Verified Numeric Snapshots, Table/Figure Specs & Open Questions
 
@@ -91,12 +91,12 @@
   - Cross-model control: `top1_agreement = 0.0`, `kl_div_mean = 13.586`, `kl_div_p99 = 15.324`.
 
 #### Subsection 5.2.2 — WP-3 11-Method Comparative Micro-Benchmarking Snapshot (`[READY]` on `main`)
-> *Note: Hardware sweep for uncompressed PyTorch SDPA (`baseline_pytorch_16gb.json`) is `[DRAFT/PR#21]`; baseline LongMemEval (`99/150 = 66.0%`) is `[READY]` in `results/grades/baseline_judged.json`.*
+> *Note: Uncompressed PyTorch SDPA hardware sweep (`results/baselines/baseline_pytorch_16gb.json`) and baseline LongMemEval (`99/150 = 66.0%`, `results/grades/baseline_judged.json`) are both `[READY]` on `main`.*
 
-- **Table 5.2A — Verified 32K Hardware & System Telemetry (`results/runs/wp3/*_hardware_pytorch_16gb.json`, `requested_ctx = 32768`):**
-  | Method | Axes | Peak Alloc (MB) | Host RSS $\Delta$ (MB) | TTFT (s) | TPOT (ms) | Throughput (tok/s) | Memcpy (MB/tok) |
+- **Table 5.2A — Verified 32K Hardware & System Telemetry (`results/baselines/baseline_pytorch_16gb.json` & `results/runs/wp3/*_hardware_pytorch_16gb.json`, `requested_ctx = 32768`):**
+  | Method | Axes | Peak Alloc (MiB) | Host RSS $\Delta$ (MiB) | TTFT (s) | TPOT (ms) | Throughput (tok/s) | Memcpy (MB/tok) |
   | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-  | *PyTorch BF16 Baseline* | *None* | *`[DRAFT/PR#21]`* | *`[DRAFT/PR#21]`* | *`[DRAFT/PR#21]`* | *`[DRAFT/PR#21]`* | *`[DRAFT/PR#21]`* | *`[DRAFT/PR#21]`* |
+  | **PyTorch BF16 Baseline** | — | **`13,224.9`** | **`1,082.4`** | **`6.98`** | **`29.17`** | **`34.28`** | **`0.00`** |
   | **EpiCache** | `STR`, `SPA` | `8,567.1` | `2,845.7` | `2.88` | `30.60` | `32.68` | `0.44` |
   | **StreamingLLM** | `STR` | `8,711.7` | `1,326.5` | `2.90` | `20.95` | `47.73` | `0.01` |
   | **FlexGen KV** | `STR`, `SPA` | `8,888.9` | `6,564.6` | `10.20` | `229.57` | `4.36` | `1,646.96` |
@@ -126,15 +126,15 @@
   | **EpiCache** | `1.000` / `0.00` | `0.062` / `13.51` | `0%` / `0%` | **`8/150` (`5.3%`)** | `26.7 / 0.0 / 0.0 / 0.0 / 0.0` | `91` *(anomaly)* |
   | **HeadQ** | `0.000` / `14.29` | `0.014` / `14.76` | `0%` / `0%` | **`0/150` (`0.0%`)** | `0.0 / 0.0 / 0.0 / 0.0 / 0.0` | `99` *(anomaly)* |
 
-#### Subsection 5.2.3 — Key Findings & White-Box Diagnostic Takeaways (`[READY]` + `[DRAFT/PR#21]`)
+#### Subsection 5.2.3 — Key Findings & White-Box Diagnostic Takeaways (`[READY]`)
 - **Outline Skeleton:**
   1. **Eviction vs. Recallability:** Permanent eviction (`StreamingLLM`: `44.0%`, `H2O`: `53.3%`) suffers severe collapse on Cross-Session Reasoning (`3.3%` and `16.7%`) and 4K NIAH (`40%` and `20%`), whereas recallable/offloaded methods (`ShadowKV` `64.0%`, `FlexGen KV` `60.7%`, `InfiniGen` `60.7%`, `ArkVale` `59.3%`) preserve `100%` NIAH at 4K and $\ge 59\%$ LongMemEval.
   2. **PCIe Bandwidth Wall vs. Sparse Value Offload:** Naive full-cache offload (`FlexGen KV`: `1,646.96 MB/tok`, `InfiniGen`: `1,829.89 MB/tok`, `ArkVale`: `1,618.38 MB/tok`) induces $103\text{--}230\text{ ms}$ TPOT, whereas `ShadowKV` reduces PCIe traffic by **$24\times$** (`67.24 MB/tok`) while achieving the highest overall accuracy (`64.0%`, only `3` quality regressions).
   3. **Quantization Sweet Spot vs. Implementation Overhead:** `QServe KV4` achieves `59.3%` LongMemEval and `100%` NIAH with near-zero / baseline-overhead PCIe traffic (`0.01 MB/tok`) and moderate TPOT (`59.92 ms`), demonstrating that 4-bit KV quantization is a strong GPU-resident Tier 1 candidate. Conversely, `TurboQuant`'s `864.12 ms` TPOT reflects unoptimized pure-PyTorch QJL overhead rather than an algorithmic wall.
-  4. **Isolating Wrapper Anomalies (`[DRAFT/PR#21]`):** `HeadQ` (`0.0%`) and `EpiCache` (`5.3%`) exhibit catastrophic collapse attributable to PyTorch wrapper/codec integration issues rather than published paper claims; detailed component-level root-cause attribution is staged in `analysis/wp3/*` (`[DRAFT/PR#21]`) pending manual review.
+  4. **Isolating Wrapper Anomalies (`[READY]`):** `HeadQ` (`0.0%`) and `EpiCache` (`5.3%`) exhibit catastrophic collapse attributable to verified PyTorch wrapper bugs (`headq_cache.py:194` PCA fit on `k_residual` instead of calibration $Q$; `epicache_cache.py:66,101` discarded sensitivity budget & Key-L2 eviction without recent window) rather than published paper claims; full component-level attribution is documented in `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md` & `analysis/wp3/techniques/*.md` (`[READY]`).
 - **Required Figure Specs (for Final Report Generation):**
   - *Fig. 5.1:* Native vLLM Context Scaling & OOM Cliff (`baseline_hardware_16gb.json`) + Multi-User Concurrency TPOT/Throughput (`concurrent_baseline_16gb.json`).
-  - *Fig. 5.2:* 32K Pareto Frontier Scatter — *Peak VRAM (MB) vs. LongMemEval Accuracy (%)* and *TPOT (ms) vs. LongMemEval Accuracy (%)* across all 11 WP-3 methods (`[DRAFT/PR#21]` has candidate drafts in `analysis/figures/wp3/*`).
+  - *Fig. 5.2:* 32K Pareto Frontier Scatter (`analysis/figures/wp3/overview/pareto_vram_vs_quality.png`), 32K Decode Latency (`tpot_overview_32k.png`), and LongMemEval Ranking (`longmem_overview.png`) across all 11 WP-3 methods (`[READY]`).
   - *Fig. 5.3:* Stacked Bar Chart of LongMemEval Causal Attribution Verdicts (`PASS_FIDELITY_MAINTAINED`, `QUALITY_REGRESSION`, `BASELINE_LIMITATION`, `UNEXPECTED_GAIN`) across all 12 entries (`results/grades/*_judged.json`).
 - **Open Questions / Decisions Needed (`[OPEN_DECISION]`):**
   - Should `HeadQ` and `EpiCache` be plotted in the main Pareto scatter with an explicit *"PyTorch wrapper anomaly — see §5.2.3"* annotation, or separated into a diagnostic callout box? *(Recommended: Keep in table & plot with clear anomaly marker for full scientific transparency.)*
@@ -185,22 +185,22 @@
 - **Committee Expectation:** Actionable, time-bound next steps with clear owners and risk mitigations.
 
 ### Block 2: Core Message & Delta from Proposal Defense
-- **Core Message:** Between now and the Semester 1 Progress Defense, our team will close four concrete items in strict sequence: (1) complete manual review & merge of **PR #21** (`docs/wp3-result-interpretation`), (2) finalize and deliver the **December 1 advisor draft** (`WP-5`), (3) execute **WP-4** hypothesis validation & policy state-machine design (see `[OPEN_DECISION]` below on whether S1 Progress Defense requires a running WP-4 prototype smoke test vs. an architecture specification), and (4) complete **`WP1-5`** local 8 GB RTX 4060 baseline adaptation to ensure clean transition into Semester 2 `WP-6`.
+- **Core Message:** With **PR #21** (`docs/wp3-result-interpretation`) now audited and merged into `main` (`911c1d3`), our team will close three remaining items before the Semester 1 Progress Defense: (1) finalize and deliver the **December 1 advisor draft** (`WP-5`), (2) execute **WP-4** hypothesis validation & policy state-machine design across the 4 falsifiable candidates (see `[OPEN_DECISION]` below on whether S1 Progress Defense requires a running WP-4 prototype smoke test vs. an architecture specification), and (3) complete **`WP1-5`** local 8 GB RTX 4060 baseline adaptation to ensure clean transition into Semester 2 `WP-6`.
 - **Delta from Proposal Defense (`KV-Cache Co-optimization.pdf`):** Tightened from high-level semester milestones to concrete, issue-linked engineering gates tied to GitHub Project #9.
 
 ### Block 3: Strict Data & Source Provenance Map (Agent Handoff Spec)
 | Action Item | Linked Issue / PR / Artifact | Status Tag | Target Timing |
 | :--- | :--- | :--- | :--- |
-| Review & merge WP-3 interpretation + PyTorch baseline | PR #21 (`docs/wp3-result-interpretation`) | `[DRAFT/PR#21]` | Immediate (prior to final Ch. 5 prose) |
+| Review & merge WP-3 interpretation + PyTorch baseline | PR #21 (`docs/wp3-result-interpretation`, merged `911c1d3`) | `[READY]` (Merged) | ✅ Completed 2026-11-25 |
 | First advisor review draft of S1 Progress Report | `deliverables/s1_progress_report/` (`WP-5`) | `[READY]` (Active) | **December 1, 2026** |
 | Local 8 GB RTX 4060 baseline adaptation | `WP1-5` (`Qwen3-1.7B`, `docs/MODELS.md`) | `[NEEDS_VERIFICATION]` | Pre-Sem 1 Defense |
-| WP-4 Policy State-Machine Design & Prototype Smoke Test | `WORK_PACKAGES.md` (`WP-4`) | `[OPEN_DECISION]` | Post-PR #21 merge → Pre-Sem 1 Defense |
-| Reconcile minor doc drifts (`WORK_PACKAGES.md` badges, `METRICS_AND_AXES.md` 50q→150q, and clarify dual cluster envs in `MODELS.md`: vLLM `CUDA 13.0` vs. PyTorch `CUDA 12.2`) | `WORK_PACKAGES.md`, `docs/METRICS_AND_AXES.md`, `docs/MODELS.md` | `[NEEDS_VERIFICATION]` | Before final S1 submission |
+| WP-4 Policy State-Machine Design & Prototype Smoke Test | `WORK_PACKAGES.md` (`WP-4`), `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md` | `[OPEN_DECISION]` | Pre-Sem 1 Defense |
+| Reconcile minor doc drifts (`METRICS_AND_AXES.md` 50q→150q, clarify dual cluster envs in `MODELS.md`: vLLM `CUDA 13.0` vs. PyTorch `CUDA 12.2`; `WORK_PACKAGES.md` `WP-1`–`WP-3` already synced) | `docs/METRICS_AND_AXES.md`, `docs/MODELS.md` | `[NEEDS_VERIFICATION]` | Before final S1 submission |
 | Semester 2 Kickoff (`WP-6` Runtime Engine Integration) | `WORK_PACKAGES.md` (`WP-6`–`WP-9`) | `[PENDING_S2]` | Start of Semester 2 |
 
 ### Block 4: Draft Section Skeleton, Table/Figure Specs & Open Questions
 - **Outline Skeleton:**
-  1. Immediate Pre-Draft & Pre-Defense Actions (PR #21 audit → Dec 1 draft → Advisor feedback iteration).
+  1. Immediate Pre-Draft & Pre-Defense Actions (Dec 1 draft from merged WP-3 synthesis → Advisor feedback iteration).
   2. Technical Closure of Semester 1 (`WP1-5` 8 GB local run + `WP-4` policy prototype sanity check).
   3. Semester 2 Execution Handoff (`WP-6` → `WP-7` → `WP-8` → `WP-9`).
 - **Required Table Spec — Table 5.4 (`Immediate Action Plan & Risk Mitigation Checklist`):**

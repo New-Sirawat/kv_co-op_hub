@@ -3,7 +3,7 @@
 > **Report Scope:** KMUTT Senior Project Semester 1 Progress Report — Front Matter (Cover, Approval, and Roman-numeral pages `ii`–`ix`)  
 > **KMUTT Baseline:** `Progress_Sem1_ENG_Example2.pdf` (untracked local reference)  
 > **Status:** Blueprint & Agent Handoff Spec (NOT final polished prose)  
-> **Last Verified Against Workspace:** 2026-11-24
+> **Last Verified Against Workspace:** 2026-11-25 (post-PR #21 merge `911c1d3`)
 
 ---
 
@@ -94,7 +94,7 @@
 | Pinned Base Models & KV Footprint | `docs/MODELS.md` (Lines 24–63) | `[READY]` | Primary Dense GQA model: `Qwen/Qwen3-4B-Instruct-2507` (`144 KiB/tok`, BF16 weights ~8.06 GB, 1x 32K = 4.50 GB, 10x 32K = 45.0 GB OOM). |
 | WP-2 Native vLLM Baseline Provenance | `results/manifests/run_manifest_baseline_16gb.json`, `results/baselines/baseline_hardware_16gb.json`, `results/baselines/concurrent_baseline_16gb.json` | `[READY]` | Slurm Job `22868`, RTX 4090 capped at `16.0` GiB, `vllm 0.30.0`, `kv_bench` SHA `3aee66fe...`. |
 | WP-3 11-Method Benchmark Artifacts | `results/runs/wp3/` (44+ JSON files), `results/grades/` (24 JSON files), `results/manifests/run_manifest_wp3_*.json` (12 manifests) | `[READY]` | All 11 techniques empirically run and graded; exact headline numbers must be extracted only from verified JSONs. |
-| WP-3 Comparative Interpretation & PyTorch Baseline | `analysis/wp3/*`, `results/baselines/baseline_pytorch_16gb.json` | `[DRAFT/PR#21]` | **Do NOT cite PR #21 headline numbers in the final Abstract until PR #21 is merged into `main`.** |
+| WP-3 Comparative Interpretation & PyTorch Baseline | `analysis/wp3/*`, `results/baselines/baseline_pytorch_16gb.json` | `[READY]` | Merged on `main` via PR #21 (`911c1d3`); verified 32K PyTorch baseline (`13,224.9 MiB`, `29.17 ms` TPOT) & 11-method component synthesis ready to cite. |
 
 ### Block 4: Draft Section Skeleton, Table/Figure Specs & Open Questions
 
@@ -106,7 +106,7 @@
 - **Keywords (6–7 terms):** `KV-Cache Management`, `Large Language Model Inference`, `Consumer GPUs`, `Three-Axis Co-Optimization`, `Long-Context Serving`, `Logit Divergence`, `LongMemEval`.
 
 #### Open Questions / Decisions Needed
-1. **`[OPEN_DECISION]` Numerical Claims in Abstract:** Should the Semester 1 Abstract quote specific WP-2 OOM cliff numbers (e.g., from `results/baselines/baseline_hardware_16gb.json`) and/or WP-3 top-line numbers (contingent on PR #21 merge), or stay qualitative on WP-3 until PR #21 is merged?
+1. **`[OPEN_DECISION]` Numerical Claims in Abstract:** Should the Semester 1 Abstract quote specific WP-2 OOM cliff numbers (from `results/baselines/baseline_hardware_16gb.json`) and WP-3 top-line numbers (from `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md`, now `[READY]`), or keep WP-3 high-level in the Abstract?
 
 ---
 
@@ -130,8 +130,8 @@
 | Ch. 1 Tables & Figures | `deliverables/s1_progress_report/01_introduction_and_timeline.md` | `[READY]` / `[OPEN_DECISION]` | WBS table (`[NEEDS_VERIFICATION]` board sync), Updated Gantt charts, Team Workload (`[OPEN_DECISION]`), Risk Matrix, Deliverables table. |
 | Ch. 2 Tables & Figures | `deliverables/s1_progress_report/02_related_works.md`, `docs/literature_survey/` (20 reviews) | `[READY]` | 3-Axis taxonomy table, 11-technique comparative matrix, benchmark comparison table. |
 | Ch. 3 Tables & Figures | `deliverables/s1_progress_report/03_methodology_and_design.md`, `docs/MODELS.md`, `docs/METRICS_AND_AXES.md`, `docs/WORKFLOW_SPEC.md` | `[READY]` | Two-Tier repo diagram, 9-model pinned registry & footprint table, 2-Pillar quality framework diagram, dataset manifest summary. |
-| Ch. 4 Tables & Figures | `deliverables/s1_progress_report/04_algorithms_and_implementation.md` | `[READY]` / `[OPEN_DECISION]` | Dual-backend harness diagram, 11-method algorithmic summary (`[READY]` / `[DRAFT/PR#21]` audit notes), WP-4 policy state-machine direction (`[OPEN_DECISION]`). |
-| Ch. 5 Empirical Tables & Charts | `deliverables/s1_progress_report/05_preliminary_results_and_followup.md`, `results/baselines/`, `results/runs/wp3/`, `results/grades/` | `[READY]` / `[DRAFT/PR#21]` | Raw JSONs & Fig. 5.1 / 5.3 inputs are `[READY]` on `main`; PR #21 overview charts & `analysis/figures/wp3/*` are `[DRAFT/PR#21]`. |
+| Ch. 4 Tables & Figures | `deliverables/s1_progress_report/04_algorithms_and_implementation.md` | `[READY]` / `[OPEN_DECISION]` | Dual-backend harness diagram, 11-method algorithmic summary & white-box audit notes (`[READY]`), WP-4 policy state-machine direction (`[OPEN_DECISION]`). |
+| Ch. 5 Empirical Tables & Charts | `deliverables/s1_progress_report/05_preliminary_results_and_followup.md`, `results/baselines/`, `results/runs/wp3/`, `results/grades/`, `analysis/wp3/`, `analysis/figures/wp3/` | `[READY]` | All raw JSONs, PyTorch baseline sweep, WP-3 synthesis, and 37 figures (`analysis/figures/wp3/*`) are `[READY]` on `main`. |
 | References & Appendices (A–C) | `deliverables/s1_progress_report/06_references_and_appendices.md` | `[READY]` | Complete bibliography inventory (`[NEEDS_VERIFICATION]` BibTeX/DOIs), Appendix A (pseudocode/configs), Appendix B (manifest/JSON schemas), Appendix C (`Table C.1`–`Table C.3`). |
 
 ### Block 4: Draft Section Skeleton, Table/Figure Specs & Open Questions
@@ -142,14 +142,14 @@
 | `Table 1.1` | Proposal Defense vs. Semester 1 Scope & Methodology Evolution | Ch. 1 | `[READY]` |
 | `Table 1.2` | Work Breakdown Structure (`WP-1`–`WP-9`) and Live GitHub Project #9 Status | Ch. 1 | `[NEEDS_VERIFICATION]` / `[OPEN_DECISION]` |
 | `Table 1.3` | Team Workload Distribution & Ownership Matrix | Ch. 1 | `[OPEN_DECISION]` |
-| `Table 1.4` | Semester 1 & Semester 2 Technical and Schedule Risk Matrix | Ch. 1 | `[READY]` / `[DRAFT/PR#21]` |
+| `Table 1.4` | Semester 1 & Semester 2 Technical and Schedule Risk Matrix | Ch. 1 | `[READY]` |
 | `Table 1.5` | Project Deliverables Schedule (Semester 1 Actuals vs. Semester 2 Targets) | Ch. 1 | `[READY]` / `[NEEDS_VERIFICATION]` / `[OPEN_DECISION]` |
 | `Table 2.x` | Literature Taxonomy (Foundations, 11 Techniques across 3 Axes, 6 Benchmarks) | Ch. 2 | `[READY]` |
 | `Table 3.x` | Pinned Base Model Registry (`docs/MODELS.md`), VRAM Headroom Matrix, Metrics-to-Axis Mapping, Dataset Manifest | Ch. 3 | `[READY]` |
 | `Table 4.1` | Metric-to-Axis Correspondence & Mathematical Definitions | Ch. 4 | `[READY]` |
 | `Table 4.2` | 11 Candidate Technique Formulations & Parameterizations (`kv_bench`) | Ch. 4 | `[READY]` / `[NEEDS_VERIFICATION]` |
 | `Table 4.3` | Semester 1 Experimental Environment & Sweep Configuration | Ch. 4 | `[READY]` |
-| `Table 5.x` | Testbed Hardware/Software Specs, WP-2 Native vLLM Baseline Results (`[READY]`), WP-3 11-Method Comparative Matrix (`[READY]` raw / `[DRAFT/PR#21]` synthesis) | Ch. 5 | `[READY]` / `[DRAFT/PR#21]` |
+| `Table 5.x` | Testbed Hardware/Software Specs, WP-2 Native vLLM Baseline Results, WP-3 11-Method Comparative Matrix & Component Synthesis | Ch. 5 | `[READY]` |
 | `Table C.1` | Pinned BF16 Model Suite & Theoretical KV Footprint (`docs/MODELS.md`) | Appendix C | `[READY]` / `[NEEDS_VERIFICATION]` |
 | `Table C.2` | Verified WP-3 Candidate Hyperparameters (All 11 Techniques) | Appendix C | `[READY]` |
 | `Table C.3` | Semester 2 Factorized Ablation Matrix (`WP-8`) | Appendix C | `[PENDING_S2]` / `[OPEN_DECISION]` |
@@ -164,7 +164,7 @@
 | `Figure 3.x` | Two-Tier Multi-Repo Workflow (`kv_co-op_hub` + `kv_bench`) & Two-Pillar Quality Evaluation Pipeline | Ch. 3 | `[READY]` |
 | `Figure 4.x` | Dual-Backend Harness Architecture (`[READY]`) & Candidate WP-4 Tier Transition State Machine (`[OPEN_DECISION]`) | Ch. 4 | `[READY]` / `[OPEN_DECISION]` |
 | `Figure 5.1` | Native vLLM Context Scaling & Multi-User Concurrency Bottleneck Curves (`results/baselines/` on `main`) | Ch. 5 | `[READY]` |
-| `Figure 5.2` | 32K Pareto Frontier Scatter — Peak VRAM vs. LongMemEval Semantic Accuracy (`analysis/figures/wp3/overview/pareto_vram_vs_quality.png`) | Ch. 5 | `[DRAFT/PR#21]` |
+| `Figure 5.2` | 32K Pareto Frontier Scatter — Peak VRAM vs. LongMemEval Semantic Accuracy (`analysis/figures/wp3/overview/pareto_vram_vs_quality.png`) | Ch. 5 | `[READY]` |
 | `Figure 5.3` | Stacked Bar Chart of LongMemEval Causal Attribution Verdicts across 11 WP-3 Techniques (`results/grades/*_judged.json` on `main`) | Ch. 5 | `[READY]` |
 
 #### Open Questions / Decisions Needed

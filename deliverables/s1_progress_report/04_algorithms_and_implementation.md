@@ -2,7 +2,7 @@
 
 > **KMUTT Report Mapping:** Chapter 4 (`4.1`–`4.11` in `Progress_Sem1_ENG_Example2.pdf`, adapted to 5 cohesive subsections for our systems + algorithmic benchmark & co-design study)  
 > **Document Role:** Templating, Drafting & Agent Handoff Specification (**not** final polished thesis prose)  
-> **Branch Baseline:** `docs/s1-progress-report-blueprint` (branched from `main`; PR #21 unmerged)  
+> **Branch Baseline:** `docs/s1-progress-report-blueprint` (synced with `main` post-PR #21 merge `911c1d3`)  
 > **Target Milestone:** First advisor review draft — **December 1, 2026** (`WP-5`)
 
 ---
@@ -28,7 +28,7 @@
 | Pinned models & engine parity spec | `docs/MODELS.md` | `[READY]` | `vllm >= 0.20.0`, `PyTorch >= 2.6.0`, CUDA toolchain, `--language-model-only` flag |
 | vLLM baseline run manifest | `results/manifests/run_manifest_baseline_16gb.json` | `[READY]` | Cluster node (`gpu01.slurm.cpe.kmutt.ac.th`), Slurm Job `22868`, `kv_bench` SHA `3aee66fe` |
 | PyTorch SDPA baseline run manifest | `results/manifests/run_manifest_baseline_pytorch_16gb.json` | `[READY]` | Slurm Job `24643`, `kv_bench` SHA `2a9338a2` |
-| PyTorch SDPA hardware baseline JSON | `results/baselines/baseline_pytorch_16gb.json` | `[DRAFT/PR#21]` | Exists only in unmerged PR #21; do **not** cite as merged on `main` |
+| PyTorch SDPA hardware baseline JSON | `results/baselines/baseline_pytorch_16gb.json` | `[READY]` | Merged on `main` (PR #21 `911c1d3`); SHA256 verified in `run_manifest_baseline_pytorch_16gb.json` |
 | `kv_bench` internal module layout (`src/core/`, `src/engines/`, `src/techniques/`) | `khemingkapat/kv_bench` @ commit `2a9338a2` | `[NEEDS_VERIFICATION]` | Exact class/method names and call graph must be verified directly from `kv_bench` before drawing final UML/component diagram |
 
 ### Block 4: Draft Section Skeleton, Table/Figure Specs & Open Questions
@@ -121,7 +121,7 @@
 | **InfiniGen** (`WP3-9`) | `STRUCTURAL`, `SPATIAL`, `TEMPORAL` | `docs/literature_survey/techniques/infinigen.md` | `run_manifest_wp3_infinigen.json` | `25111` / `2a9338a2` | `[READY]` |
 | **ArkVale** (`WP3-10`) | `STRUCTURAL`, `SPATIAL` | `docs/literature_survey/techniques/arkvale.md` | `run_manifest_wp3_arkvale.json` | `25751` / `2a9338a2` | `[READY]` |
 | **EpiCache** (`WP3-11`) | `STRUCTURAL`, `SPATIAL` | `docs/literature_survey/techniques/epicache.md` | `run_manifest_wp3_epicache.json` | `25949` / `2a9338a2` | `[READY]` |
-| *Pseudocode & fidelity notes* | *All 11* | `khemingkapat/kv_bench` @ `2a9338a2` | `analysis/wp3/*` (`[DRAFT/PR#21]`) | — | `[NEEDS_VERIFICATION]` |
+| *White-box component decompositions & fidelity notes* | *All 11* | `khemingkapat/kv_bench` @ `2a9338a2` | `analysis/wp3/techniques/*.md` & `CONSOLIDATED_PATTERN_REPORT.md` | — | `[READY]` |
 
 ### Block 4: Draft Section Skeleton, Table/Figure Specs & Open Questions
 - **Outline Skeleton (Grouped by Architectural Paradigm):**
@@ -142,14 +142,14 @@
 - **Required Table Spec — Table 4.2 (`WP-3 Implemented Candidate Registry & Verified Hyperparameters`):**
   - *Columns:* `Technique | Axes | Core Mechanism | Key Hyperparameters (Verified from verify_*.json) | PyTorch Simulation Caveat`.
 - **Open Questions / Decisions Needed (`[OPEN_DECISION]`):**
-  - How explicitly should Chapter 4 flag known PyTorch wrapper fidelity bugs (e.g., `headq` 0% LongMemEval, `epicache` 5.3% LongMemEval, `turboquant` pure-Python QJL latency) vs. deferring root-cause diagnosis to Section 5.2.3 after PR #21 is reviewed? *(Recommended: Mention simulation boundary briefly in 4.3, put quantitative root-cause attribution in 5.2.3 once PR #21 is merged.)*
+  - How explicitly should Chapter 4 flag known PyTorch wrapper fidelity bugs (e.g., `headq` 0% LongMemEval, `epicache` 5.3% LongMemEval, `turboquant` pure-Python FWHT latency) vs. deferring full root-cause diagnosis to Section 5.2.3? *(Recommended: Mention simulation boundary briefly in 4.3, put quantitative root-cause attribution from `analysis/wp3/*` `[READY]` in 5.2.3.)*
 
 ---
 
 ## Section 4.4 — Proposed 3-Axis Co-Optimization Policy State Machine (`WP-4` — Working Direction)
 
 > [!IMPORTANT]
-> **Template / Working Direction Notice:** Per project governance, `WP-4` policy design is **not yet locked**. PR #21 (`[DRAFT/PR#21]`) has not been merged/reviewed, and `WP-4` micro-benchmarking has not yet validated tier-transition thresholds. Do **not** present an untested policy as finalized—frame Section 4.4 explicitly as an **evidence-driven architectural template with falsifiable design hypotheses and open decisions**.
+> **Template / Working Direction Notice:** Per project governance, `WP-4` policy design is **not yet locked**. Although WP-3 synthesis (`analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md`, `[READY]`) is merged on `main`, `WP-4` micro-benchmarking has not yet validated tier-transition thresholds across the 4 candidate hypotheses. Do **not** present an untested policy as finalized—frame Section 4.4 explicitly as an **evidence-driven architectural template with falsifiable design hypotheses and open decisions**.
 
 ### Block 1: Section Purpose & KMUTT Baseline Alignment
 - **KMUTT Baseline Role (`Progress_Sem1_ENG_Example2.pdf` Ch. 4 proposed design):** Presents the project's novel algorithmic/system contribution—the unified 3-Axis Co-Optimization Policy Layer that bridges Semester 1 exploration (`WP-3`) and Semester 2 runtime integration (`WP-6`).
@@ -170,7 +170,7 @@
 | WP-4 roadmap deliverables | `WORK_PACKAGES.md` (`WP-4`, lines 55–60) | `[READY]` | State-machine tiers + async transfer pipeline + prototype smoke test |
 | Proposal 3-layer heuristic baseline | `deliverables/s1_proposal_defense/Slide_Content_and_Executive_Summary.md` | `[READY]` | Explicit "before" reference for Proposal → S1 delta |
 | WP-3 empirical evidence (32K VRAM, Memcpy, LongMemEval) | `results/runs/wp3/*_hardware_pytorch_16gb.json` & `results/grades/*_judged.json` | `[READY]` | Empirical motivation for hybrid tiering (`ShadowKV` 64.0% @ 67 MB/tok vs. `QServe KV4` 59.3% @ 0.01 MB/tok) |
-| WP-3 component-level synthesis & WP-4 candidate hypotheses | `analysis/wp3/*` (PR #21) | `[DRAFT/PR#21]` | Pending manual review before locking exact WP-4 policy rules |
+| WP-3 component-level synthesis & 4 falsifiable WP-4 candidates | `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md` (PR #21 merged `911c1d3`) | `[READY]` | Merged synthesis defining 4 falsifiable candidate hypotheses (`WP-4` selection remains `[OPEN_DECISION]`) |
 | WP-4 prototype implementation & micro-benchmarks | `khemingkapat/kv_bench` (`WP-4` issues) | `[OPEN_DECISION]` / `[PENDING_S2]` | Policy thresholds & CUDA stream overlap not yet benchmarked |
 
 ### Block 4: Draft Section Skeleton, Table/Figure Specs & Open Questions
@@ -188,7 +188,7 @@
   - *Type:* State transition diagram (`T0 ↔ T1 ↔ T2`) + timeline swimlane (GPU Compute Stream vs. PCIe H2D Prefetch Stream).
   - *Visual Tag:* Mark transition thresholds ($\tau_{\text{hot}}, \tau_{\text{cold}}, B_{\text{VRAM}}$) explicitly as *tunable WP-4 parameters*.
 - **Open Questions / Decisions Needed (`[OPEN_DECISION]`):**
-  1. **Compression Codec Choice for Tier 1:** `QServe`-style symmetric/group-wise `KV4` vs. asymmetric `K4V3` (`TurboQuant`) vs. low-rank SVD Keys (`ShadowKV`)? *(Awaiting PR #21 review + WP-4 kernel feasibility check.)*
+  1. **Compression Codec Choice for Tier 1:** `QServe`-style symmetric/group-wise `KV4` vs. asymmetric `K4V3` (`TurboQuant`) vs. low-rank SVD Keys (`ShadowKV`)? *(Awaiting WP-4 micro-benchmark & kernel feasibility check across the 4 candidates in `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md`.)*
   2. **Offload Granularity for Tier 2:** Value-only chunk offload (`ShadowKV`) vs. page-level K+V offload with AABB recall (`ArkVale`)?
   3. **CPU Dequantization Delegation:** Worth implementing in Sem 2, or does GPU-side fused dequantization (as in `QServe`) strictly dominate on RTX 4090 / RTX 4060 PCIe 4.0?
   4. **Target Integration Runtime for Sem 2 (`WP-6`):** Deep vLLM V1 `LMCacheMPConnector` integration vs. custom vLLM KV-cache manager plugin?

@@ -3,7 +3,7 @@
 > **Report Scope:** KMUTT Senior Project Semester 1 Progress Report — Chapter 1 (`1.1 Project Introduction`, `1.2 Project Timeline`)  
 > **KMUTT Baseline:** `Progress_Sem1_ENG_Example2.pdf` (Chapter 1: `1.1`–`1.2`)  
 > **Status:** Blueprint & Agent Handoff Spec (NOT final polished prose)  
-> **Last Verified Against Workspace & GitHub Project #9:** 2026-11-24
+> **Last Verified Against Workspace & GitHub Project #9:** 2026-11-25 (post-PR #21 merge `911c1d3`)
 
 ---
 
@@ -63,7 +63,7 @@
   - `docs/proposal.md` (§1.2) listed 3 qualitative objectives, and the delivered Proposal Defense PDF (`KV-Cache Co-optimization.pdf` Slide 03) stayed qualitative on objectives; by contrast, the companion summary `Slide_Content_and_Executive_Summary.md` (Slides 04 & 12) added 4 aggressive quantitative targets (*95–98% quality retention, $\le 0.1$ $\Delta\text{PPL}$, fit 32K in 8 GB VRAM, 30–40% throughput speedup, sub-100ms TPOT*).
   - **Critical Scope Correction (`.agents/AGENTS.md` & `docs/METRICS_AND_AXES.md`):**
     1. **Quality Gate Refinement:** Replace $\Delta\text{PPL} \le 0.1$ as a primary objective with the **Two Primary Quality Pillars**: (1) Micro-Level Logit Divergence (`top1_agreement`, `kl_div_mean`, `kl_div_p99`) and (2) Macro-Level LongMemEval across 5 core conversational memory capabilities. Perplexity is explicitly demoted to an optional supplementary diagnostic.
-    2. **Quantitative Target Calibration:** While raw WP-3 benchmark sweeps and semantic grades (`results/runs/wp3/`, `results/grades/`) are `[READY]` on `main`, WP-3 comparative synthesis (`analysis/wp3/*`, `results/baselines/baseline_pytorch_16gb.json`, `[DRAFT/PR#21]`) and WP-4 policy design are still in progress; therefore, Semester 1 should frame the executive summary's numerical targets as *aspirational Semester 2 design targets* rather than pre-committed guarantees.
+    2. **Quantitative Target Calibration:** While WP-3 benchmark sweeps, semantic grades, PyTorch baseline sweep, and component synthesis (`results/runs/wp3/`, `results/grades/`, `analysis/wp3/*`, `results/baselines/baseline_pytorch_16gb.json`) are `[READY]` on `main`, WP-4 policy micro-benchmarking is still pending; therefore, Semester 1 should frame the executive summary's numerical targets as *aspirational Semester 2 design targets* rather than pre-committed guarantees.
 
 #### Block 3: Strict Data & Source Provenance Map (Agent Handoff Spec)
 
@@ -153,19 +153,19 @@
   - Proposal used a static 4-section bullet list per semester with no live issue tracking.
   - Semester 1 formalized `WP-1`–`WP-9` in `WORK_PACKAGES.md` and operationalized native cross-repo sub-issue tracking on **GitHub Project #9** (35 total tracked items as of 2026-11-24: 9 parent epics + 26 sub-issues).
   - **Important Housekeeping Findings (`[OPEN_DECISION]` / `[NEEDS_VERIFICATION]`):**
-    - `WORK_PACKAGES.md` status table (Lines 10–20) still displays `🔴 Not started` for all 9 WPs — stale relative to GitHub Project #9!
-    - On GitHub Project #9, parent epic `WP-3` is still marked `Todo` even though **14 of 15 `kv_bench` sub-issues are `Done`** (`kv_bench#19`–`#30` [12 issues] + `#31` + `#35`; only `kv_bench#34` `[WP3-1-2]` remains `Todo`, and `kv_co-op_hub` PR #21 is open for review). Both `WORK_PACKAGES.md` and the `WP-3` board card should be synced before final report submission.
+    - `WORK_PACKAGES.md` status table (Lines 10–20) now marks `WP-1`, `WP-2`, and `WP-3` as `🟢 Completed` (updated in PR #21 `911c1d3`), and parent epic `kv_co-op_hub#3`'s 5 deliverables are all `[x]` checked.
+    - On GitHub Project #9, parent epic `WP-3`'s board status card still shows `Todo` even though **14 of 15 `kv_bench` sub-issues are `Done`** (`kv_bench#19`–`#30` [12 issues] + `#31` + `#35`; only `kv_bench#34` `[WP3-1-2]` remains `Todo`). Sync the `WP-3` board card before final report submission.
     - **WP-2 Date Discrepancy (`[NEEDS_VERIFICATION]`):** GitHub parent epic `kv_co-op_hub#2` (`WP-2`) was closed on `2026-10-19`, whereas `results/manifests/run_manifest_baseline_16gb.json` (`milestone: "WP-2"`, `work_package: "WP2-4"`) records `generated_at: "2026-10-25T06:06:57Z"`. Verify whether the manifest was regenerated/re-archived after epic closure before freezing `Figure 1.2`.
 
 #### Block 3: Strict Data & Source Provenance Map (Agent Handoff Spec)
 
 | Data Element | Exact Source Path / Reference | Readiness Tag | Notes for Future Agent |
 | :--- | :--- | :---: | :--- |
-| Canonical 9-WP Roadmap & Dependency Graph | `WORK_PACKAGES.md` (Lines 8–136) | `[NEEDS_VERIFICATION]` | Scope descriptions & Mermaid dependency graph are `[READY]`, **but** the status column (`🔴 Not started`) is stale — use live GitHub Project #9 snapshot below instead. |
+| Canonical 9-WP Roadmap & Dependency Graph | `WORK_PACKAGES.md` (Lines 8–136) | `[READY]` | Scope descriptions, Mermaid dependency graph, and `WP-1`–`WP-3` `🟢 Completed` status badges are synced on `main` (re-query Project #9 before final submission for `WP-4`/`WP-5`). |
 | Two-Tier Workflow & Project #9 Governance | `docs/WORKFLOW_SPEC.md` (Lines 9–61) | `[READY]` | Parent epics in `kv_co-op_hub`, child sub-issues in `kv_bench`, unified board on GitHub Project #9. |
 | Live GitHub Project #9 Snapshot (2026-11-24, 35 items) | Live CLI query (`gh project item-list 9 --owner khemingkapat`) | `[NEEDS_VERIFICATION]` | Point-in-time live snapshot (not a static repo file; re-query before final submission). **9 Parent Epics:** `WP-1` (`In Progress`), `WP-2` (`Done`, closed `2026-10-19`), `WP-3` (`Todo` on board — 14/15 sub-issues Done), `WP-4`–`WP-9` (`Todo`). **26 Sub-issues in `kv_bench` (24 Done, 2 Todo):** WP-1 (`#2`, `#3`, `#4`, `#5`, `#41` Done; `#6` Todo → 5/6), WP-2 (`#11`–`#14`, `#36` Done → 5/5), WP-3 (`#19`–`#30` [12], `#31`, `#35` Done; `#34` Todo → 14/15). |
 | WP-1 & WP-2 Manifest Timestamps | `results/manifests/run_manifest_baseline_16gb.json` (`2026-10-25`), `results/manifests/run_manifest_baseline_pytorch_16gb.json` (`WP1-4-1`, `2026-11-23`) | `[READY]` / `[NEEDS_VERIFICATION]` | `WP-2` epic closed `2026-10-19` vs. `WP2-4` manifest `2026-10-25` (`[NEEDS_VERIFICATION]`); `WP1-4-1` PyTorch baseline manifest extends `WP-1` actuals to `2026-11-23`. |
-| WP-3 Synthesis & Interpretation PR | `khemingkapat/kv_co-op_hub` PR #21 (`docs/wp3-result-interpretation`) | `[DRAFT/PR#21]` | Open PR pending review; blocks formal closure of `WP-3` epic alongside `kv_bench#34`. |
+| WP-3 Synthesis & Interpretation Report | `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md`, `analysis/wp3/techniques/*.md`, `analysis/figures/wp3/*` (PR #21, merged `911c1d3`) | `[READY]` | Merged on `main`; all 5 deliverables on `kv_co-op_hub#3` checked `[x]`. |
 
 #### Block 4: Draft Section Skeleton, Table/Figure Specs & Open Questions
 
@@ -180,8 +180,8 @@
 | :---: | :--- | :--- | :---: | :--- | :--- |
 | **WP-1** | Testbed Setup & Native Reference Baseline | S1 / Phase 1 | `In Progress` | **5 / 6 Done** (`#2`, `#3`, `#4`, `#5`, `#41` Done) | `kv_bench#6` `[WP1-5]` (Local 8 GB RTX 4060 adaptation — `Todo`) |
 | **WP-2** | Hardware & System Bottleneck Profiling | S1 / Phase 1 | `Done` *(closed `2026-10-19`; manifest `2026-10-25` `[NEEDS_VERIFICATION]`)* | **5 / 5 Done** (`#11`, `#12`, `#13`, `#14`, `#36` Done) | None — golden manifests & baselines merged |
-| **WP-3** | Literature Candidate Exploration & Micro-Benchmarking | S1 / Phase 2 | `Todo` *(board stale — `[OPEN_DECISION]`)* | **14 / 15 Done** (`#19`–`#30` [12], `#31`, `#35` Done) | `kv_bench#34` `[WP3-1-2]` (`Todo`) + `kv_co-op_hub` PR #21 (`[DRAFT/PR#21]`) |
-| **WP-4** | 3-Axis Co-Optimization Policy Design & Prototype | S1 / Phase 2 | `Todo` | Not yet decomposed | Awaits WP-3 synthesis (`PR #21`) to finalize policy state machine |
+| **WP-3** | Literature Candidate Exploration & Micro-Benchmarking | S1 / Phase 2 | `Todo` *(board card stale; `WORK_PACKAGES.md` `🟢 Completed`, Issue #3 5/5 `[x]`)* | **14 / 15 Done** (`#19`–`#30` [12], `#31`, `#35` Done) | `kv_bench#34` `[WP3-1-2]` (`Todo`); synthesis PR #21 merged (`[READY]`) |
+| **WP-4** | 3-Axis Co-Optimization Policy Design & Prototype | S1 / Phase 2 | `Todo` | Not yet decomposed | Unblocked by merged WP-3 synthesis (`4` falsifiable candidates in `analysis/wp3/`) |
 | **WP-5** | Semester 1 Milestones, Sanity Checks & Progress Defense | S1 / Phase 3 | `Todo` | Hub deliverable (`deliverables/s1_progress_report/`) | First advisor review draft due **Dec 1, 2026**; Progress Defense |
 | **WP-6** | Runtime Engine Integration & Output Correctness | S2 / Phase 4 | `Todo` (`[PENDING_S2]`) | Planned S2 | vLLM V1 integration, KL-div & Top-1 verification |
 | **WP-7** | End-to-End Stress & Long-Context Quality Benchmarking | S2 / Phase 5 | `Todo` (`[PENDING_S2]`) | Planned S2 | 32K scaling, 10–15 user concurrency, LongMemEval 5 capabilities |
@@ -193,7 +193,7 @@
 - **Enhancement for Report:** Color-code nodes by verified status (`WP-2` Green/Done, `WP-1` & `WP-3` Amber/In-Progress, `WP-4`–`WP-5` Blue/Upcoming S1, `WP-6`–`WP-9` Gray/Planned S2).
 
 #### Open Questions / Decisions Needed
-1. **`[OPEN_DECISION]` GitHub Project #9 & `WORK_PACKAGES.md` Sync:** Before freezing the report snapshot, should the team (a) update `WP-3`'s Project #9 epic status from `Todo` to `In Progress`, (b) update `WORK_PACKAGES.md` status badges from `🔴 Not started` to live status, and (c) confirm the exact scope/disposition of `kv_bench#34` (`[WP3-1-2]`) and `kv_bench#6` (`[WP1-5]`)?
+1. **`[OPEN_DECISION]` GitHub Project #9 Board Sync:** `WORK_PACKAGES.md` (`WP-1`–`WP-3` `🟢 Completed`) and Issue #3's deliverables are now synced. Before freezing the report snapshot, confirm (a) moving `WP-3`'s Project #9 board card to `Done`/`In Progress` and (b) the exact scope/disposition of `kv_bench#34` (`[WP3-1-2]`) and `kv_bench#6` (`[WP1-5]`).
 
 ---
 
@@ -219,7 +219,7 @@
 | Proposal S1/S2 Timeline Milestones | `deliverables/s1_proposal_defense/Slide_Content_and_Executive_Summary.md` (Lines 259–278), `docs/proposal.md` (Lines 115–123) | `[READY]` | Sem 1: Aug–Dec 2026; Sem 2: Jan–May 2027. |
 | Verified S1 Completion Dates | `results/manifests/run_manifest_baseline_16gb.json` (`WP2-4`, `2026-10-25`), `results/manifests/dataset_manifest.json` (`2026-11-22`), `results/manifests/run_manifest_baseline_pytorch_16gb.json` (`WP1-4-1`, `2026-11-23`), GitHub Project #9 (`WP-2` closed `2026-10-19`) | `[READY]` / `[NEEDS_VERIFICATION]` | Use verified timestamps to anchor the "Actual" bars in `Figure 1.2`; reconcile `WP-2` closure (`2026-10-19`) vs. `WP2-4` manifest (`2026-10-25`) (`[NEEDS_VERIFICATION]`). |
 | Team Role Mapping (Two Conflicting Sources) | `deliverables/s1_proposal_defense/KV-Cache Co-optimization.pdf` (Slide 12 & Gantt pp. 14–15) vs. `deliverables/s1_proposal_defense/Slide_Content_and_Executive_Summary.md` (Lines 245–256) | `[OPEN_DECISION]` | **Conflict:** PDF Slide 12 assigns Kantawich=Baseline Workload/Quality Eval, Khem=SOTA/Metrics/Core System Builder, Sirawat=Hardware/Infra/Testing, Run=SOTA/Data Repo/Analysis; whereas `.md` Slide 13 assigns Sirawat=Priority Engine/Offload/4060, Run=Problem/Lit/Quality, Khem=Arch/Formats/`kv_bench`/Slurm, Kantawich=Design/Docs/Coord. **Do NOT pick one silently or hardcode per-member WP ownership — require team confirmation.** |
-| Technical Risk Evidence | `docs/WORKFLOW_SPEC.md`, `kv_bench#6` (`Todo`), `kv_bench#34` (`Todo`), `results/runs/wp3/` (`[READY]`), PR #21 (`[DRAFT/PR#21]`) | `[READY]` / `[DRAFT/PR#21]` | Grounds Risk Matrix in real S1 observations. |
+| Technical Risk Evidence | `docs/WORKFLOW_SPEC.md`, `kv_bench#6` (`Todo`), `kv_bench#34` (`Todo`), `results/runs/wp3/`, `analysis/wp3/*` (PR #21 merged `911c1d3`) | `[READY]` | Grounds Risk Matrix in verified S1 observations. |
 
 #### Block 4: Draft Section Skeleton, Table/Figure Specs & Open Questions
 
@@ -229,7 +229,7 @@
 - **Y-Axis Rows:**
   1. `WP-1`: Testbed Setup, Model Pinning & Dual-Backend Harness (Aug–Nov 23 Actual, matching `run_manifest_baseline_pytorch_16gb.json` `WP1-4-1`; `kv_bench#6` Local 8 GB tail in late Nov/Dec)
   2. `WP-2`: Hardware & Bottleneck Profiling (Sep–Oct 19/25 — `Done`; `[NEEDS_VERIFICATION]` on exact closure vs. manifest date)
-  3. `WP-3`: 20 Literature Reviews & 11-Method Reproduction/Grading (Sep–Nov 24 — 14/15 Done; PR #21 & `#34` closing)
+  3. `WP-3`: 20 Literature Reviews, 11-Method Reproduction/Grading & White-Box Synthesis (Sep–Nov 25 — PR #21 merged, 14/15 sub-issues Done; `#34` remaining)
   4. `WP-4`: 3-Axis Co-Optimization Policy Design & Prototype (Re-baselined: Late Nov–Dec 2026)
   5. `WP-5`: CITI Ethics, Proposal Defense, S1 Progress Report (`Dec 1`) & Progress Defense (Aug–Dec 2026)
 
@@ -253,8 +253,8 @@
 #### Table Spec: `Table 1.4` — Risk & Mitigation Matrix
 | Risk ID | Risk Description | Likelihood / Impact | Trigger / Observed Signal | Concrete Mitigation Strategy |
 | :---: | :--- | :---: | :--- | :--- |
-| **R1** | **WP-4 Schedule Compression:** Expanding `WP-3` from 5 to 11 methods compressed `WP-4` prototype window before Dec 1 review | High / Medium | `WP-4` still `Todo` on 2026-11-24 | Use raw `WP-3` white-box sweeps & grades (`results/runs/wp3/`, `results/grades/`, `[READY]`) and pending PR #21 synthesis (`analysis/wp3/*`, `[DRAFT/PR#21]`) to deliver an evidence-backed `WP-4` architecture & state-machine spec in S1, with minimal smoke-test prototype ahead of S2 `WP-6`. |
-| **R2** | **Wrapper Artifact vs. Algorithmic Merit:** PyTorch prototype bugs can distort micro-benchmark fidelity/speed rankings | Medium / High | Observed during `WP-3` review (`[DRAFT/PR#21]`) | Enforce mandatory `verify_*_pytorch_16gb.json` identity checks, post-hoc layer retention diagnostics (`WP1-4-1`), and separate implementation bugs from algorithmic limits in Ch. 5. |
+| **R1** | **WP-4 Schedule Compression:** Expanding `WP-3` from 5 to 11 methods compressed `WP-4` prototype window before Dec 1 review | High / Medium | `WP-4` still `Todo` on 2026-11-24 | Use verified `WP-3` white-box sweeps, grades, and consolidated synthesis (`results/runs/wp3/`, `results/grades/`, `analysis/wp3/*`, `[READY]`) to deliver an evidence-backed `WP-4` architecture & state-machine spec in S1, with minimal smoke-test prototype ahead of S2 `WP-6`. |
+| **R2** | **Wrapper Artifact vs. Algorithmic Merit:** PyTorch prototype bugs can distort micro-benchmark fidelity/speed rankings | Medium / High | Documented in `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md` (`[READY]`) | Enforce mandatory `verify_*_pytorch_16gb.json` identity checks, post-hoc layer retention diagnostics (`WP1-4-1`), and separate implementation bugs from algorithmic limits in Ch. 5. |
 | **R3** | **Local 8 GB RTX 4060 Parity Gap:** Cluster runs use 16 GB-capped RTX 4090; local 8 GB adaptation (`kv_bench#6`) remains `Todo` | Medium / Medium | `kv_bench#6` open on Project #9 | Pinned `Qwen3-1.7B` (`3.45 GB` BF16 weights, `4.55 GB` KV headroom) and `Qwen3.5-2B` specifically in `docs/MODELS.md` for 8 GB validation. |
 | **R4** | **vLLM V1 Integration Complexity (`WP-6`):** Deeply modifying vLLM PagedAttention for 3-axis tiering may hit engine API churn | High / High | Planned S2 (`WP-6`) | Decouple policy logic behind clean interfaces (`LMCacheMPConnector` / custom KV connector) and verify numerical fidelity (`top1_agreement`, `kl_div_p99`) incrementally per axis. |
 | **R5** | **PCIe Transfer & CPU Dequantization Overhead:** Offloading/decompression latency may negate VRAM savings during decode | Medium / High | Core hardware constraint (16–31.5 GB/s PCIe) | Combine INT4 transfer volume reduction (~75%) with asynchronous dual-CUDA-stream prefetching and profile `memcpy_bytes_per_token` & `tpot_p95_ms` in `WP-8`. |
@@ -285,7 +285,7 @@
 | Model Registry, Metrics Framework & Workflow Specs | `docs/MODELS.md`, `docs/METRICS_AND_AXES.md`, `docs/WORKFLOW_SPEC.md` | `[READY]` | Scientific specifications merged on `main`. |
 | 20-Paper Structured Literature Survey | `docs/literature_survey/` (3 `foundations/`, 11 `techniques/`, 6 `benchmarks/`) | `[READY]` | All 20 markdown reviews verified present on `main`. |
 | Golden WP-2 Baselines & Provenance Manifests | `results/baselines/`, `results/manifests/dataset_manifest.json`, `results/manifests/run_manifest_baseline_16gb.json` | `[READY]` | CI-verified SHA256 checksums (`hub-ci.yml`). |
-| WP-3 11-Method Runs, Semantic Grades & Manifests | `results/runs/wp3/`, `results/grades/`, `results/manifests/run_manifest_wp3_*.json` | `[READY]` | Raw runs & grades on `main`; synthesis report & figures in `analysis/wp3/*` are `[DRAFT/PR#21]`. |
+| WP-3 11-Method Runs, Semantic Grades, Synthesis & Manifests | `results/runs/wp3/`, `results/grades/`, `results/manifests/run_manifest_wp3_*.json`, `analysis/wp3/*`, `analysis/figures/wp3/*` | `[READY]` | All raw runs, semantic grades, 11 white-box analyses, consolidated pattern report, and 37 figures merged on `main` (PR #21 `911c1d3`). |
 | Standalone CPU Dequantization Micro-Benchmark | `docs/proposal.md` (Line 130) | `[NEEDS_VERIFICATION]` | Verify if standalone CPU AVX/dequant micro-benchmark artifact exists in `kv_bench` or is deferred to `WP-4`/`WP-8`. |
 | S2 Deliverables (Engine, Suite, Repro Repo, Thesis) | `docs/proposal.md` (Lines 132–138), `WORK_PACKAGES.md` (`WP-6`–`WP-9`) | `[PENDING_S2]` | Target completion: May 2027. |
 
@@ -297,7 +297,7 @@
 | **S1** | Formal Project Proposal & Oral Defense Deck | `WP-5` | `docs/proposal.md`, `deliverables/s1_proposal_defense/` | `[READY]` |
 | **S1** | Reproducible Testbed, Pinned Model Registry & Dual-Backend Harness | `WP-1` | `docs/MODELS.md`, `docs/WORKFLOW_SPEC.md`, `kv_bench` (`#2`–`#5`, `#41`) | `[READY]` *(Local 8 GB `#6` Todo)* |
 | **S1** | Golden Uncompressed Baseline Profiling Report & Manifests (16 GB Cap) | `WP-2` | `results/baselines/`, `results/manifests/run_manifest_baseline_16gb.json` | `[READY]` |
-| **S1** | 20-Paper Literature Survey & 11-Method Empirical Exploration (`WP-3`) | `WP-3` | `docs/literature_survey/`, `results/runs/wp3/`, `results/grades/` | `[READY]` *(Synthesis `[DRAFT/PR#21]`)* |
+| **S1** | 20-Paper Literature Survey & 11-Method Empirical Exploration (`WP-3`) | `WP-3` | `docs/literature_survey/`, `results/runs/wp3/`, `results/grades/`, `analysis/wp3/`, `analysis/figures/wp3/` | `[READY]` |
 | **S1** | Hardware Profiling Micro-Benchmarks (PCIe / CPU Dequantization) | `WP-2` / `WP-3` | `kv_bench --profile` / `[NEEDS_VERIFICATION]` | `[NEEDS_VERIFICATION]` |
 | **S1** | 3-Axis Co-Optimization Policy Architecture Specification & Sanity Prototype | `WP-4` | Target `docs/architecture/` + `kv_bench` | `[OPEN_DECISION]` |
 | **S1** | Semester 1 Progress Report & Oral Progress Defense | `WP-5` | `deliverables/s1_progress_report/` (Draft due Dec 1, 2026) | `[READY]` *(blueprints)* / `[NEEDS_VERIFICATION]` *(final draft & defense)* |

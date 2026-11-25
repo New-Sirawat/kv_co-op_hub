@@ -2,7 +2,7 @@
 
 > **KMUTT Report Mapping:** References + Appendices A, B, C (`Progress_Sem1_ENG_Example2.pdf` back matter)  
 > **Document Role:** Templating, Drafting & Agent Handoff Specification (**not** final polished thesis prose)  
-> **Branch Baseline:** `docs/s1-progress-report-blueprint` (branched from `main`; PR #21 unmerged)  
+> **Branch Baseline:** `docs/s1-progress-report-blueprint` (synced with `main` post-PR #21 merge `911c1d3`)  
 > **Target Milestone:** First advisor review draft — **December 1, 2026** (`WP-5`)
 
 ---
@@ -84,7 +84,7 @@
 | :--- | :--- | :--- | :--- |
 | Verified runtime configs for all 11 methods | `results/runs/wp3/verify_<tech>_pytorch_16gb.json` (`results[0].extra`) | `[READY]` | Exact hyperparameters (`sink_tokens`, `window_size`, `heavy_hitter_tokens`, `kv_cache_bits`, `svd_rank`, `page_size`, etc.) |
 | Exact Python wrapper implementations | `khemingkapat/kv_bench` @ `2a9338a2` (`src/techniques/*.py`) | `[NEEDS_VERIFICATION]` | Extract concise 10–20 line pseudocode blocks per technique directly from `kv_bench` source |
-| Wrapper fidelity audit notes | `analysis/wp3/*` (PR #21) | `[DRAFT/PR#21]` | Annotate any known implementation divergences (e.g., `headq`, `epicache`, `turboquant`) |
+| Wrapper fidelity audit notes | `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md`, `analysis/wp3/techniques/*.md` | `[READY]` | Merged on `main` (`911c1d3`); exact component-level divergences documented for all 11 methods |
 
 ### Block 4: Draft Section Skeleton, Table/Figure Specs & Open Questions
 - **Outline Skeleton:**
@@ -144,7 +144,7 @@
 | :--- | :--- | :--- | :--- |
 | Table C.1 — Pinned Model Registry (9 Checkpoints) | `docs/MODELS.md` (§2–§3) | `[READY]` / `[NEEDS_VERIFICATION]` | Exact HF repo IDs, 40-char Git commit SHAs, $L, H_Q/H_{KV}, D$, KV KiB/tok, `--language-model-only` requirement. *Note:* `Qwen 3.5 2B` and `Gemma 4 E4B Instruct` (`KV rate = Heterogeneous`) appear in `docs/MODELS.md` §2 but are omitted from §3's Empirical Allocation Matrix (`32K (1x)` / `10x 4K` cells → `N/A` / `[NEEDS_VERIFICATION]`) |
 | Table C.2 — WP-3 Master Hyperparameter Registry (11 Methods) | `results/runs/wp3/verify_<tech>_pytorch_16gb.json` (`results[0].extra`) | `[READY]` | Verified exact runtime parameters used across all 11 runs |
-| Table C.3 — Semester 2 Ablation & Cross-Model Stress Matrix | `WORK_PACKAGES.md` (`WP-6`, `WP-7`, `WP-8`) + `docs/MODELS.md` | `[PENDING_S2]` / `[OPEN_DECISION]` | Exact WP-4 tier thresholds (`tau_hot`, `tau_cold`, bitwidth) remain `[OPEN_DECISION]` until PR #21 & WP-4 complete |
+| Table C.3 — Semester 2 Ablation & Cross-Model Stress Matrix | `WORK_PACKAGES.md` (`WP-6`, `WP-7`, `WP-8`) + `docs/MODELS.md` | `[PENDING_S2]` / `[OPEN_DECISION]` | Exact WP-4 tier thresholds (`tau_hot`, `tau_cold`, bitwidth) remain `[OPEN_DECISION]` until WP-4 micro-benchmarks complete |
 
 ### Block 4: Draft Section Skeleton, Table/Figure Specs & Open Questions
 - **Outline Skeleton & Exact Table Column Specs:**

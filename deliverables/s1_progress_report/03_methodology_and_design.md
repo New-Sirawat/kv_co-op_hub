@@ -12,7 +12,7 @@
   - Strictly enforce the **16 GB cluster VRAM cap** (Slurm RTX 4090) and **8 GB local VRAM cap** (RTX 4060).
   - Strictly enforce **unmodified BF16/FP16 pinned base models** from `docs/MODELS.md` (no pre-quantized GGUF/AWQ base weights).
   - Strictly enforce the **Two Primary Quality Pillars** (Micro-Level Logit Divergence + Macro-Level LongMemEval); keep 2D NIAH as an opt-in positional diagnostic and Perplexity ($\Delta\text{PPL}$) as strictly supplementary.
-- **PR #21 Boundary:** `results/baselines/baseline_pytorch_16gb.json`, `analysis/wp3/*`, and `analysis/figures/wp3/*` are unmerged on PR #21 — always tag as `[DRAFT/PR#21]`.
+- **Merged WP-3 Artifacts:** `results/baselines/baseline_pytorch_16gb.json`, `analysis/wp3/*`, and `analysis/figures/wp3/*` are merged on `main` (PR #21 `911c1d3`) and `[READY]`.
 - **Verified Discrepancies Surfaced in This Chapter (Must Reconcile Before Final Prose):**
   1. **Schema Drift (`longmem_macro_f1` vs. `longmem_f1_overall`):** `docs/METRICS_AND_AXES.md` specifies `extra["longmem_macro_f1"]`, whereas all serialized JSONs in `results/baselines/` and `results/runs/wp3/` emit `extra["longmem_f1_overall"]` (plus per-task `extra["longmem_f1_<task>"]`).
   2. **LongMemEval Sample Count Discrepancy (`50q` vs. `150q`):** `docs/METRICS_AND_AXES.md` (§3) and WP-2 vLLM `longmem_baseline_16gb.json` reference **50 curated prompts** (10/task), whereas `workloads/download_datasets.py`, `results/manifests/dataset_manifest.json`, and all WP-1/WP-3 PyTorch runs + `results/grades/*` evaluate **150 length-quantile-sampled questions** (30/task).
@@ -32,7 +32,7 @@
   2. **3-Axis Co-Optimization Framework:** Formalizes KV-cache management into three orthogonal control axes (`STRUCTURAL`, `SPATIAL`, `TEMPORAL`) exposed via `src/core/axis.py` in `kv_bench`, enabling apples-to-apples reproduction of 11 single-/dual-axis techniques in Semester 1 and principled synthesis of a co-optimized policy in WP-4 / Semester 2.
 - **Delta from Proposal Defense (`KV-Cache Co-optimization.pdf` & `Slide_Content_and_Executive_Summary.md`):**
   - *Added:* Formal Two-Tier Multi-Repo & SHA256 Provenance architecture (absent in Proposal, where work was tracked in a static spreadsheet).
-  - *Evolved:* Proposal introduced a conceptual **3-Layer Policy** (`KV-Cache Co-optimization.pdf` backup Slide 07 [PDF p. 17], with L3 = `TRANSFER SCHEDULER`; and `Slide_Content_and_Executive_Summary.md` Slide 08, with CPU dequantization on Slide 10). In Semester 1, we deliberately decoupled the **3-Axis Evaluation Harness** (`kv_bench`) from the final **WP-4 Policy Redesign**, holding the exact WP-4 policy composition as `[OPEN_DECISION]` until WP-3 white-box empirical interpretation (`[DRAFT/PR#21]`) concludes.
+  - *Evolved:* Proposal introduced a conceptual **3-Layer Policy** (`KV-Cache Co-optimization.pdf` backup Slide 07 [PDF p. 17], with L3 = `TRANSFER SCHEDULER`; and `Slide_Content_and_Executive_Summary.md` Slide 08, with CPU dequantization on Slide 10). In Semester 1, we deliberately decoupled the **3-Axis Evaluation Harness** (`kv_bench`) from the final **WP-4 Policy Redesign**, holding the exact WP-4 policy composition as `[OPEN_DECISION]` across the 4 falsifiable candidate hypotheses synthesized in `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md` (`[READY]`).
 
 ### Block 3 — Strict Data & Source Provenance Map (Agent Handoff Spec)
 | Architectural Component | Exact Repo Source / Path | Verified Details / Keys | Readiness |
@@ -41,7 +41,7 @@
 | Provenance Manifest & Hub CI | `docs/WORKFLOW_SPEC.md` (§4.1); `.github/workflows/hub-ci.yml`; `results/manifests/run_manifest_*.json` | Enforces `manifest_version`, `execution_environment`, `source_repository.commit_sha`, `golden_artifacts.*.sha256`, and logprob-bloat guardrail (`results/baselines/references/` only) | `[READY]` |
 | 3-Axis Co-Optimization Framework | `docs/METRICS_AND_AXES.md` (§1) | Formal axis enum (`STRUCTURAL`, `SPATIAL`, `TEMPORAL`) in `kv_bench:src/core/axis.py` | `[READY]` |
 | Proposal Conceptual 3-Layer Policy | `deliverables/s1_proposal_defense/KV-Cache Co-optimization.pdf` (backup Slide 07, PDF p. 17) & `Slide_Content_and_Executive_Summary.md` (Slides 08 & 10) | Original L1/L2/L3 conceptual baseline for contrast | `[READY]` |
-| Evidence-Driven WP-4 Policy Redesign | `analysis/wp3/*` (PR #21) | Synthesizes WP-3 white-box findings into falsifiable WP-4 candidate hypotheses | `[DRAFT/PR#21]` / `[OPEN_DECISION]` |
+| Evidence-Driven WP-4 Policy Redesign | `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md` (PR #21 merged `911c1d3`) | Synthesizes WP-3 white-box findings into 4 falsifiable WP-4 candidate hypotheses (`[READY]`; final policy selection `[OPEN_DECISION]`) | `[READY]` / `[OPEN_DECISION]` |
 
 ### Block 4 — Draft Section Skeleton, Table/Figure Specs & Open Questions
 - **Outline:**
@@ -51,7 +51,7 @@
 - **Figure Spec — Fig. 3.1 (Two-Tier System & Data-Flow Architecture Diagram):** Clean redraw/adaptation of the Mermaid diagram in `docs/WORKFLOW_SPEC.md` §1 showing Hub (`kv_co-op_hub`), Execution (`kv_bench` on Slurm `gpu4090` / local RTX 4060), Provenance Manifests + CI gate, and GitHub Project #9. *Source:* `docs/WORKFLOW_SPEC.md` `[READY]`.
 - **Figure Spec — Fig. 3.2 (3-Axis Co-Optimization Control Plane Diagram):** Block diagram showing how `STRUCTURAL` (precision/eviction), `SPATIAL` (VRAM/DRAM tiering), and `TEMPORAL` (prefetch/reuse scheduling) plug into the unified `kv_bench` wrapper interface (`BaseKVTechnique` `[NEEDS_VERIFICATION]` — verify exact class/interface name in `khemingkapat/kv_bench`).
 - **Open Questions:**
-  - `[OPEN_DECISION]` **WP-4 Policy Final Architecture:** Pending WP-3 PR #21 review and advisor feedback, which specific combination of mechanisms (e.g., asymmetric K-V compression + recallable offload vs. episodic/layer-sensitive budgeting + async prefetch) will be locked as the official Semester 2 (`WP-4` / `WP-6`) policy architecture?
+  - `[OPEN_DECISION]` **WP-4 Policy Final Architecture:** From the 4 falsifiable candidate hypotheses in `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md` (`[READY]`), which specific combination will be validated and locked as the official Semester 2 (`WP-4` / `WP-6`) policy architecture?
 
 ---
 
@@ -126,7 +126,7 @@
 | Baseline / Candidate | Backend | Verified Result Artifacts on `main` | Manifest File | Readiness |
 | :--- | :--- | :--- | :--- | :---: |
 | **Uncompressed vLLM Baseline (WP-2)** | vLLM V1 (`0.30.0`) | `results/baselines/baseline_hardware_16gb.json`, `concurrent_baseline_16gb.json`, `longmem_baseline_16gb.json`, `verify_identity_16gb.json`, `verify_cross_model_16gb.json` | `results/manifests/run_manifest_baseline_16gb.json` | `[READY]` |
-| **Uncompressed PyTorch Baseline (WP-1/WP-3)** | PyTorch Native SDPA (`2.6.0`) | `results/baselines/longmem_baseline_pytorch_16gb.json`, `verify_baseline_pytorch_16gb.json`, `results/grades/baseline_judged.json` *(Note: hardware sweep `results/baselines/baseline_pytorch_16gb.json` is unmerged on PR #21 `[DRAFT/PR#21]`)* | `results/manifests/run_manifest_baseline_pytorch_16gb.json` | `[READY]` / `[DRAFT/PR#21]` |
+| **Uncompressed PyTorch Baseline (WP-1/WP-3)** | PyTorch Native SDPA (`2.6.0`) | `results/baselines/baseline_pytorch_16gb.json`, `longmem_baseline_pytorch_16gb.json`, `verify_baseline_pytorch_16gb.json`, `results/grades/baseline_judged.json` | `results/manifests/run_manifest_baseline_pytorch_16gb.json` | `[READY]` |
 | **11 WP-3 Techniques:** `streamingllm`, `h2o`, `epicache`, `qserve_kv4`, `cachegen`, `headq`, `turboquant`, `flexgen_kv`, `infinigen`, `shadowkv`, `arkvale` | PyTorch Native SDPA (`2.6.0`) *(+ legacy vLLM `WP3-1` `streamingllm`)* | Each has 4 files in `results/runs/wp3/`: `<tech>_hardware_pytorch_16gb.json`, `<tech>_longmem_pytorch_16gb.json`, `<tech>_niah_pytorch_16gb.json`, `verify_<tech>_pytorch_16gb.json` + 2 files in `results/grades/`: `<tech>_grades.json`, `<tech>_judged.json` *(plus legacy vLLM `streamingllm_hardware_16gb.json` & `streamingllm_longmem_16gb.json`)* | Exact 12 manifests in `results/manifests/`: `run_manifest_wp3_h2o_pytorch.json` (not `_h2o.json`), `run_manifest_wp3_streamingllm.json` (legacy vLLM `WP3-1`), `run_manifest_wp3_streamingllm_pytorch.json` (PyTorch `WP3-1-3`), plus 9 `run_manifest_wp3_<tech>.json` (`arkvale`, `cachegen`, `epicache`, `flexgen_kv`, `headq`, `infinigen`, `qserve_kv4`, `shadowkv`, `turboquant`) | `[READY]` |
 
 ### Block 4 — Draft Section Skeleton, Table/Figure Specs & Open Questions
