@@ -1,6 +1,6 @@
 {
   "manifest_version": "1.0",
-  "generated_at": "2026-11-23T11:40:41Z",
+  "generated_at": "2026-11-28T03:54:28Z",
   "provenance_type": "technique_run_manifest",
   "milestone": "WP-3",
   "work_package": "WP3-9",
@@ -27,53 +27,53 @@
   },
   "execution_environment": {
     "cluster_node": "gpu06.slurm.cpe.kmutt.ac.th",
-    "slurm_job_id": "25111",
+    "slurm_job_id": "30848",
     "gpu_model": "NVIDIA GeForce RTX 4090",
     "physical_vram_gib": 23.52,
     "process_allocator_cap_gib": 16.0,
-    "longmem_job_id": "30137"
+    "longmem_job_id": "30848"
   },
   "golden_artifacts": {
     "infinigen_hardware_pytorch_16gb": {
       "path": "results/runs/wp3/infinigen_hardware_pytorch_16gb.json",
-      "sha256": "85ad425a18e7cda2596016939b35585892cd7c2510572bff9b7819e32dc6e161",
-      "size_bytes": 11382,
+      "sha256": "0ed09bb4df2889ea8d5f38f06e9583195fa2af2b7275ebd9048e684722bb23f8",
+      "size_bytes": 11387,
       "description": "Unified PyTorch context scaling sweep (512 to 32,768 tokens) on 16.0 GiB VRAM cap"
     },
     "infinigen_longmem_pytorch_16gb": {
       "path": "results/runs/wp3/infinigen_longmem_pytorch_16gb.json",
-      "sha256": "0bae320374584510548877bba3a6f0d746d16ea14664f22255a045570cf20c5f",
-      "size_bytes": 191424,
+      "sha256": "cf32b604556a3c86c76b2210bf7aa8328c5b3a4e51cb07112b41d198baab3fc5",
+      "size_bytes": 186015,
       "description": "Single-pass 150-question native-length LongMemEval run (ctx=32768, max_tokens=128, Qwen chat template, per-sample KL/Top-1)"
     },
     "infinigen_niah_pytorch_16gb": {
       "path": "results/runs/wp3/infinigen_niah_pytorch_16gb.json",
-      "sha256": "3edd0b98a4cca0bdb458adb1bffe75ce2c766d61dc7fce6d859b26f5a7cd671d",
-      "size_bytes": 7577,
+      "sha256": "e6d2638c3408e69997d9e7b7c8a965ca35bfd989a6d6480e3fecb4075ddf1968",
+      "size_bytes": 7611,
       "description": "Needle-in-a-Haystack exact retrieval stress test across 2K and 4K context lengths"
     },
     "verify_infinigen_pytorch_16gb": {
       "path": "results/runs/wp3/verify_infinigen_pytorch_16gb.json",
-      "sha256": "0d869719111f4122ff2d5e65364267c3bc8a287bfb1c6b3ef128b51744d0cd93",
-      "size_bytes": 1597,
+      "sha256": "6cf94ed191ef08c6625b5652389e8a8201af32d8ad54fae0306539f91f00a010",
+      "size_bytes": 1594,
       "description": "Fast verification reference check (128 ctx, 16 tokens) against uncompressed PyTorch reference"
     },
     "infinigen_longmem_grades": {
       "path": "results/grades/infinigen_grades.json",
-      "sha256": "4ee7ec4b1bd72d5974d7f7ecd1d845e0b161e12c7329a7cea86373b28ed285a3",
-      "size_bytes": 21872,
+      "sha256": "6615b75875ec576cd697c6bc21e350b0c8eb39d6b99057a643cb1cdf58f9be78",
+      "size_bytes": 21781,
       "description": "Offline semantic grading sidecar for all 150 LongMemEval questions"
     },
     "infinigen_longmem_judged": {
       "path": "results/grades/infinigen_judged.json",
-      "sha256": "cdbc469441c3731302ec3ce12291dd50f2f730b85aef2cd27182ef781a4d4e8a",
-      "size_bytes": 97156,
+      "sha256": "bb70ca0410b36015c3ec6492de33a9e9113a7d409c8a005abf3af922e508587c",
+      "size_bytes": 97134,
       "description": "Merged 150-question semantic-judged LongMemEval summary with baseline-controlled causal verdicts"
     }
   },
   "source_repository": {
     "repo": "khemingkapat/kv_bench",
-    "commit_sha": "2a9338a2f750741f7765d79c1270f5579a9ffed0",
+    "commit_sha": "78ce018e589c554fccd7d4e31173fe04fcba8a0c",
     "branch": "main",
     "clean_working_tree": true
   }

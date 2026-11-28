@@ -12,19 +12,19 @@
         "STRUCTURAL"
       ],
       "prompt_tokens": 895192,
-      "generated_tokens": 5060,
-      "ttft_sec": 1.4751,
-      "decode_time_sec": 5.2657,
-      "total_time_sec": 465.4202,
-      "throughput_tok_per_sec": 960.75,
-      "tpot_mean_ms": 39.62,
-      "tpot_p95_ms": 42.5,
+      "generated_tokens": 5031,
+      "ttft_sec": 1.1794,
+      "decode_time_sec": 2.9524,
+      "total_time_sec": 336.5273,
+      "throughput_tok_per_sec": 1703.7,
+      "tpot_mean_ms": 23.08,
+      "tpot_p95_ms": 23.75,
       "cold_ttft_sec": 0.0,
       "cold_total_sec": 0.0,
-      "ttft_p95_sec": 3.2458,
-      "peak_alloc_mb": 9434.32,
-      "peak_reserved_mb": 9694.0,
-      "host_rss_delta_mb": 971.21,
+      "ttft_p95_sec": 2.5227,
+      "peak_alloc_mb": 9434.65,
+      "peak_reserved_mb": 9868.0,
+      "host_rss_delta_mb": 897.68,
       "memcpy_bytes_per_token": 0.0,
       "error": null,
       "extra": {
@@ -36,15 +36,15 @@
         "effective_cache_tokens": 2048,
         "effective_cache_blocks": 128,
         "active_kv_tokens": 2048,
-        "evicted_tokens": 898204,
-        "evicted_blocks": 56138,
+        "evicted_tokens": 898175,
+        "evicted_blocks": 56136,
         "engine": "pytorch",
         "attn_implementation": "sdpa",
         "max_vram_gb": 16.0,
         "effective_gpu_utilization": 0.5783,
         "hardware_vram_gb": 23.52,
         "longmem_acc_overall": 0.5067,
-        "longmem_f1_overall": 0.1912,
+        "longmem_f1_overall": 0.1908,
         "longmem_total_samples": 150,
         "longmem_correct_samples": 76,
         "longmem_acc_cross_session_reasoning": 0.2333,
@@ -53,14 +53,14 @@
         "longmem_acc_fact_recall": 0.7667,
         "longmem_f1_fact_recall": 0.3665,
         "longmem_count_fact_recall": 30,
-        "longmem_acc_information_update": 0.6,
-        "longmem_f1_information_update": 0.2172,
+        "longmem_acc_information_update": 0.5333,
+        "longmem_f1_information_update": 0.2064,
         "longmem_count_information_update": 30,
         "longmem_acc_relative_timeframe": 0.2,
-        "longmem_f1_relative_timeframe": 0.1875,
+        "longmem_f1_relative_timeframe": 0.1905,
         "longmem_count_relative_timeframe": 30,
-        "longmem_acc_unanswerable_refusal": 0.7333,
-        "longmem_f1_unanswerable_refusal": 0.1416,
+        "longmem_acc_unanswerable_refusal": 0.8,
+        "longmem_f1_unanswerable_refusal": 0.1478,
         "longmem_count_unanswerable_refusal": 30,
         "dataset_sha256": "bc37f751ca2c227ff5f6705c3c49aec2e4681b3b48ff231563567bc69d30ad63",
         "prompt_format": "chat_template",
@@ -136,12 +136,12 @@
           "86f00804": true,
           "7161e7e2": false,
           "cc5ded98": true,
-          "c6853660": true,
+          "c6853660": false,
           "41698283": true,
           "6071bd76": false,
           "7e974930": false,
           "26bdc477": true,
-          "2133c1b5": true,
+          "2133c1b5": false,
           "c4ea545c": false,
           "db467c8c": true,
           "c7dc5443": false,
@@ -198,7 +198,7 @@
           "gpt4_372c3eed_abs": false,
           "a96c20ee_abs": true,
           "0ddfec37_abs": true,
-          "031748ae_abs": false,
+          "031748ae_abs": true,
           "09ba9854_abs": false,
           "bc8a6e93_abs": true,
           "2698e78f_abs": true,
@@ -223,28 +223,28 @@
           "gpt4_70e84552_abs": true,
           "eeda8a6d_abs": true,
           "60bf93ed_abs": true,
-          "6456829e_abs": false,
+          "6456829e_abs": true,
           "80ec1f4f_abs": true
         },
         "sample_predictions": {
           "7024f17c": "The conversation did not mention the number of hours spent jogging or practicing yoga last week. Therefore, this information was not provided.",
-          "09ba9854": "The train from Narita Airport to Shinjuku Station costs approximately \u00a53,000\u20134,000 (around $25\u2013$35 USD), depending on the route and time. A taxi from Narita to Shinjuku typically costs \u00a520,000\u201330,000 (around $180\u2013$270 USD).  \n\nThus, taking the train instead of a taxi would save you **about $145\u2013$245**.  \n\nNote: This assumes a direct train ride and that the hotel is within walking distance or a short subway",
+          "09ba9854": "The train from Narita Airport to Shinjuku Station costs approximately \u00a53,000\u20134,000 (around $25\u2013$35 USD), depending on the route and time. A taxi from Narita to Shinjuku typically costs \u00a520,000\u201330,000 (around $180\u2013$270 USD).  \n\nThus, taking the train instead of a taxi would save you **about $145\u2013$245**.  \n\nNote: This assumes a direct train ride and that you're not including additional costs (like a taxi",
           "9aaed6a3": "It was not mentioned how much cashback you earned at SaveMart last Thursday.",
           "46a3abf7": "You currently have two tanks: your 20-gallon community tank (Amazonia) and the 1-gallon tank set up for your friend's kid.",
           "bb7c3b45": "You saved $100 on the Jimmy Choo heels, as you purchased them for $200 at the outlet mall, compared to their original price of $300.",
           "ef9cf60a": "You spent $100 on a gift card to her favorite spa for your sister. There is no mention of any additional spending on gifts for her.",
-          "2e6d26dc": "Based on the conversation history, the babies born to friends and family members in the last few months are:\n\n1. David and his wife (baby boy Jasper) \u2013 born in the recent past (implied to be around the time of the conversation).\n2. Rachel and her partner (baby boy Max) \u2013 born in March.\n3. The aunt's twins, Ava and Lily \u2013 born in April.\n\nThat makes a total of **3 babies** born to friends and family members in the last few months.",
+          "2e6d26dc": "Based on the conversation history, the babies born to friends and family members in the last few months are:\n\n1. David and his wife (baby boy Jasper) \u2013 born in the past few months (specific month not mentioned).\n2. Rachel and her partner (baby boy Max) \u2013 born in March.\n3. The aunt's twins, Ava and Lily \u2013 born in April.\n\nThat makes a total of **3 babies** born to friends and family members in the last few months.",
           "f35224e0": "The total number of episodes listened to from \"How I Built This\" and \"My Favorite Murder\" was not mentioned in the conversation history.",
           "gpt4_59c863d7": "It was not mentioned how many model kits you have worked on or bought.",
           "f0e564bc": "The total amount spent on the designer handbag and high-end skincare products is not explicitly stated in the conversation history. While the user mentioned spending $500 on skincare products and $800 on the Coach handbag, these figures are not confirmed or directly provided in the conversation. Therefore, based on the information given, the total cannot be accurately determined.",
           "e56a43b9": "You will get a $1 discount on your next purchase at FreshMart, as you have reached 500 points and every 500 points translates to a $1 discount.",
-          "a11281a2": "The conversation history states you had around 350 followers at the start of the year and now have approximately 350 followers after two weeks. There is no mention of an increase in followers during that time. Therefore, the approximate increase in Instagram followers over two weeks is **0**.",
+          "a11281a2": "The conversation history states you grew your followers \"significantly\" since the start of the year and mentions you had around 350 followers after two weeks. However, it does not provide a specific numerical increase from the start of the year or a precise figure for the two-week growth. Therefore, the exact increase in followers over two weeks was not mentioned.",
           "d6062bb9": "The total number of views on your most popular videos on YouTube and TikTok was not mentioned in the conversation history.",
           "4bc144e2": "You spent $15 on the car wash and $50 on the parking ticket. \n\n- Car wash on February 3rd: $15  \n- Parking ticket on January 5th: $50  \n\nTotal: $65.",
           "d23cf73b": "It was not mentioned how many different cuisines you have learned to cook or tried out in the past few months.",
           "078150f1": "The information about how much more money you raised than your initial goal is not mentioned in the conversation history.",
           "b5ef892d": "The conversation history does not mention the number of days spent on camping trips in the United States this year.",
-          "28dc39ac": "The conversation history does not provide a total number of hours spent playing games. Each game's playtime is mentioned individually (e.g., 20 hours for The Last of Us Part II, 20 hours for Assassin's Creed Odyssey, 10 hours for Celeste, etc.), but there is no cumulative total provided. Therefore, the total hours cannot be calculated from the given information.",
+          "28dc39ac": "The conversation history does not provide a total number of hours spent playing games. Each game's playtime is mentioned individually (e.g., 20 hours for The Last of Us Part II, 20 hours for Assassin's Creed Odyssey, 10 hours for Celeste, etc.), but there is no cumulative total provided. Therefore, the total hours cannot be determined from the given information.",
           "gpt4_2f91af09": "It was not mentioned how many total pieces of writing you have completed since you started writing again three weeks ago.",
           "5025383b": "The two hobbies that led you to join online communities are cooking and photography.",
           "157a136e": "It was not mentioned how many years older your grandma is than you.",
@@ -255,7 +255,7 @@
           "00ca467f": "You went to two doctor's appointments in March: one with your primary care physician, Dr. Smith, on March 3rd, and one with your neurologist, Dr. Johnson, on March 15th.",
           "c4a1ceb8": "You have used **three** different types of citrus fruits in your cocktail recipes: **orange**, **lemon**, and **lime**.",
           "0ea62687": "Your car was getting 30 miles per gallon a few months ago and is currently getting 28 miles per gallon. The difference is 2 miles per gallon.",
-          "a9f6b44c": "You serviced two bikes in March: your road bike (on March 10th) and your mountain bike (implied by the mention of a new water bottle cage for your mountain bike, though the exact service date isn't specified). However, since the mountain bike service date isn't explicitly mentioned, only one service (the road bike) is confirmed for March. \n\nAnswer: One bike was serviced in March.",
+          "a9f6b44c": "You serviced two bikes in March: your road bike (on March 10th) and your mountain bike (implied by the mention of a new water bottle cage for your mountain bike, though the exact service date isn't specified). However, since the mountain bike service date isn't explicitly mentioned, only one service (the road bike) is confirmed for March. \n\nAnswer: One bike (the road bike) was serviced in March.",
           "d682f1a2": "You have used two different food delivery services recently: Fresh Fusion and Uber Eats.",
           "6b168ec8": "You own three bikes: a road bike, a mountain bike, and a commuter bike.",
           "545bd2b5": "You've been averaging around 2 hours of screen time on Instagram per day.",
@@ -280,7 +280,7 @@
           "577d4d32": "You stop checking work emails and messages by 7 pm.",
           "15745da0": "You have been collecting vintage cameras for three months.",
           "4388e9dd": "Andy was wearing an untidy, stained white shirt in the script.",
-          "58ef2f1c": "It was not mentioned when you volunteered at the local animal shelter's fundraising dinner. The conversation refers to the \"Love is in the Air\" fundraising dinner you volunteered at back in February, but there is no specific date provided for that event. Additionally, the event described as being at a local animal shelter is not confirmed in the conversation. Therefore, the exact date of volunteering at the animal shelter's fundraising dinner is not available.",
+          "58ef2f1c": "It was not mentioned when you volunteered at the local animal shelter's fundraising dinner. The conversation refers to the \"Love is in the Air\" fundraising dinner you volunteered at back in February, but there is no specific date provided for that event. Additionally, the event described as being at a local animal shelter is not confirmed in the conversation. Therefore, the exact date of volunteering at the animal shelter's fundraising dinner was not mentioned.",
           "c14c00dd": "You currently use a lavender-scented shampoo that you picked up at Trader Joe's. The specific brand was not mentioned.",
           "f4f1d8a4": "Your sister gave you a new stand mixer as a birthday gift.",
           "caf9ead2": "It took around 5 hours to move everything into the new apartment.",
@@ -288,12 +288,12 @@
           "86f00804": "You are currently reading \"The Seven Husbands of Evelyn Hugo.\"",
           "7161e7e2": "On Sunday, Admon was scheduled for the 8 am - 4 pm shift.",
           "cc5ded98": "You dedicate about two hours each day to coding exercises.",
-          "c6853660": "You mostly recently increased the limit on the number of cups of coffee in the morning, from one cup to two cups.",
-          "41698283": "You most recently purchased a 70-200mm zoom lens.",
-          "6071bd76": "The conversation did not mention any change in the coffee-to-water ratio. You initially stated that 1 tablespoon of coffee for every 6 ounces of water is your perfect ratio, and there was no information provided about switching to more or less water per tablespoon. Therefore, it was not mentioned.",
+          "c6853660": "You mostly recently increased the limit on the number of cups of coffee in the morning.",
+          "41698283": "You recently purchased a 70-200mm zoom lens.",
+          "6071bd76": "The conversation did not mention any change in the coffee-to-water ratio. You initially stated that 1 tablespoon of coffee for every 6 ounces of water is your perfect ratio, and there was no information indicating a switch to more or less water per tablespoon. Therefore, it was not mentioned.",
           "7e974930": "On your most recent visit to the Downtown Farmers Market, you earned $350. This was on May 6th, as noted in your list of events.",
-          "26bdc477": "You mentioned taking your Canon EOS 80D on five trips: three to Yellowstone, one to Zion National Park, and one to another location (implied by \"many adventures\"). However, the exact number of trips is not explicitly stated. Therefore, the number of trips is not definitively known from the conversation.",
-          "2133c1b5": "You have been living in your current apartment in Harajuku for 3 months.",
+          "26bdc477": "You mentioned taking your Canon EOS 80D on five trips: three to Yellowstone, one to Zion National Park, and one to another location (implied by \"many more adventures\"). However, the exact number of trips is not explicitly stated. Therefore, the number of trips is not definitively known from the conversation.",
+          "2133c1b5": "You have been living in your current apartment in Harajuku for three months.",
           "c4ea545c": "It was not mentioned whether you go to the gym more frequently than before.",
           "db467c8c": "Your parents have been staying with you in the US for nine months.",
           "c7dc5443": "Your current record in the recreational volleyball league was not mentioned in the conversation.",
@@ -306,14 +306,14 @@
           "830ce83f": "Rachel moved to the suburbs of Chicago.",
           "42ec0761": "Yes, you have a spare screwdriver for opening up your laptop.",
           "ba61f0b9": "There are 5 women on the team led by Rachel.",
-          "50635ada": "Your previous frequent flyer status on United Airlines before reaching Premier Gold was Premier Silver. You earned Premier Silver status when you hit 20,000 miles, and you were already a member of United MileagePlus prior to that. The exact status before Premier Silver (e.g., Silver, Bronze, or no status) was not specified in the conversation history. Therefore, it was not mentioned.",
+          "50635ada": "Your previous frequent flyer status on United Airlines before reaching Premier Gold was Premier Silver. You earned Premier Silver status when you hit 20,000 miles, and you were already a member before that, though the specific prior status (e.g., Silver, Bronze, or no status) was not mentioned in the conversation history. Therefore, based on the provided information, the only confirmed prior status is Premier Silver.",
           "10e09553": "It was not mentioned how many largemouth bass you caught with Alex on the earlier fishing trip to Lake Michigan. The only specific number mentioned was 7 on July 22.",
           "89941a94": "The conversation history does not mention whether the user had other bikes before purchasing the gravel bike. Therefore, this information was not provided.",
           "9bbe84a2": "Your previous goal for your Apex Legends level was to reach level 100 before the end of the year. You later updated your goal to reach level 150.",
           "6a1eabeb": "Your personal best time in the charity 5K run was 25:50.",
           "3ba21379": "You are currently working on a Ford F-150 pickup truck model.",
           "e66b632c": "Your previous personal best time for the charity 5K run was 26 minutes.",
-          "184da446": "You have not read any pages of \"A Short History of Nearly Everything\" yet. In the conversation history, you mentioned reading up to page 200 of \"A Short History of Everything,\" but that book does not exist. The correct title is \"A Short History of Nearly Everything\" by Bill Bryson. However, there is no mention of how many pages you have actually read in the conversation. Therefore, based on the information provided, the number of pages read is not specified.",
+          "184da446": "You have read up to page 200 of \"A Short History of Nearly Everything.\" (Note: There is a discrepancy in your original message\u2014your book is titled \"A Short History of Nearly Everything,\" not \"Everything.\" You mentioned being on page 200 in the conversation history, which is consistent with the provided context.)",
           "72e3ee87": "You have completed 50 episodes of the Science series on Crash Course.",
           "7401057b": "The number of free nights you can redeem at any Hilton property with your accumulated points depends on your specific Hilton Honors points balance, the hotel category, and the time of year. Hilton uses a dynamic point system where the number of points required for a free night varies by hotel category (from Category 1 to 10), room type, and season. \n\nFor example:\n- A Category 5 hotel (like Hilton Lake Las Vegas Resort) typically requires around 5,000\u201310,000 points per night.\n- A Category 10 hotel (like the Hilton Paris Eiffel Tower) may",
           "0f05491a": "You need 120 stars to reach the Gold level on your Starbucks Rewards app.",
@@ -322,36 +322,36 @@
           "d01c6aa8": "The conversation does not mention your age when you moved to the United States. Therefore, this information was not provided.",
           "gpt4_2c50253f": "It was not mentioned in the conversation history what time the user wakes up on Tuesdays and Thursdays.",
           "993da5e2": "It was not mentioned how long you had been using the new area rug when you rearranged your living room furniture.",
-          "0bb5a684": "You attended the workshop on January 10th and the team meeting is on January 17th.  \n\nThat means you attended the workshop **7 days** before the team meeting.",
+          "0bb5a684": "You attended the workshop on January 10th and the team meeting is on January 17th.  \n\nThat is **7 days** before the team meeting.",
           "gpt4_68e94288": "You participated in the #PlankChallenge on Instagram 5 days ago.",
           "gpt4_e072b769": "The conversation does not specify when you started using the Ibotta app. Therefore, it was not mentioned.",
           "gpt4_18c2b244": "The order of the three events is:\n\n1. **I signed up for the rewards program at ShopRite**  \n2. **I used a Buy One Get One Free coupon on Luvs diapers at Walmart**  \n3. **I redeemed $12 cashback for a $10 Amazon gift card from Ibotta**\n\nThis order is based on the conversation history, where:\n- The user signs up for ShopRite's rewards program first (mentioned in the context of planning a grocery trip).\n- The Walmart coupon use is mentioned as a recent event (\"today\").\n- The Ibotta redemption is explicitly stated as happening \"today\"",
-          "b46e15ed": "The conversation does not provide any information about the dates or timing of the charity events you participated in, nor does it specify when those events occurred relative to the current date. Therefore, it is not possible to determine how many months have passed since those events.\n\nAnswer: Not mentioned.",
+          "b46e15ed": "The conversation does not provide any information about the dates or timing of the charity events you participated in, nor does it mention how many months have passed since those events. Therefore, the number of months cannot be determined from the given information.",
           "gpt4_213fd887": "The charity 5K run was the event you participated in first. You mentioned the charity 5K run \"about a month ago,\" while joining the volleyball league was a more recent development. Therefore, the 5K run predates your volleyball league participation.",
           "b29f3365": "The conversation history does not specify the duration of guitar lessons taken before buying the new guitar amp. Therefore, this information was not mentioned.",
           "2ebe6c92": "You did not finish a book a week ago. You are currently reading \"The Song of Achilles\" and are about halfway through it. The conversation does not mention finishing any book a week ago.",
-          "gpt4_a2d1d1f6": "The conversation does not specify the date or number of days ago when you harvested your first batch of fresh herbs. Therefore, this information was not provided.",
-          "gpt4_68e94287": "The post about the vegan chili recipe happened first. The conversation history states that the user shared the recipe on Instagram using #FoodieAdventures \"yesterday,\" while the #PlankChallenge participation occurred on the same day as the query. Since the recipe post was shared \"yesterday\" and the plank challenge was mentioned in the current query, the recipe post predates the plank challenge.",
-          "gpt4_fa19884d": "The conversation does not mention an artist that you started listening to last Friday. Therefore, this information was not provided.",
-          "gpt4_2312f94c": "You got the Samsung Galaxy S22 first. You mentioned purchasing it on February 20th, while the Dell XPS 13 was pre-ordered on January 20th. Since the pre-order was placed earlier, the Dell XPS 13 arrived later, meaning the Samsung Galaxy S22 was obtained first.",
-          "gpt4_98f46fc6": "The conversation does not provide a clear timeline or information about the order in which you participated in the charity gala or the charity bake sale. Therefore, it was not possible to determine which event you participated in first based on the given information.",
+          "gpt4_a2d1d1f6": "The conversation does not specify the number of days ago you harvested your first batch of fresh herbs. Therefore, this information was not provided.",
+          "gpt4_68e94287": "The post about the vegan chili recipe happened first. The conversation history states that the user shared the recipe using #FoodieAdventures \"yesterday,\" while the #PlankChallenge participation occurred on \"today.\" Since yesterday precedes today, the recipe post happened first.",
+          "gpt4_fa19884d": "The artist you started to listen to last Friday was not mentioned in the conversation history.",
+          "gpt4_2312f94c": "You got the Samsung Galaxy S22 first. You mentioned purchasing it on February 20th, while the Dell XPS 13 was pre-ordered on January 20th, which is earlier. Therefore, the Dell XPS 13 was obtained first.",
+          "gpt4_98f46fc6": "The conversation history does not provide a clear timeline or information about when the charity gala or the charity bake sale occurred relative to each other. Therefore, it was not possible to determine which event you participated in first.",
           "gpt4_385a5000": "The marigolds were started first. The user mentioned that the marigold seeds arrived on March 3rd and were already germinating, while the tomatoes were started indoors in February. Since February comes before March, the tomatoes were started earlier than the marigolds.",
           "gpt4_8279ba03": "You bought a smoker 10 days ago.",
           "gpt4_7ca326fa": "The conversation history does not provide information about the graduation order of Emma, Rachel, and Alex. Therefore, it was not mentioned.",
           "gpt4_4929293a": "Michael's engagement party happened first.  \n\nThe conversation history states: \"I just came back from Michael's engagement party at a trendy rooftop bar today, and it got me thinking about my own wedding plans.\" This indicates the engagement party occurred recently, while the user's cousin's wedding is referenced as a past event where they walked down the aisle as a bridesmaid. Since the engagement party is described as happening \"today,\" it is more recent than the cousin's wedding, which took place earlier.",
           "gpt4_e414231e": "The conversation history does not provide specific dates or timelines for when the flat tire was fixed or when the pedal upgrade was decided. Therefore, the number of days between these events was not mentioned.",
           "gpt4_d6585ce8": "The conversation history does not provide specific dates or a chronological list of concerts attended in the past two months. Therefore, the order of the concerts cannot be determined from the given information.",
-          "gpt4_93159ced": "You have been working in the software engineering field since you graduated with your degree in Computer Science from the University of California, Berkeley. However, the conversation does not specify how long you worked before joining NovaTech. Therefore, the exact duration prior to your current job at NovaTech was not mentioned.",
+          "gpt4_93159ced": "You have been working in the software engineering field since you graduated with your degree in Computer Science from the University of California, Berkeley. However, the conversation does not specify how long you worked before joining NovaTech. Therefore, the exact duration prior to your current job is not mentioned.",
           "gpt4_e061b84g": "The event mentioned was the company charity soccer tournament.",
-          "71017277": "The information about who received the piece of jewelry is not mentioned in the conversation history.",
+          "71017277": "The conversation does not mention anyone giving the user a piece of jewelry. Therefore, it was not mentioned.",
           "gpt4_4fc4f797": "The conversation history does not provide specific dates for when the feedback was received or when the suspension testing occurred. Therefore, the number of days between these events cannot be determined from the given information.",
           "gpt4_2487a7cb": "The conversation does not provide a clear timeline or order of when the \"Effective Time Management\" workshop or the \"Data Analysis using Python\" webinar was attended. Therefore, it was not possible to determine which event was attended first.",
           "8077ef71": "You attended the networking event today. Since today is the current day, it was 0 days ago.",
           "gpt4_372c3eed_abs": "You graduated with a Bachelor's degree in 2020 and are currently pursuing a Master's degree. Assuming a standard academic timeline:\n\n- Bachelor's degree: 4 years (typically completed by age 24)\n- Master's degree: 2 years (typically completed by age 26)\n\nTotal formal education time: **6 years**.",
           "a96c20ee_abs": "The conversation history does not mention the university where you presented your poster.",
           "0ddfec37_abs": "The information about autographed footballs added to your collection in the first three months is not mentioned in the conversation.",
-          "031748ae_abs": "You lead a team of 5 engineers.",
-          "09ba9854_abs": "The cost of taking the bus from the airport to your hotel in Tokyo is typically around $10\u2013$20, depending on the route and destination. In comparison, a taxi ride from the airport to a hotel would cost approximately $60.  \n\nTherefore, by taking the bus instead of a taxi, you would save roughly **$40 to $50**.  \n\nNote: This assumes the bus is a direct or convenient option to your hotel. If your hotel is in a central area like Shinjuku, the bus may require a transfer or additional travel time, so it's best to confirm with your hotel for",
+          "031748ae_abs": "It was not mentioned how many engineers you lead when you just started your new role as Software Engineer Manager.",
+          "09ba9854_abs": "The cost of taking the bus from the airport to your hotel in Tokyo is typically around $10\u2013$20, depending on the route and destination. In comparison, a taxi ride from the airport to a hotel would cost approximately $60.  \n\nThus, by taking the bus instead of a taxi, you would save roughly **$40 to $50**.  \n\nNote: This assumes the bus is a direct or convenient option to your hotel. If your hotel is in a central area like Shinjuku, the bus may require a transfer or additional travel time, so it's best to confirm with your hotel for",
           "bc8a6e93_abs": "It was not mentioned what you baked for your uncle's birthday party.",
           "2698e78f_abs": "It was not mentioned in the conversation history how often the user sees Dr. Johnson. The user only mentioned seeing Dr. Smith, not Dr. Johnson. Therefore, the information about Dr. Johnson's visit frequency is not available.",
           "c8090214_abs": "The conversation does not mention the purchase date of the iPad or the specific dates of attending the Holiday Market relative to that purchase. Therefore, the number of days before buying the iPad that the market was attended was not mentioned.",
@@ -360,7 +360,7 @@
           "29f2956b_abs": "The conversation did not mention how much time is dedicated to practicing violin every day.",
           "gpt4_93159ced_abs": "The conversation history does not provide information about how long you have been working before starting your current job at Google.",
           "15745da0_abs": "It was not mentioned how long you have been collecting vintage films.",
-          "edced276_abs": "The conversation did not mention any travel days in Seattle or any specific duration of travel in Hawaii beyond the \"amazing island-hopping trip\" which was described as 10 days. Therefore, the total number of days spent traveling in Hawaii and in Seattle is not mentioned.",
+          "edced276_abs": "The conversation did not mention any travel days in Seattle or any specific duration of travel in Hawaii beyond the \"amazing island-hopping trip\" which was described as lasting 10 days. Therefore, the total number of days spent traveling in Hawaii and in Seattle is not mentioned.",
           "ba358f49_abs": "The conversation does not provide Rachel's age or the wedding date, so it is not possible to determine how old Rachel will be when you get married.",
           "2311e44b_abs": "The conversation does not mention the total number of pages in \"Sapiens\" or how many pages you have left to read in it. Therefore, this information was not provided.",
           "e5ba910e_abs": "The total cost of your recently purchased headphones and the iPad was not mentioned in the conversation history.",
@@ -369,13 +369,13 @@
           "f685340e_abs": "It was not mentioned how often you play table tennis with your friends at the local park.",
           "88432d0a_abs": "It was not mentioned how many times you baked egg tarts in the past two weeks.",
           "2133c1b5_abs": "It was not mentioned how long you have been living in your current apartment in Shinjuku.",
-          "f4f1d8a4_abs": "It was not mentioned in the conversation history what the user's dad gave them as a birthday gift. The user mentioned receiving a stand mixer as a birthday gift from their sister, but nothing about a gift from their dad.",
+          "f4f1d8a4_abs": "It was not mentioned in the conversation history what the user's dad gave as a birthday gift. The user mentioned receiving a stand mixer as a birthday gift from their sister.",
           "982b5123_abs": "It was not mentioned in the conversation history when you booked the Airbnb in Sacramento.",
           "gpt4_fe651585_abs": "The conversation does not provide enough information to determine who became a parent first, Tom or Alex.",
           "gpt4_70e84552_abs": "The conversation does not mention purchasing cows from Peter or any timeline between fixing the fence and purchasing cows. Therefore, the order of these tasks cannot be determined from the provided information.",
-          "eeda8a6d_abs": "The conversation history does not mention the number of fish in a 30-gallon tank. Therefore, this information was not provided.",
+          "eeda8a6d_abs": "The conversation history does not mention the number of fish in a 30-gallon tank. It discusses a 20-gallon tank with neon tetras, golden gouramis, and a pleco, but no information is provided about a 30-gallon tank or its fish population. Therefore, the number of fish in a 30-gallon tank is not mentioned.",
           "60bf93ed_abs": "The information about the delivery time of an iPad case is not mentioned in the conversation history.",
-          "6456829e_abs": "The conversation did not mention the number of tomato or chili pepper plants initially planted.",
+          "6456829e_abs": "The conversation does not mention the number of tomato or chili pepper plants initially planted.",
           "80ec1f4f_abs": "The conversation history does not mention any visits to museums or galleries in December. Therefore, the number of such visits is not mentioned."
         },
         "sample_records": [
@@ -406,7 +406,7 @@
             "finish_reason": "length",
             "question": "How much will I save by taking the train from the airport to my hotel instead of a taxi?",
             "expected_answer": "$50",
-            "prediction": "The train from Narita Airport to Shinjuku Station costs approximately \u00a53,000\u20134,000 (around $25\u2013$35 USD), depending on the route and time. A taxi from Narita to Shinjuku typically costs \u00a520,000\u201330,000 (around $180\u2013$270 USD).  \n\nThus, taking the train instead of a taxi would save you **about $145\u2013$245**.  \n\nNote: This assumes a direct train ride and that the hotel is within walking distance or a short subway",
+            "prediction": "The train from Narita Airport to Shinjuku Station costs approximately \u00a53,000\u20134,000 (around $25\u2013$35 USD), depending on the route and time. A taxi from Narita to Shinjuku typically costs \u00a520,000\u201330,000 (around $180\u2013$270 USD).  \n\nThus, taking the train instead of a taxi would save you **about $145\u2013$245**.  \n\nNote: This assumes a direct train ride and that you're not including additional costs (like a taxi",
             "diagnostic": {
               "overall_retention_ratio": 0.3716,
               "overall_effective_bitwidth": 5.95,
@@ -482,7 +482,7 @@
             "diagnostic": {
               "overall_retention_ratio": 0.3466,
               "overall_effective_bitwidth": 5.55,
-              "min_session_effective_bitwidth": 3.87,
+              "min_session_effective_bitwidth": 3.88,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
             }
@@ -492,13 +492,13 @@
             "task_type": "cross_session_reasoning",
             "unanswerable": false,
             "prompt_tokens": 10431,
-            "generated_tokens": 103,
+            "generated_tokens": 98,
             "finish_reason": "stop",
             "question": "How many babies were born to friends and family members in the last few months?",
             "expected_answer": "5",
-            "prediction": "Based on the conversation history, the babies born to friends and family members in the last few months are:\n\n1. David and his wife (baby boy Jasper) \u2013 born in the recent past (implied to be around the time of the conversation).\n2. Rachel and her partner (baby boy Max) \u2013 born in March.\n3. The aunt's twins, Ava and Lily \u2013 born in April.\n\nThat makes a total of **3 babies** born to friends and family members in the last few months.",
+            "prediction": "Based on the conversation history, the babies born to friends and family members in the last few months are:\n\n1. David and his wife (baby boy Jasper) \u2013 born in the past few months (specific month not mentioned).\n2. Rachel and her partner (baby boy Max) \u2013 born in March.\n3. The aunt's twins, Ava and Lily \u2013 born in April.\n\nThat makes a total of **3 babies** born to friends and family members in the last few months.",
             "diagnostic": {
-              "overall_retention_ratio": 0.1866,
+              "overall_retention_ratio": 0.187,
               "overall_effective_bitwidth": 2.99,
               "min_session_effective_bitwidth": 1.2,
               "most_degraded_session_idx": 2,
@@ -518,7 +518,7 @@
             "diagnostic": {
               "overall_retention_ratio": 0.3757,
               "overall_effective_bitwidth": 6.01,
-              "min_session_effective_bitwidth": 4.0,
+              "min_session_effective_bitwidth": 3.99,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
             }
@@ -582,14 +582,14 @@
             "task_type": "cross_session_reasoning",
             "unanswerable": false,
             "prompt_tokens": 8067,
-            "generated_tokens": 61,
+            "generated_tokens": 73,
             "finish_reason": "stop",
             "question": "What was the approximate increase in Instagram followers I experienced in two weeks?",
             "expected_answer": "100",
-            "prediction": "The conversation history states you had around 350 followers at the start of the year and now have approximately 350 followers after two weeks. There is no mention of an increase in followers during that time. Therefore, the approximate increase in Instagram followers over two weeks is **0**.",
+            "prediction": "The conversation history states you grew your followers \"significantly\" since the start of the year and mentions you had around 350 followers after two weeks. However, it does not provide a specific numerical increase from the start of the year or a precise figure for the two-week growth. Therefore, the exact increase in followers over two weeks was not mentioned.",
             "diagnostic": {
-              "overall_retention_ratio": 0.2464,
-              "overall_effective_bitwidth": 3.94,
+              "overall_retention_ratio": 0.2449,
+              "overall_effective_bitwidth": 3.92,
               "min_session_effective_bitwidth": 2.78,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
@@ -694,7 +694,7 @@
             "finish_reason": "stop",
             "question": "How many hours have I spent playing games in total?",
             "expected_answer": "140 hours",
-            "prediction": "The conversation history does not provide a total number of hours spent playing games. Each game's playtime is mentioned individually (e.g., 20 hours for The Last of Us Part II, 20 hours for Assassin's Creed Odyssey, 10 hours for Celeste, etc.), but there is no cumulative total provided. Therefore, the total hours cannot be calculated from the given information.",
+            "prediction": "The conversation history does not provide a total number of hours spent playing games. Each game's playtime is mentioned individually (e.g., 20 hours for The Last of Us Part II, 20 hours for Assassin's Creed Odyssey, 10 hours for Celeste, etc.), but there is no cumulative total provided. Therefore, the total hours cannot be determined from the given information.",
             "diagnostic": {
               "overall_retention_ratio": 0.109,
               "overall_effective_bitwidth": 1.74,
@@ -888,14 +888,14 @@
             "task_type": "cross_session_reasoning",
             "unanswerable": false,
             "prompt_tokens": 6709,
-            "generated_tokens": 85,
+            "generated_tokens": 90,
             "finish_reason": "stop",
             "question": "How many bikes did I service or plan to service in March?",
             "expected_answer": "2",
-            "prediction": "You serviced two bikes in March: your road bike (on March 10th) and your mountain bike (implied by the mention of a new water bottle cage for your mountain bike, though the exact service date isn't specified). However, since the mountain bike service date isn't explicitly mentioned, only one service (the road bike) is confirmed for March. \n\nAnswer: One bike was serviced in March.",
+            "prediction": "You serviced two bikes in March: your road bike (on March 10th) and your mountain bike (implied by the mention of a new water bottle cage for your mountain bike, though the exact service date isn't specified). However, since the mountain bike service date isn't explicitly mentioned, only one service (the road bike) is confirmed for March. \n\nAnswer: One bike (the road bike) was serviced in March.",
             "diagnostic": {
-              "overall_retention_ratio": 0.2927,
-              "overall_effective_bitwidth": 4.68,
+              "overall_retention_ratio": 0.292,
+              "overall_effective_bitwidth": 4.67,
               "min_session_effective_bitwidth": 2.36,
               "most_degraded_session_idx": 1,
               "num_sessions": 3
@@ -1342,7 +1342,7 @@
             "finish_reason": "stop",
             "question": "When did I volunteer at the local animal shelter's fundraising dinner?",
             "expected_answer": "February 14th",
-            "prediction": "It was not mentioned when you volunteered at the local animal shelter's fundraising dinner. The conversation refers to the \"Love is in the Air\" fundraising dinner you volunteered at back in February, but there is no specific date provided for that event. Additionally, the event described as being at a local animal shelter is not confirmed in the conversation. Therefore, the exact date of volunteering at the animal shelter's fundraising dinner is not available.",
+            "prediction": "It was not mentioned when you volunteered at the local animal shelter's fundraising dinner. The conversation refers to the \"Love is in the Air\" fundraising dinner you volunteered at back in February, but there is no specific date provided for that event. Additionally, the event described as being at a local animal shelter is not confirmed in the conversation. Therefore, the exact date of volunteering at the animal shelter's fundraising dinner was not mentioned.",
             "diagnostic": {
               "overall_retention_ratio": 0.7268,
               "overall_effective_bitwidth": 11.63,
@@ -1482,15 +1482,15 @@
             "task_type": "information_update",
             "unanswerable": false,
             "prompt_tokens": 5506,
-            "generated_tokens": 25,
+            "generated_tokens": 18,
             "finish_reason": "stop",
             "question": "Did I mostly recently increase or decrease the limit on the number of cups of coffee in the morning?",
             "expected_answer": "You increased the limit (from one cup to two cups)",
-            "prediction": "You mostly recently increased the limit on the number of cups of coffee in the morning, from one cup to two cups.",
+            "prediction": "You mostly recently increased the limit on the number of cups of coffee in the morning.",
             "diagnostic": {
-              "overall_retention_ratio": 0.3676,
-              "overall_effective_bitwidth": 5.88,
-              "min_session_effective_bitwidth": 4.33,
+              "overall_retention_ratio": 0.3689,
+              "overall_effective_bitwidth": 5.9,
+              "min_session_effective_bitwidth": 4.34,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
             }
@@ -1500,13 +1500,13 @@
             "task_type": "information_update",
             "unanswerable": false,
             "prompt_tokens": 7231,
-            "generated_tokens": 17,
+            "generated_tokens": 16,
             "finish_reason": "stop",
             "question": "What type of camera lens did I purchase most recently?",
             "expected_answer": "a 70-200mm zoom lens",
-            "prediction": "You most recently purchased a 70-200mm zoom lens.",
+            "prediction": "You recently purchased a 70-200mm zoom lens.",
             "diagnostic": {
-              "overall_retention_ratio": 0.281,
+              "overall_retention_ratio": 0.2812,
               "overall_effective_bitwidth": 4.5,
               "min_session_effective_bitwidth": 3.18,
               "most_degraded_session_idx": 0,
@@ -1522,11 +1522,11 @@
             "finish_reason": "stop",
             "question": "For the coffee-to-water ratio in my French press, did I switch to more water per tablespoon of coffee, or less?",
             "expected_answer": "You switched to less water (5 ounces) per tablespoon of coffee.",
-            "prediction": "The conversation did not mention any change in the coffee-to-water ratio. You initially stated that 1 tablespoon of coffee for every 6 ounces of water is your perfect ratio, and there was no information provided about switching to more or less water per tablespoon. Therefore, it was not mentioned.",
+            "prediction": "The conversation did not mention any change in the coffee-to-water ratio. You initially stated that 1 tablespoon of coffee for every 6 ounces of water is your perfect ratio, and there was no information indicating a switch to more or less water per tablespoon. Therefore, it was not mentioned.",
             "diagnostic": {
               "overall_retention_ratio": 0.41,
               "overall_effective_bitwidth": 6.56,
-              "min_session_effective_bitwidth": 5.0,
+              "min_session_effective_bitwidth": 5.01,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
             }
@@ -1554,15 +1554,15 @@
             "task_type": "information_update",
             "unanswerable": false,
             "prompt_tokens": 6602,
-            "generated_tokens": 65,
+            "generated_tokens": 66,
             "finish_reason": "stop",
             "question": "How many trips have I taken my Canon EOS 80D camera on?",
             "expected_answer": "five",
-            "prediction": "You mentioned taking your Canon EOS 80D on five trips: three to Yellowstone, one to Zion National Park, and one to another location (implied by \"many adventures\"). However, the exact number of trips is not explicitly stated. Therefore, the number of trips is not definitively known from the conversation.",
+            "prediction": "You mentioned taking your Canon EOS 80D on five trips: three to Yellowstone, one to Zion National Park, and one to another location (implied by \"many more adventures\"). However, the exact number of trips is not explicitly stated. Therefore, the number of trips is not definitively known from the conversation.",
             "diagnostic": {
-              "overall_retention_ratio": 0.3005,
+              "overall_retention_ratio": 0.3004,
               "overall_effective_bitwidth": 4.81,
-              "min_session_effective_bitwidth": 3.42,
+              "min_session_effective_bitwidth": 3.41,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
             }
@@ -1572,13 +1572,13 @@
             "task_type": "information_update",
             "unanswerable": false,
             "prompt_tokens": 5490,
-            "generated_tokens": 18,
+            "generated_tokens": 17,
             "finish_reason": "stop",
             "question": "How long have I been living in my current apartment in Harajuku?",
             "expected_answer": "3 months",
-            "prediction": "You have been living in your current apartment in Harajuku for 3 months.",
+            "prediction": "You have been living in your current apartment in Harajuku for three months.",
             "diagnostic": {
-              "overall_retention_ratio": 0.3699,
+              "overall_retention_ratio": 0.3701,
               "overall_effective_bitwidth": 5.92,
               "min_session_effective_bitwidth": 4.07,
               "most_degraded_session_idx": 0,
@@ -1796,7 +1796,7 @@
             "diagnostic": {
               "overall_retention_ratio": 0.3283,
               "overall_effective_bitwidth": 5.25,
-              "min_session_effective_bitwidth": 3.65,
+              "min_session_effective_bitwidth": 3.66,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
             }
@@ -1806,14 +1806,14 @@
             "task_type": "information_update",
             "unanswerable": false,
             "prompt_tokens": 5818,
-            "generated_tokens": 82,
+            "generated_tokens": 85,
             "finish_reason": "stop",
             "question": "What was my previous frequent flyer status on United Airlines before I got the current status?",
             "expected_answer": "Premier Silver",
-            "prediction": "Your previous frequent flyer status on United Airlines before reaching Premier Gold was Premier Silver. You earned Premier Silver status when you hit 20,000 miles, and you were already a member of United MileagePlus prior to that. The exact status before Premier Silver (e.g., Silver, Bronze, or no status) was not specified in the conversation history. Therefore, it was not mentioned.",
+            "prediction": "Your previous frequent flyer status on United Airlines before reaching Premier Gold was Premier Silver. You earned Premier Silver status when you hit 20,000 miles, and you were already a member before that, though the specific prior status (e.g., Silver, Bronze, or no status) was not mentioned in the conversation history. Therefore, based on the provided information, the only confirmed prior status is Premier Silver.",
             "diagnostic": {
-              "overall_retention_ratio": 0.3381,
-              "overall_effective_bitwidth": 5.41,
+              "overall_retention_ratio": 0.3376,
+              "overall_effective_bitwidth": 5.4,
               "min_session_effective_bitwidth": 3.91,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
@@ -1850,7 +1850,7 @@
             "diagnostic": {
               "overall_retention_ratio": 0.2866,
               "overall_effective_bitwidth": 4.59,
-              "min_session_effective_bitwidth": 3.07,
+              "min_session_effective_bitwidth": 3.08,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
             }
@@ -1904,7 +1904,7 @@
             "diagnostic": {
               "overall_retention_ratio": 0.2207,
               "overall_effective_bitwidth": 3.53,
-              "min_session_effective_bitwidth": 2.43,
+              "min_session_effective_bitwidth": 2.44,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
             }
@@ -1932,14 +1932,14 @@
             "task_type": "information_update",
             "unanswerable": false,
             "prompt_tokens": 8390,
-            "generated_tokens": 100,
+            "generated_tokens": 70,
             "finish_reason": "stop",
             "question": "How many pages of 'A Short History of Nearly Everything' have I read so far?",
             "expected_answer": "220",
-            "prediction": "You have not read any pages of \"A Short History of Nearly Everything\" yet. In the conversation history, you mentioned reading up to page 200 of \"A Short History of Everything,\" but that book does not exist. The correct title is \"A Short History of Nearly Everything\" by Bill Bryson. However, there is no mention of how many pages you have actually read in the conversation. Therefore, based on the information provided, the number of pages read is not specified.",
+            "prediction": "You have read up to page 200 of \"A Short History of Nearly Everything.\" (Note: There is a discrepancy in your original message\u2014your book is titled \"A Short History of Nearly Everything,\" not \"Everything.\" You mentioned being on page 200 in the conversation history, which is consistent with the provided context.)",
             "diagnostic": {
-              "overall_retention_ratio": 0.2323,
-              "overall_effective_bitwidth": 3.72,
+              "overall_retention_ratio": 0.2359,
+              "overall_effective_bitwidth": 3.77,
               "min_session_effective_bitwidth": 2.59,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
@@ -2030,7 +2030,7 @@
             "diagnostic": {
               "overall_retention_ratio": 0.2661,
               "overall_effective_bitwidth": 4.26,
-              "min_session_effective_bitwidth": 2.01,
+              "min_session_effective_bitwidth": 2.02,
               "most_degraded_session_idx": 1,
               "num_sessions": 3
             }
@@ -2094,15 +2094,15 @@
             "task_type": "relative_timeframe",
             "unanswerable": false,
             "prompt_tokens": 7389,
-            "generated_tokens": 39,
+            "generated_tokens": 35,
             "finish_reason": "stop",
             "question": "How many days before the team meeting I was preparing for did I attend the workshop on 'Effective Communication in the Workplace'?",
             "expected_answer": "7 days. 8 days (including the last day) is also acceptable.",
-            "prediction": "You attended the workshop on January 10th and the team meeting is on January 17th.  \n\nThat means you attended the workshop **7 days** before the team meeting.",
+            "prediction": "You attended the workshop on January 10th and the team meeting is on January 17th.  \n\nThat is **7 days** before the team meeting.",
             "diagnostic": {
-              "overall_retention_ratio": 0.272,
-              "overall_effective_bitwidth": 4.35,
-              "min_session_effective_bitwidth": 2.88,
+              "overall_retention_ratio": 0.2726,
+              "overall_effective_bitwidth": 4.36,
+              "min_session_effective_bitwidth": 2.87,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
             }
@@ -2156,7 +2156,7 @@
             "diagnostic": {
               "overall_retention_ratio": 0.2334,
               "overall_effective_bitwidth": 3.73,
-              "min_session_effective_bitwidth": 1.83,
+              "min_session_effective_bitwidth": 1.84,
               "most_degraded_session_idx": 1,
               "num_sessions": 3
             }
@@ -2166,14 +2166,14 @@
             "task_type": "relative_timeframe",
             "unanswerable": false,
             "prompt_tokens": 14599,
-            "generated_tokens": 57,
+            "generated_tokens": 48,
             "finish_reason": "stop",
             "question": "How many months have passed since I participated in two charity events in a row, on consecutive days?",
             "expected_answer": "2",
-            "prediction": "The conversation does not provide any information about the dates or timing of the charity events you participated in, nor does it specify when those events occurred relative to the current date. Therefore, it is not possible to determine how many months have passed since those events.\n\nAnswer: Not mentioned.",
+            "prediction": "The conversation does not provide any information about the dates or timing of the charity events you participated in, nor does it mention how many months have passed since those events. Therefore, the number of months cannot be determined from the given information.",
             "diagnostic": {
-              "overall_retention_ratio": 0.1364,
-              "overall_effective_bitwidth": 2.18,
+              "overall_retention_ratio": 0.1371,
+              "overall_effective_bitwidth": 2.19,
               "min_session_effective_bitwidth": 0.9,
               "most_degraded_session_idx": 2,
               "num_sessions": 4
@@ -2238,15 +2238,15 @@
             "task_type": "relative_timeframe",
             "unanswerable": false,
             "prompt_tokens": 3287,
-            "generated_tokens": 31,
+            "generated_tokens": 28,
             "finish_reason": "stop",
             "question": "How many days ago did I harvest my first batch of fresh herbs from the herb garden kit?",
             "expected_answer": "3 days ago. 4 days (including the last day) is also acceptable.",
-            "prediction": "The conversation does not specify the date or number of days ago when you harvested your first batch of fresh herbs. Therefore, this information was not provided.",
+            "prediction": "The conversation does not specify the number of days ago you harvested your first batch of fresh herbs. Therefore, this information was not provided.",
             "diagnostic": {
-              "overall_retention_ratio": 0.6139,
-              "overall_effective_bitwidth": 9.82,
-              "min_session_effective_bitwidth": 9.82,
+              "overall_retention_ratio": 0.6148,
+              "overall_effective_bitwidth": 9.84,
+              "min_session_effective_bitwidth": 9.84,
               "most_degraded_session_idx": 0,
               "num_sessions": 1
             }
@@ -2256,15 +2256,15 @@
             "task_type": "relative_timeframe",
             "unanswerable": false,
             "prompt_tokens": 5800,
-            "generated_tokens": 80,
+            "generated_tokens": 56,
             "finish_reason": "stop",
             "question": "Which event happened first, my participation in the #PlankChallenge or my post about vegan chili recipe?",
             "expected_answer": "You posted a recipe for vegan chili on Instagram using the hashtag #FoodieAdventures first.",
-            "prediction": "The post about the vegan chili recipe happened first. The conversation history states that the user shared the recipe on Instagram using #FoodieAdventures \"yesterday,\" while the #PlankChallenge participation occurred on the same day as the query. Since the recipe post was shared \"yesterday\" and the plank challenge was mentioned in the current query, the recipe post predates the plank challenge.",
+            "prediction": "The post about the vegan chili recipe happened first. The conversation history states that the user shared the recipe using #FoodieAdventures \"yesterday,\" while the #PlankChallenge participation occurred on \"today.\" Since yesterday precedes today, the recipe post happened first.",
             "diagnostic": {
-              "overall_retention_ratio": 0.3395,
-              "overall_effective_bitwidth": 5.43,
-              "min_session_effective_bitwidth": 3.81,
+              "overall_retention_ratio": 0.3436,
+              "overall_effective_bitwidth": 5.5,
+              "min_session_effective_bitwidth": 3.82,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
             }
@@ -2274,14 +2274,14 @@
             "task_type": "relative_timeframe",
             "unanswerable": false,
             "prompt_tokens": 7028,
-            "generated_tokens": 24,
+            "generated_tokens": 18,
             "finish_reason": "stop",
             "question": "What is the artist that I started to listen to last Friday?",
             "expected_answer": "a bluegrass band that features a banjo player",
-            "prediction": "The conversation does not mention an artist that you started listening to last Friday. Therefore, this information was not provided.",
+            "prediction": "The artist you started to listen to last Friday was not mentioned in the conversation history.",
             "diagnostic": {
-              "overall_retention_ratio": 0.2881,
-              "overall_effective_bitwidth": 4.61,
+              "overall_retention_ratio": 0.289,
+              "overall_effective_bitwidth": 4.62,
               "min_session_effective_bitwidth": 3.26,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
@@ -2292,15 +2292,15 @@
             "task_type": "relative_timeframe",
             "unanswerable": false,
             "prompt_tokens": 5936,
-            "generated_tokens": 70,
+            "generated_tokens": 58,
             "finish_reason": "stop",
             "question": "Which device did I got first, the Samsung Galaxy S22 or the Dell XPS 13?",
             "expected_answer": "Samsung Galaxy S22",
-            "prediction": "You got the Samsung Galaxy S22 first. You mentioned purchasing it on February 20th, while the Dell XPS 13 was pre-ordered on January 20th. Since the pre-order was placed earlier, the Dell XPS 13 arrived later, meaning the Samsung Galaxy S22 was obtained first.",
+            "prediction": "You got the Samsung Galaxy S22 first. You mentioned purchasing it on February 20th, while the Dell XPS 13 was pre-ordered on January 20th, which is earlier. Therefore, the Dell XPS 13 was obtained first.",
             "diagnostic": {
-              "overall_retention_ratio": 0.3334,
-              "overall_effective_bitwidth": 5.33,
-              "min_session_effective_bitwidth": 3.52,
+              "overall_retention_ratio": 0.3354,
+              "overall_effective_bitwidth": 5.37,
+              "min_session_effective_bitwidth": 3.54,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
             }
@@ -2310,14 +2310,14 @@
             "task_type": "relative_timeframe",
             "unanswerable": false,
             "prompt_tokens": 6194,
-            "generated_tokens": 48,
+            "generated_tokens": 43,
             "finish_reason": "stop",
             "question": "Which event did I participate in first, the charity gala or the charity bake sale?",
             "expected_answer": "I participated in the charity bake sale first.",
-            "prediction": "The conversation does not provide a clear timeline or information about the order in which you participated in the charity gala or the charity bake sale. Therefore, it was not possible to determine which event you participated in first based on the given information.",
+            "prediction": "The conversation history does not provide a clear timeline or information about when the charity gala or the charity bake sale occurred relative to each other. Therefore, it was not possible to determine which event you participated in first.",
             "diagnostic": {
-              "overall_retention_ratio": 0.3231,
-              "overall_effective_bitwidth": 5.17,
+              "overall_retention_ratio": 0.3239,
+              "overall_effective_bitwidth": 5.18,
               "min_session_effective_bitwidth": 3.46,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
@@ -2436,14 +2436,14 @@
             "task_type": "relative_timeframe",
             "unanswerable": false,
             "prompt_tokens": 6784,
-            "generated_tokens": 60,
+            "generated_tokens": 57,
             "finish_reason": "stop",
             "question": "How long have I been working before I started my current job at NovaTech?",
             "expected_answer": "4 years and 9 months",
-            "prediction": "You have been working in the software engineering field since you graduated with your degree in Computer Science from the University of California, Berkeley. However, the conversation does not specify how long you worked before joining NovaTech. Therefore, the exact duration prior to your current job at NovaTech was not mentioned.",
+            "prediction": "You have been working in the software engineering field since you graduated with your degree in Computer Science from the University of California, Berkeley. However, the conversation does not specify how long you worked before joining NovaTech. Therefore, the exact duration prior to your current job is not mentioned.",
             "diagnostic": {
-              "overall_retention_ratio": 0.2932,
-              "overall_effective_bitwidth": 4.69,
+              "overall_retention_ratio": 0.2936,
+              "overall_effective_bitwidth": 4.7,
               "min_session_effective_bitwidth": 3.11,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
@@ -2472,15 +2472,15 @@
             "task_type": "relative_timeframe",
             "unanswerable": false,
             "prompt_tokens": 3845,
-            "generated_tokens": 18,
+            "generated_tokens": 22,
             "finish_reason": "stop",
             "question": "I received a piece of jewelry last Saturday from whom?",
             "expected_answer": "my aunt",
-            "prediction": "The information about who received the piece of jewelry is not mentioned in the conversation history.",
+            "prediction": "The conversation does not mention anyone giving the user a piece of jewelry. Therefore, it was not mentioned.",
             "diagnostic": {
-              "overall_retention_ratio": 0.5282,
-              "overall_effective_bitwidth": 8.45,
-              "min_session_effective_bitwidth": 8.45,
+              "overall_retention_ratio": 0.5272,
+              "overall_effective_bitwidth": 8.44,
+              "min_session_effective_bitwidth": 8.44,
               "most_degraded_session_idx": 0,
               "num_sessions": 1
             }
@@ -2570,7 +2570,7 @@
             "diagnostic": {
               "overall_retention_ratio": 0.3274,
               "overall_effective_bitwidth": 5.24,
-              "min_session_effective_bitwidth": 4.1,
+              "min_session_effective_bitwidth": 4.09,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
             }
@@ -2598,15 +2598,15 @@
             "task_type": "unanswerable_refusal",
             "unanswerable": true,
             "prompt_tokens": 5248,
-            "generated_tokens": 10,
+            "generated_tokens": 22,
             "finish_reason": "stop",
             "question": "How many engineers do I lead when I just started my new role as Software Engineer Manager?",
             "expected_answer": "The information provided is not enough. You mentioned starting the role as Senior Software Engineer but not Software Engineer Manager.",
-            "prediction": "You lead a team of 5 engineers.",
+            "prediction": "It was not mentioned how many engineers you lead when you just started your new role as Software Engineer Manager.",
             "diagnostic": {
-              "overall_retention_ratio": 0.3885,
-              "overall_effective_bitwidth": 6.22,
-              "min_session_effective_bitwidth": 4.4,
+              "overall_retention_ratio": 0.3862,
+              "overall_effective_bitwidth": 6.18,
+              "min_session_effective_bitwidth": 4.39,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
             }
@@ -2620,7 +2620,7 @@
             "finish_reason": "length",
             "question": "How much will I save by taking the bus from the airport to my hotel instead of a taxi?",
             "expected_answer": "The information provided is not enough. You did not mention how much will the bus take.",
-            "prediction": "The cost of taking the bus from the airport to your hotel in Tokyo is typically around $10\u2013$20, depending on the route and destination. In comparison, a taxi ride from the airport to a hotel would cost approximately $60.  \n\nTherefore, by taking the bus instead of a taxi, you would save roughly **$40 to $50**.  \n\nNote: This assumes the bus is a direct or convenient option to your hotel. If your hotel is in a central area like Shinjuku, the bus may require a transfer or additional travel time, so it's best to confirm with your hotel for",
+            "prediction": "The cost of taking the bus from the airport to your hotel in Tokyo is typically around $10\u2013$20, depending on the route and destination. In comparison, a taxi ride from the airport to a hotel would cost approximately $60.  \n\nThus, by taking the bus instead of a taxi, you would save roughly **$40 to $50**.  \n\nNote: This assumes the bus is a direct or convenient option to your hotel. If your hotel is in a central area like Shinjuku, the bus may require a transfer or additional travel time, so it's best to confirm with your hotel for",
             "diagnostic": {
               "overall_retention_ratio": 0.3716,
               "overall_effective_bitwidth": 5.95,
@@ -2778,14 +2778,14 @@
             "task_type": "unanswerable_refusal",
             "unanswerable": true,
             "prompt_tokens": 5930,
-            "generated_tokens": 56,
+            "generated_tokens": 57,
             "finish_reason": "stop",
             "question": "How many days did I spend in total traveling in Hawaii and in Seattle?",
             "expected_answer": "The information provided is not enough. You mentioned traveling for 10 days in Hawaii but did not mention abything about the trip to Seattle.",
-            "prediction": "The conversation did not mention any travel days in Seattle or any specific duration of travel in Hawaii beyond the \"amazing island-hopping trip\" which was described as 10 days. Therefore, the total number of days spent traveling in Hawaii and in Seattle is not mentioned.",
+            "prediction": "The conversation did not mention any travel days in Seattle or any specific duration of travel in Hawaii beyond the \"amazing island-hopping trip\" which was described as lasting 10 days. Therefore, the total number of days spent traveling in Hawaii and in Seattle is not mentioned.",
             "diagnostic": {
-              "overall_retention_ratio": 0.3361,
-              "overall_effective_bitwidth": 5.38,
+              "overall_retention_ratio": 0.3359,
+              "overall_effective_bitwidth": 5.37,
               "min_session_effective_bitwidth": 3.67,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
@@ -2940,15 +2940,15 @@
             "task_type": "unanswerable_refusal",
             "unanswerable": true,
             "prompt_tokens": 2399,
-            "generated_tokens": 45,
+            "generated_tokens": 35,
             "finish_reason": "stop",
             "question": "What did my dad gave me as a birthday gift?",
             "expected_answer": "You did not mention this information. You mentioned receiving a birthday gift from your sister, but not your dad.",
-            "prediction": "It was not mentioned in the conversation history what the user's dad gave them as a birthday gift. The user mentioned receiving a stand mixer as a birthday gift from their sister, but nothing about a gift from their dad.",
+            "prediction": "It was not mentioned in the conversation history what the user's dad gave as a birthday gift. The user mentioned receiving a stand mixer as a birthday gift from their sister.",
             "diagnostic": {
-              "overall_retention_ratio": 0.8353,
-              "overall_effective_bitwidth": 13.36,
-              "min_session_effective_bitwidth": 13.36,
+              "overall_retention_ratio": 0.8395,
+              "overall_effective_bitwidth": 13.43,
+              "min_session_effective_bitwidth": 13.43,
               "most_degraded_session_idx": 0,
               "num_sessions": 1
             }
@@ -3002,7 +3002,7 @@
             "diagnostic": {
               "overall_retention_ratio": 0.2832,
               "overall_effective_bitwidth": 4.53,
-              "min_session_effective_bitwidth": 3.23,
+              "min_session_effective_bitwidth": 3.22,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
             }
@@ -3012,15 +3012,15 @@
             "task_type": "unanswerable_refusal",
             "unanswerable": true,
             "prompt_tokens": 6453,
-            "generated_tokens": 28,
+            "generated_tokens": 81,
             "finish_reason": "stop",
             "question": "How many fish are there in my 30-gallon tank?",
             "expected_answer": "The information provided is not enough. You did not mention that you have a 30-gallon tank.",
-            "prediction": "The conversation history does not mention the number of fish in a 30-gallon tank. Therefore, this information was not provided.",
+            "prediction": "The conversation history does not mention the number of fish in a 30-gallon tank. It discusses a 20-gallon tank with neon tetras, golden gouramis, and a pleco, but no information is provided about a 30-gallon tank or its fish population. Therefore, the number of fish in a 30-gallon tank is not mentioned.",
             "diagnostic": {
-              "overall_retention_ratio": 0.3132,
-              "overall_effective_bitwidth": 5.01,
-              "min_session_effective_bitwidth": 3.6,
+              "overall_retention_ratio": 0.305,
+              "overall_effective_bitwidth": 4.88,
+              "min_session_effective_bitwidth": 3.59,
               "most_degraded_session_idx": 0,
               "num_sessions": 2
             }
@@ -3052,7 +3052,7 @@
             "finish_reason": "stop",
             "question": "How many plants did I initially plant for tomatoes and chili peppers?",
             "expected_answer": "The information provided is not enough. You mentioned planting 5 plants for tomatoes but you did not mention chili peppers.",
-            "prediction": "The conversation did not mention the number of tomato or chili pepper plants initially planted.",
+            "prediction": "The conversation does not mention the number of tomato or chili pepper plants initially planted.",
             "diagnostic": {
               "overall_retention_ratio": 0.307,
               "overall_effective_bitwidth": 4.91,
@@ -3082,76 +3082,76 @@
         ],
         "diag_total_inspected": 150,
         "diag_pass_count": 76,
-        "diag_quality_regression_count": 22,
-        "diag_baseline_limitation_count": 52,
+        "diag_quality_regression_count": 21,
+        "diag_baseline_limitation_count": 53,
         "diag_incorrect_standalone_count": 0,
-        "diag_mean_overall_retention_ratio": 0.4344,
+        "diag_mean_overall_retention_ratio": 0.4345,
         "diag_mean_overall_effective_bitwidth": 6.95,
         "diag_mean_min_session_effective_bitwidth": 5.79,
         "diag_mean_compression_ratio": 2.3,
-        "top1_agreement": 0.4746,
+        "top1_agreement": 0.4647,
         "fidelity_alignment": "per_sample",
         "fidelity_matched_samples": 150,
         "sample_fidelity": {
           "7024f17c": {
             "top1": 0.9615,
-            "kl_mean": 0.09903
+            "kl_mean": 0.09604
           },
           "09ba9854": {
             "top1": 0.0625,
-            "kl_mean": 13.97873
+            "kl_mean": 13.97643
           },
           "9aaed6a3": {
             "top1": 0.2353,
-            "kl_mean": 11.07724
+            "kl_mean": 11.07725
           },
           "46a3abf7": {
             "top1": 1.0,
-            "kl_mean": 0.02267
+            "kl_mean": 0.01921
           },
           "bb7c3b45": {
             "top1": 0.4242,
-            "kl_mean": 8.17373
+            "kl_mean": 8.20391
           },
           "ef9cf60a": {
             "top1": 0.9375,
-            "kl_mean": 0.51862
+            "kl_mean": 0.51615
           },
           "2e6d26dc": {
-            "top1": 0.2233,
-            "kl_mean": 11.64171
+            "top1": 0.2347,
+            "kl_mean": 11.24845
           },
           "f35224e0": {
             "top1": 0.9655,
-            "kl_mean": 0.09802
+            "kl_mean": 0.08174
           },
           "gpt4_59c863d7": {
             "top1": 0.0,
-            "kl_mean": 14.55235
+            "kl_mean": 14.51703
           },
           "f0e564bc": {
             "top1": 0.0179,
-            "kl_mean": 14.57589
+            "kl_mean": 14.57619
           },
           "e56a43b9": {
             "top1": 0.0,
-            "kl_mean": 14.76204
+            "kl_mean": 14.76762
           },
           "a11281a2": {
-            "top1": 0.0323,
-            "kl_mean": 13.90712
+            "top1": 0.0968,
+            "kl_mean": 12.31225
           },
           "d6062bb9": {
             "top1": 0.4167,
-            "kl_mean": 8.57659
+            "kl_mean": 8.58178
           },
           "4bc144e2": {
             "top1": 0.9474,
-            "kl_mean": 0.05593
+            "kl_mean": 0.04875
           },
           "d23cf73b": {
             "top1": 0.0,
-            "kl_mean": 15.09798
+            "kl_mean": 14.97146
           },
           "078150f1": {
             "top1": 0.1364,
@@ -3159,59 +3159,59 @@
           },
           "b5ef892d": {
             "top1": 1.0,
-            "kl_mean": 0.04362
+            "kl_mean": 0.04147
           },
           "28dc39ac": {
             "top1": 0.0247,
-            "kl_mean": 14.85075
+            "kl_mean": 14.85257
           },
           "gpt4_2f91af09": {
             "top1": 0.2174,
-            "kl_mean": 11.47001
+            "kl_mean": 11.45727
           },
           "5025383b": {
             "top1": 1.0,
-            "kl_mean": 0.00182
+            "kl_mean": 0.00245
           },
           "157a136e": {
             "top1": 0.6667,
-            "kl_mean": 3.25392
+            "kl_mean": 3.25362
           },
           "1c549ce4": {
             "top1": 0.5263,
-            "kl_mean": 6.57844
+            "kl_mean": 6.59027
           },
           "a346bb18": {
             "top1": 0.0,
-            "kl_mean": 15.35829
+            "kl_mean": 15.35817
           },
           "a08a253f": {
             "top1": 0.4615,
-            "kl_mean": 7.708
+            "kl_mean": 7.68271
           },
           "b3c15d39": {
             "top1": 0.2,
-            "kl_mean": 11.80355
+            "kl_mean": 11.8081
           },
           "00ca467f": {
             "top1": 0.1915,
-            "kl_mean": 12.13905
+            "kl_mean": 12.1408
           },
           "c4a1ceb8": {
             "top1": 0.1154,
-            "kl_mean": 11.98543
+            "kl_mean": 12.00469
           },
           "0ea62687": {
             "top1": 0.7143,
-            "kl_mean": 3.96694
+            "kl_mean": 3.97788
           },
           "a9f6b44c": {
             "top1": 0.2381,
-            "kl_mean": 11.14095
+            "kl_mean": 11.13448
           },
           "d682f1a2": {
             "top1": 0.2778,
-            "kl_mean": 10.31883
+            "kl_mean": 10.31523
           },
           "6b168ec8": {
             "top1": 1.0,
@@ -3231,7 +3231,7 @@
           },
           "dccbc061": {
             "top1": 0.4286,
-            "kl_mean": 7.79934
+            "kl_mean": 7.79908
           },
           "8b9d4367": {
             "top1": 1.0,
@@ -3239,7 +3239,7 @@
           },
           "ad7109d1": {
             "top1": 0.7,
-            "kl_mean": 3.2975
+            "kl_mean": 3.38969
           },
           "352ab8bd": {
             "top1": 1.0,
@@ -3263,7 +3263,7 @@
           },
           "19b5f2b3": {
             "top1": 1.0,
-            "kl_mean": 0.00793
+            "kl_mean": 0.00547
           },
           "4c36ccef": {
             "top1": 1.0,
@@ -3283,7 +3283,7 @@
           },
           "8550ddae": {
             "top1": 0.9167,
-            "kl_mean": 0.07501
+            "kl_mean": 0.05335
           },
           "6222b6eb": {
             "top1": 1.0,
@@ -3295,11 +3295,11 @@
           },
           "577d4d32": {
             "top1": 1.0,
-            "kl_mean": 0.00056
+            "kl_mean": 9e-05
           },
           "15745da0": {
             "top1": 1.0,
-            "kl_mean": 0.00875
+            "kl_mean": 0.01083
           },
           "4388e9dd": {
             "top1": 1.0,
@@ -3307,15 +3307,15 @@
           },
           "58ef2f1c": {
             "top1": 0.7692,
-            "kl_mean": 2.90208
+            "kl_mean": 2.90235
           },
           "c14c00dd": {
             "top1": 1.0,
-            "kl_mean": 0.00239
+            "kl_mean": 0.00128
           },
           "f4f1d8a4": {
             "top1": 1.0,
-            "kl_mean": 0.00018
+            "kl_mean": 0.0
           },
           "caf9ead2": {
             "top1": 1.0,
@@ -3331,63 +3331,63 @@
           },
           "7161e7e2": {
             "top1": 1.0,
-            "kl_mean": 5e-05
+            "kl_mean": 0.00061
           },
           "cc5ded98": {
             "top1": 1.0,
             "kl_mean": 0.0
           },
           "c6853660": {
-            "top1": 0.8889,
-            "kl_mean": 0.89011
+            "top1": 1.0,
+            "kl_mean": 0.02576
           },
           "41698283": {
-            "top1": 1.0,
-            "kl_mean": 0.01138
+            "top1": 0.125,
+            "kl_mean": 12.59462
           },
           "6071bd76": {
             "top1": 0.0339,
-            "kl_mean": 14.53455
+            "kl_mean": 14.53834
           },
           "7e974930": {
             "top1": 0.0,
-            "kl_mean": 14.38649
+            "kl_mean": 14.38223
           },
           "26bdc477": {
             "top1": 0.7333,
-            "kl_mean": 2.69782
+            "kl_mean": 2.68206
           },
           "2133c1b5": {
-            "top1": 1.0,
-            "kl_mean": 0.01975
+            "top1": 0.7647,
+            "kl_mean": 2.79681
           },
           "c4ea545c": {
             "top1": 0.0,
-            "kl_mean": 14.51447
+            "kl_mean": 14.49689
           },
           "db467c8c": {
             "top1": 1.0,
-            "kl_mean": 0.02146
+            "kl_mean": 0.01708
           },
           "c7dc5443": {
             "top1": 0.0,
-            "kl_mean": 13.82585
+            "kl_mean": 13.78416
           },
           "f685340e": {
             "top1": 0.0,
-            "kl_mean": 15.21345
+            "kl_mean": 15.21353
           },
           "07741c45": {
             "top1": 0.0,
-            "kl_mean": 13.13524
+            "kl_mean": 13.19858
           },
           "ce6d2d27": {
             "top1": 1.0,
-            "kl_mean": 0.03216
+            "kl_mean": 0.01954
           },
           "dad224aa": {
             "top1": 1.0,
-            "kl_mean": 0.02529
+            "kl_mean": 0.02049
           },
           "e61a7584": {
             "top1": 0.3,
@@ -3395,39 +3395,39 @@
           },
           "18bc8abd": {
             "top1": 1.0,
-            "kl_mean": 0.03879
+            "kl_mean": 0.0238
           },
           "830ce83f": {
             "top1": 0.5,
-            "kl_mean": 6.17897
+            "kl_mean": 6.05481
           },
           "42ec0761": {
             "top1": 0.9333,
-            "kl_mean": 0.32072
+            "kl_mean": 0.32071
           },
           "ba61f0b9": {
             "top1": 0.7692,
-            "kl_mean": 2.61604
+            "kl_mean": 2.63434
           },
           "50635ada": {
             "top1": 0.6,
-            "kl_mean": 4.86804
+            "kl_mean": 4.85871
           },
           "10e09553": {
             "top1": 0.1176,
-            "kl_mean": 13.14599
+            "kl_mean": 13.15542
           },
           "89941a94": {
             "top1": 1.0,
-            "kl_mean": 0.2278
+            "kl_mean": 0.21626
           },
           "9bbe84a2": {
             "top1": 1.0,
-            "kl_mean": 0.01049
+            "kl_mean": 0.01521
           },
           "6a1eabeb": {
             "top1": 1.0,
-            "kl_mean": 0.0036
+            "kl_mean": 0.00342
           },
           "3ba21379": {
             "top1": 1.0,
@@ -3435,99 +3435,99 @@
           },
           "e66b632c": {
             "top1": 0.8947,
-            "kl_mean": 0.94754
+            "kl_mean": 0.9977
           },
           "184da446": {
-            "top1": 0.0952,
-            "kl_mean": 13.26855
+            "top1": 0.1429,
+            "kl_mean": 12.77729
           },
           "72e3ee87": {
             "top1": 1.0,
-            "kl_mean": 0.00093
+            "kl_mean": 0.00044
           },
           "7401057b": {
             "top1": 0.1875,
-            "kl_mean": 12.39254
+            "kl_mean": 12.39147
           },
           "0f05491a": {
             "top1": 1.0,
-            "kl_mean": 0.00095
+            "kl_mean": 0.00074
           },
           "gpt4_a1b77f9c": {
             "top1": 0.2727,
-            "kl_mean": 10.92004
+            "kl_mean": 10.93071
           },
           "gpt4_f49edff3": {
             "top1": 0.8605,
-            "kl_mean": 1.72014
+            "kl_mean": 1.72449
           },
           "d01c6aa8": {
             "top1": 1.0,
-            "kl_mean": 0.08867
+            "kl_mean": 0.08174
           },
           "gpt4_2c50253f": {
             "top1": 0.0909,
-            "kl_mean": 13.39329
+            "kl_mean": 13.40285
           },
           "993da5e2": {
             "top1": 0.0,
-            "kl_mean": 14.73187
+            "kl_mean": 14.72388
           },
           "0bb5a684": {
-            "top1": 0.1538,
-            "kl_mean": 12.68644
+            "top1": 0.1429,
+            "kl_mean": 12.46263
           },
           "gpt4_68e94288": {
             "top1": 0.1875,
-            "kl_mean": 11.76522
+            "kl_mean": 11.75712
           },
           "gpt4_e072b769": {
             "top1": 1.0,
-            "kl_mean": 0.00074
+            "kl_mean": 0.00195
           },
           "gpt4_18c2b244": {
             "top1": 0.0992,
-            "kl_mean": 13.5457
+            "kl_mean": 13.54617
           },
           "b46e15ed": {
-            "top1": 0.434,
-            "kl_mean": 7.94009
+            "top1": 0.5,
+            "kl_mean": 7.20948
           },
           "gpt4_213fd887": {
             "top1": 0.0,
-            "kl_mean": 14.82008
+            "kl_mean": 14.81967
           },
           "b29f3365": {
             "top1": 1.0,
-            "kl_mean": 0.05819
+            "kl_mean": 0.06459
           },
           "2ebe6c92": {
             "top1": 0.0588,
             "kl_mean": 13.74665
           },
           "gpt4_a2d1d1f6": {
-            "top1": 0.9677,
-            "kl_mean": 0.05308
+            "top1": 0.2143,
+            "kl_mean": 11.31559
           },
           "gpt4_68e94287": {
-            "top1": 0.3167,
-            "kl_mean": 9.9269
+            "top1": 0.3393,
+            "kl_mean": 9.70233
           },
           "gpt4_fa19884d": {
-            "top1": 0.3333,
-            "kl_mean": 9.56402
+            "top1": 0.0556,
+            "kl_mean": 13.16988
           },
           "gpt4_2312f94c": {
-            "top1": 0.1231,
-            "kl_mean": 13.00141
+            "top1": 0.0517,
+            "kl_mean": 14.36598
           },
           "gpt4_98f46fc6": {
-            "top1": 0.2273,
-            "kl_mean": 11.21574
+            "top1": 0.093,
+            "kl_mean": 13.0739
           },
           "gpt4_385a5000": {
             "top1": 0.1964,
-            "kl_mean": 12.09828
+            "kl_mean": 12.09788
           },
           "gpt4_8279ba03": {
             "top1": 1.0,
@@ -3535,39 +3535,39 @@
           },
           "gpt4_7ca326fa": {
             "top1": 0.0,
-            "kl_mean": 14.85852
+            "kl_mean": 14.84895
           },
           "gpt4_4929293a": {
             "top1": 0.48,
-            "kl_mean": 7.6516
+            "kl_mean": 7.65287
           },
           "gpt4_e414231e": {
             "top1": 0.0513,
-            "kl_mean": 13.97384
+            "kl_mean": 13.98509
           },
           "gpt4_d6585ce8": {
             "top1": 0.1622,
-            "kl_mean": 12.09559
+            "kl_mean": 12.11273
           },
           "gpt4_93159ced": {
-            "top1": 0.7333,
-            "kl_mean": 3.61904
+            "top1": 0.6667,
+            "kl_mean": 4.78381
           },
           "gpt4_e061b84g": {
             "top1": 0.5455,
-            "kl_mean": 5.73369
+            "kl_mean": 5.72938
           },
           "71017277": {
-            "top1": 0.0667,
-            "kl_mean": 13.28116
+            "top1": 0.2667,
+            "kl_mean": 10.42319
           },
           "gpt4_4fc4f797": {
             "top1": 0.359,
-            "kl_mean": 8.4994
+            "kl_mean": 8.50085
           },
           "gpt4_2487a7cb": {
             "top1": 0.0,
-            "kl_mean": 14.86975
+            "kl_mean": 14.86049
           },
           "8077ef71": {
             "top1": 1.0,
@@ -3575,7 +3575,7 @@
           },
           "gpt4_372c3eed_abs": {
             "top1": 0.0137,
-            "kl_mean": 14.31469
+            "kl_mean": 14.33536
           },
           "a96c20ee_abs": {
             "top1": 0.0,
@@ -3583,31 +3583,31 @@
           },
           "0ddfec37_abs": {
             "top1": 0.0417,
-            "kl_mean": 14.0665
+            "kl_mean": 14.07369
           },
           "031748ae_abs": {
-            "top1": 0.0,
-            "kl_mean": 14.00693
+            "top1": 0.2273,
+            "kl_mean": 11.32723
           },
           "09ba9854_abs": {
             "top1": 0.2857,
-            "kl_mean": 10.47291
+            "kl_mean": 10.4732
           },
           "bc8a6e93_abs": {
             "top1": 0.2667,
-            "kl_mean": 10.84559
+            "kl_mean": 10.79943
           },
           "2698e78f_abs": {
             "top1": 0.8621,
-            "kl_mean": 1.90043
+            "kl_mean": 1.90115
           },
           "c8090214_abs": {
             "top1": 0.6,
-            "kl_mean": 5.35905
+            "kl_mean": 5.36479
           },
           "19b5f2b3_abs": {
             "top1": 0.6667,
-            "kl_mean": 3.68394
+            "kl_mean": 3.7206
           },
           "0862e8bf_abs": {
             "top1": 0.8571,
@@ -3615,47 +3615,47 @@
           },
           "29f2956b_abs": {
             "top1": 1.0,
-            "kl_mean": 0.0136
+            "kl_mean": 0.00763
           },
           "gpt4_93159ced_abs": {
             "top1": 0.0909,
-            "kl_mean": 13.02946
+            "kl_mean": 13.03661
           },
           "15745da0_abs": {
             "top1": 0.6667,
-            "kl_mean": 5.05894
+            "kl_mean": 5.06051
           },
           "edced276_abs": {
-            "top1": 0.4583,
-            "kl_mean": 7.94039
+            "top1": 0.4375,
+            "kl_mean": 8.26164
           },
           "ba358f49_abs": {
             "top1": 1.0,
-            "kl_mean": 0.01091
+            "kl_mean": 0.00883
           },
           "2311e44b_abs": {
             "top1": 0.5405,
-            "kl_mean": 6.40103
+            "kl_mean": 6.37612
           },
           "e5ba910e_abs": {
             "top1": 0.8947,
-            "kl_mean": 0.92534
+            "kl_mean": 0.93209
           },
           "6aeb4375_abs": {
             "top1": 0.6667,
-            "kl_mean": 5.16736
+            "kl_mean": 5.16074
           },
           "gpt4_c27434e8_abs": {
             "top1": 0.0357,
-            "kl_mean": 14.32866
+            "kl_mean": 14.33096
           },
           "f685340e_abs": {
             "top1": 0.2105,
-            "kl_mean": 11.67155
+            "kl_mean": 11.68558
           },
           "88432d0a_abs": {
             "top1": 0.6667,
-            "kl_mean": 4.20511
+            "kl_mean": 4.20275
           },
           "2133c1b5_abs": {
             "top1": 0.6667,
@@ -3663,38 +3663,38 @@
           },
           "f4f1d8a4_abs": {
             "top1": 0.8,
-            "kl_mean": 2.0049
+            "kl_mean": 2.00632
           },
           "982b5123_abs": {
             "top1": 0.1176,
-            "kl_mean": 12.66075
+            "kl_mean": 12.66077
           },
           "gpt4_fe651585_abs": {
             "top1": 1.0,
-            "kl_mean": 0.01535
+            "kl_mean": 0.01489
           },
           "gpt4_70e84552_abs": {
             "top1": 0.5,
-            "kl_mean": 6.96987
+            "kl_mean": 6.96955
           },
           "eeda8a6d_abs": {
             "top1": 0.95,
-            "kl_mean": 0.12593
+            "kl_mean": 0.13641
           },
           "60bf93ed_abs": {
             "top1": 0.2353,
-            "kl_mean": 10.90279
+            "kl_mean": 10.88978
           },
           "6456829e_abs": {
-            "top1": 0.4118,
-            "kl_mean": 7.62254
+            "top1": 0.4706,
+            "kl_mean": 7.54726
           },
           "80ec1f4f_abs": {
             "top1": 0.7407,
-            "kl_mean": 3.45041
+            "kl_mean": 3.45027
           }
         },
-        "kl_div_mean": 7.6479,
+        "kl_div_mean": 7.79577,
         "kl_div_p99": 15.4249
       }
     }
