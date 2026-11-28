@@ -15,28 +15,27 @@
       ],
       "prompt_tokens": 20480,
       "generated_tokens": 160,
-      "ttft_sec": 0.4782,
-      "decode_time_sec": 0.7746,
-      "total_time_sec": 12.8476,
-      "throughput_tok_per_sec": 205.27,
-      "tpot_mean_ms": 38.46,
-      "tpot_p95_ms": 46.87,
+      "ttft_sec": 0.2068,
+      "decode_time_sec": 0.857,
+      "total_time_sec": 10.2386,
+      "throughput_tok_per_sec": 185.53,
+      "tpot_mean_ms": 39.77,
+      "tpot_p95_ms": 48.9,
       "cold_ttft_sec": 0.0,
       "cold_total_sec": 0.0,
-      "ttft_p95_sec": 0.6026,
-      "peak_alloc_mb": 8296.92,
-      "peak_reserved_mb": 8384.0,
-      "host_rss_delta_mb": 2040.69,
+      "ttft_p95_sec": 0.3345,
+      "peak_alloc_mb": 8311.92,
+      "peak_reserved_mb": 8444.0,
+      "host_rss_delta_mb": 1957.17,
       "memcpy_bytes_per_token": 0.0,
       "error": null,
       "extra": {
         "page_size": 16,
         "active_pages_budget": 16,
         "exempt_early_layers": 2,
-        "compression_ratio_vs_bf16": 4.5,
         "block_size": 16,
-        "pcie_transfer_bytes": 3812196352,
-        "recalled_pages": 11752,
+        "pcie_transfer_bytes": 6058082304,
+        "recalled_pages": 27159,
         "aabb_digests_active": true,
         "page_recall_supported": true,
         "engine": "pytorch",
@@ -75,7 +74,7 @@
             "depth": 0.2,
             "needle_distance": 1646,
             "retrieved": 1.0,
-            "generated_text": "**849204**. This is directly stated in the text"
+            "generated_text": "**849204**. This is explicitly stated in the text"
           },
           {
             "depth": 0.3,
@@ -93,7 +92,7 @@
             "depth": 0.5,
             "needle_distance": 1043,
             "retrieved": 1.0,
-            "generated_text": "**849204**. This is directly stated in the text"
+            "generated_text": "**849204**. This is explicitly stated in the text"
           },
           {
             "depth": 0.6,
@@ -105,7 +104,7 @@
             "depth": 0.7,
             "needle_distance": 641,
             "retrieved": 1.0,
-            "generated_text": "**849204**. However, it's worth noting that"
+            "generated_text": "**849204**. This is explicitly stated in the text"
           },
           {
             "depth": 0.8,
@@ -133,28 +132,27 @@
       ],
       "prompt_tokens": 40959,
       "generated_tokens": 160,
-      "ttft_sec": 1.0624,
-      "decode_time_sec": 0.9614,
-      "total_time_sec": 19.5108,
-      "throughput_tok_per_sec": 165.38,
-      "tpot_mean_ms": 43.05,
-      "tpot_p95_ms": 55.41,
+      "ttft_sec": 0.5444,
+      "decode_time_sec": 0.615,
+      "total_time_sec": 13.3566,
+      "throughput_tok_per_sec": 258.54,
+      "tpot_mean_ms": 37.59,
+      "tpot_p95_ms": 39.62,
       "cold_ttft_sec": 0.0,
       "cold_total_sec": 0.0,
-      "ttft_p95_sec": 1.2337,
-      "peak_alloc_mb": 8314.93,
-      "peak_reserved_mb": 8416.0,
-      "host_rss_delta_mb": 2935.68,
+      "ttft_p95_sec": 0.9116,
+      "peak_alloc_mb": 8353.18,
+      "peak_reserved_mb": 8760.0,
+      "host_rss_delta_mb": 3051.63,
       "memcpy_bytes_per_token": 0.0,
       "error": null,
       "extra": {
         "page_size": 16,
         "active_pages_budget": 16,
         "exempt_early_layers": 2,
-        "compression_ratio_vs_bf16": 4.5,
         "block_size": 16,
-        "pcie_transfer_bytes": 7014924288,
-        "recalled_pages": 14544,
+        "pcie_transfer_bytes": 16314982400,
+        "recalled_pages": 31349,
         "aabb_digests_active": true,
         "page_recall_supported": true,
         "engine": "pytorch",
@@ -187,13 +185,13 @@
             "depth": 0.1,
             "needle_distance": 3690,
             "retrieved": 1.0,
-            "generated_text": "**849204**. This is directly stated in the text"
+            "generated_text": "**849204**. This is explicitly stated in the text"
           },
           {
             "depth": 0.2,
             "needle_distance": 3284,
             "retrieved": 1.0,
-            "generated_text": "**849204**. This code is mentioned in the text"
+            "generated_text": "**849204**. This is explicitly stated in the text"
           },
           {
             "depth": 0.3,
@@ -205,19 +203,19 @@
             "depth": 0.4,
             "needle_distance": 2473,
             "retrieved": 1.0,
-            "generated_text": "**849204**. This is directly stated in the text"
+            "generated_text": "**849204**. This is explicitly stated in the text"
           },
           {
             "depth": 0.5,
             "needle_distance": 2067,
             "retrieved": 1.0,
-            "generated_text": "**849204**. \n\n(Note: The text mentions \""
+            "generated_text": "**849204**. This is explicitly stated in the text"
           },
           {
             "depth": 0.6,
             "needle_distance": 1661,
             "retrieved": 1.0,
-            "generated_text": "**849204**. This is directly stated in the text"
+            "generated_text": "**849204**. This is explicitly stated in the text"
           },
           {
             "depth": 0.7,
@@ -229,7 +227,7 @@
             "depth": 0.8,
             "needle_distance": 850,
             "retrieved": 1.0,
-            "generated_text": "**849204**. This code is mentioned in the text"
+            "generated_text": "**849204**. This is explicitly stated in the text"
           },
           {
             "depth": 0.9,

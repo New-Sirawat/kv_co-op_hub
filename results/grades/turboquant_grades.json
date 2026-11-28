@@ -1,752 +1,752 @@
 {
+  "7024f17c": {
+    "correct": false,
+    "reason": "Falsely claims information was not mentioned.",
+    "grader": "semantic-grade-v2"
+  },
+  "09ba9854": {
+    "correct": false,
+    "reason": "Estimates $30-$40 savings instead of $50.",
+    "grader": "semantic-grade-v2"
+  },
+  "9aaed6a3": {
+    "correct": false,
+    "reason": "Falsely claims SaveMart cashback was not mentioned.",
+    "grader": "semantic-grade-v2"
+  },
+  "46a3abf7": {
+    "correct": false,
+    "reason": "Reports 2 tanks instead of 3.",
+    "grader": "semantic-grade-v2"
+  },
+  "bb7c3b45": {
+    "correct": false,
+    "reason": "Falsely claims Jimmy Choo savings were not mentioned.",
+    "grader": "semantic-grade-v2"
+  },
+  "ef9cf60a": {
+    "correct": false,
+    "reason": "Falsely claims gift spending was not mentioned.",
+    "grader": "semantic-grade-v2"
+  },
+  "2e6d26dc": {
+    "correct": false,
+    "reason": "Falsely claims information was not mentioned.",
+    "grader": "semantic-grade-v2"
+  },
+  "f35224e0": {
+    "correct": false,
+    "reason": "Falsely claims total podcast episodes were not mentioned.",
+    "grader": "semantic-grade-v2"
+  },
+  "gpt4_59c863d7": {
+    "correct": false,
+    "reason": "Falsely claims exact number of model kits cannot be determined.",
+    "grader": "semantic-grade-v2"
+  },
+  "f0e564bc": {
+    "correct": false,
+    "reason": "Falsely claims specific prices were not provided.",
+    "grader": "semantic-grade-v2"
+  },
+  "e56a43b9": {
+    "correct": true,
+    "reason": "Correctly states a $5 discount on the next FreshMart purchase.",
+    "grader": "semantic-grade-v2"
+  },
+  "a11281a2": {
+    "correct": true,
+    "reason": "Correctly calculates an increase of 100 followers (250 to 350).",
+    "grader": "semantic-grade-v2"
+  },
+  "d6062bb9": {
+    "correct": false,
+    "reason": "Falsely claims total views were not mentioned.",
+    "grader": "semantic-grade-v2"
+  },
+  "4bc144e2": {
+    "correct": true,
+    "reason": "Correctly sums $15 car wash and $50 parking ticket to $65.",
+    "grader": "semantic-grade-v2"
+  },
+  "d23cf73b": {
+    "correct": false,
+    "reason": "Falsely claims cuisines count was not mentioned.",
+    "grader": "semantic-grade-v2"
+  },
+  "078150f1": {
+    "correct": true,
+    "reason": "Correctly calculates $50 more raised than the $200 goal.",
+    "grader": "semantic-grade-v2"
+  },
+  "b5ef892d": {
+    "correct": false,
+    "reason": "Falsely claims camping trip days were not mentioned.",
+    "grader": "semantic-grade-v2"
+  },
+  "28dc39ac": {
+    "correct": false,
+    "reason": "Falsely claims total gaming hours were not mentioned.",
+    "grader": "semantic-grade-v2"
+  },
+  "gpt4_2f91af09": {
+    "correct": false,
+    "reason": "Falsely claims total writing pieces cannot be determined.",
+    "grader": "semantic-grade-v2"
+  },
+  "5025383b": {
+    "correct": true,
+    "reason": "Correctly identifies cooking and photography.",
+    "grader": "semantic-grade-v2"
+  },
+  "157a136e": {
+    "correct": false,
+    "reason": "Falsely claims age difference was not mentioned.",
+    "grader": "semantic-grade-v2"
+  },
+  "1c549ce4": {
+    "correct": true,
+    "reason": "Correctly sums $120 car cover and $20 detailing spray to $140.",
+    "grader": "semantic-grade-v2"
+  },
+  "a346bb18": {
+    "correct": false,
+    "reason": "Falsely claims actual marathon finishing time was missing.",
+    "grader": "semantic-grade-v2"
+  },
+  "a08a253f": {
+    "correct": false,
+    "reason": "Self-corrects to the wrong answer of 3 days a week instead of 4.",
+    "grader": "semantic-grade-v2"
+  },
+  "b3c15d39": {
+    "correct": false,
+    "reason": "Falsely claims delivery days were not mentioned.",
+    "grader": "semantic-grade-v2"
+  },
+  "00ca467f": {
+    "correct": false,
+    "reason": "Incorrectly counts 3 doctor's appointments in March instead of 2.",
+    "grader": "semantic-grade-v2"
+  },
+  "c4a1ceb8": {
+    "correct": false,
+    "reason": "Overcounts as 4 citrus fruits by adding grapefruit.",
+    "grader": "semantic-grade-v2"
+  },
+  "0ea62687": {
+    "correct": false,
+    "reason": "Falsely claims specific MPG figures were not provided.",
+    "grader": "semantic-grade-v2"
+  },
+  "a9f6b44c": {
+    "correct": false,
+    "reason": "Reports only 1 bike instead of 2.",
+    "grader": "semantic-grade-v2"
+  },
+  "d682f1a2": {
+    "correct": false,
+    "reason": "Falsely claims food delivery services were not mentioned.",
+    "grader": "semantic-grade-v2"
+  },
   "6b168ec8": {
     "correct": true,
-    "reason": "Correctly recalls owning three bikes.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly states owning three bikes.",
+    "grader": "semantic-grade-v2"
   },
   "545bd2b5": {
     "correct": true,
-    "reason": "Correctly recalls averaging 2 hours daily.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly states averaging around 2 hours per day on Instagram.",
+    "grader": "semantic-grade-v2"
   },
   "1903aded": {
     "correct": false,
-    "reason": "Gives wrong job title.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Incorrectly names online survey taker instead of transcriptionist.",
+    "grader": "semantic-grade-v2"
   },
   "37d43f65": {
     "correct": false,
-    "reason": "Refuses to answer; claims final RAM unknown.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Contradicts itself and claims exact upgraded RAM amount is not explicitly stated.",
+    "grader": "semantic-grade-v2"
   },
   "dccbc061": {
     "correct": true,
-    "reason": "Accurately recalls staunch atheist stance.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly recalls previous stance as a staunch atheist.",
+    "grader": "semantic-grade-v2"
   },
   "8b9d4367": {
     "correct": true,
     "reason": "Correctly names Jaipur Rugs.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "grader": "semantic-grade-v2"
   },
   "ad7109d1": {
     "correct": false,
-    "reason": "Falsely claims speed not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims internet speed was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "352ab8bd": {
     "correct": true,
-    "reason": "Correctly recalls approximately 20% framerate improvement.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly states approximately 20% framerate improvement.",
+    "grader": "semantic-grade-v2"
   },
   "51b23612": {
     "correct": true,
-    "reason": "Correctly names Nu, pogodi!.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly identifies the Soviet cartoon 'Nu, pogodi!'.",
+    "grader": "semantic-grade-v2"
   },
   "8464fc84": {
     "correct": true,
     "reason": "Correctly names Roscioli.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "grader": "semantic-grade-v2"
   },
   "7e00a6cb": {
     "correct": true,
-    "reason": "Accurately names International Budget Hostel.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly names International Budget Hostel.",
+    "grader": "semantic-grade-v2"
   },
   "1568498a": {
     "correct": true,
-    "reason": "Correctly recalls move 28. Kg3.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly identifies move 28. Kg3.",
+    "grader": "semantic-grade-v2"
   },
   "19b5f2b3": {
     "correct": false,
-    "reason": "Falsely claims duration was not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims Japan trip duration was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "4c36ccef": {
     "correct": true,
     "reason": "Correctly names Roscioli.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "grader": "semantic-grade-v2"
   },
   "e982271f": {
     "correct": true,
-    "reason": "Correctly recalls Revolution Hall.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly names Revolution Hall.",
+    "grader": "semantic-grade-v2"
   },
   "0862e8bf": {
     "correct": true,
-    "reason": "Correctly recalls Luna.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly states the cat's name is Luna.",
+    "grader": "semantic-grade-v2"
   },
   "71a3fd6b": {
     "correct": true,
-    "reason": "Correctly recalls the exact phone number.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly provides the exact phone number +49 (0) 62 32 / 14 23 - 0.",
+    "grader": "semantic-grade-v2"
   },
   "8550ddae": {
     "correct": true,
     "reason": "Correctly recalls lavender gin fizz.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "grader": "semantic-grade-v2"
   },
   "6222b6eb": {
     "correct": true,
-    "reason": "Correctly identifies the 6S algorithm.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly identifies the 6S radiative transfer model.",
+    "grader": "semantic-grade-v2"
   },
   "eaca4986": {
     "correct": true,
-    "reason": "Correctly recalls exact chord progression.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly reproduces chord progression C D E F G A B A G F E D C.",
+    "grader": "semantic-grade-v2"
   },
   "577d4d32": {
     "correct": false,
-    "reason": "Falsely claims not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims email cutoff time was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "15745da0": {
     "correct": true,
-    "reason": "Accurately recalls three months.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly states three months.",
+    "grader": "semantic-grade-v2"
   },
   "4388e9dd": {
     "correct": true,
-    "reason": "Matches untidy, stained white shirt.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly recalls untidy, stained white shirt.",
+    "grader": "semantic-grade-v2"
   },
   "58ef2f1c": {
     "correct": false,
-    "reason": "Falsely claims not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims volunteering date was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "c14c00dd": {
     "correct": false,
-    "reason": "Falsely claims brand not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Mentions Trader Joe's as store but explicitly claims the brand is not specified.",
+    "grader": "semantic-grade-v2"
   },
   "f4f1d8a4": {
     "correct": true,
-    "reason": "Accurately states your sister.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly states your sister gave the stand mixer.",
+    "grader": "semantic-grade-v2"
   },
   "caf9ead2": {
     "correct": true,
-    "reason": "Accurately recalls 5 hours.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly states around 5 hours.",
+    "grader": "semantic-grade-v2"
   },
   "b86304ba": {
     "correct": false,
-    "reason": "Falsely claims not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims painting value cannot be determined.",
+    "grader": "semantic-grade-v2"
   },
   "86f00804": {
     "correct": true,
-    "reason": "Commits to The Seven Husbands of Evelyn Hugo.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Concludes the book currently being read is 'The Seven Husbands of Evelyn Hugo'.",
+    "grader": "semantic-grade-v2"
   },
   "7161e7e2": {
     "correct": true,
-    "reason": "Matches 8 am - 4 pm (Day Shift).",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly states 8 am - 4 pm (Day Shift) on Sunday.",
+    "grader": "semantic-grade-v2"
   },
   "cc5ded98": {
     "correct": true,
-    "reason": "Correctly states about two hours per day.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly states about two hours each day.",
+    "grader": "semantic-grade-v2"
   },
   "c6853660": {
     "correct": true,
-    "reason": "Correctly states limit increased to two cups.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly states increasing the morning coffee limit.",
+    "grader": "semantic-grade-v2"
   },
   "41698283": {
-    "correct": false,
-    "reason": "Falsely claims most recent purchase is unspecified.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly recalls purchasing a 70-200mm zoom lens most recently.",
+    "grader": "semantic-grade-v2"
   },
   "6071bd76": {
-    "correct": false,
-    "reason": "Contradicts expected answer by denying a switch occurred.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly concludes switching to less water (5 oz vs 6 oz) per tablespoon.",
+    "grader": "semantic-grade-v2"
   },
   "7e974930": {
     "correct": true,
     "reason": "Correctly states $420.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "grader": "semantic-grade-v2"
   },
   "26bdc477": {
     "correct": true,
     "reason": "Correctly states five trips.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "grader": "semantic-grade-v2"
   },
   "2133c1b5": {
     "correct": true,
     "reason": "Correctly states 3 months.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "grader": "semantic-grade-v2"
   },
   "c4ea545c": {
     "correct": false,
-    "reason": "Falsely claims frequency change was not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims gym frequency change was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "db467c8c": {
     "correct": true,
     "reason": "Correctly states nine months.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "grader": "semantic-grade-v2"
   },
   "c7dc5443": {
     "correct": false,
-    "reason": "Falsely claims record was not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims volleyball league record was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "f685340e": {
     "correct": false,
-    "reason": "Fails to report previous weekly frequency.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Fails to state both previous weekly and current bi-weekly frequency.",
+    "grader": "semantic-grade-v2"
   },
   "07741c45": {
     "correct": false,
-    "reason": "Claims not specified; misses updated shoe rack location.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims sneaker location was not specified.",
+    "grader": "semantic-grade-v2"
   },
   "ce6d2d27": {
     "correct": true,
-    "reason": "Clearly gives Friday before trailing note cuts off.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly states Friday.",
+    "grader": "semantic-grade-v2"
   },
   "dad224aa": {
     "correct": true,
-    "reason": "Reports updated wake-up time of 7:30 am.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly states 7:30 am.",
+    "grader": "semantic-grade-v2"
   },
   "e61a7584": {
     "correct": true,
     "reason": "Correctly states 9 months.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "grader": "semantic-grade-v2"
   },
   "18bc8abd": {
     "correct": true,
-    "reason": "Correctly states Kansas City Masterpiece.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly names Kansas City Masterpiece.",
+    "grader": "semantic-grade-v2"
   },
   "830ce83f": {
     "correct": false,
-    "reason": "Reports outdated Chicago instead of the suburbs.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Reports Chicago instead of the suburbs.",
+    "grader": "semantic-grade-v2"
   },
   "42ec0761": {
     "correct": true,
-    "reason": "Clearly confirms yes.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly answers Yes, you have a spare screwdriver.",
+    "grader": "semantic-grade-v2"
   },
   "ba61f0b9": {
     "correct": false,
-    "reason": "Reports outdated count of 5 instead of 6.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Reports outdated count of 5 women instead of 6.",
+    "grader": "semantic-grade-v2"
   },
   "50635ada": {
     "correct": false,
-    "reason": "Misses update; claims previous status not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims previous frequent flyer status was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "10e09553": {
     "correct": false,
-    "reason": "Mentions 7 on 7/10 but concludes not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims earlier largemouth bass count was not provided.",
+    "grader": "semantic-grade-v2"
   },
   "89941a94": {
     "correct": false,
-    "reason": "Refuses; claims it was not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims other bikes before gravel bike were not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "9bbe84a2": {
     "correct": true,
-    "reason": "Correctly states previous goal was level 100.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly states previous goal was level 100 before updating to 150.",
+    "grader": "semantic-grade-v2"
   },
   "6a1eabeb": {
-    "correct": false,
-    "reason": "Reports wrong time 27:12 instead of 25:50.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly states 25:50.",
+    "grader": "semantic-grade-v2"
   },
   "3ba21379": {
     "correct": true,
-    "reason": "Correctly identifies Ford F-150 pickup truck.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly identifies Ford F-150 pickup truck model.",
+    "grader": "semantic-grade-v2"
   },
   "e66b632c": {
     "correct": false,
-    "reason": "Reports 26:30 instead of 27 minutes 45 seconds.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Reports wrong time of 26 minutes and 30 seconds instead of 27 minutes and 45 seconds.",
+    "grader": "semantic-grade-v2"
   },
   "184da446": {
     "correct": true,
     "reason": "Correctly states 220 pages.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "grader": "semantic-grade-v2"
   },
   "72e3ee87": {
     "correct": true,
     "reason": "Correctly states 50 episodes.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "grader": "semantic-grade-v2"
   },
   "7401057b": {
     "correct": false,
-    "reason": "Reports outdated value (one) instead of two.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Initially states a single free night, contradicting the expected two.",
+    "grader": "semantic-grade-v2"
   },
   "0f05491a": {
     "correct": true,
     "reason": "Correctly states 120 stars.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "grader": "semantic-grade-v2"
   },
   "gpt4_a1b77f9c": {
     "correct": false,
-    "reason": "Refuses to answer an answerable question",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims weeks spent reading and listening were not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_f49edff3": {
     "correct": true,
-    "reason": "Correctly orders all three events first to last",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly orders nursery preparation, baby shower shopping, then phone case order.",
+    "grader": "semantic-grade-v2"
   },
   "d01c6aa8": {
     "correct": false,
-    "reason": "Refuses to answer an answerable question",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims age when moving to the US was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_2c50253f": {
     "correct": false,
-    "reason": "Refuses to answer an answerable question",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims Tuesday/Thursday wake-up time was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "993da5e2": {
     "correct": false,
-    "reason": "Refuses to answer an answerable question",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims duration cannot be determined.",
+    "grader": "semantic-grade-v2"
   },
   "0bb5a684": {
     "correct": true,
-    "reason": "Correctly states 7 days before team meeting",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly identifies Jan 10 workshop and Jan 17 meeting with 7 days between them.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_68e94288": {
     "correct": false,
-    "reason": "Refuses to answer an answerable question",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims social media activity was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_e072b769": {
     "correct": false,
-    "reason": "Refuses to answer an answerable question",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims Ibotta start time was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_18c2b244": {
     "correct": false,
-    "reason": "Incorrect chronological order of all three events",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Orders ShopRite first instead of Walmart -> Ibotta -> ShopRite.",
+    "grader": "semantic-grade-v2"
   },
   "b46e15ed": {
     "correct": false,
-    "reason": "Refuses to answer an answerable question",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims charity event dates were not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_213fd887": {
     "correct": false,
-    "reason": "Wrongly picks charity 5K run first",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Incorrectly states charity 5K run happened before volleyball league.",
+    "grader": "semantic-grade-v2"
   },
   "b29f3365": {
     "correct": false,
-    "reason": "Refuses, claims information was not provided",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims guitar lesson duration when buying amp was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "2ebe6c92": {
     "correct": false,
-    "reason": "Names wrong book (The Song of Achilles)",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims book finished a week ago was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_a2d1d1f6": {
     "correct": false,
-    "reason": "Refuses, claims days ago was not mentioned",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims herb harvest timing was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_68e94287": {
     "correct": true,
-    "reason": "Clearly states vegan chili recipe post happened first",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly states vegan chili recipe post happened first.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_fa19884d": {
     "correct": false,
-    "reason": "Refuses, claims artist was not mentioned",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims artist was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_2312f94c": {
-    "correct": false,
-    "reason": "Wrongly picks Dell XPS 13 first",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly concludes Samsung Galaxy S22 (Feb 20) was received before Dell XPS 13 (Feb 25).",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_98f46fc6": {
     "correct": false,
-    "reason": "Refuses, claims order cannot be determined",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims sequence of charity events cannot be determined.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_385a5000": {
-    "correct": true,
-    "reason": "Reasons from dates and concludes tomatoes first",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": false,
+    "reason": "Incorrectly concludes marigolds were started first.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_8279ba03": {
     "correct": true,
-    "reason": "Correctly identifies smoker",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly recalls buying a smoker 10 days ago.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_7ca326fa": {
     "correct": false,
-    "reason": "Refuses to answer; claims not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims graduation order was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_4929293a": {
     "correct": true,
-    "reason": "Commits clearly to Michael's engagement party.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly states Michael's engagement party happened first.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_e414231e": {
     "correct": false,
-    "reason": "Refuses to answer; claims cannot be determined.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims specific dates were not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_d6585ce8": {
     "correct": false,
-    "reason": "Refuses to answer; claims cannot determine.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims concert dates and order were not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_93159ced": {
     "correct": false,
-    "reason": "Says about 4 years instead of 4y 9m.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Approximates 'about 4 years' instead of 4 years and 9 months.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_e061b84g": {
     "correct": false,
-    "reason": "Refuses to answer; claims not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims the sports event was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "71017277": {
     "correct": false,
-    "reason": "Refuses to answer; claims not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims who gave the jewelry was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_4fc4f797": {
     "correct": false,
-    "reason": "Refuses to answer; claims cannot be determined.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims suspension event dates cannot be determined.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_2487a7cb": {
     "correct": false,
-    "reason": "Picks wrong event: 'Effective Time Management' workshop.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Incorrectly states Effective Time Management workshop was attended first.",
+    "grader": "semantic-grade-v2"
   },
   "8077ef71": {
     "correct": false,
-    "reason": "Wrong count: says 0 days instead of 26.",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "7024f17c": {
-    "correct": false,
-    "reason": "Falsely claims hours were not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "09ba9854": {
-    "correct": false,
-    "reason": "Cut off before stating the savings amount.",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "9aaed6a3": {
-    "correct": false,
-    "reason": "Falsely claims Thursday cashback was not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "46a3abf7": {
-    "correct": false,
-    "reason": "Wrong tank count (says 2 instead of 3).",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "bb7c3b45": {
-    "correct": false,
-    "reason": "Falsely claims savings cannot be determined.",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "ef9cf60a": {
-    "correct": false,
-    "reason": "Falsely claims total spending cannot be determined.",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "2e6d26dc": {
-    "correct": false,
-    "reason": "Falsely claims total count is not determinable.",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "f35224e0": {
-    "correct": false,
-    "reason": "Falsely claims episode count was not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "gpt4_59c863d7": {
-    "correct": false,
-    "reason": "Falsely claims total kit count cannot be determined.",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "f0e564bc": {
-    "correct": false,
-    "reason": "Falsely claims prices were not provided.",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "e56a43b9": {
-    "correct": true,
-    "reason": "Matches $5 discount.",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "a11281a2": {
-    "correct": false,
-    "reason": "Claims starting followers missing.",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "d6062bb9": {
-    "correct": true,
-    "reason": "Matches 1,998 views.",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "4bc144e2": {
-    "correct": false,
-    "reason": "Lists $15 and $50 without total $65.",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "d23cf73b": {
-    "correct": false,
-    "reason": "Claims not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "078150f1": {
-    "correct": true,
-    "reason": "Matches $50.",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "b5ef892d": {
-    "correct": false,
-    "reason": "Claims camping trip days not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "28dc39ac": {
-    "correct": false,
-    "reason": "Claims total gaming hours not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "gpt4_2f91af09": {
-    "correct": false,
-    "reason": "Claims information is not available.",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "5025383b": {
-    "correct": true,
-    "reason": "Matches photography and cooking.",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "157a136e": {
-    "correct": false,
-    "reason": "Abstains, claims not mentioned",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "1c549ce4": {
-    "correct": true,
-    "reason": "Correctly gives total cost as $140",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "a346bb18": {
-    "correct": true,
-    "reason": "Correctly computes 12 minutes exceeded",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "a08a253f": {
-    "correct": false,
-    "reason": "Wrong total, 3 days a week",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "b3c15d39": {
-    "correct": false,
-    "reason": "Abstains, claims delivery days not specified",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "00ca467f": {
-    "correct": false,
-    "reason": "Wrong total, 3 appointments",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "c4a1ceb8": {
-    "correct": false,
-    "reason": "Wrong total, 4 citrus types",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "0ea62687": {
-    "correct": true,
-    "reason": "Concludes 2 mpg less now",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "a9f6b44c": {
-    "correct": false,
-    "reason": "Wrong total, 1 bike",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "d682f1a2": {
-    "correct": false,
-    "reason": "Abstains, claims not mentioned",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Reports 0 days ago instead of 26 days ago.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_372c3eed_abs": {
     "correct": false,
-    "reason": "Fabricates 10-year total assuming 2-year Master's",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Hallucinates a 2-year Master's duration and computes 10 years instead of abstaining.",
+    "grader": "semantic-grade-v2"
   },
   "a96c20ee_abs": {
     "correct": true,
-    "reason": "States specific university was not mentioned",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating university was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "0ddfec37_abs": {
     "correct": true,
-    "reason": "States number of autographed footballs not provided",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, noting autographed footballs were not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "031748ae_abs": {
     "correct": true,
-    "reason": "States team size in new role not specified",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating it was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "09ba9854_abs": {
-    "correct": true,
-    "reason": "States cannot give exact figure; bus cost missing",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": false,
+    "reason": "Fails to abstain and hallucinates estimated bus and taxi fares.",
+    "grader": "semantic-grade-v2"
   },
   "bc8a6e93_abs": {
     "correct": true,
-    "reason": "States uncle's birthday party was not mentioned",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating what was baked for uncle was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "2698e78f_abs": {
     "correct": true,
-    "reason": "States info about Dr. Johnson is not available",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, noting only Dr. Smith was mentioned, not Dr. Johnson.",
+    "grader": "semantic-grade-v2"
   },
   "c8090214_abs": {
     "correct": true,
-    "reason": "States number of days is not available",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating iPad purchase date was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "19b5f2b3_abs": {
     "correct": true,
-    "reason": "States duration was not mentioned",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating Korea stay duration was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "0862e8bf_abs": {
     "correct": true,
-    "reason": "States hamster's name was not mentioned",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating hamster's name was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "29f2956b_abs": {
     "correct": true,
-    "reason": "Clearly states violin practice time was not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating violin practice time was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_93159ced_abs": {
     "correct": true,
-    "reason": "Clearly states prior work duration was not provided.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating prior work before Google was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "15745da0_abs": {
     "correct": true,
-    "reason": "Clearly states collection duration was not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating vintage film collecting duration was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "edced276_abs": {
     "correct": true,
-    "reason": "Clearly states travel days were not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating days in Hawaii and Seattle were not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "ba358f49_abs": {
     "correct": true,
-    "reason": "Clearly states Rachel's age and marriage timing unavailable.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating Rachel's age at wedding cannot be determined.",
+    "grader": "semantic-grade-v2"
   },
   "2311e44b_abs": {
     "correct": true,
-    "reason": "Clearly states remaining pages in Sapiens not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating remaining pages in Sapiens were not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "e5ba910e_abs": {
     "correct": true,
-    "reason": "Clearly states iPad cost unavailable and total indeterminable.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating iPad cost was not provided.",
+    "grader": "semantic-grade-v2"
   },
   "6aeb4375_abs": {
     "correct": true,
-    "reason": "Clearly states information was not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating Italian restaurant count was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_c27434e8_abs": {
     "correct": true,
-    "reason": "Clearly states Porsche unmentioned and order cannot be determined.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating Porsche 991 Turbo S was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "f685340e_abs": {
     "correct": true,
-    "reason": "Clearly states table tennis frequency was not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, noting tennis was mentioned rather than table tennis.",
+    "grader": "semantic-grade-v2"
   },
   "88432d0a_abs": {
     "correct": true,
-    "reason": "Abstains, states not addressed.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating egg tart baking count was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "2133c1b5_abs": {
     "correct": true,
-    "reason": "Clearly states information not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating Shinjuku apartment duration was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "f4f1d8a4_abs": {
     "correct": true,
-    "reason": "Clearly states not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating dad's birthday gift was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "982b5123_abs": {
     "correct": true,
-    "reason": "Clearly states not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating Sacramento Airbnb booking was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_fe651585_abs": {
     "correct": true,
-    "reason": "Clearly abstains, states not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating Tom and Alex parenthood was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_70e84552_abs": {
     "correct": true,
-    "reason": "Clearly states impossible to determine.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating purchasing cows from Peter was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "eeda8a6d_abs": {
     "correct": true,
-    "reason": "Clearly states not provided.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating 30-gallon tank fish count was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "60bf93ed_abs": {
     "correct": true,
-    "reason": "Abstains, states not mentioned.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating iPad case delivery time was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "6456829e_abs": {
     "correct": true,
-    "reason": "Clearly states not provided.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating tomato and chili pepper plant counts were not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "80ec1f4f_abs": {
     "correct": true,
-    "reason": "States not mentioned and gives zero.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly abstains, stating December museum visits were not mentioned.",
+    "grader": "semantic-grade-v2"
   }
 }
