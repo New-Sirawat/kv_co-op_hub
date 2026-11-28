@@ -13,18 +13,18 @@
       ],
       "prompt_tokens": 20480,
       "generated_tokens": 160,
-      "ttft_sec": 0.3045,
-      "decode_time_sec": 0.6467,
-      "total_time_sec": 11.2052,
-      "throughput_tok_per_sec": 245.86,
-      "tpot_mean_ms": 40.05,
-      "tpot_p95_ms": 41.93,
+      "ttft_sec": 0.9114,
+      "decode_time_sec": 1.0796,
+      "total_time_sec": 19.0467,
+      "throughput_tok_per_sec": 147.28,
+      "tpot_mean_ms": 49.64,
+      "tpot_p95_ms": 66.74,
       "cold_ttft_sec": 0.0,
       "cold_total_sec": 0.0,
-      "ttft_p95_sec": 0.4224,
-      "peak_alloc_mb": 8337.45,
-      "peak_reserved_mb": 8366.0,
-      "host_rss_delta_mb": 1252.26,
+      "ttft_p95_sec": 1.0577,
+      "peak_alloc_mb": 8337.84,
+      "peak_reserved_mb": 8374.0,
+      "host_rss_delta_mb": 1109.5,
       "memcpy_bytes_per_token": 0.0,
       "error": null,
       "extra": {
@@ -33,16 +33,15 @@
         "pca_rank": 4,
         "sidecode_bits": 4,
         "effective_key_bits": 2.125,
-        "compression_ratio_vs_bf16": 5.22,
         "block_size": 16,
         "model_visible_distortion_aware": true,
-        "quantized_cache_bytes": 618278400,
+        "quantized_cache_bytes": 622333440,
         "engine": "pytorch",
         "attn_implementation": "sdpa",
         "max_vram_gb": 16.0,
         "effective_gpu_utilization": 0.5783,
         "hardware_vram_gb": 23.52,
-        "niah_accuracy": 0.0,
+        "niah_accuracy": 0.9,
         "niah_passcode": "849204",
         "niah_depths": [
           0.0,
@@ -61,64 +60,64 @@
             "depth": 0.0,
             "needle_distance": 2048,
             "retrieved": 0.0,
-            "generated_text": "0000000000000000"
+            "generated_text": "the number 492040, which is the number of the"
           },
           {
             "depth": 0.1,
             "needle_distance": 1847,
-            "retrieved": 0.0,
-            "generated_text": "e e about the e e e e e e e e about the e e"
+            "retrieved": 1.0,
+            "generated_text": "849204. The secret verification code is 84"
           },
           {
             "depth": 0.2,
             "needle_distance": 1646,
-            "retrieved": 0.0,
-            "generated_text": "e e e e e e e e e e e e e e e e"
+            "retrieved": 1.0,
+            "generated_text": "849204. The secret verification code for project Alpha is"
           },
           {
             "depth": 0.3,
             "needle_distance": 1445,
-            "retrieved": 0.0,
-            "generated_text": "about about about about about about about about about about about about about about about about"
+            "retrieved": 1.0,
+            "generated_text": "849204. The secret verification code for project Alpha is"
           },
           {
             "depth": 0.4,
             "needle_distance": 1244,
-            "retrieved": 0.0,
-            "generated_text": "o o o o o o o o o o o o o o o o"
+            "retrieved": 1.0,
+            "generated_text": "849204. The secret verification code is 84"
           },
           {
             "depth": 0.5,
             "needle_distance": 1043,
-            "retrieved": 0.0,
-            "generated_text": "e e<neol<ne<00000000"
+            "retrieved": 1.0,
+            "generated_text": "849204. The secret verification code is 84"
           },
           {
             "depth": 0.6,
             "needle_distance": 842,
-            "retrieved": 0.0,
-            "generated_text": "about the about the about the about the about the about the about the about the"
+            "retrieved": 1.0,
+            "generated_text": "849204. The secret verification code is 84"
           },
           {
             "depth": 0.7,
             "needle_distance": 641,
-            "retrieved": 0.0,
-            "generated_text": "about thene of thene of thene of thene of thene of"
+            "retrieved": 1.0,
+            "generated_text": "849204. The verification code is 849"
           },
           {
             "depth": 0.8,
             "needle_distance": 440,
-            "retrieved": 0.0,
-            "generated_text": "about the about the about thene about the about the about the about the about"
+            "retrieved": 1.0,
+            "generated_text": "849204. The secret verification code is 84"
           },
           {
             "depth": 0.9,
             "needle_distance": 239,
-            "retrieved": 0.0,
-            "generated_text": "e e of thene of thene of thene of the e e e"
+            "retrieved": 1.0,
+            "generated_text": "849204. The secret verification code for project Alpha is"
           }
         ],
-        "niah_retrieved_count": 0,
+        "niah_retrieved_count": 9,
         "niah_total_depths": 10
       }
     },
@@ -130,18 +129,18 @@
       ],
       "prompt_tokens": 40959,
       "generated_tokens": 160,
-      "ttft_sec": 0.513,
-      "decode_time_sec": 0.6334,
-      "total_time_sec": 13.3272,
-      "throughput_tok_per_sec": 251.03,
-      "tpot_mean_ms": 39.47,
-      "tpot_p95_ms": 41.02,
+      "ttft_sec": 1.1105,
+      "decode_time_sec": 0.8878,
+      "total_time_sec": 20.3545,
+      "throughput_tok_per_sec": 179.09,
+      "tpot_mean_ms": 44.29,
+      "tpot_p95_ms": 53.11,
       "cold_ttft_sec": 0.0,
       "cold_total_sec": 0.0,
-      "ttft_p95_sec": 0.6329,
-      "peak_alloc_mb": 8395.97,
-      "peak_reserved_mb": 8666.0,
-      "host_rss_delta_mb": 1256.24,
+      "ttft_p95_sec": 1.2367,
+      "peak_alloc_mb": 8396.35,
+      "peak_reserved_mb": 8674.0,
+      "host_rss_delta_mb": 1113.56,
       "memcpy_bytes_per_token": 0.0,
       "error": null,
       "extra": {
@@ -150,16 +149,15 @@
         "pca_rank": 4,
         "sidecode_bits": 4,
         "effective_key_bits": 2.125,
-        "compression_ratio_vs_bf16": 5.22,
         "block_size": 16,
         "model_visible_distortion_aware": true,
-        "quantized_cache_bytes": 1231665408,
+        "quantized_cache_bytes": 1235720448,
         "engine": "pytorch",
         "attn_implementation": "sdpa",
         "max_vram_gb": 16.0,
         "effective_gpu_utilization": 0.5783,
         "hardware_vram_gb": 23.52,
-        "niah_accuracy": 0.0,
+        "niah_accuracy": 0.9,
         "niah_passcode": "849204",
         "niah_depths": [
           0.0,
@@ -178,64 +176,64 @@
             "depth": 0.0,
             "needle_distance": 4096,
             "retrieved": 0.0,
-            "generated_text": "of the of the99 of the90 of the9000"
+            "generated_text": "the verification code for the project. The verification code is the verification code for the"
           },
           {
             "depth": 0.1,
             "needle_distance": 3690,
-            "retrieved": 0.0,
-            "generated_text": "the< the< the< the< the< the< the< the<"
+            "retrieved": 1.0,
+            "generated_text": "849204. The secret verification code for project Alpha is"
           },
           {
             "depth": 0.2,
             "needle_distance": 3284,
-            "retrieved": 0.0,
-            "generated_text": "the e e e the o e the o e e the o the o e"
+            "retrieved": 1.0,
+            "generated_text": "849204. The verification code is 849"
           },
           {
             "depth": 0.3,
             "needle_distance": 2879,
-            "retrieved": 0.0,
-            "generated_text": "about the about the about the e of the of the of the of the of"
+            "retrieved": 1.0,
+            "generated_text": "849204. The verification code is 849"
           },
           {
             "depth": 0.4,
             "needle_distance": 2473,
-            "retrieved": 0.0,
-            "generated_text": "of the of the of the of the of the of the of the of the"
+            "retrieved": 1.0,
+            "generated_text": "849204. The verification code for project Alpha is"
           },
           {
             "depth": 0.5,
             "needle_distance": 2067,
-            "retrieved": 0.0,
-            "generated_text": "about the about the about the about the about the about the about the about the"
+            "retrieved": 1.0,
+            "generated_text": "849204. The verification code is 849"
           },
           {
             "depth": 0.6,
             "needle_distance": 1661,
-            "retrieved": 0.0,
-            "generated_text": "about the about the the the the about the the the the the the about the"
+            "retrieved": 1.0,
+            "generated_text": "849204. The secret verification code is 84"
           },
           {
             "depth": 0.7,
             "needle_distance": 1255,
-            "retrieved": 0.0,
-            "generated_text": "about about the about the o of the of the of the of the of the"
+            "retrieved": 1.0,
+            "generated_text": "849204. The secret verification code for project Alpha is"
           },
           {
             "depth": 0.8,
             "needle_distance": 850,
-            "retrieved": 0.0,
-            "generated_text": "about the e of the e of the e of the of the of the about"
+            "retrieved": 1.0,
+            "generated_text": "849204. The verification code is 849"
           },
           {
             "depth": 0.9,
             "needle_distance": 444,
-            "retrieved": 0.0,
-            "generated_text": "about the e of the e of the about the e of the of the of"
+            "retrieved": 1.0,
+            "generated_text": "849204. The secret verification code is 84"
           }
         ],
-        "niah_retrieved_count": 0,
+        "niah_retrieved_count": 9,
         "niah_total_depths": 10
       }
     }
