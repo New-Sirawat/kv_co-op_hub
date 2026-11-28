@@ -11,10 +11,10 @@
 **Credits:** 3 Credits  
 
 **Project Members:**
-1. Sirawat Laoprom (Student ID: `65070501052`, Email: `siwarat.laop@kmutt.ac.th`)
-2. Khemingkapat Dechaboot (Student ID: `65070501004`, Email: `khemingkapat.dech@kmutt.ac.th`)
-3. Project Team Member 3 (Student ID: `[TBD]`, Email: `[TBD]`)
-4. Project Team Member 4 (Student ID: `[TBD]`, Email: `[TBD]`)
+1. Kantawich Limwilai (Student ID: `66070503406`)
+2. Khem Ingkapat (Student ID: `66070503408`)
+3. Sirawat Sanboonsong (Student ID: `66070503456`)
+4. Run Prajunban (Student ID: `66070503480`)
 
 **Project Advisors:**
 - Dr. Aye Hninn Khine, Ph.D. — *Project Advisor*
@@ -32,12 +32,12 @@
 
 The exponential adoption of long-context Large Language Models (LLMs) across consumer workstations, local private gateways, and edge enterprise nodes has exacerbated a severe hardware bottleneck: the **Key-Value (KV) Cache Memory Wall**. While initial prefill operations remain compute-bound, autoregressive token generation (the decode phase) is strictly memory-bandwidth bound ($< 1\text{ FLOP/byte}$). Under standard 16-bit floating-point (BF16) representation, the KV cache scales linearly ($O(S_{\text{context}} \times N)$) with prompt length $S$ and concurrent sessions $N$. On standard consumer hardware—such as an NVIDIA GeForce RTX 4090 ($24\text{ GB}$, capped at $16.0\text{ GiB}$ for container stability) or RTX 4060 ($8.0\text{ GB}$)—a state-of-the-art dense Grouped-Query Attention (GQA) model (`Qwen3-4B-Instruct-2507`, weights $\approx 8.06\text{ GB}$, KV footprint $= 144\text{ KiB/token}$) allocates $4.50\text{ GB}$ of VRAM for a single $32\text{K}$ context. Serving ten concurrent SME users at $32\text{K}$ context requires $45.0\text{ GB}$ of KV cache alone, precipitating immediate Out-of-Memory (CUDA OOM) failures.
 
-Existing optimizations tackle this memory wall along isolated dimensions with severe, unaddressed trade-offs:
-1. *Structural Eviction* (e.g., StreamingLLM, H2O, EpiCache) achieves high decode throughput ($20.95\text{ ms/tok}$) but causes unrecoverable factual amnesia (dropping 4K Needle-In-A-Haystack retrieval to $40\%$ and failing multi-hop reasoning);
-2. *Structural Quantization* (e.g., QServe KV4, TurboQuant, HeadQ) reduces representation size ($4.50\text{ b/scalar}$ INT4) but suffers from high software dequantization overhead in native PyTorch ($2.05\times$ latency penalty) and logit distortion;
-3. *Spatial Offloading & Temporal Prefetching* (e.g., FlexGen-KV, ArkVale, ShadowKV, InfiniGen) retain complete context in CPU host DRAM, but saturate the host-to-device PCIe bus ($> 1,600\text{ MB/token}$), incurring $3\times\text{--}8\times$ decode latency slowdowns or inflating VRAM via unamortized auxiliary buffers.
+Existing optimizations tackle this memory wall along isolated dimensions with clear empirical trade-offs:
+1. *Structural Eviction* (e.g., StreamingLLM, H2O, single-window EpiCache) achieves high decode throughput ($20.95\text{--}29.27\text{ ms/tok}$) with zero PCIe overhead, but causes unrecoverable factual amnesia (dropping 4K Needle-In-A-Haystack retrieval to $10\%\text{--}40\%$ and failing multi-hop reasoning);
+2. *Structural Quantization* (e.g., QServe KV4, TurboQuant, CacheGen, HeadQ) reduces representation size ($4.50\text{ b/scalar}$ INT4 in QServe KV4, $60.0\%$ LongMemEval) but incurs eager dequantization overhead in native PyTorch ($1.88\times\text{--}7.84\times$ TPOT penalty), while 2-bit Keys (`HeadQ`: $14.7\%$) collapse on multi-session 32K reasoning;
+3. *Spatial Offloading & Temporal Prefetching* (e.g., InfiniGen, ShadowKV, ArkVale, FlexGen-KV) retain complete context in CPU host DRAM and match or exceed the $66.0\%$ BF16 baseline ($64.7\%\text{--}66.7\%$), but uncompressed BF16 CPU pools overflow $16\text{ GiB}$ consumer host RAM ($11.2\text{--}20.2\text{ GiB}$ RSS) and saturate PCIe ($1.19\text{--}1.88\text{ GB/tok}$).
 
-This Senior Project presents a principled, empirical investigation into **3-Axis KV-Cache Co-Optimization**, systematically coordinating **Structural Compression** (sparsity and quantization), **Spatial Placement** (hierarchical GPU/CPU memory tiering), and **Temporal Scheduling** (predictive prefetching and compute-copy overlap). In Semester 1, our research achieved three major milestones: (1) characterized multi-user concurrency and context scaling ceilings via native vLLM profilers (`WP-2`); (2) built a unified, white-box PyTorch Native SDPA diagnostic testbed and empirically reproduced all 11 published candidate techniques across 512–32,768 context sweeps and 150 quantile-sampled LongMemEval questions (`WP-1`, `WP-3`); and (3) performed white-box component synthesis isolating implementation wrapper bugs from intrinsic algorithmic merits. Drawing upon these empirical findings, we propose **`TriCache`**, an integrated 3-axis architecture combining a GPU-resident BF16 hot window, an AABB geometric digest recall index, and a 4-bit INT4 paged CPU host storage tier that reduces PCIe traffic by over $13\times$ ($< 120\text{ MB/tok}$) while capping 32K context VRAM below $9.35\text{ GiB}$.
+This Senior Project presents a principled, empirical investigation into **3-Axis KV-Cache Co-Optimization**, systematically coordinating **Structural Compression** (sparsity and quantization), **Spatial Placement** (hierarchical GPU/CPU memory tiering), and **Temporal Scheduling** (predictive prefetching and compute-copy overlap) on the controlled `Qwen/Qwen3-4B-Instruct-2507` benchmark model. In Semester 1, our research achieved three major milestones: (1) characterized multi-user concurrency and context scaling ceilings via native vLLM profilers (`WP-2`); (2) built a unified, white-box PyTorch Native SDPA diagnostic testbed and empirically reproduced all 11 published candidate techniques across 512–32,768 context sweeps and 150 quantile-sampled LongMemEval questions (`WP-1`, `WP-3`), resolving all 9 implementation wrapper bugs across Slurm verification sweeps; and (3) synthesized component-level verdicts to formulate **a modular, engine-agnostic shortlist of preliminary WP-4 co-optimization directions** (`TriCache`, `EpiCache-3Axis`, `ShadowKV-Q4`, and a GPU-only `Hot-BF16 + SmoothINT4` baseline) governed by strict quantitative falsification gates prior to Semester 2 runtime integration (`WP-6`).
 
 **Keywords:** Key-Value Cache Management, Large Language Model Inference, Consumer GPUs, 3-Axis Co-Optimization, Grouped-Query Attention, Long-Context Memory Adherence, Paged Attention.
 
@@ -253,7 +253,7 @@ To prevent OOM, researchers have proposed numerous single-axis optimizations. Ho
 1. **The Structural Eviction Trap (Amnesia):** Methods like StreamingLLM, H2O, and EpiCache bound VRAM by discarding tokens based on recency or accumulated attention. However, when evaluated across realistic conversational workloads requiring multi-session reasoning, factual retention collapses. Evicting intermediate tokens reduces memory but permanently destroys non-local needle retrieval ($4\text{K}$ NIAH accuracy drops to $40\%$ in StreamingLLM and $0\%$ in EpiCache).
 2. **The Structural Quantization Trap (Kernel & Software Divergence):** Compressing $K$ and $V$ tensors to low-bit integers (e.g., INT4 in QServe, 2-bit in HeadQ, or Lloyd-Max in TurboQuant) preserves token presence. However, in consumer PyTorch environments lacking fused sub-byte GEMM kernels, dequantizing full sequences back to BF16 prior to attention calculation inflates decode latency ($59.9\text{ ms/tok}$ in QServe vs. $29.2\text{ ms/tok}$ in baseline; $864.1\text{ ms/tok}$ in TurboQuant), while uncentered 2-bit grids (HeadQ) destroy attention routing entirely ($0/150$ task pass rate).
 3. **The Spatial Offloading Trap (PCIe Bandwidth Thrashing):** Offloading KV pages to CPU host DRAM (FlexGen-KV, ArkVale) expands physical capacity. However, the host-to-device PCIe bus (Gen4 x16 theoretical peak: $31.5\text{ GB/s}$, empirical: $\approx 22\text{ GB/s}$) is over an order of magnitude slower than on-chip GPU VRAM bandwidth (RTX 4090: $1,008\text{ GB/s}$; RTX 4060: $272\text{ GB/s}$). Streaming full sequence caches across PCIe on every generation step consumes $> 1,600\text{ MB/token}$, creating severe compute stall bubbles ($229.6\text{ ms/tok}$ TPOT).
-4. **The Temporal Prefetching Trap (Auxiliary Buffer Bloat):** Speculative prefetching (InfiniGen) and selective value fetching (ShadowKV) attempt to overlap transfers. However, maintaining auxiliary key proxies, landmark indices, and duplicate CPU/GPU buffers introduces fixed overhead that does not amortize on smaller 4B models, paradoxically increasing peak allocated VRAM beyond the dense baseline ($14,233\text{ MiB}$ in ShadowKV vs. $13,225\text{ MiB}$ baseline).
+4. **The Host RAM & PCIe Wall on Uncompressed CPU Pools:** Selective offloading engines (`InfiniGen`, `ShadowKV`, `ArkVale`) preserve near-lossless accuracy ($64.7\%\text{--}66.7\%$) and fit within $16\text{ GiB}$ VRAM ($9.28\text{--}9.66\text{ GiB}$ Peak Alloc), yet uncompressed BF16 CPU backing pools inflate 32K host DRAM RSS to $11.2\text{--}20.2\text{ GiB}$—overflowing $16\text{ GiB}$ consumer system RAM—and incur $54.8\text{--}150.0\text{ ms/tok}$ decode latency over PCIe.
 
 #### The Co-Optimization Opportunity
 These empirical realities reveal that **no single optimization axis can conquer the KV-cache bottleneck alone**. Structural compression is required to shrink the data payload, spatial tiering is necessary to expand capacity into inexpensive host RAM, and temporal scheduling is critical to overlap transfers and hide PCIe latency. Therefore, a unified, cross-layer framework that **co-optimizes** structural format, spatial placement, and temporal data movement represents the vital, unaddressed research gap.
@@ -293,7 +293,7 @@ To maintain rigorous scientific focus and ensure high-impact deliverables within
 4. **Evaluation Scope:**
    - Quality preservation is governed strictly by the **Two Primary Quality Pillars**:
      - *Pillar 1 (Micro-Level Logit Divergence):* Mean KL Divergence, P99 KL Divergence, and Top-1 Token Agreement relative to uncompressed BF16 baseline references over 32K PG-19 sequences.
-     - *Pillar 2 (Macro-Level Conversational Adherence):* Task accuracy and macro F1 across 150 length-quantile-sampled queries from LongMemEval, evaluated via an offline semantic LLM judge (`gpt-4o-mini`).
+     - *Pillar 2 (Macro-Level Conversational Adherence):* Task accuracy and macro F1 across 150 length-quantile-sampled queries from LongMemEval, evaluated via an offline semantic LLM judge (`semantic-grade-v2`).
      - *Auxiliary Diagnostic:* 2D Needle-In-A-Haystack (NIAH) exact-match retrieval across 10 depth bins ($0.0\text{--}0.9$) at $2\text{K}$ and $4\text{K}$ contexts. Perplexity ($\Delta\text{PPL}$) is demoted to an opt-in supplementary metric.
 
 ---
@@ -386,10 +386,10 @@ To ensure rigorous technical accountability, the project enforces a clear divisi
 
 | Team Member | Primary Engineering Ownership | Work Packages | Core Technical Focus & Semester 1 Contributions |
 | :--- | :--- | :---: | :--- |
-| **Khemingkapat Dechaboot** (`65070501004`) | Central Hub Governance & System Architecture | `WP-1`, `WP-2`, `WP-4`, `WP-5` | Hub repository orchestration (`kv_co-op_hub`), vLLM concurrency profiler, Slurm automated harness, TurboQuant/ShadowKV reproduction, white-box component analysis. |
-| **Sirawat Laoprom** (`65070501052`) | Diagnostic Testbed & Quantization/Paging Systems | `WP-1`, `WP-3`, `WP-4`, `WP-5` | PyTorch SDPA diagnostic testbed, reproduction and benchmarking of QServe KV4, HeadQ, CacheGen, ArkVale, EpiCache; semantic grading pipeline; `TriCache` paged memory design. |
-| **Team Member 3** (`[TBD]`) | Quality Evaluation & Benchmark Toolchains | `WP-3`, `WP-7`, `WP-8` | LongMemEval and NIAH evaluation pipelines, offline semantic LLM judge integration, dataset curation, baseline logprob reference verification. |
-| **Team Member 4** (`[TBD]`) | Hardware Telemetry & Kernel Integration | `WP-2`, `WP-6`, `WP-8` | PCIe bandwidth instrumentation, host DRAM RSS tracking, CUDA stream orchestration, Triton kernel prototyping, cross-model portability testing. |
+| **Khem Ingkapat** (`66070503408`) | Central Hub Governance & Co-Design | `WP-1`, `WP-2`, `WP-3`, `WP-4`, `WP-5` | Hub repository orchestration (`kv_co-op_hub`), vLLM concurrency profiler, Slurm automated harness, white-box component analysis (`CONSOLIDATED_PATTERN_REPORT.md`), `EpiCache-3Axis` & `ShadowKV-Q4` candidates. |
+| **Sirawat Sanboonsong** (`66070503456`) | Diagnostic Testbed & Quantization/Paging | `WP-1`, `WP-3`, `WP-4`, `WP-5` | PyTorch SDPA diagnostic testbed, reproduction and benchmarking of QServe KV4, HeadQ, CacheGen, ArkVale, EpiCache; semantic grading pipeline; `TriCache` candidate design & S1 draft synthesis. |
+| **Kantawich Limwilai** (`66070503406`) | Quality Evaluation & Benchmark Toolchains | `WP-3`, `WP-7`, `WP-8` | LongMemEval and NIAH evaluation pipelines, offline semantic judge (`semantic-grade-v2`) integration, dataset curation, baseline logprob reference verification. |
+| **Run Prajunban** (`66070503480`) | Hardware Telemetry & Kernel Integration | `WP-2`, `WP-6`, `WP-8` | PCIe bandwidth instrumentation, host DRAM RSS tracking, CUDA stream orchestration, kernel prototyping, cross-model portability testing. |
 
 ---
 
@@ -597,7 +597,7 @@ While micro-level metrics capture numerical drift, they do not guarantee convers
 | **`cross_session_reasoning`** | 30 | Multi-hop synthesis requiring joint attention over $\ge 2$ distant sessions. | **Universal Stress Test:** Selective top-$k$ sparsity misses bridging facts. |
 | **`unanswerable_refusal`** | 30 | Explicit refusal when queried information was never provided in context. | Hallucination induced by distorted or incomplete attention softmax. |
 
-Outputs are graded using an offline semantic LLM judge (`gpt-4o-mini`) executing standardized prompt criteria to produce deterministic binary accuracy ($0$ or $1$) and macro F1 scores.
+Outputs are graded using an offline semantic LLM judge (`semantic-grade-v2`) executing standardized prompt criteria to produce deterministic binary accuracy ($0$ or $1$) and macro F1 scores.
 
 ### 2.5.3 2D Needle-In-A-Haystack (NIAH) Diagnostic Matrix
 To visualize localized retention failures, we inject synthetic UUID passcodes into background text at 10 uniform depth intervals ($0.0\text{--}0.9$) across $2,048$ and $4,096$ context lengths, evaluating exact-match retrieval accuracy.
@@ -828,82 +828,59 @@ Table 4.1 summarizes the mathematical formulations and operational mechanics imp
 
 ---
 
-## 4.4 Proposed Co-Optimization Engine: Tri-Axis Paged KV Co-Optimization (`TriCache`)
+## 4.4 Preliminary WP-4 Proposed Co-Optimization Directions (Modular Candidate Shortlist)
 
-Synthesizing the empirical breakthroughs and failure modes of `WP-3`, we formulate **`TriCache`**, an integrated 3-axis architecture designed specifically for consumer GPUs (Figure 4.2).
+> *Design Note:* Rather than locking the entire system onto a single untested runtime before WP-4 micro-benchmarks run, this section presents a **modular, engine-agnostic 3-axis candidate shortlist** targeting our controlled `Qwen/Qwen3-4B-Instruct-2507` model (`16.0 GiB` cluster / `8.0 GiB` local caps). Each candidate shares a common 3-axis infrastructure skeleton—allowing unchosen variants to be cleanly pruned after WP-4 validation without altering the surrounding architecture.
 
 ```mermaid
 flowchart TD
-    subgraph INPUT["Query Processing"]
-        Query["Query q_t (Layer l)"]
-    end
+    Q["Decode Query q_t (Layer l)"] --> Hot["Shared Structural Hot Tier<br/>(BF16 Sinks + Local Window)"]
+    Q --> Router{"Modular Recall / Compression Policy"}
 
-    subgraph HOT_TIER["1. Structural Axis: GPU Hot Tier"]
-        direction TB
-        Sinks["4 Attention Sinks (BF16)"]
-        Recent["512 Local Recent Window (BF16)"]
-        Resident["Resident GPU Pages (4-bit INT4 SmoothAttention)"]
-    end
+    Router -->|"Variant A: TriCache (Page AABB)"| AABB["16-Tok AABB Page Index<br/>+ 4-Bit CPU Pages (Async Delta)"]
+    Router -->|"Variant B: EpiCache-3Axis (Turn Episode)"| Epi["In-Model Centroid Router<br/>+ Composable Top-k 4-Bit Episodes"]
+    Router -->|"Variant C: ShadowKV-Q4 (SVD + CPU V)"| SVD["Cross-Head Pre-RoPE SVD Keys (r=160)<br/>+ 4-Bit CPU Values + Bounded LRU"]
+    Router -->|"Variant D: GPU-Only Fallback"| Smooth["4-Bit SmoothINT4 Cold GPU Tier<br/>(Zero CPU Offload)"]
 
-    subgraph INDEX_TIER["2. Temporal Axis: Predictive Lookahead"]
-        direction TB
-        AABB_Calc["Compute Lookahead Similarity via Layer l-1"]
-        AABB_Table["GPU AABB Digest Table ([min, max] per 16-tok Page)"]
-        Select["Select Top-K Missing Delta Pages (K <= 8)"]
-        AABB_Calc --> AABB_Table --> Select
-    end
-
-    subgraph HOST_TIER["3. Spatial Axis: Paged Host Storage"]
-        direction TB
-        CPU_Pages["Pinned CPU DRAM Page Bank (4-bit INT4, g=32)"]
-        Async_Stream["Async Non-Blocking CUDA Stream"]
-        Select -->|"Issue Page Fetch"| Async_Stream
-        CPU_Pages <-->|"Transfer Compressed 4-bit Page"| Async_Stream
-    end
-
-    Query --> HOT_TIER
-    Async_Stream -->|"Stage into Active Slots"| Resident
-    HOT_TIER --> SDPA["Execute Fused Quantized SDPA"]
+    Hot --> Attn["Target Runtime Attention<br/>(vLLM / PyTorch / Custom Kernel)"]
+    AABB --> Attn
+    Epi --> Attn
+    SVD --> Attn
+    Smooth --> Attn
 ```
-*Figure 4.2: Detailed Architectural Pipeline and Memory Flow of the Proposed `TriCache` Engine.*
+*Figure 4.2: Modular 3-Axis WP-4 Candidate Framework Sharing a Common Hot Tier and Runtime-Agnostic Execution Interface.*
 
-### 4.4.1 Subsystem 1 (Structural): BF16 Hot Tier + 4-Bit INT4 SmoothQuant
-`TriCache` divides the KV cache into a **Hot Tier** and a **Paged Tier**:
-- **Hot Tier (Resident BF16):** Preserves 4 initial attention sink tokens and a 512-token rolling local window in uncompressed BF16. This eliminates attention softmax instability and guarantees $100\%$ accuracy on immediate conversational context without precision distortion.
-- **Paged Tier (4-Bit INT4 SmoothQuant):** All tokens older than 512 are organized into fixed-size pages ($P=16\text{ tokens}$). Key and value tensors within each page are quantized to 4-bit integers with group size $g=32$. Channel outliers are migrated into queries using RoPE-paired offline scaling vectors $\mathbf{s} \in \mathbb{R}^D$:
+### 4.4.1 Shared 3-Axis Architectural Skeleton
+All preliminary WP-4 candidates reuse four empirically validated WP-3 building blocks:
+1. **BF16 Hot Tier (`STRUCTURAL`):** Retains initial attention sinks ($4$ tokens) and a local rolling window ($256\text{--}1,024$ tokens) in uncompressed BF16 to prevent softmax instability and local context amnesia.
+2. **Group-Wise 4-Bit Quantization (`STRUCTURAL`):** Compresses cold/offloaded KV blocks using `g=32` symmetric INT4 ($4.50\text{ b/scalar}$), proven in WP-3 (`QServe KV4`) as the empirical fidelity floor vs. 2-bit collapse (`HeadQ`).
+3. **Pinned Host CPU Pool (`SPATIAL`):** Stores dormant 4-bit blocks in pinned host DRAM ($3.56\times$ smaller than BF16, fitting within $16\text{ GiB}$ consumer system RAM).
+4. **Non-Blocking Async Transfer (`TEMPORAL`):** Overlaps host-to-device DMA on a dedicated CUDA copy stream behind GPU compute, decoupled from any single inference engine (compatible with vLLM, PyTorch, or custom Triton/CUDA kernels).
 
-$$\mathbf{K}' = \mathbf{K} \cdot \text{diag}(\mathbf{s})^{-1}, \quad \mathbf{Q}' = \mathbf{Q} \cdot \text{diag}(\mathbf{s}), \quad s_i = s_{i + D/2} = \max\left(\max_t |K_{t, i}|, \max_t |K_{t, i + D/2}|\right)^\alpha$$
-
-where $\alpha = 0.5$. This compresses storage to $4.50\text{ bits/scalar}$ ($4\text{ bits} + \text{FP16 scale}$).
-
-### 4.4.2 Subsystem 2 (Spatial): Paged CPU Storage with Grouped Quantization
-Dormant pages are offloaded to pinned CPU host DRAM. By storing pages in 4-bit format rather than BF16, host DRAM RSS is capped under $4.5\text{ GiB}$ at 32K context (a $3.56\times$ reduction vs. FlexGen). Layers 0 and 1 are permanently pinned in GPU VRAM ($\approx 256\text{ MiB}$), eliminating redundant cross-bus transfers for foundational representations.
-
-### 4.4.3 Subsystem 3 (Temporal): Vectorized AABB Digest with Async Delta Streaming
-To recall offloaded pages without bulk swapping, `TriCache` maintains a lightweight **Axis-Aligned Bounding Box (AABB)** digest on the GPU for each 16-token page:
-
-$$\mathbf{AABB}_p = \left[\min_{t \in p} \mathbf{K}'_t, \; \max_{t \in p} \mathbf{K}'_t\right] \in \mathbb{R}^{2 \times D}$$
-
-At step $t$, the query vector $\mathbf{q}_t$ is projected against all page bounding boxes using GQA Max-Pooling across the 4 query heads in each group. Crucially, **`TriCache` tracks page residency on the GPU**, querying only **missing delta pages** ($K \le 8$ pages/step). Page transfers execute over an asynchronous CUDA stream, fully overlapped with preceding layer computation. This slashes PCIe transfer volume from $1,618\text{ MB/tok}$ (ArkVale) down to **$< 120\text{ MB/tok}$**, completely breaking the PCIe latency wall.
+### 4.4.2 Modular Candidate Variants (Preliminary Team Proposals)
+- **Variant A — `TriCache` (Page-Level AABB Recall):** Uses vectorized 16-token Axis-Aligned Bounding Box (AABB) digests (`c ± r_mean`) with GQA max-pooled query scoring to fetch only missing delta pages from a 4-bit CPU page pool (building directly on fixed `ArkVale`'s `54.80 ms` TPOT and `64.7%` LongMemEval).
+- **Variant B — `EpiCache-3Axis` (Latency-First, Turn-Level Episode Routing):** Segments multi-turn history into semantic episodes routed once per user turn via single-pass in-model centroids, loading composable Top-$k$ ($k=2$) 4-bit CPU episodes asynchronously during query prefill for **$0\text{ MB/tok}$ decode PCIe**.
+- **Variant C — `ShadowKV-Q4` (Quality-First, Cross-Head SVD + 4-Bit CPU Values):** Retains $6.4\times$-compressed cross-head pre-RoPE SVD Keys ($r=160$) on GPU with a bounded LRU sparse cache and quantizes only the offloaded CPU Value bank to 4-bit INT4 (building on fixed `ShadowKV`'s `100/150 = 66.7%` LongMemEval).
+- **Variant D — `Hot-BF16 + SmoothINT4` (GPU-Only Structural Baseline):** Keeps the entire KV cache in GPU VRAM by pairing a BF16 sink+window with a RoPE-paired 4-bit SmoothINT4 cold tier (zero PCIe traffic, fused kernel target in WP-6).
 
 ---
 
 ## 4.5 Quantitative Falsification Gates & Micro-benchmarking Plan
 
-In accordance with departmental senior project guidelines, `TriCache` is formulated with strict, quantitative **Falsification Gates** (Table 4.2). If micro-benchmarks violate these thresholds, the underlying hypothesis is rejected.
+Each preliminary WP-4 candidate is evaluated against strict, quantitative **Falsification Gates** (Table 4.2) on `Qwen/Qwen3-4B-Instruct-2507` (`32K` context, `16.0 GiB` cap) before locking the final Semester 2 integration architecture.
 
 ---
 
-**Table 4.2: Quantitative Falsification Gates and Falsification Thresholds for `TriCache`.**
+**Table 4.2: Quantitative Target Gates and Falsification Thresholds Across Preliminary WP-4 Candidates.**
 
-| Evaluation Dimension | Target Metric | Dense Baseline | Best Single WP-3 | `TriCache` Target Gate | Falsification Threshold |
-| :--- | :--- | :---: | :---: | :---: | :--- |
-| **Macro Memory Adherence** | LongMemEval (150q) | $99/150$ ($66.0\%$) | $96/150$ (ShadowKV) | **$\ge 94/150$ ($62.7\%$)** | Falsified if $< 90/150$ ($< 60.0\%$). |
-| **Quality Degradation** | Quality Regressions | $0$ | $3$ (ShadowKV) | **$\le 5$ Regressions** | Falsified if $> 8$ Regressions. |
-| **Information Retrieval** | NIAH (2K & 4K) | $100\% / 100\%$ | $100\% / 100\%$ | **$100\% / 100\%$** | Falsified if $< 100\%$ at any depth. |
-| **Memory Footprint** | 32K Total Peak VRAM | $13,225\text{ MiB}$ | $8,889\text{ MiB}$ (FlexGen) | **$\le 9,350\text{ MiB}$** | Falsified if $> 9,650\text{ MiB}$. |
-| **Decode Latency** | 32K TPOT Mean | $29.17\text{ ms}$ | $20.95\text{ ms}$ (Streaming) | **$\le 38.0\text{ ms/tok}$** | Falsified if $> 45.0\text{ ms/tok}$. |
-| **Interconnect Traffic** | 32K PCIe Memcpy Rate | $0\text{ MB/tok}$ | $67.2\text{ MB}$ (ShadowKV) | **$\le 100\text{ MB/tok}$** | Falsified if $> 150\text{ MB/tok}$. |
+| Evaluation Dimension | Target Metric | Dense Baseline | Best WP-3 (`ShadowKV` / `InfiniGen`) | `TriCache` / `ShadowKV-Q4` Target | `EpiCache-3Axis` Target | Falsification Threshold (Reject If Violated) |
+| :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **Macro Memory Adherence** | LongMemEval (150q) | $99/150$ ($66.0\%$) | $100/150$ ($66.7\%$) | **$\ge 94/150$ ($62.7\%$)** | **$\ge 90/150$ ($60.0\%$)** | `< 90/150` (`TriCache`/`ShadowKV-Q4`); `< 87/150` (`EpiCache-3Axis`). |
+| **Quality Degradation** | Quality Regressions | $0$ | $2\text{--}3$ | **$\le 5\text{--}7$ Regressions** | **$\le 10$ Regressions** | `> 8` (`TriCache`/`ShadowKV-Q4`); `> 13` (`EpiCache-3Axis`). |
+| **Information Retrieval** | NIAH (2K & 4K) | — | $100\% / 100\%$ | **$100\% / 100\%$** | **$100\% / 100\%$** | `< 100%` at any depth. |
+| **Memory Footprint** | 32K Net KV+Aux VRAM | $5,486\text{ MiB}$ | $1,542\text{--}1,918\text{ MiB}$ | **$\le 1,600\text{--}1,800\text{ MiB}$** | **$\le 1,300\text{ MiB}$** | `> 2,000 MiB` (`> 1,600 MiB` for `EpiCache-3Axis`). |
+| **Host Memory Footprint** | 32K Host RSS $\Delta$ | $1,082\text{ MiB}$ | $11.2\text{--}20.2\text{ GiB}$ | **$\le 3.5\text{--}4.5\text{ GiB}$** | **$\le 2.5\text{ GiB}$** | `> 6.0 GiB` (must fit `16 GB` consumer RAM). |
+| **Decode Latency & PCIe** | 32K TPOT / PCIe | $29.17\text{ ms}$ / $0$ | $54.8\text{--}150.0\text{ ms}$ | **$\le 40\text{--}55\text{ ms}$ / $\le 100\text{ MB/tok}$** | **$\le 30\text{ ms}$ / $0\text{ MB/tok}$ decode** | TPOT `> 60 ms` or decode PCIe `> 150 MB/tok`. |
 
 ---
 
@@ -915,7 +892,7 @@ During Semester 1, the research team achieved 100% completion across Work Packag
 - **`WP-1` (Testbed Setup & Baseline Infrastructure):** Standardized dual-backend testbed on Slurm nodes `gpu01`–`gpu06`, pinned HuggingFace model revisions, established dataset downloaders with SHA256 validation, and implemented the PyTorch Native SDPA diagnostic runner.
 - **`WP-2` (Hardware & Bottleneck Profiling):** Profiled native vLLM V1 across contexts $512\text{--}32,768$ and concurrency $1\text{--}15$ streams, discovering the empirical VRAM scaling cliff and PCIe throughput wall.
 - **`WP-3` (Multi-Axis Strategy Exploration):** Implemented, debugged, and benchmarked all 11 published candidate techniques under identical hardware budgets ($16.0\text{ GiB}$ cap), executing 32K hardware sweeps, 2D NIAH grids, and 150-question semantic LongMemEval evaluations.
-- **`WP-4` (Co-Optimization Policy Formulation):** Completed white-box component synthesis, formulated the `TriCache` 3-axis architecture, and established quantitative falsification gates.
+- **`WP-4` (Preliminary Co-Optimization Directions):** Completed white-box component synthesis across all 11 bug-free WP-3 techniques, formulated a modular shortlist of preliminary 3-axis candidate directions (`TriCache`, `EpiCache-3Axis`, `ShadowKV-Q4`, `Hot-BF16 + SmoothINT4`), and established quantitative falsification gates.
 
 Table 5.1 confirms the verification and audit status of all Semester 1 repository artifacts.
 
@@ -928,7 +905,7 @@ Table 5.1 confirms the verification and audit status of all Semester 1 repositor
 | **WP-1** | Testbed Setup & PyTorch Harness | `kv_bench` (`src/core/pytorch_runner.py`) | `results/manifests/run_manifest_baseline_pytorch_16gb.json` | ✅ Verified |
 | **WP-2** | Native vLLM Hardware Profiling | `kv_bench` (`src/core/vllm_runner.py`) | `results/manifests/run_manifest_baseline_16gb.json` | ✅ Verified |
 | **WP-3** | 11-Candidate Strategy Benchmarks | `kv_bench` (`src/techniques/*_cache.py`) | `results/manifests/run_manifest_wp3_*.json` (11 manifests) | ✅ Verified |
-| **WP-4** | 3-Axis Synthesis & TriCache | `kv_co-op_hub` (`analysis/wp3/`) | `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md` | ✅ Verified |
+| **WP-4** | 3-Axis Synthesis & Preliminary Candidates | `kv_co-op_hub` (`analysis/wp3/`) | `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md` | ✅ Verified |
 | **WP-5** | Progress Report & Defense | `kv_co-op_hub` (`deliverables/`) | `deliverables/s1_progress_report/` | 🟡 Active |
 
 ---
@@ -948,43 +925,42 @@ Table 5.2 presents the master empirical synthesis across the dense baseline and 
 
 ---
 
-**Table 5.2: Master 12-Entry Telemetry & LongMemEval 150-Question Benchmark Synthesis Matrix.**
-*(Hardware metrics evaluated at 32,768 context. Static weight+runtime floor $\approx 7,739\text{ MiB}$. Quality evaluated over 150 length-quantile-sampled LongMemEval questions graded via offline semantic judge `gpt-4o-mini`).*
+**Table 5.2: Master 12-Entry Telemetry & LongMemEval 150-Question Benchmark Synthesis Matrix (Post-PR #59/#60).**
+*(Hardware metrics evaluated at 32,768 context. Static weight+runtime floor $\approx 7,739\text{ MiB}$. Quality evaluated over 150 length-quantile-sampled LongMemEval questions graded via offline semantic judge `semantic-grade-v2`. `*` denotes the `~8.3 KB/tok` PyTorch instrumentation floor, not KV offloading.)*
 
 | Technique | Authoritative 3-Axis Classification | Scalar Bits | 32K Peak VRAM (MiB) | Net KV+Aux VRAM (MiB) | 32K TPOT (ms/tok) | PCIe Memcpy (MB/tok) | NIAH Retrieval (2K / 4K) | LongMem Pass (out of 150) | Quality Regressions |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **PyTorch SDPA Baseline** | — | $16.0$ | $13,224.9$ | $5,486$ | **$29.17$** | $0.00$ | $100\% / 100\%$ | **$99/150$ ($66.0\%$)** | $0$ (Base) |
-| **ShadowKV** | `SPATIAL` | $16.0$ | $14,233.0^*$ | $6,494^*$ | $85.29$ | $67.24$ | $100\% / 100\%$ | **$96/150$ ($64.0\%$)** | **$3$** |
-| **FlexGen-KV** | `SPATIAL` | $4.5$ | $8,888.9$ | **$1,150$** | $229.57$ | $1,646.96$ | $100\% / 100\%$ | **$91/150$ ($60.7\%$)** | $14$ |
-| **InfiniGen** | `SPATIAL` | $16.0$ | $13,910.0^*$ | $6,171^*$ | $219.68$ | $1,829.89$ | $100\% / 100\%$ | **$91/150$ ($60.7\%$)** | $13$ |
-| **QServe KV4** | `STRUCTURAL` | $4.5$ | $10,762.7$ | $3,024$ | $59.92$ | $0.01$ | $100\% / 100\%$ | **$89/150$ ($59.3\%$)** | $13$ |
-| **ArkVale** | `SPATIAL` | $16.0$ | $9,032.9$ | $1,294$ | $102.92$ | $1,618.38$ | $100\% / 100\%$ | **$89/150$ ($59.3\%$)** | $14$ |
-| **H2O** | `STRUCTURAL` | $16.0$ | $9,725.0$ | $1,986$ | $45.88$ | $2.01$ | $100\% / 20\%$ | **$80/150$ ($53.3\%$)** | $22$ |
-| **TurboQuant** | `STRUCTURAL` | $4.38$ | $10,294.0$ | $2,555$ | $864.12^\dagger$ | $0.01$ | $100\% / 100\%$ | **$80/150$ ($53.3\%$)** | $20$ |
-| **CacheGen** | `STRUCTURAL` | $6.39$ | $10,600.0$ | $2,861$ | $82.90$ | $935.02$ | $40\% / 80\%$ | **$66/150$ ($44.0\%$)** | $36$ |
-| **StreamingLLM** | `STRUCTURAL` | $16.0$ | **$8,712.0$** | $973$ | **$20.95$** | $0.01$ | $100\% / 40\%$ | **$62/150$ ($41.3\%$)** | $37$ |
-| **EpiCache** | `STRUCTURAL` | $16.0$ | $8,567.0$ | $828$ | $30.60$ | $0.44$ | $0\% / 0\%^\ddagger$ | **$8/150$ ($5.3\%$)** | $91^\ddagger$ |
-| **HeadQ** | `STRUCTURAL` | $3.25$ | $10,109.0$ | $2,370$ | $80.89$ | $0.01$ | $0\% / 0\%^\ddagger$ | **$0/150$ ($0.0\%$)** | $99^\ddagger$ |
-
-*Note: $^*$VRAM elevated due to implementation bugs (uncompressed SVD $r=128$ in ShadowKV; duplicate CPU buffers in InfiniGen). $^\dagger$High TPOT caused by unfused Python loop. $^\ddagger$Severe accuracy drop caused by uncentered quantization or missing local window.*
+| **InfiniGen** *(PR #60)* | `SPATIAL` (+ `TEMPORAL`) | $16.0$ | $9,656.5$ | $1,918$ | $131.51$ | $1,875.47$ | $100\% / 100\%$ | **$100/150$ ($66.7\%$)** | **$2$** *(+3 UG)* |
+| **ShadowKV** *(PR #59)* | `SPATIAL` (+ `STR`, `TMP`) | $16.0$ | $9,544.9$ | $1,806$ | $150.03$ | $1,427.77$ | $100\% / 100\%$ | **$100/150$ ($66.7\%$)** | **$3$** *(+4 UG)* |
+| **PyTorch SDPA Baseline** | — | $16.0$ | $13,224.9$ | $5,486$ | **$29.17$** | $0.00$ | — | **$99/150$ ($66.0\%$)** | $0$ (Base) |
+| **ArkVale** *(PR #59)* | `SPATIAL` | $16.0$ | $9,281.2$ | $1,542$ | **$54.80$** | $1,192.88$ | $100\% / 100\%$ | **$97/150$ ($64.7\%$)** | **$7$** *(+5 UG)* |
+| **FlexGen-KV** | `SPATIAL` (+ `STR` 4b) | $4.5$ | $8,888.9$ | **$1,150$** | $229.57$ | $1,646.96$ | $100\% / 100\%$ | **$91/150$ ($60.7\%$)** | $14$ *(+6 UG)* |
+| **QServe KV4** *(PR #59)* | `STRUCTURAL` | $4.5$ | $10,041.0$ | $2,302$ | **$54.81$** | $0.01^*$ | $100\% / 100\%$ | **$90/150$ ($60.0\%$)** | $12$ *(+3 UG)* |
+| **H2O** *(PR #60)* | `STRUCTURAL` | $16.0$ | $9,434.7$ | $1,696$ | **$29.27$** | $0.01^*$ | $100\% / 20\%$ | **$81/150$ ($54.0\%$)** | $22$ *(+4 UG)* |
+| **TurboQuant** *(PR #59)* | `STRUCTURAL` | $4.38$ | $10,247.3$ | $2,508$ | $228.57$ | $0.01^*$ | $100\% / 100\%$ | **$81/150$ ($54.0\%$)** | $20$ *(+2 UG)* |
+| **CacheGen** *(PR #60)* | `STRUCTURAL` | $6.39$ | $10,585.7$ | $2,847$ | $83.80$ | $0.01^*$ | $40\% / 80\%$ | **$72/150$ ($48.0\%$)** | $31$ *(+4 UG)* |
+| **StreamingLLM** | `STRUCTURAL` | $16.0$ | **$8,711.7$** | $973$ | **$20.95$** | $0.01^*$ | $100\% / 40\%$ | **$66/150$ ($44.0\%$)** | $37$ *(+4 UG)* |
+| **EpiCache** *(PR #59)* | `STRUCTURAL` *(1-win)* | $16.0$ | **$8,567.4$** | **$829$** | **$26.57$** | $0.01^*$ | $20\% / 10\%$ | **$56/150$ ($37.3\%$)** | $43$ |
+| **HeadQ** *(PR #59)* | `STRUCTURAL` | $3.25$ | $9,681.3$ | $1,943$ | $88.01$ | $0.01^*$ | $90\% / 90\%$ | **$22/150$ ($14.7\%$)** | $81$ *(+4 UG)* |
 
 ---
 
 ### 5.2.3 The 3-Axis Trade-Off Trilemma
 The empirical data rigorously validates the existence of the **3-Axis Trade-Off Trilemma**:
-1. **Eviction maximizes throughput but fails retrieval:** `StreamingLLM` achieves the fastest generation ($20.95\text{ ms/tok}$, $1.39\times$ faster than baseline) and lowest VRAM ($8,712\text{ MiB}$), but suffers 37 regressions on LongMemEval, collapsing to $3.3\%$ on Cross-Session Reasoning.
-2. **Quantization preserves accuracy but incurs latency:** `QServe KV4` maintains $100\%$ NIAH retrieval and achieves $89/150$ passes, but PyTorch-level dequantization doubles decode latency ($59.92\text{ ms/tok}$).
-3. **Offloading expands memory but hits the PCIe wall:** `FlexGen-KV` cuts VRAM to $8,888.9\text{ MiB}$ with strong accuracy ($91/150$), but streaming uncoordinated blocks across PCIe inflates latency to $229.57\text{ ms/tok}$ ($7.87\times$ slower than baseline).
+1. **Eviction maximizes throughput and minimizes VRAM, but causes amnesia:** `StreamingLLM` ($20.95\text{ ms}$, $8,711.7\text{ MiB}$) and fixed `EpiCache` ($26.57\text{ ms}$, $8,567.4\text{ MiB}$) run faster than baseline with zero PCIe traffic, but lose $37\text{--}43$ questions on LongMemEval (`cross_session_reasoning` collapses to $3.3\%$).
+2. **Quantization compresses in-VRAM state, but faces a 4-bit floor and eager overhead:** `QServe KV4` preserves $100\%$ NIAH and $90/150$ ($60.0\%$) LongMemEval, whereas 2-bit Keys (`HeadQ`: $14.7\%$ despite $90\%/90\%$ NIAH) confirm an intrinsic sub-4-bit routing ceiling under 4:1 GQA.
+3. **Selective offloading preserves near-lossless recall, but overflows consumer Host RAM in BF16:** `InfiniGen` ($100/150$, $2$ QR), `ShadowKV` ($100/150$, $3$ QR), and `ArkVale` ($97/150$, $7$ QR) fit comfortably under $16\text{ GiB}$ VRAM ($9.28\text{--}9.66\text{ GiB}$), yet uncompressed BF16 CPU pools push Host RSS to $11.2\text{--}20.2\text{ GiB}$ and PCIe traffic to $1.19\text{--}1.88\text{ GB/tok}$.
 
 ---
 
 ## 5.3 White-Box Failure & Attribution Analysis
 
-### 5.3.1 Disentangling Implementation Bugs from Intrinsic Merits
-Our white-box inspection revealed that several candidate techniques underperformed due to **PyTorch wrapper bugs** rather than fundamental algorithmic flaws:
-- **ShadowKV VRAM Inflation:** `shadowkv_cache.py` clamped per-head SVD rank to $r = \min(160, S, 128) = 128$. Because head dimension $D=128$, the projection operated at **$1.0\times$ (zero compression)**, while simultaneously storing full Values on CPU and sparse caches on GPU. Reshaping tensors across all heads ($[B, S, H_{\text{KV}} \cdot D]$) allows true $r=160$ compression, dropping VRAM to $\approx 9,400\text{ MiB}$.
-- **ArkVale & InfiniGen Proxy Inversion:** Both implementations mistakenly passed `key_states` instead of `query_states` into relevance scoring functions, severely corrupting page prediction and forcing redundant full-page re-fetching.
-- **HeadQ & EpiCache Collapses:** `HeadQ` fitted its PCA projection on first-chunk key residuals rather than offline query calibration data, distorting attention angles. `EpiCache` stripped its layer-sensitivity budget to circumvent HuggingFace shared-mask constraints and omitted a local recent window, wiping out immediate conversational context.
+### 5.3.1 Disentangling Implementation Bugs from Intrinsic Merits (PR #59 & PR #60)
+White-box inspection across `kv_bench` identified 9 implementation bugs across 8 wrappers; all 9 were resolved and re-verified on `gpu4090` (Jobs `30715` & `30848`):
+- **VRAM Inversions Resolved (`ShadowKV` & `InfiniGen`):** Fixing `ShadowKV`'s per-head `r=128` SVD no-op to cross-head `r=160` + bounded LRU cut 32K Peak Alloc by $-4,688\text{ MiB}$ ($14,233 \rightarrow 9,544.9\text{ MiB}$); fixing `InfiniGen`'s prefill GPU/CPU retention cut Peak Alloc by $-4,254\text{ MiB}$ ($13,910 \rightarrow 9,656.5\text{ MiB}$).
+- **Query Proxy & Delta Recall (`ArkVale` & `InfiniGen`):** Replacing `key_states` with SDPA-hooked `query_states` halved `ArkVale`'s TPOT ($102.9 \rightarrow 54.80\text{ ms}$) and lifted accuracy to $97/150$ ($64.7\%$); `InfiniGen` jumped to $100/150$ ($66.7\%$, only $2$ regressions).
+- **Sync & Realloc Thrashing (`H2O`, `CacheGen`, `QServe KV4`, `TurboQuant`):** Pure-GPU `torch.topk` (`H2O`: $45.88 \rightarrow 29.27\text{ ms}$), pure-GPU realloc (`CacheGen`: $935\text{ MB/tok} \rightarrow 8.4\text{ KB/tok}$), linear-above-16K buffers (`QServe`: $-722\text{ MiB}$), and cached Hadamard matmul (`TurboQuant`: $864.1 \rightarrow 228.57\text{ ms}$) eliminated non-intrinsic penalties.
+- **Collapse Bugs Resolved (`HeadQ` & `EpiCache`):** Channel standardization + per-KV-head Query PCA revived `HeadQ` NIAH from $0\% \rightarrow 90\%/90\%$ (confirming its $14.7\%$ LongMemEval is an intrinsic 2-bit Key limit), while pinning $4$ sinks + $512$ recent tokens revived `EpiCache` from $5.3\% \rightarrow 37.3\%$ (isolating single-window middle amnesia when episodic routing is absent).
 
 ---
 
@@ -993,23 +969,25 @@ Table 5.3 breaks down semantic pass rates across the 5 conversational memory cap
 
 ---
 
-**Table 5.3: 5-Capability LongMemEval Semantic Accuracy and Regression Breakdown across 150 Questions.**
+**Table 5.3: 5-Capability LongMemEval Semantic Accuracy and Regression Breakdown across 150 Questions (Post-PR #59/#60).**
 
 | Method | `fact_recall` (30) | `information_update` (30) | `relative_timeframe` (30) | `cross_session_reasoning` (30) | `unanswerable_refusal` (30) | Total Regressions |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **InfiniGen** *(PR #60)* | $90.0\%$ ($0$ reg) | $66.7\%$ ($0$ reg) | $30.0\%$ ($0$ reg) | **$50.0\%$** ($1$ reg) | $96.7\%$ ($1$ reg) | **$2$** *(+3 UG)* |
+| **ShadowKV** *(PR #59)* | **$93.3\%$** ($0$ reg) | $63.3\%$ ($1$ reg) | **$33.3\%$** ($0$ reg) | $43.3\%$ ($2$ reg) | **$100.0\%$** ($0$ reg) | **$3$** *(+4 UG)* |
 | **Baseline (BF16)** | **$90.0\%$** | **$66.7\%$** | **$30.0\%$** | **$43.3\%$** | **$100.0\%$** | **$0$** |
-| **ShadowKV** | $90.0\%$ ($0$ reg) | $66.7\%$ ($0$ reg) | $30.0\%$ ($0$ reg) | $33.3\%$ ($3$ reg) | $100.0\%$ ($0$ reg) | **$3$** |
+| **ArkVale** *(PR #59)* | **$93.3\%$** ($0$ reg) | $66.7\%$ ($2$ reg) | $30.0\%$ ($1$ reg) | $36.7\%$ ($3$ reg) | $96.7\%$ ($1$ reg) | **$7$** *(+5 UG)* |
 | **FlexGen-KV** | $90.0\%$ ($1$ reg) | $66.7\%$ ($3$ reg) | $26.7\%$ ($1$ reg) | $30.0\%$ ($6$ reg) | $90.0\%$ ($3$ reg) | $14$ |
-| **InfiniGen** | $83.3\%$ ($2$ reg) | $60.0\%$ ($3$ reg) | $30.0\%$ ($1$ reg) | $40.0\%$ ($4$ reg) | $90.0\%$ ($3$ reg) | $13$ |
-| **QServe KV4** | $86.7\%$ ($1$ reg) | $66.7\%$ ($1$ reg) | $23.3\%$ ($3$ reg) | $23.3\%$ ($7$ reg) | $96.7\%$ ($1$ reg) | $13$ |
-| **ArkVale** | $86.7\%$ ($1$ reg) | $60.0\%$ ($3$ reg) | $30.0\%$ ($1$ reg) | $26.7\%$ ($7$ reg) | $93.3\%$ ($2$ reg) | $14$ |
-| **H2O** | $86.7\%$ ($1$ reg) | $46.7\%$ ($6$ reg) | $26.7\%$ ($2$ reg) | $16.7\%$ ($10$ reg) | $90.0\%$ ($3$ reg) | $22$ |
-| **TurboQuant** | $73.3\%$ ($5$ reg) | $53.3\%$ ($4$ reg) | $20.0\%$ ($3$ reg) | $23.3\%$ ($7$ reg) | $96.7\%$ ($1$ reg) | $20$ |
-| **CacheGen** | $46.7\%$ ($13$ reg) | $50.0\%$ ($5$ reg) | $16.7\%$ ($5$ reg) | $20.0\%$ ($9$ reg) | $86.7\%$ ($4$ reg) | $36$ |
+| **QServe KV4** *(PR #59)* | $86.7\%$ ($1$ reg) | $66.7\%$ ($1$ reg) | $26.7\%$ ($2$ reg) | $23.3\%$ ($7$ reg) | $96.7\%$ ($1$ reg) | $12$ *(+3 UG)* |
+| **H2O** *(PR #60)* | $86.7\%$ ($1$ reg) | $53.3\%$ ($6$ reg) | $20.0\%$ ($3$ reg) | $16.7\%$ ($10$ reg) | $93.3\%$ ($2$ reg) | $22$ *(+4 UG)* |
+| **TurboQuant** *(PR #59)* | $73.3\%$ ($5$ reg) | $63.3\%$ ($1$ reg) | $20.0\%$ ($4$ reg) | $20.0\%$ ($8$ reg) | $93.3\%$ ($2$ reg) | $20$ *(+2 UG)* |
+| **CacheGen** *(PR #60)* | $50.0\%$ ($12$ reg) | $50.0\%$ ($5$ reg) | $20.0\%$ ($4$ reg) | $26.7\%$ ($8$ reg) | $93.3\%$ ($2$ reg) | $31$ *(+4 UG)* |
 | **StreamingLLM** | $70.0\%$ ($6$ reg) | $60.0\%$ ($4$ reg) | $10.0\%$ ($8$ reg) | $3.3\%$ ($12$ reg) | $76.7\%$ ($7$ reg) | $37$ |
+| **EpiCache** *(PR #59)* | $66.7\%$ ($7$ reg) | $30.0\%$ ($11$ reg) | $0.0\%$ ($9$ reg) | $3.3\%$ ($12$ reg) | $86.7\%$ ($4$ reg) | $43$ |
+| **HeadQ** *(PR #59)* | $26.7\%$ ($19$ reg) | $26.7\%$ ($12$ reg) | $10.0\%$ ($9$ reg) | $3.3\%$ ($13$ reg) | $6.7\%$ ($28$ reg) | $81$ *(+4 UG)* |
 
 #### Key Insight: Cross-Session Reasoning is the Universal Stress Test
-The empirical data proves that **`cross_session_reasoning` is the ultimate differentiator for KV cache compression**. It accounts for $54\%$ ($7/13$) of QServe's regressions, $50\%$ ($7/14$) of ArkVale's, $45\%$ ($10/22$) of H2O's, and $100\%$ ($3/3$) of ShadowKV's. Synthesizing disparate facts across disconnected dialogue turns requires diffuse attention over multiple distant tokens; aggressive top-$k$ pruning or precision noise breaks the reasoning chain even when single-fact recall remains intact.
+The empirical data proves that **`cross_session_reasoning` is the ultimate differentiator for KV cache compression**. It accounts for $58\%$ ($7/12$) of QServe KV4's regressions, $43\%$ ($3/7$) of ArkVale's, $45\%$ ($10/22$) of H2O's, and $67\%$ ($2/3$) of ShadowKV's. Synthesizing disparate facts across disconnected dialogue turns requires diffuse attention over multiple distant tokens; aggressive top-$k$ pruning or precision noise breaks the reasoning chain even when single-fact recall remains intact.
 
 ---
 
@@ -1018,8 +996,8 @@ The empirical data proves that **`cross_session_reasoning` is the ultimate diffe
 ### 5.4.1 Immediate Pre-Defense Action Plan
 Ahead of the Semester 1 Progress Defense, the team will execute three closing actions:
 1. Deliver the audited progress report draft to advisors Dr. Aye Hninn Khine and Dr. Boonyarit Changaival.
-2. Finalize `WP1-5` local testbed adaptation on the desktop RTX 4060 ($8.0\text{ GB}$) using `Qwen3-1.7B`.
-3. Conduct initial prototype micro-benchmarks on `TriCache` components to validate delta PCIe transfers.
+2. Finalize `WP1-5` local testbed adaptation on the desktop RTX 4060 ($8.0\text{ GB}$) using `Qwen3-1.7B` / `Qwen3-4B`.
+3. Conduct WP-4 micro-benchmarks across our modular candidate directions (`TriCache`, `EpiCache-3Axis`, `ShadowKV-Q4`, `Hot-BF16 + SmoothINT4`) against Table 4.2's falsification gates to select the winning architecture(s) for Semester 2.
 
 ### 5.4.2 Semester 2 Work Packages & Technical Roadmap (WP-6 to WP-9)
 Table 5.4 outlines the transition plan into Semester 2.
@@ -1030,7 +1008,7 @@ Table 5.4 outlines the transition plan into Semester 2.
 
 | Work Package | Technical Focus | Core Milestones & Engineering Deliverables | Target Horizon |
 | :---: | :--- | :--- | :---: |
-| **WP-6** | Runtime Engine Integration | Implement C++/CUDA paged memory manager for `TriCache`; integrate async CUDA delta transfers; fuse 4-bit INT4 dequantization kernels. | Jan–Feb 2027 |
+| **WP-6** | Runtime Engine Integration | Integrate the WP-4-validated 3-axis policy into our target runtime engine (vLLM / Triton / CUDA); integrate async CUDA delta transfers and fused 4-bit INT4 kernels. | Jan–Feb 2027 |
 | **WP-7** | Long-Context Stress & Quality | Scale context evaluation to $64\text{K}\text{--}128\text{K}$ tokens; execute full RULER, LongMemEval, and Multi-Needle benchmark suites. | Mar–Apr 2027 |
 | **WP-8** | Ablation & Cross-Model Validation | Perform 3-axis ablation study (removing Structural, Spatial, or Temporal tiers); validate across `Qwen3-1.7B` and `Llama-3.1-8B`. | Apr 2027 |
 | **WP-9** | Thesis Defense & Artifact Release | Complete final B.Eng. thesis dissertation; prepare conference manuscript; publish fully reproducible GitHub repository. | May 2027 |
@@ -1068,7 +1046,7 @@ The 150 LongMemEval evaluation questions (`xiaowu0162/longmemeval-cleaned`) were
 4. **`cross_session_reasoning` (Questions `91`–`120`):** Multi-hop reasoning requiring joint attention over $\ge 2$ distant conversational sessions.
 5. **`unanswerable_refusal` (Questions `121`–`150`):** Negative constraint verification testing whether the model appropriately refuses to answer when information was never provided.
 
-Semantic scoring is executed via `scripts/grade_longmemeval.py` calling `gpt-4o-mini` with temperature $T=0.0$, evaluating strict binary adherence against reference answers.
+Semantic scoring is executed via `scripts/longmem_grades.py` using the `semantic-grade-v2` offline judge evaluating strict binary adherence against reference answers.
 
 ---
 
@@ -1079,7 +1057,7 @@ All hardware metric sweeps were executed on CPE Slurm cluster node `gpu06.slurm.
 For each candidate technique, sweeps evaluated sequences scaling across:
 - **Batch Size:** $B = 1$
 - **Prompt Context Lengths ($S$):** $512, 1024, 2048, 4096, 8192, 16384, 32768$ tokens.
-- **Generation Length:** $128$ output tokens ($T=128$) with greedy decoding ($T=0.0$).
+- **Generation Length:** $64$ output tokens ($T=64$) in hardware scaling sweeps ($128$ max tokens in LongMemEval) with greedy decoding ($T=0.0$).
 - **Logged Telemetry:** Warm TTFT (s), Cold TTFT (s), TPOT Mean (ms), TPOT P95 (ms), Throughput (tok/s), Peak Allocated VRAM (MB), Peak Reserved VRAM (MB), Host DRAM RSS Delta (MB), and PCIe Memcpy Rate (bytes/tok).
 
 Raw JSON telemetry files reside in `results/runs/wp3/` on `khemingkapat/kv_co-op_hub`, backed by cryptographic run manifests in `results/manifests/`.
