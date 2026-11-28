@@ -1,9 +1,9 @@
 # WP-3 Technical Analysis: EpiCache (Episodic KV Cache Management)
 
-**Authoritative Axis (`docs/METRICS_AND_AXES.md`):** `STRUCTURAL` *(Manifest/code declares `["STRUCTURAL", "SPATIAL"]`, but the PyTorch `EpiCacheCache` implementation performs zero host-RAM episode tiering or routing; only `STRUCTURAL` token eviction executes.)*  
-**`kv_bench` Pinned Commit:** `2a9338a2f750741f7765d79c1270f5579a9ffed0`  
+**Authoritative Axis (`docs/METRICS_AND_AXES.md`):** `STRUCTURAL` *(PR #59 corrected telemetry to report `episodic_routing_active: false`; the PyTorch `EpiCacheCache` executes block-wise `STRUCTURAL` eviction with `4` sinks + `512` recent window inside a `1,024`-token budget, with zero host-RAM episode clustering/routing.)*  
+**`kv_bench` Pinned Commit:** `5fc1cea4ba64ac86a2da49edd8210a46753834fe` *(PR #59: pin 4 sinks + 512 recent window, GPU `int32` positions, honest telemetry)*  
 **Target Model:** `Qwen/Qwen3-4B-Instruct-2507` (`Pure Dense GQA`, $L=36$, $H_Q=32$, $H_{KV}=8$, $D=128$, `bfloat16`)  
-**Hardware Cap:** 16.0 GiB process allocator cap on NVIDIA RTX 4090 (23.52 GiB physical VRAM, `effective_gpu_utilization = 0.5783`)
+**Hardware Cap:** 16.0 GiB process allocator cap on NVIDIA RTX 4090 (23.52 GiB physical VRAM), Slurm Job `30715`
 
 ---
 
@@ -12,53 +12,46 @@
 ### 1.1 Manifest Provenance & `technique_config`
 From [`results/manifests/run_manifest_wp3_epicache.json`](../../../results/manifests/run_manifest_wp3_epicache.json):
 - **Manifest `technique_config`:**
-  - `cache_class`: `EpiCacheCache`
-  - `num_episodes`: `4`
-  - `episode_budget_tokens`: `1024`
-  - `layer_sensitivity_alpha`: `2.0`
-  - `block_size`: `16`
+  - `cache_class`: `EpiCacheCache`, `num_episodes`: `4`, `episode_budget_tokens`: `1024`, `layer_sensitivity_alpha`: `2.0`, `block_size`: `16` *(PR #59 active defaults: `sink_tokens=4`, `recent_window=512`, `episodic_routing_active=false`)*.
 - **VERIFIED Hub Artifact SHA-256 Checksums:**
-  - `results/runs/wp3/epicache_hardware_pytorch_16gb.json`: `f2e7550025d372b4e5e97288995e54dfb8888b069c68a8caf7a5953cc1b9d411`
-  - `results/runs/wp3/epicache_longmem_pytorch_16gb.json`: `b3b319b85f68dbe821fb4f40210d7262e18858e2a1ad3bc037f04e54776636a0`
-  - `results/runs/wp3/epicache_niah_pytorch_16gb.json`: `fc945c375ed71f7e73e5579477204c3c1f582cd25c97b609215a8f512bc46c73`
-  - `results/runs/wp3/verify_epicache_pytorch_16gb.json`: `1133f9f72a8064be77c563dce293bb2c93a4c8c9d305e210f683af546f382c8d`
-  - `results/grades/epicache_grades.json`: `c4d7a3e4a28d2721e85fbd1fd6ac41afb94ec263f4b1ffbe401804564c239a82`
-  - `results/grades/epicache_judged.json`: `cb50d765a62333ce3215551314e163c573113b6dc17e15c64792de5a43e67f68`
+  - `results/runs/wp3/epicache_hardware_pytorch_16gb.json`: `5edcd4e31c8b28bc9349087045c2b4a879d9711dcaf59a695c1ff13f0fc6c8aa`
+  - `results/runs/wp3/epicache_longmem_pytorch_16gb.json`: `5ebd5782d5314258e0fbb3971ea77abdfb669d163f9088b4a1969199e5b3f780`
+  - `results/runs/wp3/epicache_niah_pytorch_16gb.json`: `191f46248b2aee3da3ff43056a20b5099db8d95ab27ba85a95f975bc63962c14`
+  - `results/runs/wp3/verify_epicache_pytorch_16gb.json`: `6c3ee474649fcbe4f4644fddec43c5199b7c8ac0a5e18483a4622b6ed39a6c75`
+  - `results/grades/epicache_grades.json`: `259b13161cc13177316777dc3e8ff78fe25c5bdf46eab407c8dcec72b9e54e7c`
+  - `results/grades/epicache_judged.json`: `a965e13b5577dfe8d357e632eda8e487a61fe70f42a8c8a2188c5647ff74ee4b`
 
 ### 1.2 Hardware Scaling Sweep (`512 -> 32,768` Tokens, `SyntheticFiller`)
-Static `Qwen3-4B` BF16 weights + runtime at `ctx=128` (`verify_baseline_pytorch_16gb.json` / `verify_epicache_pytorch_16gb.json`) is **`7,738.78 MiB` (~7.56 GiB)**. At `ctx=32,768`, EpiCache caps `Peak Alloc` at **`8,567.15 MiB`** (net KV+aux **`~828.4 MiB`**) vs. Baseline's `13,224.90 MiB` (`~5,486.1 MiB` KV+aux), saving `4,657.8 MiB` by capping retained KV to `1,024` tokens per layer.
+Static `Qwen3-4B` BF16 weights + runtime at `ctx=128` is **`7,738.78 MiB` (~7.56 GiB)**. At `ctx=32,768`, EpiCache caps `Peak Alloc` at **`8,567.43 MiB`** (net KV+aux **`828.65 MiB`**), saving `4,657.5 MiB` vs. baseline while running faster than baseline (`26.57 ms` vs. `29.17 ms` TPOT, `2.68 s` vs. `6.98 s` TTFT) with zero PCIe sync overhead (`8,258 B/tok` = harness floor).
 
 | `ctx` | Peak Alloc (MiB) | Peak Reserved (MiB) | Warm TTFT (s) | TPOT Mean / P95 (ms) | Throughput (tok/s) | Host RSS Δ (MiB) | Memcpy (B/tok) | Physical Scalar Bits | Effective Token Retention |
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| **512** | 7,911.66 | 7,998.0 | 0.0386 | 20.91 / 20.91 | 47.81 | 1,985.12 | 201.75 | 16-bit BF16 | 100.0% (575 / 575) |
-| **1,024** | 8,126.16 | 8,164.0 | 0.0701 | 30.36 / 30.36 | 32.94 | 2,327.99 | 291,200.75 | 16-bit BF16 | 94.12% (1,024 / 1,088) |
-| **2,048** | 8,566.92 | 8,624.0 | 0.1639 | 30.11 / 30.11 | 33.21 | 2,381.06 | 296,073.75 | 16-bit BF16 | 48.48% (1,024 / 2,112) |
-| **4,096** | 8,566.93 | 8,924.0 | 0.3428 | 30.14 / 30.14 | 33.18 | 2,419.22 | 305,819.75 | 16-bit BF16 | 24.62% (1,024 / 4,160) |
-| **8,192** | 8,566.96 | 8,924.0 | 0.7131 | 30.38 / 30.38 | 32.91 | 2,501.44 | 325,311.75 | 16-bit BF16 | 12.40% (1,024 / 8,256) |
-| **16,384** | 8,567.03 | 8,924.0 | 1.4277 | 30.64 / 30.64 | 32.64 | 2,665.99 | 364,295.75 | 16-bit BF16 | 6.23% (1,024 / 16,448) |
-| **32,768** | 8,567.15 | 8,924.0 | 2.8768 | 30.60 / 30.60 | 32.68 | 2,845.69 | 442,263.75 | 16-bit BF16 | 3.12% (1,024 / 32,832) |
+| **512** | 7,911.74 | 7,998.0 | 0.0391 | 20.77 / 20.77 | 48.15 | 1,416.67 | 193.88 | 16-bit BF16 | 100.0% (576 / 576) |
+| **1,024** | 8,126.30 | 8,164.0 | 0.0705 | 26.39 / 26.39 | 37.89 | 1,572.36 | 321.88 | 16-bit BF16 | 94.12% (1,024 / 1,088) |
+| **2,048** | 8,567.20 | 8,624.0 | 0.1582 | 26.28 / 26.28 | 38.06 | 1,611.28 | 577.88 | 16-bit BF16 | 48.48% (1,024 / 2,112) |
+| **4,096** | 8,567.21 | 8,924.0 | 0.3261 | 26.53 / 26.53 | 37.70 | 1,628.58 | 1,089.88 | 16-bit BF16 | 24.62% (1,024 / 4,160) |
+| **8,192** | 8,567.24 | 8,924.0 | 0.6627 | 26.23 / 26.23 | 38.12 | 1,657.84 | 2,113.88 | 16-bit BF16 | 12.40% (1,024 / 8,256) |
+| **16,384** | 8,567.31 | 8,924.0 | 1.3319 | 26.53 / 26.53 | 37.70 | 1,714.29 | 4,161.88 | 16-bit BF16 | 6.23% (1,024 / 16,448) |
+| **32,768** | **8,567.43** | 8,924.0 | **2.6828** | **26.57 / 26.57** | **37.63** | **1,827.45** | **8,257.88** | 16-bit BF16 | 3.12% (1,024 / 32,832) |
 
-### 1.3 Micro Fidelity (Verify, PG-19 / Hardware Sweep KL) & Macro Retrieval (NIAH, LongMemEval)
+### 1.3 Micro Fidelity & Macro Retrieval (NIAH, LongMemEval)
 - **Verify (`ctx=128`, 16 decode tokens):** `top1_agreement = 1.0`, `kl_div_mean = 0.0`, `kl_div_p99 = 0.0`.
-- **Hardware Sweep KL (`SyntheticFiller`, $N=1$ per length, 64 decode tokens):**
-  - `512`: `top1 = 1.0`, `kl_mean = 0.0`, `kl_p99 = 0.0` (below `1024` budget).
-  - `1,024` to `32,768`: **Catastrophic divergence immediately at `1,024`** (`top1 = 0.2188`, `kl_mean = 10.56592`), worsening to `top1 = 0.0156–0.1406` and `kl_mean = 10.65–12.47` (`kl_p99 = 15.4249` clamp) across `2K–32K` (`32K`: `top1 = 0.0312`, `kl_mean = 12.2879`).
-- **NIAH (`2K` & `4K` depth grid, passcode `"849204"`):**
-  - **`2,048` ctx:** **`0.0%` (`0.0`)** across all 10 depths — outputs degenerate gibberish (e.g., `"3 for the the project is a the project."`, `"****12342300000000"`).
-  - **`4,096` ctx:** **`0.0%` (`0.0`)** across all 10 depths — outputs degenerate gibberish (e.g., `"not for, for for for to for of the"`).
-- **LongMemEval (`150` native-length samples, `192–22,400` prompt tokens, median `5,859`, `epicache_judged.json`):**
-  - **Overall Accuracy:** **`8 / 150 = 5.33%`** vs. Baseline **`99 / 150 = 66.0%`** ($\Delta = -60.67\text{ pp}$).
-  - **Causal Verdicts:** `PASS_FIDELITY_MAINTAINED = 8`, `BASELINE_LIMITATION = 51`, **`QUALITY_REGRESSION = 91`**, `UNEXPECTED_GAIN = 0`.
-  - **LongMemEval KL & Retention:** `top1_agreement = 0.0624`, `kl_div_mean = 13.51353`, `kl_div_p99 = 15.4249`, `Physical Scalar Bits = 16-bit BF16`, `Effective Token Retention = 24.29%` (`4.11×` compression).
-  - **Length-Tier Accuracy:** `short = 50.0%`, `medium = 4.63%`, `long = 0.0%`.
+- **Hardware Sweep KL (`SyntheticFiller`):** `0.0` at `512`; `6.77–13.05` across `1K–32K` (`32K`: `top1 = 0.0938`, `kl_mean = 12.6940`, `kl_p99 = 15.4249`).
+- **NIAH (`2K` & `4K` depth grid):**
+  - **`2,048` ctx:** **`20%` (`2/10`)** — passes only inside the `512`-token recent window (depths `0.8–0.9`).
+  - **`4,096` ctx:** **`10%` (`1/10`)** — passes only at depth `0.9` (`needle_distance = 444 <= 512`).
+- **LongMemEval (`150` native-length samples, `epicache_judged.json`):**
+  - **Overall Accuracy:** **`56 / 150 = 37.33%`** vs. Baseline **`99 / 150 = 66.0%`** ($\Delta = -28.67\text{ pp}$, up **`+32.0 pp`** from pre-PR #59's `5.33%` gibberish collapse!).
+  - **Causal Verdicts:** `PASS_FIDELITY_MAINTAINED = 56`, `BASELINE_LIMITATION = 51`, **`QUALITY_REGRESSION = 43`** *(halved from `91`)*, `UNEXPECTED_GAIN = 0`.
+  - **LongMemEval KL:** `top1_agreement = 0.0841`, `kl_div_mean = 13.70233`, `kl_div_p99 = 15.4249`, `tpot = 21.24 ms`.
 
 | LongMemEval Capability | Baseline (`N=30` each) | EpiCache (`N=30` each) | $\Delta$ (pp) | `QUALITY_REGRESSION` Count |
 |---|---:|---:|---:|---:|
-| **Fact Recall** | 90.0% (27/30) | 26.7% (8/30) | -63.3 | 19 |
-| **Information Update** | 66.7% (20/30) | 0.0% (0/30) | -66.7 | 20 |
+| **Fact Recall** | 90.0% (27/30) | 66.7% (20/30) | -23.3 | 7 |
+| **Information Update** | 66.7% (20/30) | 30.0% (9/30) | -36.7 | 11 |
 | **Relative Timeframe** | 30.0% (9/30) | 0.0% (0/30) | -30.0 | 9 |
-| **Cross-Session Reasoning** | 43.3% (13/30) | 0.0% (0/30) | -43.3 | 13 |
-| **Unanswerable Refusal** | 100.0% (30/30) | 0.0% (0/30) | -100.0 | 30 |
+| **Cross-Session Reasoning** | 43.3% (13/30) | 3.3% (1/30) | -40.0 | 12 |
+| **Unanswerable Refusal** | 100.0% (30/30) | 86.7% (26/30) | -13.3 | 4 |
 
 ![EpiCache Hardware Sweep](../../figures/wp3/epicache/hardware_sweep.png)
 ![EpiCache KL Fidelity](../../figures/wp3/epicache/kl_fidelity.png)
@@ -66,36 +59,35 @@ Static `Qwen3-4B` BF16 weights + runtime at `ctx=128` (`verify_baseline_pytorch_
 
 ---
 
-## 2. White-Box Component Decomposition
+## 2. White-Box Component Decomposition (Post-PR #59)
 
-| ID | Component | Source File, Class/Method & Lines | Tensor Shapes & Dtypes (`Qwen3-4B`, BF16) | Execution Cadence |
+| ID | Component | Source Location (`kv_bench@5fc1cea`) | Tensor Shapes & Dtypes (`Qwen3-4B`, BF16) | Execution Cadence |
 |---|---|---|---|---|
-| **C1** | **Discarded Layer-Sensitivity Budgeter (`compute_layer_sensitivity_budgets`)** | `src/techniques/epicache.py` (L18–45); `src/techniques/epicache_cache.py`: `EpiCacheLayer.__init__` (L56–66) | Computes `self.sensitivity_budget` from synthetic parabola, then **overwrites** `self.layer_budget = self.episode_budget_tokens` (`1024`) to avoid HF 4D causal mask mismatch. | Once per layer at cache init (`36×`). |
-| **C2** | **L2 Key-Norm Eviction Without Recent Window (`evict_block_prefill`)** | `src/techniques/epicache.py`: `evict_block_prefill` (L70–102); `epicache_cache.py`: `EpiCacheLayer.prune` (L96–113) | `k_block.float().norm(p=2, dim=-1).mean(dim=(0,1))` $\to$ `(seq_len,)` `float32`. Keeps **only token `0`** + top-`1023` by Key L2 norm. **Zero recent-window protection.** | Every chunk end (`prune_after_chunk`) AND every decode step (`new_tokens == 1` when `seq_len > 1024`, `epicache_cache.py` L91–92). |
-| **C3** | **Decode-Step `.tolist()` Sync (`EpiCacheLayer.prune`)** | `src/techniques/epicache_cache.py`: L106–112 | `idx_list = retained_idx.tolist()` triggers a GPU-to-CPU sync on all 36 layers during every decode step (`2,304` syncs per 64-tok sample). | Every decode step for `ctx >= 1024`. |
-| **C4** | **Dead Episodic Routing & Hardcoded Telemetry** | `src/techniques/epicache.py`: `route_query_to_episode` (L48–67), `extra_metrics` (L236–237) | `route_query_to_episode` is never called. `extra_metrics` hardcodes `"block_wise_prefill_active": True, "episodic_routing_active": True` despite zero clustering or CPU cache bank. | `extra_metrics` only. |
+| **C1** | **Discarded Layer-Sensitivity Budgeter** | `epicache.py`, `epicache_cache.py` | Computes `sensitivity_budget`, keeps uniform `layer_budget = 1024` for HF 4D causal mask alignment. | Cache init (`36x`). |
+| **C2** | **Sink + Recent-Protected Key-L2 Eviction (`evict_block_prefill`)** | `epicache.py`, `epicache_cache.py` | **RESOLVED in PR #59:** Pins **`4` attention sinks + `512` recent tokens** and selects top-`508` middle tokens by Key L2 norm (`1,024` total). Eliminates gibberish collapse. | Chunk end + decode step when `seq_len > 1024`. |
+| **C3** | **GPU `int32` Position Tracker** | `epicache_cache.py` | **RESOLVED in PR #59:** Replaced per-step `.tolist()` D2H sync with a GPU `torch.int32` tensor, cutting 32K memcpy `442 KB/tok -> 8.3 KB/tok` (harness floor) and TPOT `30.60 -> 26.57 ms`. | Every prune step. |
+| **C4** | **Unimplemented Episodic Routing (Honest Telemetry)** | `epicache.py` | **RESOLVED in PR #59:** `extra_metrics` now honestly reports `"episodic_routing_active": False` (`route_query_to_episode` remains unimplemented in the WP-3 single-window baseline). | `extra_metrics`. |
 
 ---
 
-## 3. 3-Way Causal Attribution
+## 3. 3-Way Causal Attribution (Pre- vs. Post-PR #59)
 
-- **VRAM (`8,567.15 MiB` flat from `2K` to `32K`):** **`[IMPLEMENTATION]`** — `C2` caps all 36 layers at `1,024` tokens (`~140.6 MiB` KV), saving `4.55 GiB` (`4,657.8 MiB`) vs. baseline at 32K, though `C1` discards per-layer sensitivity allocation.
-- **Host RSS (`1,985 -> 2,846 MiB`) & PCIe Memcpy (`291–442 KB/tok` at `1K–32K`):** **`[IMPLEMENTATION]`** — Discounting the `8,266 B/tok` harness floor, the `291–442 KB/tok` D2H memcpy spike starting at `ctx=1024` comes from `C3` (`retained_idx.tolist()`) executing on all 36 layers at every decode step once `seq_len > 1024`. (Zero episodic CPU offloading occurs.)
-- **TTFT (`2.88 s` at `32K`) & TPOT (`30.11–30.64 ms` at `1K–32K`):** **`[IMPLEMENTATION]`** — Prefill TTFT matches StreamingLLM (`2.88 s` vs. `2.90 s`) because `C2` prunes after each 1,024-token chunk without duplicate attention matmuls. However, decode TPOT jumps `+9.5 ms` (`20.91 ms` at `512` $\to$ `30.36 ms` at `1024`) due to `C2`+`C3` computing Key L2 norms, `topk`, `sort`, and `.tolist()` on all 36 layers every decode step.
-- **Catastrophic Quality Collapse (`5.33%` LongMemEval, `91` `QUALITY_REGRESSION`s, `0%` NIAH, `kl_mean = 13.51`):** **`[IMPLEMENTATION]`** — This collapse is **not** intrinsic to the EpiCache paper; it is caused by three compounding bugs in `C2`:
-  1. **No Recent Window Protection:** `evict_block_prefill` ranks *all* tokens `[1..seq_len)` solely by Key L2 norm. Recent prompt/question tokens and newly generated decode tokens are immediately evicted if their Key L2 norms are smaller than earlier sink/filler tokens, destroying local syntactic coherence and producing `"for for for"` gibberish (e.g., `bb7c3b45`: *"Gibberish word repetition, no answer"*).
-  2. **Single Sink Token (`[0]`):** Only 1 token is pinned instead of 4+, destabilizing softmax denominators.
-  3. **Key L2 Norm Proxy Without Episode Clustering (`C4`):** Without medoid cross-attention scoring or topic routing, `C2` cannot retrieve task-relevant facts, causing `0.0%` accuracy on `information_update`, `relative_timeframe`, `cross_session_reasoning`, and `unanswerable_refusal` (all `30/30` refusal prompts failed).
+- **Speed & Zero-Sync Cleanliness (`[IMPLEMENTATION]` RESOLVED):**
+  - Removing `.tolist()` sync in **C3** eliminated all `442 KB/tok` D2H stalls (`8,258 B/tok` = harness floor), lowered Host RSS from `2,846 -> 1,827 MiB`, and lowered 32K TPOT to **`26.57 ms`** (`37.63 tok/s`, faster than baseline `29.17 ms` and `2.68 s` TTFT, fastest prefill in WP-3!).
+- **Single-Window Middle Amnesia Isolated (`[INTRINSIC]`):**
+  - Protecting `4` sinks + `512` recent tokens cured the `5.33%` gibberish bug (`unanswerable_refusal` jumped `0% -> 86.7%`, `fact_recall` jumped `26.7% -> 66.7%`, overall `5.33% -> 37.33%`).
+  - The remaining gap (`37.33%` vs. `StreamingLLM`'s `44.0%` at `2,052` tokens; NIAH `20% / 10%` strictly tracking the `512`-token recent window) cleanly isolates the **`[INTRINSIC]`** limit of a `1,024`-token single-window evictor using Key L2 norm **without episodic clustering or CPU episode routing**: middle-context facts (`relative_timeframe 0.0%`, `cross_session_reasoning 3.3%`, `information_update 30.0%`) are permanently lost.
+  - **WP-4 Implication:** Validates why our proposed **`EpiCache-3Axis`** extension requires real multi-episode clustering + Top-$k$ composable vLLM blocks + a 4-bit CPU episode bank.
 
 ---
 
-## 4. Paper vs. Replication Fidelity
+## 4. Paper vs. Replication Fidelity (Post-PR #59)
 
-| Dimension | Paper (`Kim et al., ICML 2026`, `docs/literature_survey/techniques/epicache.md`) | `kv_bench` PyTorch Implementation (`epicache.py`, `epicache_cache.py`) | Fidelity Verdict |
+| Dimension | Paper (`Kim et al., ICML 2026`) | `kv_bench` Replication (`5fc1cea`, Post-PR #59) | Fidelity Verdict |
 |---|---|---|---|
-| **Episodic Clustering & Medoid Routing** | Offline 4-utterance chunking + K-Means ($E=4$ episodes) + query-time cosine routing + CPU-VRAM episode bank. | `route_query_to_episode` is dead code; no clustering, no CPU bank, no routing. `extra_metrics` hardcodes `episodic_routing_active=True`. | **Not Implemented (Misreported)** |
-| **Token Importance Scoring** | Patched cross-attention scoring from episode medoid $s_i^{\max} = \max \text{Attn}(x_t \to x_i)$ + recent window. | Key L2 norm (`norm(p=2)`) with **only token `0`** pinned and **zero recent window**; evicts user question & decode tokens. | **Broken Proxy** |
-| **Layer-Sensitivity Budgeting** | Allocates $M_\ell \propto s_\ell^\alpha$ using offline Key-similarity sensitivity $s_\ell = 1 - \sigma_\ell$. | Synthetic parabola computed in `self.sensitivity_budget` and **explicitly discarded** (`self.layer_budget = self.episode_budget_tokens`). | **Bypassed** |
+| **Sink + Recent Window & GPU Sync** | Protects sinks + recent window without CPU sync | `4` sinks + `512` recent + GPU `int32` positions (`26.57 ms` TPOT) | **Fixed in PR #59.** |
+| **Episodic Clustering & CPU Bank** | Offline 4-utterance K-Means ($E=4$) + CPU episode bank + query routing | Not implemented; telemetry now honestly reports `episodic_routing_active=False` | **Single-Window Control Baseline (Honest Telemetry).** |
+| **Layer-Sensitivity Budgeting** | $M_\ell \propto s_\ell^\alpha$ | Uniform `1,024` due to HF shared 4D mask | **Bypassed (HF constraint).** |
 
 ---
 
@@ -103,7 +95,7 @@ Static `Qwen3-4B` BF16 weights + runtime at `ctx=128` (`verify_baseline_pytorch_
 
 | Component | Verdict | Contribution | Failure Mode | Exact Fix Prerequisite (if `ADAPT`) |
 |---|---|---|---|---|
-| **C1: `compute_layer_sensitivity_budgets`** | **`ADAPT`** | Theoretical basis for non-uniform per-layer KV allocation. | Computed then discarded due to HF 4D shared `causal_mask` constraint. | Replace synthetic parabola with 1-sample cosine calibration ($s_\ell = 1 - \sigma_\ell$) and pass per-layer 4D masks or use vLLM/FlexAttention per-layer lengths. |
-| **C2: `evict_block_prefill`** | **`DROP` (rewrite)** | Caps peak VRAM to `8.37 GiB` (`8,567.2 MiB`) via chunk-wise pruning. | Destroys coherence (`5.33%` LongMemEval, `0%` NIAH) by evicting recent/decode tokens via Key L2 norm. | Pin first 4 sink tokens + mandatory recent window (e.g., `512` tokens) and score middle tokens via query-guided attention rather than Key L2 norm. |
-| **C3: `.tolist()` Decode Sync** | **`DROP`** | Tracks `original_positions` for diagnostics. | Causes `291–442 KB/tok` D2H memcpy and `+9.5 ms` TPOT penalty. | Maintain `original_positions` on GPU as a `torch.int32` tensor and copy to CPU once at end-of-sample. |
-| **C4: `route_query_to_episode` & Telemetry** | **`ADAPT`** | Placeholder for multi-episode CPU-GPU routing. | Dead code; telemetry falsely reports `episodic_routing_active=True`. | Implement actual K-Means episode clustering, CPU cache bank, and query routing; gate telemetry flags on actual execution. |
+| **C1: Layer-Sensitivity Budgeter** | **`ADAPT`** | Non-uniform per-layer allocation concept | Bypassed by HF 4D mask | Use 1-sample cosine calibration in vLLM/FlexAttention |
+| **C2: Sink+Recent Protected Eviction** | **`KEEP`** *(hot tier)* | `829 MiB` net KV, `2.68 s` TTFT, `26.57 ms` TPOT | `1,024`-token Key-L2 eviction without episode bank causes `43` regressions | Pair with Top-$k$ 4-bit CPU episode bank (`EpiCache-3Axis` in WP-4) |
+| **C3: GPU `int32` Position Tracker** | **`KEEP`** | Zero D2H sync overhead (`8.3 KB/tok` floor) | None | — |
+| **C4: Episodic Clustering & Routing** | **`ADAPT`** | Required for multi-session recall | Unimplemented in WP-3 control | Implement single-pass centroid routing + composable Top-$k$ vLLM blocks in WP-4 |

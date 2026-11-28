@@ -1,6 +1,6 @@
 {
   "manifest_version": "1.0",
-  "generated_at": "2026-11-23T11:40:41Z",
+  "generated_at": "2026-11-28T02:39:32Z",
   "provenance_type": "technique_run_manifest",
   "milestone": "WP-3",
   "work_package": "WP3-10",
@@ -25,53 +25,53 @@
   },
   "execution_environment": {
     "cluster_node": "gpu06.slurm.cpe.kmutt.ac.th",
-    "slurm_job_id": "25751",
+    "slurm_job_id": "30715",
     "gpu_model": "NVIDIA GeForce RTX 4090",
     "physical_vram_gib": 23.52,
     "process_allocator_cap_gib": 16.0,
-    "longmem_job_id": "30137"
+    "longmem_job_id": "30715"
   },
   "golden_artifacts": {
     "arkvale_hardware_pytorch_16gb": {
       "path": "results/runs/wp3/arkvale_hardware_pytorch_16gb.json",
-      "sha256": "ba4c2ed121e11a4f87cd37795501ddbfd362f190fabcb7096fc1bc5773ed1c9a",
-      "size_bytes": 9687,
+      "sha256": "8221490b81cebdf46a130185847960d06818483b84a1bcef48432116b485784a",
+      "size_bytes": 9404,
       "description": "Unified PyTorch context scaling sweep (512 to 32,768 tokens) on 16.0 GiB VRAM cap"
     },
     "arkvale_longmem_pytorch_16gb": {
       "path": "results/runs/wp3/arkvale_longmem_pytorch_16gb.json",
-      "sha256": "68fd866b3dee73909f72dd60658e82db0b8cd13cd2d03a5bb563225c413e914f",
-      "size_bytes": 191196,
+      "sha256": "725469d91ad60bf06967c2fd133901ff1c7e4899da6c446e32c05ba260009cad",
+      "size_bytes": 181128,
       "description": "Single-pass 150-question native-length LongMemEval run (ctx=32768, max_tokens=128, Qwen chat template, per-sample KL/Top-1)"
     },
     "arkvale_niah_pytorch_16gb": {
       "path": "results/runs/wp3/arkvale_niah_pytorch_16gb.json",
-      "sha256": "cc37c564cb5b7ccb8395c83f1ec7a7a7b525bfd206f928ab2811fbc29e79829e",
-      "size_bytes": 7089,
+      "sha256": "71b4ade3511c61942f45117c6e522b7c2dca98aa26252349333c0d317470a2e5",
+      "size_bytes": 7031,
       "description": "Needle-in-a-Haystack exact retrieval stress test across 2K and 4K context lengths"
     },
     "verify_arkvale_pytorch_16gb": {
       "path": "results/runs/wp3/verify_arkvale_pytorch_16gb.json",
-      "sha256": "6094d85b6a0e8a10650b2c3cf9c105d4f6218215f7152184ef1063cacb4b33a3",
-      "size_bytes": 1338,
+      "sha256": "b7698a22d83a5b741d8a18e4250d387b0080542635a1311afe2b1b0bf8ddf8dc",
+      "size_bytes": 1297,
       "description": "Fast verification reference check (128 ctx, 16 tokens) against uncompressed PyTorch reference"
     },
     "arkvale_longmem_grades": {
       "path": "results/grades/arkvale_grades.json",
-      "sha256": "2e55ec7ab0ea962e4de675291444a2a10be4bdf919b5cbf1f9d47ec182a6ca0e",
-      "size_bytes": 21947,
+      "sha256": "1787a380aeba7abdb2b300c3d1c17883209b4ceff0eed1b8a5a10cc24b6e8b7c",
+      "size_bytes": 22659,
       "description": "Offline semantic grading sidecar for all 150 LongMemEval questions"
     },
     "arkvale_longmem_judged": {
       "path": "results/grades/arkvale_judged.json",
-      "sha256": "06e53fc123d80a877aabd1dda265c0b812ee6906d54aeb50beabcf1624edce4d",
-      "size_bytes": 97162,
+      "sha256": "42fcbfc7c6189b8c86e05ece2dac04a0c1f3258c8470dfe1b6c1bfaba6de19f3",
+      "size_bytes": 97919,
       "description": "Merged 150-question semantic-judged LongMemEval summary with baseline-controlled causal verdicts"
     }
   },
   "source_repository": {
     "repo": "khemingkapat/kv_bench",
-    "commit_sha": "2a9338a2f750741f7765d79c1270f5579a9ffed0",
+    "commit_sha": "5fc1cea4ba64ac86a2da49edd8210a46753834fe",
     "branch": "main",
     "clean_working_tree": true
   }
