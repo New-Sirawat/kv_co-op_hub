@@ -1,752 +1,752 @@
 {
-  "6b168ec8": {
+  "7024f17c": {
     "correct": false,
-    "reason": "Degenerates into gibberish and word repetition.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Mentions 30-minute jog but treats question as out of context without answering 0.5 hours.",
+    "grader": "semantic-grade-v2"
+  },
+  "09ba9854": {
+    "correct": false,
+    "reason": "States it cannot give an exact number and provides generic Tokyo estimates.",
+    "grader": "semantic-grade-v2"
+  },
+  "9aaed6a3": {
+    "correct": false,
+    "reason": "Incorrectly states zero cashback was earned instead of $0.75.",
+    "grader": "semantic-grade-v2"
+  },
+  "46a3abf7": {
+    "correct": false,
+    "reason": "Reports 2 tanks instead of 3.",
+    "grader": "semantic-grade-v2"
+  },
+  "bb7c3b45": {
+    "correct": false,
+    "reason": "Falsely claims it cannot determine savings on the Jimmy Choo heels.",
+    "grader": "semantic-grade-v2"
+  },
+  "ef9cf60a": {
+    "correct": false,
+    "reason": "Reports incorrect amount of $200 instead of $300.",
+    "grader": "semantic-grade-v2"
+  },
+  "2e6d26dc": {
+    "correct": false,
+    "reason": "Refuses to answer citing privacy instead of counting the 5 babies.",
+    "grader": "semantic-grade-v2"
+  },
+  "f35224e0": {
+    "correct": false,
+    "reason": "Refuses to answer citing personal listening history.",
+    "grader": "semantic-grade-v2"
+  },
+  "gpt4_59c863d7": {
+    "correct": false,
+    "reason": "Falsely refuses to determine how many model kits were worked on or bought.",
+    "grader": "semantic-grade-v2"
+  },
+  "f0e564bc": {
+    "correct": false,
+    "reason": "Falsely claims no specific prices were given for handbag and skincare.",
+    "grader": "semantic-grade-v2"
+  },
+  "e56a43b9": {
+    "correct": false,
+    "reason": "Falsely claims it cannot provide the FreshMart discount.",
+    "grader": "semantic-grade-v2"
+  },
+  "a11281a2": {
+    "correct": false,
+    "reason": "Fails to recall the 350 final follower count and cannot calculate the increase.",
+    "grader": "semantic-grade-v2"
+  },
+  "d6062bb9": {
+    "correct": false,
+    "reason": "Refuses to answer citing privacy instead of summing 542 and 1,456.",
+    "grader": "semantic-grade-v2"
+  },
+  "4bc144e2": {
+    "correct": false,
+    "reason": "Misses the $50 parking ticket and states $0 for it.",
+    "grader": "semantic-grade-v2"
+  },
+  "d23cf73b": {
+    "correct": false,
+    "reason": "Undercounts as only 1 cuisine (Korean) instead of 4.",
+    "grader": "semantic-grade-v2"
+  },
+  "078150f1": {
+    "correct": false,
+    "reason": "Falsely claims fundraising goal and amount raised were missing.",
+    "grader": "semantic-grade-v2"
+  },
+  "b5ef892d": {
+    "correct": false,
+    "reason": "Falsely claims camping trip days were not included.",
+    "grader": "semantic-grade-v2"
+  },
+  "28dc39ac": {
+    "correct": false,
+    "reason": "Falsely claims it cannot determine total gaming hours.",
+    "grader": "semantic-grade-v2"
+  },
+  "gpt4_2f91af09": {
+    "correct": false,
+    "reason": "Falsely claims specific counts of writing pieces are missing.",
+    "grader": "semantic-grade-v2"
+  },
+  "5025383b": {
+    "correct": true,
+    "reason": "Correctly identifies cooking and photography.",
+    "grader": "semantic-grade-v2"
+  },
+  "157a136e": {
+    "correct": false,
+    "reason": "Falsely claims ages were not included.",
+    "grader": "semantic-grade-v2"
+  },
+  "1c549ce4": {
+    "correct": false,
+    "reason": "Falsely claims car cover price was not given.",
+    "grader": "semantic-grade-v2"
+  },
+  "a346bb18": {
+    "correct": false,
+    "reason": "Falsely claims no marathon or target time was mentioned.",
+    "grader": "semantic-grade-v2"
+  },
+  "a08a253f": {
+    "correct": false,
+    "reason": "Concludes with the wrong answer of 3 days a week instead of 4.",
+    "grader": "semantic-grade-v2"
+  },
+  "b3c15d39": {
+    "correct": false,
+    "reason": "Falsely claims delivery date was missing.",
+    "grader": "semantic-grade-v2"
+  },
+  "00ca467f": {
+    "correct": false,
+    "reason": "Fails to determine the exact count of 2 appointments in March.",
+    "grader": "semantic-grade-v2"
+  },
+  "c4a1ceb8": {
+    "correct": false,
+    "reason": "Truncates mid-list without stating the total count of 3 citrus fruits.",
+    "grader": "semantic-grade-v2"
+  },
+  "0ea62687": {
+    "correct": false,
+    "reason": "Falsely claims previous MPG was not provided.",
+    "grader": "semantic-grade-v2"
+  },
+  "a9f6b44c": {
+    "correct": false,
+    "reason": "Reports only 1 bike instead of 2.",
+    "grader": "semantic-grade-v2"
+  },
+  "d682f1a2": {
+    "correct": false,
+    "reason": "Refuses to answer citing lack of access to personal history.",
+    "grader": "semantic-grade-v2"
+  },
+  "6b168ec8": {
+    "correct": true,
+    "reason": "Correctly states owning three bikes.",
+    "grader": "semantic-grade-v2"
   },
   "545bd2b5": {
-    "correct": false,
-    "reason": "Wrong number and incoherent repetition.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly states averaging 2 hours of Instagram screen time per day.",
+    "grader": "semantic-grade-v2"
   },
   "1903aded": {
     "correct": true,
     "reason": "Correctly identifies transcriptionist as the 7th job.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "grader": "semantic-grade-v2"
   },
   "37d43f65": {
     "correct": false,
-    "reason": "Wrong numbers and repetitive gibberish.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims RAM upgrade was for a desktop with no specific amount.",
+    "grader": "semantic-grade-v2"
   },
   "dccbc061": {
     "correct": false,
-    "reason": "Incoherent gibberish without answering stance.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims previous stance on spirituality was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "8b9d4367": {
     "correct": true,
     "reason": "Correctly names Jaipur Rugs.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "grader": "semantic-grade-v2"
   },
   "ad7109d1": {
-    "correct": false,
-    "reason": "Missing internet speed and repetitive gibberish.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly states 500 Mbps.",
+    "grader": "semantic-grade-v2"
   },
   "352ab8bd": {
-    "correct": false,
-    "reason": "Incoherent gibberish without framerate figure.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly states 20% framerate improvement.",
+    "grader": "semantic-grade-v2"
   },
   "51b23612": {
     "correct": false,
-    "reason": "Wrong cartoon title and word repetition.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Hallucinates a wrong cartoon title ('Soviet Man in the West').",
+    "grader": "semantic-grade-v2"
   },
   "8464fc84": {
     "correct": true,
-    "reason": "Correctly identifies Roscioli.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly names Roscioli.",
+    "grader": "semantic-grade-v2"
   },
   "7e00a6cb": {
     "correct": true,
     "reason": "Correctly names International Budget Hostel.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "grader": "semantic-grade-v2"
   },
   "1568498a": {
-    "correct": false,
-    "reason": "Gibberish fragments with conflicting chess moves.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly identifies move 28. Kg3.",
+    "grader": "semantic-grade-v2"
   },
   "19b5f2b3": {
     "correct": false,
-    "reason": "Incoherent gibberish without trip duration.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims Japan trip duration was not included.",
+    "grader": "semantic-grade-v2"
   },
   "4c36ccef": {
     "correct": true,
-    "reason": "Correctly identifies Roscioli.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly names Roscioli.",
+    "grader": "semantic-grade-v2"
   },
   "e982271f": {
     "correct": true,
-    "reason": "Correctly identifies Revolution Hall.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly names Revolution Hall.",
+    "grader": "semantic-grade-v2"
   },
   "0862e8bf": {
-    "correct": false,
-    "reason": "Word-salad gibberish and extreme repetition.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly states the cat's name is Luna.",
+    "grader": "semantic-grade-v2"
   },
   "71a3fd6b": {
     "correct": true,
-    "reason": "Provides exact Speyer tourism phone number.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly provides the exact phone number +49 (0) 62 32 / 14 23 - 0.",
+    "grader": "semantic-grade-v2"
   },
   "8550ddae": {
-    "correct": false,
-    "reason": "Incoherent gibberish without cocktail name.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly recalls lavender gin fizz.",
+    "grader": "semantic-grade-v2"
   },
   "6222b6eb": {
-    "correct": false,
-    "reason": "Garbled tool name, gibberish, and repetition.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly identifies the 6S algorithm.",
+    "grader": "semantic-grade-v2"
   },
   "eaca4986": {
-    "correct": false,
-    "reason": "Wrong initial chords and repetitive loop.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly reproduces chord progression C D E F G A B A G F E D C.",
+    "grader": "semantic-grade-v2"
   },
   "577d4d32": {
     "correct": false,
-    "reason": "Wrong time and repetitive gibberish.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Fails to recall 7 pm, claiming 'around sunset' and giving generic advice.",
+    "grader": "semantic-grade-v2"
   },
   "15745da0": {
     "correct": false,
-    "reason": "Incoherent gibberish without duration.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims duration of collecting vintage cameras was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "4388e9dd": {
     "correct": true,
-    "reason": "Accurately describes Andy's stained white shirt.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Correctly recalls untidy, stained white shirt.",
+    "grader": "semantic-grade-v2"
   },
   "58ef2f1c": {
     "correct": false,
-    "reason": "Incoherent gibberish without volunteer date.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims exact date of the volunteer event is not available.",
+    "grader": "semantic-grade-v2"
   },
   "c14c00dd": {
     "correct": false,
-    "reason": "Repetitive gibberish without shampoo brand.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Fails to recall Trader Joe's and says brand isn't named.",
+    "grader": "semantic-grade-v2"
   },
   "f4f1d8a4": {
     "correct": false,
-    "reason": "Incoherent gibberish, denial, and repetition.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Incorrectly states 'yourself' instead of sister.",
+    "grader": "semantic-grade-v2"
   },
   "caf9ead2": {
-    "correct": false,
-    "reason": "Contradicting 2.5 hours and repetitive loop.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly states around 5 hours.",
+    "grader": "semantic-grade-v2"
   },
   "b86304ba": {
-    "correct": false,
-    "reason": "Incoherent gibberish without value comparison.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly states the painting is worth three times what was paid for it.",
+    "grader": "semantic-grade-v2"
   },
   "86f00804": {
     "correct": false,
-    "reason": "Incoherent gibberish without book title.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Incorrectly recalls 'The Last House on the Left' instead of 'The Seven Husbands of Evelyn Hugo'.",
+    "grader": "semantic-grade-v2"
   },
   "7161e7e2": {
-    "correct": false,
-    "reason": "Garbled table fragments without clear shift.",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly states 8 am - 4 pm (Day Shift) on Sunday.",
+    "grader": "semantic-grade-v2"
   },
   "cc5ded98": {
-    "correct": false,
-    "reason": "Repetitive gibberish, no answer given",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly states 2 hours each day.",
+    "grader": "semantic-grade-v2"
   },
   "c6853660": {
-    "correct": false,
-    "reason": "Incoherent gibberish, no answer given",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly states increasing the morning coffee limit to two cups.",
+    "grader": "semantic-grade-v2"
   },
   "41698283": {
     "correct": false,
-    "reason": "Repetitive gibberish, wrong lens mentioned",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims most recently purchased lens is not known.",
+    "grader": "semantic-grade-v2"
   },
   "6071bd76": {
     "correct": false,
-    "reason": "Incoherent gibberish, no answer given",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Incorrectly states you did not switch water-to-coffee ratio.",
+    "grader": "semantic-grade-v2"
   },
   "7e974930": {
     "correct": false,
-    "reason": "Repetitive gibberish, missing dollar amount",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Recalls outdated $400 instead of updated $420.",
+    "grader": "semantic-grade-v2"
   },
   "26bdc477": {
     "correct": false,
-    "reason": "Incoherent gibberish, wrong trip count",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims number of camera trips cannot be known.",
+    "grader": "semantic-grade-v2"
   },
   "2133c1b5": {
     "correct": false,
-    "reason": "Repetitive gibberish, no valid duration",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims living duration in Harajuku is not shared.",
+    "grader": "semantic-grade-v2"
   },
   "c4ea545c": {
     "correct": false,
-    "reason": "Repetitive gibberish, no answer given",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Fails to answer Yes and instead gives generic habit-tracker instructions.",
+    "grader": "semantic-grade-v2"
   },
   "db467c8c": {
-    "correct": false,
-    "reason": "Incoherent gibberish, no answer given",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly states nine months.",
+    "grader": "semantic-grade-v2"
   },
   "c7dc5443": {
     "correct": false,
-    "reason": "Incoherent gibberish, no record given",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Refuses to answer citing lack of access to league standings.",
+    "grader": "semantic-grade-v2"
   },
   "f685340e": {
     "correct": false,
-    "reason": "Repetitive gibberish, no frequency given",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims frequency of playing tennis is not stated.",
+    "grader": "semantic-grade-v2"
   },
   "07741c45": {
     "correct": false,
-    "reason": "Repetitive gibberish, no location given",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Fails to recall shoe rack in closet and claims location wasn't specified yet.",
+    "grader": "semantic-grade-v2"
   },
   "ce6d2d27": {
-    "correct": false,
-    "reason": "Incoherent gibberish, no day given",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly states Friday.",
+    "grader": "semantic-grade-v2"
   },
   "dad224aa": {
     "correct": false,
-    "reason": "Repetitive gibberish, no time given",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Concludes with outdated 7:00 a.m. wake-up time instead of 7:30 am.",
+    "grader": "semantic-grade-v2"
   },
   "e61a7584": {
     "correct": false,
-    "reason": "Incoherent gibberish, no valid duration",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Reports outdated 1 year instead of updated 9 months.",
+    "grader": "semantic-grade-v2"
   },
   "18bc8abd": {
-    "correct": false,
-    "reason": "Repetitive gibberish, no brand given",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly names Kansas City Masterpiece BBQ sauce.",
+    "grader": "semantic-grade-v2"
   },
   "830ce83f": {
     "correct": false,
-    "reason": "Repetitive gibberish, wrong location mentioned",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Refuses at start and end claiming we cannot determine where Rachel moved.",
+    "grader": "semantic-grade-v2"
   },
   "42ec0761": {
-    "correct": false,
-    "reason": "Incoherent gibberish and token repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly answers Yes, you have a spare screwdriver.",
+    "grader": "semantic-grade-v2"
   },
   "ba61f0b9": {
     "correct": false,
-    "reason": "Repetitive gibberish, no count given",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims exact number of women on Rachel's team is not given.",
+    "grader": "semantic-grade-v2"
   },
   "50635ada": {
     "correct": false,
-    "reason": "Repetitive gibberish, no status given",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Refuses to answer citing private travel account info.",
+    "grader": "semantic-grade-v2"
   },
   "10e09553": {
     "correct": false,
-    "reason": "Repetitive gibberish, no count given",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Refuses to answer claiming no memory of past interactions.",
+    "grader": "semantic-grade-v2"
   },
   "89941a94": {
     "correct": false,
-    "reason": "Incoherent gibberish, no answer given",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Truncates mid-list without answering Yes/No and hallucinates a hybrid bike.",
+    "grader": "semantic-grade-v2"
   },
   "9bbe84a2": {
     "correct": false,
-    "reason": "Repetitive gibberish, no level given",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims previous level goal was not stated.",
+    "grader": "semantic-grade-v2"
   },
   "6a1eabeb": {
-    "correct": false,
-    "reason": "Incoherent gibberish, no time given",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly states 25:50.",
+    "grader": "semantic-grade-v2"
   },
   "3ba21379": {
-    "correct": false,
-    "reason": "Repetitive gibberish, no vehicle given",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly identifies Ford F-150 pickup truck model.",
+    "grader": "semantic-grade-v2"
   },
   "e66b632c": {
     "correct": false,
-    "reason": "Incoherent gibberish, no time given",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Reports wrong time of 15 minutes and 30 seconds instead of 27 minutes and 45 seconds.",
+    "grader": "semantic-grade-v2"
   },
   "184da446": {
     "correct": false,
-    "reason": "Repetitive gibberish, unrelated topic",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims pages read is unknown.",
+    "grader": "semantic-grade-v2"
   },
   "72e3ee87": {
     "correct": false,
-    "reason": "Incoherent gibberish, no count given",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Reports wrong count of 100 episodes instead of 50.",
+    "grader": "semantic-grade-v2"
   },
   "7401057b": {
     "correct": false,
-    "reason": "Repetitive gibberish, no count given",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Incorrectly states 1 free night per stay instead of two free nights.",
+    "grader": "semantic-grade-v2"
   },
   "0f05491a": {
-    "correct": false,
-    "reason": "Repetitive gibberish, wrong star count",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly states 120 stars.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_a1b77f9c": {
     "correct": false,
-    "reason": "Incoherent gibberish and token repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Fails to recall durations and resorts to generic reading speed estimates.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_f49edff3": {
     "correct": false,
-    "reason": "Incoherent gibberish and formatting noise",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Incorrectly orders baby shower shopping before nursery preparation.",
+    "grader": "semantic-grade-v2"
   },
   "d01c6aa8": {
     "correct": false,
-    "reason": "Incoherent gibberish with no answer",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims age when moving to the US cannot be determined.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_2c50253f": {
     "correct": false,
-    "reason": "Incoherent gibberish missing wake-up time",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Refuses to answer citing no access to personal schedule.",
+    "grader": "semantic-grade-v2"
   },
   "993da5e2": {
     "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims area rug purchase timing was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "0bb5a684": {
     "correct": false,
-    "reason": "Incoherent gibberish and formatting fragments",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims exact date of the workshop was not stated.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_68e94288": {
     "correct": false,
-    "reason": "Incoherent gibberish missing #PlankChallenge",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Refuses to answer citing no access to social media history.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_e072b769": {
     "correct": false,
-    "reason": "Incoherent repetition missing timeframe",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims no information about when Ibotta use began.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_18c2b244": {
     "correct": false,
-    "reason": "Incoherent gibberish missing event order",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Orders ShopRite first instead of Walmart -> Ibotta -> ShopRite.",
+    "grader": "semantic-grade-v2"
   },
   "b46e15ed": {
     "correct": false,
-    "reason": "Incoherent gibberish and formatting noise",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims specific dates are missing.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_213fd887": {
     "correct": false,
-    "reason": "Incoherent gibberish missing answer",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Incorrectly states charity 5K run happened before volleyball league.",
+    "grader": "semantic-grade-v2"
   },
   "b29f3365": {
     "correct": false,
-    "reason": "Incoherent gibberish missing duration",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims guitar lesson duration cannot be determined.",
+    "grader": "semantic-grade-v2"
   },
   "2ebe6c92": {
     "correct": false,
-    "reason": "Incoherent gibberish missing book title",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Incorrectly claims you didn't finish a book a week ago.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_a2d1d1f6": {
     "correct": false,
-    "reason": "Incoherent gibberish and word repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims herb harvest date is missing.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_68e94287": {
     "correct": false,
-    "reason": "Incoherent gibberish missing event order",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims no chronological order is given between the two events.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_fa19884d": {
     "correct": false,
-    "reason": "Incoherent gibberish missing banjo player",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims detail was not included in conversation.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_2312f94c": {
     "correct": false,
-    "reason": "Incoherent gibberish and Galaxy repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims neither device was mentioned properly and fails to answer.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_98f46fc6": {
     "correct": false,
-    "reason": "Incoherent gibberish missing answer",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Truncates without answering which charity event happened first.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_385a5000": {
     "correct": false,
-    "reason": "Incoherent gibberish missing answer",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims question cannot be answered from conversation.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_8279ba03": {
     "correct": false,
-    "reason": "Incoherent gibberish and word repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Refuses to answer citing no access to personal purchases.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_7ca326fa": {
     "correct": false,
-    "reason": "Incoherent gibberish missing answer",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims graduation order cannot be determined.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_4929293a": {
     "correct": false,
-    "reason": "Incoherent gibberish missing answer",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims Michael's engagement party is not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_e414231e": {
     "correct": false,
-    "reason": "Incoherent gibberish missing day count",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims no dates or timeline are given.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_d6585ce8": {
     "correct": false,
-    "reason": "Incoherent gibberish missing concert order",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims no specific concert timeline is available.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_93159ced": {
     "correct": false,
-    "reason": "Incoherent gibberish missing duration",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Incorrectly infers zero prior work experience before NovaTech.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_e061b84g": {
     "correct": false,
-    "reason": "Incoherent gibberish missing event name",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Refuses to answer citing no access to past conversation history.",
+    "grader": "semantic-grade-v2"
   },
   "71017277": {
     "correct": false,
-    "reason": "Incoherent gibberish missing answer",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims details about the gift-giver are not included.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_4fc4f797": {
     "correct": false,
-    "reason": "Incoherent gibberish missing day count",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims specific suspension dates are missing.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_2487a7cb": {
     "correct": false,
-    "reason": "Incoherent gibberish missing answer",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Falsely claims no information about dates or order of the two events.",
+    "grader": "semantic-grade-v2"
   },
   "8077ef71": {
     "correct": false,
-    "reason": "Wrong answer and repetitive gibberish",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "7024f17c": {
-    "correct": false,
-    "reason": "Gibberish word repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "09ba9854": {
-    "correct": false,
-    "reason": "Gibberish word repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "9aaed6a3": {
-    "correct": false,
-    "reason": "Gibberish number repetition, wrong/no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "46a3abf7": {
-    "correct": false,
-    "reason": "Gibberish word repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "bb7c3b45": {
-    "correct": false,
-    "reason": "Gibberish word repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "ef9cf60a": {
-    "correct": false,
-    "reason": "Gibberish word repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "2e6d26dc": {
-    "correct": false,
-    "reason": "Gibberish word repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "f35224e0": {
-    "correct": false,
-    "reason": "Gibberish word repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "gpt4_59c863d7": {
-    "correct": false,
-    "reason": "Gibberish token repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "f0e564bc": {
-    "correct": false,
-    "reason": "Gibberish word repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "e56a43b9": {
-    "correct": false,
-    "reason": "Gibberish word repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "a11281a2": {
-    "correct": false,
-    "reason": "Gibberish word repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "d6062bb9": {
-    "correct": false,
-    "reason": "Gibberish token repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "4bc144e2": {
-    "correct": false,
-    "reason": "Gibberish repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "d23cf73b": {
-    "correct": false,
-    "reason": "Gibberish token repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "078150f1": {
-    "correct": false,
-    "reason": "Gibberish token repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "b5ef892d": {
-    "correct": false,
-    "reason": "Gibberish word repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "28dc39ac": {
-    "correct": false,
-    "reason": "Gibberish word repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "gpt4_2f91af09": {
-    "correct": false,
-    "reason": "Gibberish token repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "5025383b": {
-    "correct": false,
-    "reason": "Gibberish punctuation and word repetition",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "157a136e": {
-    "correct": false,
-    "reason": "Gibberish token repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "1c549ce4": {
-    "correct": false,
-    "reason": "Gibberish word repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "a346bb18": {
-    "correct": false,
-    "reason": "Gibberish punctuation and word repetition",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "a08a253f": {
-    "correct": false,
-    "reason": "Gibberish token repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "b3c15d39": {
-    "correct": false,
-    "reason": "Gibberish token repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "00ca467f": {
-    "correct": false,
-    "reason": "Gibberish word repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "c4a1ceb8": {
-    "correct": false,
-    "reason": "Gibberish token repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "0ea62687": {
-    "correct": false,
-    "reason": "Gibberish punctuation repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "a9f6b44c": {
-    "correct": false,
-    "reason": "Gibberish punctuation and word repetition",
-    "grader": "orchestrator-pro-semantic-v1"
-  },
-  "d682f1a2": {
-    "correct": false,
-    "reason": "Gibberish formatting repetition, no answer",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Reports 0 days ago instead of 26 days ago.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_372c3eed_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, stating total formal education years cannot be determined.",
+    "grader": "semantic-grade-v2"
   },
   "a96c20ee_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, stating location of poster presentation was not included.",
+    "grader": "semantic-grade-v2"
   },
   "0ddfec37_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, noting only autographed baseballs were mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "031748ae_abs": {
     "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Fails to abstain and hallucinates leading zero engineers at the start.",
+    "grader": "semantic-grade-v2"
   },
   "09ba9854_abs": {
     "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Fails to abstain and hallucinates estimated Tokyo bus and taxi costs.",
+    "grader": "semantic-grade-v2"
   },
   "bc8a6e93_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, stating no mention of baking for uncle's birthday party.",
+    "grader": "semantic-grade-v2"
   },
   "2698e78f_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish without abstention",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly catches premise mismatch (Dr. Smith vs Dr. Johnson) without answering for Dr. Johnson.",
+    "grader": "semantic-grade-v2"
   },
   "c8090214_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, noting no mention of an iPad or its purchase date.",
+    "grader": "semantic-grade-v2"
   },
   "19b5f2b3_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, stating Korea duration was not included.",
+    "grader": "semantic-grade-v2"
   },
   "0862e8bf_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, stating no hamster is mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "29f2956b_abs": {
     "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Fails to abstain and instead recommends 20-45 minutes per day of violin practice.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_93159ced_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, stating work history prior to Google cannot be determined.",
+    "grader": "semantic-grade-v2"
   },
   "15745da0_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, noting only vintage cameras were discussed, not vintage films.",
+    "grader": "semantic-grade-v2"
   },
   "edced276_abs": {
     "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "reason": "Fails to abstain and hallucinates 0 days in Hawaii and 0 days in Seattle.",
+    "grader": "semantic-grade-v2"
   },
   "ba358f49_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, stating question cannot be answered.",
+    "grader": "semantic-grade-v2"
   },
   "2311e44b_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, stating remaining pages in Sapiens cannot be determined.",
+    "grader": "semantic-grade-v2"
   },
   "e5ba910e_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, stating total cost cannot be determined without iPad price.",
+    "grader": "semantic-grade-v2"
   },
   "6aeb4375_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, stating it cannot tell how many Italian restaurants were tried.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_c27434e8_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, stating it lacks information to determine which started first.",
+    "grader": "semantic-grade-v2"
   },
   "f685340e_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains and flags tennis vs table tennis distinction.",
+    "grader": "semantic-grade-v2"
   },
   "88432d0a_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, stating egg tart baking records are unavailable.",
+    "grader": "semantic-grade-v2"
   },
   "2133c1b5_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, stating Shinjuku apartment duration is unavailable.",
+    "grader": "semantic-grade-v2"
   },
   "f4f1d8a4_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, stating dad's gift was not mentioned.",
+    "grader": "semantic-grade-v2"
   },
   "982b5123_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, stating Sacramento Airbnb booking timing is unavailable.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_fe651585_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish without abstention",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, stating question cannot be answered from provided text.",
+    "grader": "semantic-grade-v2"
   },
   "gpt4_70e84552_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, stating task order cannot be determined.",
+    "grader": "semantic-grade-v2"
   },
   "eeda8a6d_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, stating it lacks enough information on the 30-gallon tank.",
+    "grader": "semantic-grade-v2"
   },
   "60bf93ed_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, stating iPad case purchase/delivery is not included.",
+    "grader": "semantic-grade-v2"
   },
   "6456829e_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, stating specific plant counts are missing.",
+    "grader": "semantic-grade-v2"
   },
   "80ec1f4f_abs": {
-    "correct": false,
-    "reason": "Incoherent gibberish and repetition",
-    "grader": "orchestrator-pro-semantic-v1"
+    "correct": true,
+    "reason": "Correctly abstains, stating December museum count cannot be determined.",
+    "grader": "semantic-grade-v2"
   }
 }

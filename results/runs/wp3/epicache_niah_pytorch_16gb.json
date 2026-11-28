@@ -15,35 +15,36 @@
       ],
       "prompt_tokens": 20480,
       "generated_tokens": 160,
-      "ttft_sec": 0.1822,
-      "decode_time_sec": 0.4398,
-      "total_time_sec": 7.9521,
-      "throughput_tok_per_sec": 361.53,
-      "tpot_mean_ms": 26.17,
-      "tpot_p95_ms": 27.88,
+      "ttft_sec": 0.1731,
+      "decode_time_sec": 0.3654,
+      "total_time_sec": 7.1573,
+      "throughput_tok_per_sec": 435.14,
+      "tpot_mean_ms": 21.59,
+      "tpot_p95_ms": 23.04,
       "cold_ttft_sec": 0.0,
       "cold_total_sec": 0.0,
-      "ttft_p95_sec": 0.2969,
-      "peak_alloc_mb": 8566.92,
+      "ttft_p95_sec": 0.2731,
+      "peak_alloc_mb": 8567.2,
       "peak_reserved_mb": 8624.0,
-      "host_rss_delta_mb": 1160.27,
+      "host_rss_delta_mb": 1142.87,
       "memcpy_bytes_per_token": 0.0,
       "error": null,
       "extra": {
         "num_episodes": 4,
         "episode_budget_tokens": 1024,
         "layer_sensitivity_alpha": 2.0,
-        "compression_ratio_vs_bf16": 3.8,
         "block_size": 16,
+        "sink_tokens": 4,
+        "recent_window": 512,
         "active_retained_tokens": 1024,
         "block_wise_prefill_active": true,
-        "episodic_routing_active": true,
+        "episodic_routing_active": false,
         "engine": "pytorch",
         "attn_implementation": "sdpa",
         "max_vram_gb": 16.0,
         "effective_gpu_utilization": 0.5783,
         "hardware_vram_gb": 23.52,
-        "niah_accuracy": 0.0,
+        "niah_accuracy": 0.2,
         "niah_passcode": "849204",
         "niah_depths": [
           0.0,
@@ -62,64 +63,64 @@
             "depth": 0.0,
             "needle_distance": 2048,
             "retrieved": 0.0,
-            "generated_text": "3 for the the project is a the project. a the early days of"
+            "generated_text": "8321. \n\nHowever, I must clarify that the information provided"
           },
           {
             "depth": 0.1,
             "needle_distance": 1847,
             "retrieved": 0.0,
-            "generated_text": "****4232 for **for the the for the for the for"
+            "generated_text": "**87654321**. \n\nWait, that's"
           },
           {
             "depth": 0.2,
             "needle_distance": 1646,
             "retrieved": 0.0,
-            "generated_text": "****12342300000000"
+            "generated_text": "**87654321**. \n\nHowever, in the"
           },
           {
             "depth": 0.3,
             "needle_distance": 1445,
             "retrieved": 0.0,
-            "generated_text": "**4832 is 400000000"
+            "generated_text": "**8765**. \n\nWait, that's not right. Let"
           },
           {
             "depth": 0.4,
             "needle_distance": 1244,
             "retrieved": 0.0,
-            "generated_text": "**4 forhehehe for the is **projectededed in the"
+            "generated_text": "**87654321**. \n\nHowever, in the"
           },
           {
             "depth": 0.5,
             "needle_distance": 1043,
             "retrieved": 0.0,
-            "generated_text": "****\"42000 for1867 is 1"
+            "generated_text": "**87654321**. \n\nHowever, this is"
           },
           {
             "depth": 0.6,
             "needle_distance": 842,
             "retrieved": 0.0,
-            "generated_text": "****in the project is ** is the for the for the project was is"
+            "generated_text": "**87654321**. \n\nHowever, this is"
           },
           {
             "depth": 0.7,
             "needle_distance": 641,
             "retrieved": 0.0,
-            "generated_text": "****projecteded for the for the for the for the project for is"
+            "generated_text": "**87654321**. \n\nHowever, in the"
           },
           {
             "depth": 0.8,
             "needle_distance": 440,
-            "retrieved": 0.0,
-            "generated_text": "**4 for project Alpha is 4 is 1859 is"
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
           },
           {
             "depth": 0.9,
             "needle_distance": 239,
-            "retrieved": 0.0,
-            "generated_text": "**4 for project is 186 is 1859 is"
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
           }
         ],
-        "niah_retrieved_count": 0,
+        "niah_retrieved_count": 2,
         "niah_total_depths": 10
       }
     },
@@ -132,35 +133,36 @@
       ],
       "prompt_tokens": 40959,
       "generated_tokens": 160,
-      "ttft_sec": 0.3592,
-      "decode_time_sec": 0.4383,
-      "total_time_sec": 9.7953,
-      "throughput_tok_per_sec": 362.77,
-      "tpot_mean_ms": 26.05,
-      "tpot_p95_ms": 27.72,
+      "ttft_sec": 0.3438,
+      "decode_time_sec": 0.376,
+      "total_time_sec": 8.9732,
+      "throughput_tok_per_sec": 422.87,
+      "tpot_mean_ms": 21.65,
+      "tpot_p95_ms": 23.42,
       "cold_ttft_sec": 0.0,
       "cold_total_sec": 0.0,
-      "ttft_p95_sec": 0.4658,
-      "peak_alloc_mb": 8566.93,
+      "ttft_p95_sec": 0.4536,
+      "peak_alloc_mb": 8567.21,
       "peak_reserved_mb": 8924.0,
-      "host_rss_delta_mb": 1160.72,
+      "host_rss_delta_mb": 1145.86,
       "memcpy_bytes_per_token": 0.0,
       "error": null,
       "extra": {
         "num_episodes": 4,
         "episode_budget_tokens": 1024,
         "layer_sensitivity_alpha": 2.0,
-        "compression_ratio_vs_bf16": 3.8,
         "block_size": 16,
+        "sink_tokens": 4,
+        "recent_window": 512,
         "active_retained_tokens": 1024,
         "block_wise_prefill_active": true,
-        "episodic_routing_active": true,
+        "episodic_routing_active": false,
         "engine": "pytorch",
         "attn_implementation": "sdpa",
         "max_vram_gb": 16.0,
         "effective_gpu_utilization": 0.5783,
         "hardware_vram_gb": 23.52,
-        "niah_accuracy": 0.0,
+        "niah_accuracy": 0.1,
         "niah_passcode": "849204",
         "niah_depths": [
           0.0,
@@ -179,64 +181,64 @@
             "depth": 0.0,
             "needle_distance": 4096,
             "retrieved": 0.0,
-            "generated_text": "not,, and, for the of the, the a a, a,"
+            "generated_text": "not mentioned in the text provided. It seems to be a fictional or hypothetical element"
           },
           {
             "depth": 0.1,
             "needle_distance": 3690,
             "retrieved": 0.0,
-            "generated_text": "not for, for for for to for of the of the of the to get"
+            "generated_text": "not mentioned in the text provided. The text discusses various historical events related to newspapers"
           },
           {
             "depth": 0.2,
             "needle_distance": 3284,
             "retrieved": 0.0,
-            "generated_text": "not for,. for for the for of the of the of the is the"
+            "generated_text": "not mentioned in the text provided. It seems to be a fictional or hypothetical element"
           },
           {
             "depth": 0.3,
             "needle_distance": 2879,
             "retrieved": 0.0,
-            "generated_text": "not for, and for for for the for of the of the was, was"
+            "generated_text": "not mentioned in the text provided. The text discusses various historical events and newspaper struggles"
           },
           {
             "depth": 0.4,
             "needle_distance": 2473,
             "retrieved": 0.0,
-            "generated_text": "not, and and is not the,,,,, the was not is"
+            "generated_text": "not mentioned in the text provided. It seems to be a fictional or hypothetical element"
           },
           {
             "depth": 0.5,
             "needle_distance": 2067,
             "retrieved": 0.0,
-            "generated_text": "not for,, for for for for of the for for for for was,"
+            "generated_text": "not mentioned in the text provided. The text discusses various historical events and anecdotes related"
           },
           {
             "depth": 0.6,
             "needle_distance": 1661,
             "retrieved": 0.0,
-            "generated_text": "not for. for for for for for of the the for the for the for"
+            "generated_text": "not mentioned in the text provided. The text discusses various historical events and anecdotes related"
           },
           {
             "depth": 0.7,
             "needle_distance": 1255,
             "retrieved": 0.0,
-            "generated_text": "not for,, for for for for of the, for, verification of of"
+            "generated_text": "**project Alpha**. It is mentioned in the text as the subject of the"
           },
           {
             "depth": 0.8,
             "needle_distance": 850,
             "retrieved": 0.0,
-            "generated_text": "** 1 for for for for for for the for in the, for the"
+            "generated_text": "**87654321**. \n\nHowever, in the"
           },
           {
             "depth": 0.9,
             "needle_distance": 444,
-            "retrieved": 0.0,
-            "generated_text": "** 1 the for the the of the, 1 the started in the"
+            "retrieved": 1.0,
+            "generated_text": "**849204**. This is explicitly stated in the text"
           }
         ],
-        "niah_retrieved_count": 0,
+        "niah_retrieved_count": 1,
         "niah_total_depths": 10
       }
     }
