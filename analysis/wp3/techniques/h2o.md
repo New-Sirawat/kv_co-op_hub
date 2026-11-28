@@ -1,9 +1,9 @@
 # WP-3 Technical Analysis: H2O (Heavy-Hitter Oracle)
 
 **Authoritative Axis (`docs/METRICS_AND_AXES.md`):** `STRUCTURAL`  
-**`kv_bench` Pinned Commit:** `2a9338a2f750741f7765d79c1270f5579a9ffed0`  
+**`kv_bench` Pinned Commit:** `78ce018e589c554fccd7d4e31173fe04fcba8a0c` *(PR #60: pure-GPU `torch.topk` removing `.tolist()` D2H sync + `bfloat16` score matmul)*  
 **Target Model:** `Qwen/Qwen3-4B-Instruct-2507` (`Pure Dense GQA`, $L=36$, $H_Q=32$, $H_{KV}=8$, $D=128$, `bfloat16`)  
-**Hardware Cap:** 16.0 GiB process allocator cap on NVIDIA RTX 4090 (23.52 GiB physical VRAM, `effective_gpu_utilization = 0.5783`)
+**Hardware Cap:** 16.0 GiB process allocator cap on NVIDIA RTX 4090 (23.52 GiB physical VRAM), Slurm Job `30848`
 
 ---
 
@@ -11,59 +11,43 @@
 
 ### 1.1 Manifest Provenance & `technique_config`
 From [`results/manifests/run_manifest_wp3_h2o_pytorch.json`](../../../results/manifests/run_manifest_wp3_h2o_pytorch.json):
-- **Manifest `technique_config`:**
-  - `cache_class`: `H2OCache`
-  - `heavy_hitter_tokens`: `1024`
-  - `recent_window_tokens`: `1024`
-  - `block_size`: `16`
-  - `effective_cache_tokens`: `2048` ($1024 + 1024$)
-  - `effective_cache_blocks`: `128`
+- **Manifest `technique_config`:** `cache_class`: `H2OCache`, `heavy_hitter_tokens`: `1024`, `recent_window_tokens`: `1024`, `effective_cache_tokens`: `2048`, `block_size`: `16`.
 - **VERIFIED Hub Artifact SHA-256 Checksums:**
-  - `results/runs/wp3/h2o_hardware_pytorch_16gb.json`: `6de1820c969f977719779fdff6f9c7713a7ccbad7b932877527257dd5994444c`
-  - `results/runs/wp3/h2o_longmem_pytorch_16gb.json`: `de2d961ee332c28f87f50eadbe278629f239e8ff4bffe370ee49eb1e231f1c3e`
-  - `results/runs/wp3/h2o_niah_pytorch_16gb.json`: `1c7c735501be64e264431a1692966206cc8d3402b216bd3f01787eb0633ffddf`
-  - `results/runs/wp3/verify_h2o_pytorch_16gb.json`: `f6188415cda3daa91f633ae12c43aa3fe3e57dded98ab9ef7bb5acd00fcd2671`
-  - `results/grades/h2o_grades.json`: `efe86b1742f542b8c7a15700ddb9789ca49927efc3e926bbde029957f5478c0b`
-  - `results/grades/h2o_judged.json`: `806e9166b8117e5e2e9c222008ad94759ca0330f98896f312d236ce72a68e985`
+  - `results/runs/wp3/h2o_hardware_pytorch_16gb.json`: `5f68bae50d66ba0e0ce64c78cd25632b575476fdb632a857cf493e92eded50a0`
+  - `results/runs/wp3/h2o_longmem_pytorch_16gb.json`: `b4b0348ec14616f53fbc6b130ab595a41a86b3adcafaef98d891cad610e0935b`
+  - `results/runs/wp3/h2o_niah_pytorch_16gb.json`: `d1eb472c3852ae56ee2c8dfb939d6b97d4e0748d69b74f868d3ca1f4b35edcb4`
+  - `results/runs/wp3/verify_h2o_pytorch_16gb.json`: `59b885d5fe565951d181cc5925b70489f1fd8ddfa0c7051a730c607ca7f85ee1`
+  - `results/grades/h2o_grades.json`: `ab664c214aae6976e07e371a4f4f584f5e4bb0ee12b80f82ec2ae262e66331c5`
+  - `results/grades/h2o_judged.json`: `22c41f7658cad401a60e54683d804e3d0e5176bc231c70b8c94b77103f9e2ed8`
 
 ### 1.2 Hardware Scaling Sweep (`512 -> 32,768` Tokens, `SyntheticFiller`)
-Static `Qwen3-4B` BF16 weights + runtime at `ctx=128` (`verify_baseline_pytorch_16gb.json`) is **`7,738.78 MiB` (~7.56 GiB)** (`7,741.47 MiB` in `verify_h2o_pytorch_16gb.json`). Subtracting the unified `7,738.78 MiB` static floor, H2O's `Peak Alloc` at `ctx=32,768` plateaus at **`9,724.65 MiB`** (net KV+aux **`~1,985.9 MiB`**) vs. Baseline's `13,224.90 MiB` (`~5,486.1 MiB` KV+aux) — saving `3,500.3 MiB` vs. baseline, while consuming **`1,012.9 MiB` more** than StreamingLLM (`8,711.71 MiB`) due to auxiliary float32 attention-score materialization.
+Static `Qwen3-4B` BF16 weights + runtime at `ctx=128` is **`7,738.78 MiB` (~7.56 GiB)**. Post-PR #60, H2O caps 32K `Peak Alloc` at **`9,434.73 MiB`** (`1,695.95 MiB` net KV+aux, saving `3,790.2 MiB` vs. baseline), slashes 32K TPOT **`45.88 -> 29.27 ms`** (matching baseline `29.17 ms`!), drops Host RSS **`6,874 -> 1,548 MiB`**, and eliminates all D2H sync traffic (`8,258 B/tok` = harness floor!).
 
 | `ctx` | Peak Alloc (MiB) | Peak Reserved (MiB) | Warm TTFT (s) | TPOT Mean / P95 (ms) | Throughput (tok/s) | Host RSS Δ (MiB) | Memcpy (B/tok) | Physical Scalar Bits | Effective Token Retention |
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| **512** | 8,003.91 | 8,118.0 | 0.0543 | 23.95 / 23.95 | 41.75 | 4,038.98 | 201.75 | 16-bit BF16 | 100.0% (576 / 576) |
-| **1,024** | 8,372.14 | 8,466.0 | 0.1298 | 23.44 / 23.44 | 42.66 | 4,040.51 | 329.75 | 16-bit BF16 | 100.0% (1,088 / 1,088) |
-| **2,048** | 9,281.25 | 9,348.0 | 0.3320 | 44.52 / 44.52 | 22.46 | 4,740.52 | 1,307,095.50 | 16-bit BF16 | 96.97% (2,048 / 2,112) |
-| **4,096** | 9,724.43 | 9,988.0 | 0.9178 | 45.37 / 45.37 | 22.04 | 4,884.51 | 1,353,687.50 | 16-bit BF16 | 49.23% (2,048 / 4,160) |
-| **8,192** | 9,724.46 | 9,988.0 | 2.0850 | 46.12 / 46.12 | 21.68 | 5,176.67 | 1,446,871.50 | 16-bit BF16 | 24.81% (2,048 / 8,256) |
-| **16,384** | 9,724.53 | 9,990.0 | 4.4431 | 45.59 / 45.59 | 21.93 | 5,747.91 | 1,633,239.50 | 16-bit BF16 | 12.45% (2,048 / 16,448) |
-| **32,768** | 9,724.65 | 9,990.0 | 9.1098 | 45.88 / 45.88 | 21.80 | 6,873.70 | 2,005,975.50 | 16-bit BF16 | 6.24% (2,048 / 32,832) |
+| **512** | 7,915.79 | 7,998.0 | 0.0449 | 24.12 / 24.12 | 41.46 | 1,194.47 | 193.88 | 16-bit BF16 | 100.0% (576 / 576) |
+| **1,024** | 8,186.19 | 8,226.0 | 0.1164 | 24.10 / 24.10 | 41.50 | 1,194.65 | 321.88 | 16-bit BF16 | 100.0% (1,088 / 1,088) |
+| **2,048** | 8,959.22 | 9,026.0 | 0.2918 | 29.15 / 29.15 | 34.30 | 1,297.94 | 577.88 | 16-bit BF16 | 96.97% (2,048 / 2,112) |
+| **4,096** | 9,434.51 | 9,688.0 | 0.7521 | 28.72 / 28.72 | 34.82 | 1,314.96 | 1,089.88 | 16-bit BF16 | 49.23% (2,048 / 4,160) |
+| **8,192** | 9,434.54 | 9,688.0 | 1.6724 | 28.88 / 28.88 | 34.62 | 1,347.13 | 2,113.88 | 16-bit BF16 | 24.81% (2,048 / 8,256) |
+| **16,384** | 9,434.60 | 9,868.0 | 3.5180 | 28.82 / 28.82 | 34.70 | 1,311.09 | 4,161.88 | 16-bit BF16 | 12.45% (2,048 / 16,448) |
+| **32,768** | **9,434.73** | 9,868.0 | **7.2046** | **29.27 / 29.27** | **34.16** | **1,548.30** | **8,257.88** | 16-bit BF16 | 6.24% (2,048 / 32,832) |
 
-### 1.3 Micro Fidelity (Verify, PG-19 / Hardware Sweep KL) & Macro Retrieval (NIAH, LongMemEval)
-- **Verify (`ctx=128`, 16 decode tokens):** `top1_agreement = 1.0`, `kl_div_mean = 0.0`, `kl_div_p99 = 0.0`.
-- **Hardware Sweep KL (`SyntheticFiller`, $N=1$ per length, 64 decode tokens):**
-  - `512` & `1,024`: `top1 = 1.0`, `kl_mean = 0.0`, `kl_p99 = 0.0`.
-  - `2,048`: `top1 = 0.2031`, `kl_mean = 10.97825`, `kl_p99 = 15.4249`.
-  - `4,096`: `top1 = 0.7969`, `kl_mean = 2.66784`, `kl_p99 = 15.1387`.
-  - `8,192`: `top1 = 0.2969`, `kl_mean = 9.81611`, `kl_p99 = 15.4249`.
-  - `16,384`: `top1 = 0.1406`, `kl_mean = 11.88897`, `kl_p99 = 15.4249`.
-  - `32,768`: `top1 = 0.2344`, `kl_mean = 10.47673`, `kl_p99 = 15.4249`.
-- **NIAH (`2K` & `4K` depth grid, passcode `"849204"`):**
-  - **`2,048` ctx:** **`100%` (`1.0`)** across all 10 depths (`0.0–0.9`).
-  - **`4,096` ctx:** **`20%` (`0.2`)** — `0.0` at depths `0.0–0.7` (`needle_distance` `1,255–4,096`); **`1.0`** only at depths `0.8–0.9` (`needle_distance` `444–850` $\le 1,024$ recent window). Notice that at depths `0.6–0.7` (`1,255–1,661` tokens back), H2O scores `0.0` whereas StreamingLLM scored `1.0` because H2O's `recent_window_tokens` is `1,024` (vs. StreamingLLM's `2,048`) and the needle token did not accumulate enough attention during `SyntheticFiller`/text prefill to beat early heavy hitters.
-- **LongMemEval (`150` native-length samples, `192–22,400` prompt tokens, median `5,859`, `h2o_judged.json`):**
-  - **Overall Accuracy:** **`80 / 150 = 53.33%`** vs. Baseline **`99 / 150 = 66.0%`** ($\Delta = -12.67\text{ pp}$, **`+9.33 pp` over StreamingLLM**).
-  - **Causal Verdicts:** `PASS_FIDELITY_MAINTAINED = 77`, `BASELINE_LIMITATION = 48`, **`QUALITY_REGRESSION = 22`**, `UNEXPECTED_GAIN = 3`.
-  - **LongMemEval KL & Retention:** `top1_agreement = 0.4746`, `kl_div_mean = 7.6479`, `kl_div_p99 = 15.4249`, `Physical Scalar Bits = 16-bit BF16`, `Effective Token Retention = 43.44%` (`2.30×` compression).
-  - **Length-Tier Accuracy:** `short = 75.0%`, `medium = 52.78%`, `long = 18.18%`.
+### 1.3 Micro Fidelity & Macro Retrieval (NIAH, LongMemEval)
+- **Verify (`ctx=128`):** `top1_agreement = 1.0`, `kl_div_mean = 0.0`, `kl_div_p99 = 0.0`.
+- **NIAH (`2K` & `4K`):** `2,048` ctx: **100% (`10/10`)**; `4,096` ctx: **20% (`2/10`)** (depths `0.8–0.9` inside `1,024` recent window).
+- **LongMemEval (`150` native-length samples, `h2o_judged.json`):**
+  - **Overall Accuracy:** **`81 / 150 = 54.00%`** vs. Baseline **`99 / 150 = 66.0%`** ($\Delta = -12.00\text{ pp}$, **`+10.0 pp` over StreamingLLM**).
+  - **Causal Verdicts:** `PASS_FIDELITY_MAINTAINED = 77`, `BASELINE_LIMITATION = 47`, **`QUALITY_REGRESSION = 22`**, `UNEXPECTED_GAIN = 4`.
+  - **LongMemEval KL:** `top1_agreement = 0.4647`, `kl_div_mean = 7.79577`, `kl_div_p99 = 15.4249`, `tpot = 23.08 ms`.
 
 | LongMemEval Capability | Baseline (`N=30` each) | H2O (`N=30` each) | $\Delta$ (pp) | `QUALITY_REGRESSION` Count |
 |---|---:|---:|---:|---:|
 | **Fact Recall** | 90.0% (27/30) | 86.7% (26/30) | -3.3 | 1 |
-| **Information Update** | 66.7% (20/30) | 46.7% (14/30) | -20.0 | 6 |
-| **Relative Timeframe** | 30.0% (9/30) | 26.7% (8/30) | -3.3 | 2 |
-| **Cross-Session Reasoning** | 43.3% (13/30) | 16.7% (5/30) | -26.7 | 10 |
-| **Unanswerable Refusal** | 100.0% (30/30) | 90.0% (27/30) | -10.0 | 3 |
+| **Information Update** | 66.7% (20/30) | 53.3% (16/30) | -13.3 | 6 *(+2 UG)* |
+| **Relative Timeframe** | 30.0% (9/30) | 20.0% (6/30) | -10.0 | 3 |
+| **Cross-Session Reasoning** | 43.3% (13/30) | 16.7% (5/30) | -26.7 | 10 *(+2 UG)* |
+| **Unanswerable Refusal** | 100.0% (30/30) | 93.3% (28/30) | -6.7 | 2 |
 
 ![H2O Hardware Sweep](../../figures/wp3/h2o/hardware_sweep.png)
 ![H2O KL Fidelity](../../figures/wp3/h2o/kl_fidelity.png)
@@ -71,35 +55,32 @@ Static `Qwen3-4B` BF16 weights + runtime at `ctx=128` (`verify_baseline_pytorch_
 
 ---
 
-## 2. White-Box Component Decomposition
+## 2. White-Box Component Decomposition (Post-PR #60)
 
-| ID | Component | Source File, Class/Method & Lines | Tensor Shapes & Dtypes (`Qwen3-4B`, BF16) | Execution Cadence |
+| ID | Component | Source Location (`kv_bench@78ce018`) | Tensor Shapes & Dtypes (`Qwen3-4B`, BF16) | Execution Cadence |
 |---|---|---|---|---|
-| **C1** | **SDPA Monkey-Patch Hook (`h2o_sdpa_attention_forward`)** | `src/techniques/h2o.py`: `_install_pytorch_h2o_hooks` (L425–460) | Intercepts `query` `(1, 32, q_len, 128)`, `key` `(1, 8, kv_len, 128)`, `value` `(1, 8, kv_len, 128)` (`bfloat16`) after `_ORIG_SDPA`. | Every layer ($36\times$) on every prefill chunk and decode step. |
-| **C2** | **Duplicate Attention & GQA Score Pooling (`record_h2o_attention_scores`)** | `src/techniques/h2o_cache.py`: `record_h2o_attention_scores` (L37–82) | Prefill (`q_len > 1`): `k_rep` `(1, 32, kv_len, 128)` + `scores`/`attn` `(1, 32, q_len, kv_len)` in **`float32`**. Decode (`q_len == 1`): `(1, 8, 4, 1, kv_len)` $\to$ `mean(dim=2)` $\to$ `(1, 8, kv_len)` `float32`. | Every layer ($36\times$) on every prefill chunk and decode step. |
-| **C3** | **Cumulative Score & KV Buffer (`H2OLayer`)** | `src/techniques/h2o_cache.py`: `H2OLayer` (L84–179) | `keys`/`values`: `(1, 8, S_active, 128)` `bfloat16`; `cumulative_scores`: `(1, 8, S_active)` `float32`. | `update` + `record_scores` every step; `prune` at chunk end & every decode step (`q_len == 1`). |
-| **C4** | **CPU-Synced Top-K Boundary & `index_select` (`compute_h2o_boundaries` + `prune`)** | `src/techniques/h2o.py`: `compute_h2o_boundaries` (L65–158); `h2o_cache.py`: `H2OLayer.prune` (L142–172) | Averages `cumulative_scores` across heads `(kv_len,)`, calls `.tolist()` (D2H sync), Python `sorted()`, then `torch.tensor(retained_indices)` (H2D) + `torch.index_select`. | Every chunk end + every decode step when `seq_len > 2048` ($36 \times 64 = 2,304$ syncs per 64-tok sample). |
+| **C1/C2** | **SDPA Hook + `bfloat16` Score Accumulation** | `h2o.py`, `h2o_cache.py` | **IMPROVED in PR #60:** Computes chunk score matmul in `bfloat16` instead of `float32`, saving `290 MiB` VRAM (`9,724.7 -> 9,434.7 MiB`) and `1.91 s` TTFT (`9.11 -> 7.20 s`). | Every layer ($36\times$). |
+| **C3** | **Cumulative Score & KV Buffer (`H2OLayer`)** | `h2o_cache.py` | `keys`/`values`: `(1, 8, 2048, 128)` `bf16`; `cumulative_scores`: `(1, 8, S)` | Every step. |
+| **C4** | **Pure-GPU `torch.topk` Eviction (`compute_h2o_boundaries`)** | `h2o.py`, `h2o_cache.py` | **RESOLVED in PR #60:** Eliminated `.tolist()` + Python `sorted()` D2H/H2D syncs, cutting 32K memcpy **`2.01 MB/tok -> 8,258 B/tok`** (harness floor!), Host RSS **`6,874 -> 1,548 MiB`**, and TPOT **`45.88 -> 29.27 ms`**. | Chunk end + decode step (`seq_len > 2048`). |
 
 ---
 
-## 3. 3-Way Causal Attribution
+## 3. 3-Way Causal Attribution (Pre- vs. Post-PR #60)
 
-- **VRAM (`9,724.65 MiB` at `32K`, `+1,013 MiB` over StreamingLLM):** **`[IMPLEMENTATION]`** — `C3` bounds `S_active` to `2,048` (`~281 MiB` KV), saving `3.42 GiB` (`3,500.3 MiB`) vs. baseline, but `C2` materializes full `float32` `(1, 32, 1024, 3072)` attention matrices (`~384 MiB` per tensor + `k_rep`) during chunked prefill *alongside* SDPA, adding `~0.99 GiB` (`1,013 MiB`) peak VRAM.
-- **Host RSS (`4,039 -> 6,874 MiB`) & PCIe Memcpy (`1.31–2.01 MB/tok` at `2K–32K`):** **`[IMPLEMENTATION]`** — Discounting the `8,266 B/tok` harness floor, the massive `1.31–2.01 MB/tok` PCIe traffic and `+2.77 GiB` Host RSS growth are caused entirely by `C4` calling `.tolist()` (D2H) and `torch.tensor(retained_indices)` (H2D) `2,304` times per 64-token decode across 36 layers whenever `seq_len > 2048`.
-- **TTFT (`9.11 s` at `32K`, slower than Baseline `6.98 s`) & TPOT (`45.88 ms` vs. `20.95 ms` StreamingLLM):** **`[IMPLEMENTATION]`** — `C2` recomputes $Q K^\top$ in `float32` *after* `_ORIG_SDPA` already computed attention, doubling prefill compute and pushing 32K TTFT to `9.11 s`. During decode at `ctx >= 2048`, `C4`'s 36-layer D2H/H2D Python-sort round-trips add `~22 ms/tok`, doubling TPOT from `23.95 ms` (`512` ctx) to `44.5–46.1 ms` (`2K–32K`).
-- **KL Divergence (`kl_div_mean = 7.65`, `top1 = 0.4746` on LongMemEval):** **`[INTRINSIC]` + `[HARDWARE/GQA]`** — H2O preserves `3.6×` higher `top1_agreement` than StreamingLLM (`0.4746` vs. `0.1318`) because `C3` retains high-attention anchor/entity tokens across the prompt. However, `C4` pools scores across all 8 KV heads (`mean(dim=(0,1))`) rather than per-KV-head, losing head-specific specialization.
-- **NIAH (`100%` at `2K`, `20%` at `4K`):** **`[INTRINSIC]`** — At `4K`, H2O's `1,024`-token recent window only covers depths `0.8–0.9` (`444–850` tokens). The needle at depths `0.0–0.7` is not heavily attended during prefill, so `C4` evicts it.
-- **LongMemEval (`53.33%`, `22` `QUALITY_REGRESSION`s):** **`[INTRINSIC]` + `[IMPLEMENTATION]`** — Retaining heavy hitters cuts `QUALITY_REGRESSION`s by `40%` vs. StreamingLLM (`22` vs. `37`), preserving `fact_recall` (`86.7%`, only `1` regression) and `relative_timeframe` (`26.7%`, `2` regressions). However, **`information_update` drops to `46.7%` (`6` regressions)** because older outdated facts accumulated high prefill attention and outlived newer corrections, and **`cross_session_reasoning` drops to `16.7%` (`10` regressions)** (e.g., `bb7c3b45`: *"Wrong savings amount ($100 instead of $300)"*) because secondary facts without high cumulative prefill attention are permanently evicted.
+- **Sync, RSS & Latency Penalties Eliminated (`[IMPLEMENTATION]` RESOLVED):**
+  - Replacing `.tolist()` + Python `sorted()` with pure-GPU `torch.topk` and moving score accumulation to `bfloat16` cut 32K memcpy **`2.01 MB/tok -> 8,258 B/tok`** (harness floor), Host RSS **`-5,325 MiB`** (`6,874 -> 1,548 MiB`), 32K TPOT **`45.88 -> 29.27 ms`** (`23.08 ms` on LongMemEval!), and TTFT **`9.11 -> 7.20 s`**.
+- **Intrinsic Eviction Amnesia Confirmed (`[INTRINSIC]` — `54.00%`, `22` QR, `20%` 4K NIAH):**
+  - Even with all implementation penalties removed, permanent Heavy-Hitter eviction (`1024 + 1024`) still incurs **`22` regressions** (`cross_session_reasoning 16.7%`, `information_update 53.3%`, `4K NIAH 20%`), proving middle-token deletion is intrinsically lossy and evicted tokens must be demoted to a cold tier rather than discarded.
 
 ---
 
-## 4. Paper vs. Replication Fidelity
+## 4. Paper vs. Replication Fidelity (Post-PR #60)
 
-| Dimension | Paper (`Zhang et al., NeurIPS 2023`, `docs/literature_survey/techniques/h2o.md`) | `kv_bench` PyTorch Implementation (`h2o.py`, `h2o_cache.py`) | Fidelity Verdict |
+| Dimension | Paper (`Zhang et al., NeurIPS 2023`) | `kv_bench` Replication (`78ce018`, Post-PR #60) | Fidelity Verdict |
 |---|---|---|---|
-| **Dual-Pool Budget** | $K$ heavy hitters + $K$ recent tokens ($50\%/50\%$ split). | `heavy_hitter_tokens=1024`, `recent_window_tokens=1024` (`2048` total). | **Exact Match** |
-| **GQA Score Pooling** | Paper evaluated MHA (OPT, LLaMA-1). | `record_h2o_attention_scores` pools Q heads per KV group (`mean(dim=2)`), **but** `compute_gqa_h2o_attention` / `compute_h2o_boundaries` (L128–129) reduces further via `mean(dim=(0,1))` across all KV heads, losing per-head eviction. | **Partial Divergence** |
-| **In-Place Eviction & Compute** | Pre-allocated static circular buffer with $O(1)$ in-place CUDA overwrite; hooked into attention without duplicate matmul. | `C2` recomputes full `float32` $QK^\top$ on top of SDPA; `C4` runs `.tolist()` + Python `sorted()` + H2D `torch.tensor()` + `index_select` on all 36 layers every decode step. | **Severe Implementation Bottleneck** |
+| **Dual-Pool Budget** | $K$ heavy hitters + $K$ recent (`50%/50%`) | `1024 + 1024` (`2048` total) | **Exact Match** |
+| **Pure-GPU Eviction** | In-place GPU top-$k$ | Pure-GPU `torch.topk` (`29.27 ms` TPOT, `8.3 KB/tok` floor) | **Faithful (Fixed in PR #60)** |
+| **Score Extraction** | Fused inside attention | Post-hoc `bfloat16` hook (`7.20 s` TTFT, `~0.72 GiB` overhead vs StreamingLLM) | **PyTorch SDPA Limitation** |
 
 ---
 
@@ -107,7 +88,5 @@ Static `Qwen3-4B` BF16 weights + runtime at `ctx=128` (`verify_baseline_pytorch_
 
 | Component | Verdict | Contribution | Failure Mode | Exact Fix Prerequisite (if `ADAPT`) |
 |---|---|---|---|---|
-| **C1: SDPA Hook** | **`ADAPT`** | Enables attention-score extraction in `transformers` SDPA. | Forces duplicate attention computation in `C2`. | Replace post-hoc hook with a custom single-pass Triton/FlashAttention score-accumulation kernel or lightweight last-query proxy. |
-| **C2: `record_h2o_attention_scores`** | **`ADAPT`** | Accurately pools GQA query heads into `(B, H_KV, kv_len)` scores. | Doubles prefill FLOPs and adds `~0.99 GiB` (`1,013 MiB`) `float32` peak VRAM. | Compute chunk scores using `bfloat16` or subsample/pool query block norms instead of full `(1, 32, 1024, kv_len)` `float32` materialization. |
-| **C3: `H2OLayer` Cumulative Buffer** | **`KEEP`** | Raises LongMemEval accuracy `+9.33 pp` over StreamingLLM (`53.3%` vs `44.0%`). | Permanent eviction still causes `22` regressions (`information_update` & `cross_session`). | Pair with `SPATIAL` offload/quantization in WP-4/WP-6 so low-score tokens are demoted rather than deleted. |
-| **C4: CPU-Synced `compute_h2o_boundaries`** | **`DROP` (replace)** | Selects top-$k$ heavy hitters. | `2,304` D2H/H2D syncs per sample cause `2.0 MB/tok` memcpy, `6.71 GiB` (`6,874 MiB`) RSS, and `2×` TPOT (`45.9 ms`). | Replace `.tolist()` + Python `sorted()` with pure GPU `torch.topk` per KV head (`(1, 8, k_hh)`) and in-place buffer scatter. |
+| **C1/C2: `bfloat16` Score Hook** | **`ADAPT`** | Accurate cumulative GQA scoring (`7.20 s` TTFT) | Still duplicates attention matmul under HF SDPA | Fuse into Triton/vLLM attention or use lightweight last-query proxy |
+| **C3/C4: Pure-GPU Heavy-Hitter Pool** | **`KEEP`** *(hot tier)* | `29.27 ms` TPOT, `1,548 MiB` RSS, `+10 pp` over StreamingLLM | Permanent eviction still causes `22` regressions | Demote evicted tokens to 4-bit cold tier in WP-4 instead of deleting |
