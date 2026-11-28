@@ -52,8 +52,8 @@
 ### Block 2: Core Message & Delta from Proposal Defense
 - **Core Message:** Our Semester 1 empirical results confirm three foundational claims:
   1. **Native 16 GB Hardware Wall (`5.2.1`):** On `Qwen3-4B-Instruct-2507` (BF16), native vLLM hits a hard KV-cache OOM cliff above **37,056 tokens** (`49,152` and `65,536` fail with `7.04 GiB` / `9.29 GiB` needed vs. `5.09 GiB` available), while multi-user concurrency (`1 → 16` users at `8K`) nearly doubles (+81%) TPOT (`11.16 ms → 20.20 ms`).
-  2. **The 3-Axis Trade-Off Trilemma (`5.2.2`):** Across all 11 reproduced candidates at 32K context, **no single-axis method dominates simultaneously** on VRAM, decode speed, PCIe traffic, and LongMemEval accuracy—e.g., `StreamingLLM` is fastest (`20.95 ms` TPOT, `8,711.7 MB` VRAM) but collapses to `44.0%` LongMemEval (`3.3%` Cross-Session Reasoning), whereas `ShadowKV` preserves `64.0%` LongMemEval (within `2.0 pp` of the `66.0%` BF16 baseline) with only `67.24 MB/tok` PCIe traffic, yet consumes `14,233.0 MB` VRAM.
-  3. **White-Box Failure Isolation (`5.2.3`):** Our Causal Attribution Tree + Post-Hoc Inspector cleanly separates true algorithmic regressions (`StreamingLLM`: `37` regressions; `CacheGen`: `36`) from base-model limitations (`45–51` shared baseline failures) and PyTorch wrapper/codec anomalies (`HeadQ`: `0.0%`; `EpiCache`: `5.3%`; `TurboQuant`: `864.12 ms` pure-PyTorch decode).
+  2. **The 3-Axis Trade-Off Trilemma (`5.2.2`):** Across all 11 reproduced candidates at 32K context (post-PR #59/#60 bug fixes), **no single-axis method dominates simultaneously** on VRAM, decode speed, PCIe traffic, and LongMemEval accuracy—e.g., `StreamingLLM` is fastest (`20.95 ms` TPOT, `8,711.7 MiB` VRAM) but collapses to `44.0%` LongMemEval (`3.3%` Cross-Session Reasoning), whereas selective CPU-offload engines (`InfiniGen`: `66.7%`, `2` QR; `ShadowKV`: `66.7%`, `3` QR, `9,544.9 MiB` VRAM; `ArkVale`: `64.7%`, `54.80 ms` TPOT) match or exceed the `66.0%` BF16 baseline while overflowing 16 GB consumer host RAM (`11.2–20.2 GiB` RSS).
+  3. **White-Box Failure Isolation (`5.2.3`):** With all 9 implementation wrapper bugs resolved in `kv_bench` PR #59 & #60, remaining drops cleanly reflect intrinsic algorithmic limits: eviction middle-amnesia (`H2O`: `54.0%`, `22` QR; `StreamingLLM`: `44.0%`, `37` QR; single-window `EpiCache`: `37.3%`, `43` QR), the 4-bit quantization floor (`QServe KV4`: `60.0%`, `12` QR vs. 2-bit Key `HeadQ`: `14.7%`, `81` QR despite `90%/90%` NIAH), and PyTorch-eager dequantization latency (`TurboQuant`: `228.57 ms` TPOT).
 - **Delta from Proposal Defense (`KV-Cache Co-optimization.pdf`):**
   - *Proposal:* Cited only theoretical memory formulas and literature-reported numbers (zero local empirical benchmarks).
   - *Current State:* Full empirical verification across both native vLLM (`WP-2`) and 11 PyTorch SDPA candidates (`WP-3`), including 150-sample semantic grading and causal attribution.
@@ -63,7 +63,7 @@
 | :--- | :--- | :--- | :--- |
 | **5.2.1** Native vLLM Ceiling & Concurrency | `results/baselines/baseline_hardware_16gb.json` (`results[].{requested_ctx, status, peak_alloc_mb, peak_reserved_mb, ttft_sec, tpot_mean_ms, throughput_tok_per_sec, error}`)<br>`results/baselines/concurrent_baseline_16gb.json` (`concurrency_grid[].{num_users, results[]}`)<br>`results/baselines/verify_identity_16gb.json`, `verify_cross_model_16gb.json` | `[READY]` | Manifest: `run_manifest_baseline_16gb.json` (Job `22868`) |
 | **5.2.2** WP-3 11-Method Hardware, KL/Top-1, NIAH & LongMemEval | `results/baselines/baseline_pytorch_16gb.json` + `results/runs/wp3/<tech>_hardware_pytorch_16gb.json` (32K row)<br>`results/runs/wp3/verify_<tech>_pytorch_16gb.json` (`extra.{top1_agreement, kl_div_mean, kl_div_p99}` @ 128 ctx)<br>`results/runs/wp3/<tech>_longmem_pytorch_16gb.json` (`extra.{top1_agreement, kl_div_mean, kl_div_p99, diag_mean_*}` @ 32K)<br>`results/runs/wp3/<tech>_niah_pytorch_16gb.json` (`extra.niah_accuracy` @ 2K/4K)<br>`results/grades/<tech>_judged.json` & `baseline_judged.json` (`correct_samples`, `overall_accuracy`, `per_task_accuracy`, `causal_verdict_counts`) | `[READY]` | Includes uncompressed PyTorch hardware baseline (`baseline_pytorch_16gb.json`, merged via PR #21 `911c1d3`) |
-| **5.2.3** Component-Level Synthesis & Figures | `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md`, `analysis/wp3/techniques/*.md`, `analysis/figures/wp3/*` | `[READY]` | Merged on `main` (PR #21 `911c1d3`); unified `7,738.8 MiB` static floor, 1× persistent-byte accounting, and reconciled `SPATIAL` overview figures |
+| **5.2.3** Component-Level Synthesis & Figures | `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md`, `analysis/wp3/techniques/*.md`, `analysis/figures/wp3/*` | `[READY]` | Merged on `main` (PR #21, #23, #24 — `kv_bench@78ce018`); all 9 wrapper bugs resolved across Slurm Jobs `30715` & `30848` |
 
 ### Block 4: Draft Section Skeleton, Verified Numeric Snapshots, Table/Figure Specs & Open Questions
 
@@ -93,45 +93,44 @@
 #### Subsection 5.2.2 — WP-3 11-Method Comparative Micro-Benchmarking Snapshot (`[READY]` on `main`)
 > *Note: Uncompressed PyTorch SDPA hardware sweep (`results/baselines/baseline_pytorch_16gb.json`) and baseline LongMemEval (`99/150 = 66.0%`, `results/grades/baseline_judged.json`) are both `[READY]` on `main`.*
 
-- **Table 5.2A — Verified 32K Hardware & System Telemetry (`results/baselines/baseline_pytorch_16gb.json` & `results/runs/wp3/*_hardware_pytorch_16gb.json`, `requested_ctx = 32768`):**
+- **Table 5.2A — Verified 32K Hardware & System Telemetry (`results/baselines/baseline_pytorch_16gb.json` & `results/runs/wp3/*_hardware_pytorch_16gb.json`, `requested_ctx = 32768`, post-PR #59/#60):**
   | Method | Axes | Peak Alloc (MiB) | Host RSS $\Delta$ (MiB) | TTFT (s) | TPOT (ms) | Throughput (tok/s) | Memcpy (MB/tok) |
   | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
   | **PyTorch BF16 Baseline** | — | **`13,224.9`** | **`1,082.4`** | **`6.98`** | **`29.17`** | **`34.28`** | **`0.00`** |
-  | **EpiCache** | `STR`, `SPA` | `8,567.1` | `2,845.7` | `2.88` | `30.60` | `32.68` | `0.44` |
-  | **StreamingLLM** | `STR` | `8,711.7` | `1,326.5` | `2.90` | `20.95` | `47.73` | `0.01` |
-  | **FlexGen KV** | `STR`, `SPA` | `8,888.9` | `6,564.6` | `10.20` | `229.57` | `4.36` | `1,646.96` |
-  | **ArkVale** | `STR`, `SPA` | `9,032.9` | `16,613.6` | `21.12` | `102.92` | `9.72` | `1,618.38` |
-  | **H2O** | `STR` | `9,724.6` | `6,873.7` | `9.11` | `45.88` | `21.80` | `2.01` |
-  | **HeadQ** | `STR` | `10,108.8` | `4,655.6` | `7.72` | `80.89` | `12.36` | `0.01` |
-  | **TurboQuant** | `STR` | `10,294.4` | `7,528.9` | `20.63` | `864.12` | `1.16` | `0.01` |
-  | **CacheGen** | `STR`, `SPA` | `10,600.2` | `4,535.8` | `12.55` | `82.87` | `12.07` | `935.02` |
-  | **QServe KV4** | `STR` | `10,762.7` | `3,628.6` | `7.24` | `59.92` | `16.69` | `0.01` |
-  | **InfiniGen** | `STR`, `SPA`, `TMP` | `13,910.0` | `20,490.6` | `15.37` | `219.68` | `4.55` | `1,829.89` |
-  | **ShadowKV** | `STR`, `SPA`, `TMP` | `14,233.0` | `5,325.1` | `6.80` | `85.29` | `11.73` | `67.24` |
-  > *Units note:* `Peak Alloc` (`peak_alloc_mb`) and `Host RSS Δ` (`host_rss_delta_mb`) are reported in binary **MiB** ($1024^2$ bytes) by `kv_bench`, whereas `Memcpy (MB/tok)` is computed in decimal **MB** (`memcpy_bytes_per_token / 1e6`).
+  | **EpiCache** *(PR #59)* | `STR` | `8,567.4` | `1,827.5` | `2.68` | `26.57` | `37.63` | `0.01*` |
+  | **StreamingLLM** | `STR` | `8,711.7` | `1,326.5` | `2.90` | `20.95` | `47.73` | `0.01*` |
+  | **FlexGen KV** | `STR`, `SPA` | `8,888.9` | `6,564.6` | `10.21` | `229.57` | `4.36` | `1,646.96` |
+  | **ArkVale** *(PR #59)* | `SPA` | `9,281.2` | `19,450.1` | `14.80` | `54.80` | `18.25` | `1,192.88` |
+  | **H2O** *(PR #60)* | `STR` | `9,434.7` | `1,548.3` | `7.20` | `29.27` | `34.16` | `0.01*` |
+  | **ShadowKV** *(PR #59)* | `SPA`, `STR`, `TMP` | `9,544.9` | `11,171.9` | `15.22` | `150.03` | `6.67` | `1,427.77` |
+  | **InfiniGen** *(PR #60)* | `SPA`, `TMP` | `9,656.5` | `20,196.9` | `13.66` | `131.51` | `7.60` | `1,875.47` |
+  | **HeadQ** *(PR #59)* | `STR` | `9,681.3` | `2,745.8` | `8.36` | `88.01` | `11.36` | `0.01*` |
+  | **QServe KV4** *(PR #59)* | `STR` | `10,041.0` | `2,083.1` | `7.16` | `54.81` | `18.24` | `0.01*` |
+  | **TurboQuant** *(PR #59)* | `STR` | `10,247.3` | `2,744.0` | `10.66` | `228.57` | `4.37` | `0.01*` |
+  | **CacheGen** *(PR #60)* | `STR` | `10,585.7` | `2,382.3` | `7.82` | `83.80` | `11.93` | `0.01*` |
+  > *Units note:* `Peak Alloc` (`peak_alloc_mb`) and `Host RSS Δ` (`host_rss_delta_mb`) are reported in binary **MiB** ($1024^2$ bytes) by `kv_bench`, whereas `Memcpy (MB/tok)` is computed in decimal **MB** (`memcpy_bytes_per_token / 1e6`). `*` denotes the `~8.3 KB/tok` PyTorch instrumentation floor (zero KV offload).
 
 - **Table 5.2B — Verified Quality Pillars: Logit Divergence (128 & 32K), 2D NIAH, and LongMemEval 150q Judged (`results/runs/wp3/*`, `results/grades/*_judged.json`):**
   | Method | Verify 128 Top-1 / KL | LongMem 32K Top-1 / KL | NIAH 2K / 4K | LongMemEval Overall | FR / IU / RT / CSR / UR (%) | Quality Regressions |
   | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
   | **BF16 Baseline** | `1.000` / `0.00` *(ref)* | `1.000` / `0.00` *(ref)* | — | **`99/150` (`66.0%`)** | `90.0 / 66.7 / 30.0 / 43.3 / 100.0` | `0` *(51 base fail)* |
-  | **ShadowKV** | `1.000` / `0.00` | `0.679` / `4.58` | `100%` / `100%` | **`96/150` (`64.0%`)** | `90.0 / 66.7 / 30.0 / 33.3 / 100.0` | **`3`** |
+  | **InfiniGen** *(PR #60)* | `1.000` / `0.84` | `0.515` / `7.05` | `100%` / `100%` | **`100/150` (`66.7%`)** | `90.0 / 66.7 / 30.0 / 50.0 / 96.7` | **`2`** *(+3 gain)* |
+  | **ShadowKV** *(PR #59)* | `1.000` / `0.00` | `0.607` / `5.67` | `100%` / `100%` | **`100/150` (`66.7%`)** | `93.3 / 63.3 / 33.3 / 43.3 / 100.0` | **`3`** *(+4 gain)* |
+  | **ArkVale** *(PR #59)* | `1.000` / `0.00` | `0.478` / `7.59` | `100%` / `100%` | **`97/150` (`64.7%`)** | `93.3 / 66.7 / 30.0 / 36.7 / 96.7` | **`7`** *(+5 gain)* |
   | **FlexGen KV** | `1.000` / `0.00` | `0.300` / `10.25` | `100%` / `100%` | **`91/150` (`60.7%`)** | `90.0 / 66.7 / 26.7 / 30.0 / 90.0` | `14` *(+6 gain)* |
-  | **InfiniGen** | `0.375` / `8.53` | `0.493` / `7.35` | `100%` / `100%` | **`91/150` (`60.7%`)** | `83.3 / 60.0 / 30.0 / 40.0 / 90.0` | `13` *(+5 gain)* |
-  | **QServe KV4** | `0.000` / `12.56` | `0.455` / `7.89` | `100%` / `100%` | **`89/150` (`59.3%`)** | `86.7 / 66.7 / 23.3 / 23.3 / 96.7` | `13` *(+3 gain)* |
-  | **ArkVale** | `1.000` / `0.00` | `0.384` / `8.99` | `100%` / `100%` | **`89/150` (`59.3%`)** | `86.7 / 60.0 / 30.0 / 26.7 / 93.3` | `14` *(+4 gain)* |
-  | **H2O** | `1.000` / `0.00` | `0.475` / `7.65` | `100%` / `20%` | **`80/150` (`53.3%`)** | `86.7 / 46.7 / 26.7 / 16.7 / 90.0` | `22` *(+3 gain)* |
-  | **TurboQuant** | `0.000` / `13.41` | `0.226` / `11.29` | `100%` / `100%` | **`80/150` (`53.3%`)** | `73.3 / 53.3 / 20.0 / 23.3 / 96.7` | `20` *(+1 gain)* |
+  | **QServe KV4** *(PR #59)* | `0.000` / `12.56` | `0.455` / `7.89` | `100%` / `100%` | **`90/150` (`60.0%`)** | `86.7 / 66.7 / 26.7 / 23.3 / 96.7` | `12` *(+3 gain)* |
+  | **H2O** *(PR #60)* | `1.000` / `0.00` | `0.465` / `7.80` | `100%` / `20%` | **`81/150` (`54.0%`)** | `86.7 / 53.3 / 20.0 / 16.7 / 93.3` | `22` *(+4 gain)* |
+  | **TurboQuant** *(PR #59)* | `0.125` / `11.28` | `0.229` / `11.29` | `100%` / `100%` | **`81/150` (`54.0%`)** | `73.3 / 63.3 / 20.0 / 20.0 / 93.3` | `20` *(+2 gain)* |
+  | **CacheGen** *(PR #60)* | `0.000` / `12.36` | `0.117` / `12.71` | `40%` / `80%` | **`72/150` (`48.0%`)** | `50.0 / 50.0 / 20.0 / 26.7 / 93.3` | `31` *(+4 gain)* |
   | **StreamingLLM** | `1.000` / `0.00` | `0.132` / `12.98` | `100%` / `40%` | **`66/150` (`44.0%`)** | `70.0 / 60.0 / 10.0 / 3.3 / 76.7` | `37` *(+4 gain)* |
-  | **CacheGen** | `0.000` / `12.36` | `0.117` / `12.71` | `40%` / `80%` | **`66/150` (`44.0%`)** | `46.7 / 50.0 / 16.7 / 20.0 / 86.7` | `36` *(+3 gain)* |
-  | **EpiCache** | `1.000` / `0.00` | `0.062` / `13.51` | `0%` / `0%` | **`8/150` (`5.3%`)** | `26.7 / 0.0 / 0.0 / 0.0 / 0.0` | `91` *(anomaly)* |
-  | **HeadQ** | `0.000` / `14.29` | `0.014` / `14.76` | `0%` / `0%` | **`0/150` (`0.0%`)** | `0.0 / 0.0 / 0.0 / 0.0 / 0.0` | `99` *(anomaly)* |
+  | **EpiCache** *(PR #59)* | `1.000` / `0.00` | `0.084` / `13.70` | `20%` / `10%` | **`56/150` (`37.3%`)** | `66.7 / 30.0 / 0.0 / 3.3 / 86.7` | `43` *(single-window)* |
+  | **HeadQ** *(PR #59)* | `0.062` / `13.02` | `0.030` / `14.28` | `90%` / `90%` | **`22/150` (`14.7%`)** | `26.7 / 26.7 / 10.0 / 3.3 / 6.7` | `81` *(2-bit K floor)* |
 
 #### Subsection 5.2.3 — Key Findings & White-Box Diagnostic Takeaways (`[READY]`)
 - **Outline Skeleton:**
-  1. **Eviction vs. Recallability:** Permanent eviction (`StreamingLLM`: `44.0%`, `H2O`: `53.3%`) suffers severe collapse on Cross-Session Reasoning (`3.3%` and `16.7%`) and 4K NIAH (`40%` and `20%`), whereas recallable/offloaded methods (`ShadowKV` `64.0%`, `FlexGen KV` `60.7%`, `InfiniGen` `60.7%`, `ArkVale` `59.3%`) preserve `100%` NIAH at 4K and $\ge 59\%$ LongMemEval.
-  2. **PCIe Bandwidth Wall vs. Sparse Value Offload:** Naive full-cache offload (`FlexGen KV`: `1,646.96 MB/tok`, `InfiniGen`: `1,829.89 MB/tok`, `ArkVale`: `1,618.38 MB/tok`) induces $103\text{--}230\text{ ms}$ TPOT, whereas `ShadowKV` reduces PCIe traffic by **$24\times$** (`67.24 MB/tok`) while achieving the highest overall accuracy (`64.0%`, only `3` quality regressions).
-  3. **Quantization Sweet Spot vs. Implementation Overhead:** `QServe KV4` achieves `59.3%` LongMemEval and `100%` NIAH with near-zero / baseline-overhead PCIe traffic (`0.01 MB/tok`) and moderate TPOT (`59.92 ms`), demonstrating that 4-bit KV quantization is a strong GPU-resident Tier 1 candidate. Conversely, `TurboQuant`'s `864.12 ms` TPOT reflects unoptimized pure-PyTorch QJL overhead rather than an algorithmic wall.
-  4. **Isolating Wrapper Anomalies (`[READY]`):** `HeadQ` (`0.0%`) and `EpiCache` (`5.3%`) exhibit catastrophic collapse attributable to verified PyTorch wrapper bugs (`headq_cache.py:194` PCA fit on `k_residual` instead of calibration $Q$; `epicache_cache.py:66,101` discarded sensitivity budget & Key-L2 eviction without recent window) rather than published paper claims; full component-level attribution is documented in `analysis/wp3/CONSOLIDATED_PATTERN_REPORT.md` & `analysis/wp3/techniques/*.md` (`[READY]`).
+  1. **Eviction vs. Recallability:** Permanent eviction (`H2O`: `54.0%`, `StreamingLLM`: `44.0%`, single-window `EpiCache`: `37.3%`) suffers severe collapse on Cross-Session Reasoning (`3.3%–16.7%`) and 4K NIAH (`10%–40%`), whereas selective CPU-offload engines (`InfiniGen`: `66.7%`, `ShadowKV`: `66.7%`, `ArkVale`: `64.7%`) preserve `100%` NIAH at 4K and match or beat the BF16 baseline (`66.0%`).
+  2. **Host RAM & PCIe Wall on Uncompressed CPU Pools:** While all 11 methods now fit comfortably under `16.0 GiB` VRAM (`8.57–10.59 GiB` Peak Alloc), uncompressed BF16 CPU pools push `InfiniGen` (`20.20 GiB`) and `ArkVale` (`19.45 GiB`) above a `16 GB` consumer Host RAM cap and `ShadowKV` to `11.17 GiB`, motivating 4-bit CPU tiering (`3.56x` reduction).
+  3. **Compression Floor Proven (`QServe KV4` vs. Sub-4-Bit):** `QServe KV4` achieves `60.0%` LongMemEval (`12` QR) and `100%` NIAH with `54.81 ms` TPOT, outperforming `TurboQuant` (`54.0%`), `CacheGen` (`48.0%`), and fixed `HeadQ` (`90%/90%` NIAH, `14.7%` LongMemEval)—proving 4-bit smoothed INT4 is the empirical floor for 32K multi-session reasoning on `Qwen3-4B`.
 - **Required Figure Specs (for Final Report Generation):**
   - *Fig. 5.1:* Native vLLM Context Scaling & OOM Cliff (`baseline_hardware_16gb.json`) + Multi-User Concurrency TPOT/Throughput (`concurrent_baseline_16gb.json`).
   - *Fig. 5.2:* 32K Pareto Frontier Scatter (`analysis/figures/wp3/overview/pareto_vram_vs_quality.png`), 32K Decode Latency (`tpot_overview_32k.png`), and LongMemEval Ranking (`longmem_overview.png`) across all 11 WP-3 methods (`[READY]`).
